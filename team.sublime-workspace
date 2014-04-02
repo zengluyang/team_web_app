@@ -1,0 +1,1012 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"arr",
+				"array"
+			],
+			[
+				"ma",
+				"margin-top"
+			],
+			[
+				"coy",
+				"Copyright"
+			],
+			[
+				"c",
+				"color"
+			],
+			[
+				"b",
+				"background-color"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"bak",
+				"background-color"
+			],
+			[
+				"send",
+				"send_count"
+			],
+			[
+				"u",
+				"uint16_t"
+			],
+			[
+				"re",
+				"received_counts"
+			],
+			[
+				"for",
+				"for	For Loop"
+			],
+			[
+				"fo",
+				"for	For Loop"
+			],
+			[
+				"using",
+				"using namespace identifier	"
+			],
+			[
+				"ind",
+				"include <header>	"
+			],
+			[
+				"printf",
+				"printf	printf …"
+			],
+			[
+				"pri",
+				"printf()	int"
+			],
+			[
+				"strut",
+				"struct	"
+			],
+			[
+				"ex",
+				"execute_command(char *cmdline)	int"
+			],
+			[
+				"st",
+				"struct	struct"
+			],
+			[
+				"inc",
+				"include"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "protected/views/patent/index.php",
+			"settings":
+			{
+				"buffer_size": 1164,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/custom.css",
+			"settings":
+			{
+				"buffer_size": 342,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "themes/foundation4/views/layouts/main.php",
+			"settings":
+			{
+				"buffer_size": 7135,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/views/patent/_view.php",
+			"settings":
+			{
+				"buffer_size": 1122,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/config/main.php",
+			"settings":
+			{
+				"buffer_size": 5308,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/views/paper/_form.php",
+			"settings":
+			{
+				"buffer_size": 8223,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/foundation.css",
+			"settings":
+			{
+				"buffer_size": 183044,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/views/layouts/main.php",
+			"settings":
+			{
+				"buffer_size": 3637,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/views/site/login.php",
+			"settings":
+			{
+				"buffer_size": 1371,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/controllers/PaperController.php",
+			"settings":
+			{
+				"buffer_size": 20847,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Make telosb",
+	"command_palette":
+	{
+		"height": 132.0,
+		"selected_items":
+		[
+			[
+				"synt html",
+				"Set Syntax: HTML"
+			],
+			[
+				"syn html",
+				"Set Syntax: HTML"
+			],
+			[
+				"set syn h",
+				"Set Syntax: HTML"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"syntax mak",
+				"Set Syntax: Makefile"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"xml",
+				"Set Syntax: XML"
+			],
+			[
+				"open",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			],
+			[
+				"project",
+				"Project: Close"
+			],
+			[
+				"save as ",
+				"Project: Save As"
+			],
+			[
+				"syntax mar",
+				"Set Syntax: Markdown"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"console",
+				"SublimeREPL: Python - Sublime Text Console"
+			],
+			[
+				"sublimerepl:",
+				"SublimeREPL: Shell"
+			],
+			[
+				"Package Control: Ins",
+				"Package Control: Install Package"
+			],
+			[
+				"for",
+				"Snippet: For Loop"
+			],
+			[
+				"",
+				"About"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/Dropbox/dev_htdocs/team/protected/controllers/PatentController.php",
+		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/layouts/main.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/patent/_form.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/paper/create.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/paper/_form.php",
+		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/layouts/column2.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/site/index.php",
+		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/site/index.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/patent/create.php",
+		"/D/Dropbox/dev_htdocs/team/css/foundation.css",
+		"/D/Dropbox/dev_htdocs/team/protected/extensions/giix-core/giixCrud/templates/foundation4/_form.php",
+		"/D/Dropbox/dev_htdocs/team/protected/extensions/giix-core/giixCrud/templates/foundation4/index.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/people/index.php",
+		"/D/Dropbox/dev_htdocs/team/protected/models/People.php",
+		"/D/Dropbox/dev_htdocs/team/protected/config/main.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/layouts/main.php",
+		"/D/Dropbox/dev_htdocs/team/protected/controllers/SiteController.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/people/_form.php",
+		"/D/Dropbox/dev_htdocs/team/protected/extensions/giix-core/giixCrud/templates/foundation4/create.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/patent/_view.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/paper/index.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/paper/_view.php",
+		"/D/Dropbox/dev_htdocs/team/index.php",
+		"/D/Dropbox/dev_htdocs/team/protected/models/Paper.php",
+		"/D/Dropbox/dev_htdocs/team/protected/controllers/PaperController.php",
+		"/D/Dropbox/Documents/undergraduate/wsn_contest/projects/Makefile",
+		"/D/Dropbox/Documents/undergraduate/wsn_contest/projects/digit_stupid_broadcast/RadioMsg.h",
+		"/D/Dropbox/Documents/undergraduate/wsn_contest/projects/digit_stupid_broadcast/dec2bin.c",
+		"/D/Dropbox/Documents/undergraduate/wsn_contest/projects/digit_stupid_broadcast/Makefile",
+		"/home/zly/tinyos-main/support/make/Makerules",
+		"/mnt/hgfs/Dropbox/Documents/undergraduate/wsn_contest/projects/digit_stupid_broadcast/digit_stupid_broadcast.sublime-workspace",
+		"/mnt/hgfs/Dropbox/Documents/undergraduate/wsn_contest/projects/digit_stupid_broadcast/PacketMsg.h",
+		"/mnt/hgfs/Dropbox/Documents/undergraduate/wsn_contest/projects/digit_stupid_broadcast/RadioToLedsC.nc",
+		"/mnt/hgfs/Dropbox/Documents/undergraduate/wsn_contest/projects/digit_stupid_broadcast/digit_stupid_broadcast.sublime-project",
+		"/home/zly/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/zly/.config/sublime-text-2/Packages/AdvancedNewFile/README.md",
+		"/home/zly/.config/sublime-text-2/Packages/AdvancedNewFile/Default (Linux).sublime-keymap",
+		"/home/zly/Desktop/digit.csc",
+		"/D/Desktop/digit_stupid_broadcast/RadioToLedsC.nc",
+		"/D/Dropbox/coding/setting/Sublime Text 2/windows/Packages/User/gcc.sublime-build",
+		"/D/Dropbox/coding/setting/Sublime Text 2/windows/Packages/User/necC.sublime-build",
+		"/D/Dropbox/coding/setting/Sublime Text 2/windows/Packages/C++/C++.sublime-build",
+		"/D/Desktop/digit_stupid_broadcast/dec2bin.c",
+		"/C/Users/ZLY/AppData/Roaming/Sublime Text 2/Packages/User/CL.sublime-build",
+		"/D/Desktop/digit_stupid_broadcast/dec2bin",
+		"/C/Users/ZLY/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/ZLY/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/ZLY/AppData/Roaming/Sublime Text 2/Packages/User/necC.sublime-build",
+		"/D/Desktop/digit_stupid_broadcast/digit_stupid_broadcast.sublime-project",
+		"/D/Desktop/digit_stupid_broadcast/digit_stupid_broadcast.sublime-workspace",
+		"/D/Desktop/digit_stupid_broadcast/Makefile",
+		"/D/Desktop/digit_stupid_broadcast/README.md",
+		"/D/Desktop/digit_stupid_broadcast/RadioMsg.h",
+		"/C/Users/ZLY/AppData/Roaming/Sublime Text 2/Packages/Yii Framework Snippets/yii-activeDropDownList.sublime-snippet",
+		"/D/Desktop/digit_stupid_broadcast/build/telosb/app.c",
+		"/D/Desktop/digit/Makefile",
+		"/D/Desktop/digit/SerialToRadioAppC.nc",
+		"/D/Desktop/digit/SerialToRadioC.nc",
+		"/D/Desktop/digit/SerialToRadioMsg.h",
+		"/D/Desktop/数字接龙/Makefile",
+		"/D/Desktop/数字接龙/README.txt",
+		"/D/Desktop/数字接龙/SendPkt.java",
+		"/D/Desktop/数字接龙/SerialToRadioAppC.nc",
+		"/D/Desktop/数字接龙/SerialToRadioMsg.h",
+		"/D/Desktop/数字接龙/SerialToRadioC.nc",
+		"/E/xampp/htdocs/boiler/app/views/site/index.php",
+		"/E/xampp/htdocs/boiler/app/views/layouts/main.php",
+		"/E/xampp/htdocs/boiler/www/css/style.css",
+		"/E/xampp/htdocs/boiler/app/controllers/SiteController.php",
+		"/E/xampp/htdocs/boiler/composer.json",
+		"/d/Desktop/1.html",
+		"/D/Dropbox/Documents/通信六班/通知/2013-10-29/2013-10-29_通知",
+		"/d/Desktop/uuu.cpp",
+		"/D/Dropbox/coding/workspace/web/imzly.me/pages/index.html",
+		"/D/Dropbox/coding/workspace/web/imzly.me/themes/the-program/layouts/post.html",
+		"/D/Dropbox/coding/workspace/web/imzly.me/themes/the-program/layouts/page.html",
+		"/D/Dropbox/coding/workspace/cpp_primer/sub_str.cpp",
+		"/D/Dropbox/coding/workspace/web/imzly.me/themes/the-program/layouts/default.html",
+		"/D/Dropbox/coding/workspace/web/imzly.me/themes/the-program/stylesheets/style.css",
+		"/D/Dropbox/coding/workspace/web/imzly.me/themes/twitter/layouts/post.html",
+		"/D/Dropbox/coding/workspace/web/imzly.me/themes/twitter/layouts/default.html",
+		"/D/Dropbox/coding/workspace/web/imzly.me/themes/twitter/layouts/page.html",
+		"/D/Documents/通信六班/通知/index.html",
+		"/D/Dropbox/coding/workspace/cpp_primer/String.cpp",
+		"/D/Dropbox/coding/workspace/cpp_primer/String.hpp",
+		"/D/Dropbox/coding/workspace/cpp_primer/StringProject/_3_15.cpp",
+		"/d/Downloads/526268ff.data",
+		"/D/Dropbox/coding/workspace/cpp_primer/_3_2_3.cpp",
+		"/C/Users/ZLY/AppData/Roaming/Sublime Text 2/Packages/User/gcc.sublime-build",
+		"/D/Dropbox/coding/workspace/cpp_primer/_3_15.cpp",
+		"/C/Users/ZLY/AppData/Roaming/Sublime Text 2/Packages/SublimeClang/SublimeClang.sublime-settings",
+		"/d/Desktop/2000W/5101251993.txt",
+		"/D/Dropbox/Documents/通信六班/【体测具体安排】",
+		"/D/Dropbox/coding/workspace/cb_console_runner.c",
+		"/D/cygwin/usr/include/stdio.h",
+		"/D/cygwin/usr/include/sys/reent.h",
+		"/D/Dropbox/coding/workspace/hello.c",
+		"/C/Users/ZLY/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Dev-Cpp/bin/gcc.exe",
+		"/D/Dropbox/coding/workspace/hello.exe",
+		"/d/Desktop/object-cache.php",
+		"/C/Users/ZLY/AppData/Local/Temp/zly_MobaXterm6.5/RemoteFiles/0/root@198.148.116.142/index.html",
+		"/C/Users/ZLY/AppData/Local/Temp/zly_MobaXterm6.5/RemoteFiles/1/root@198.148.116.142/index.html",
+		"/d/Desktop/Chrome 应用启动器.lnk",
+		"/d/Desktop/两步验证.pdf",
+		"/d/Desktop/photo.jpg"
+	],
+	"find":
+	{
+		"height": 43.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"self::",
+			"not-click",
+			"right",
+			"left",
+			"h2",
+			"style",
+			".top-bar",
+			".topbar",
+			"40.063",
+			"left",
+			"right",
+			"not-click",
+			"small",
+			"large",
+			"2",
+			"large-1",
+			"large-4",
+			"right",
+			"examples",
+			"../assets",
+			"mord",
+			"theme",
+			"ctrl+b",
+			"build",
+			"CONFIG_DIR",
+			"start",
+			"t",
+			"tab",
+			"pay",
+			"\n",
+			"style.css",
+			"style",
+			">\n",
+			"10-22",
+			"2013-10-22",
+			"themes/",
+			"font/",
+			"font",
+			"skin",
+			"wp_footer",
+			"do_action",
+			"side_bar",
+			"\"/",
+			"execute_command",
+			"${file_path}/${file_base_name}",
+			"/n",
+			"getch",
+			"argv[1]",
+			"system",
+			"EHTHER_HDR",
+			"ether_hdr",
+			"f9",
+			"ctrl+b",
+			");\n",
+			"Mon",
+			"data"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 9,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "protected/views/patent/index.php",
+					"settings":
+					{
+						"buffer_size": 1164,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								726,
+								726
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "css/custom.css",
+					"settings":
+					{
+						"buffer_size": 342,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								242,
+								242
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "themes/foundation4/views/layouts/main.php",
+					"settings":
+					{
+						"buffer_size": 7135,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1472,
+								1472
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "protected/views/patent/_view.php",
+					"settings":
+					{
+						"buffer_size": 1122,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								896,
+								896
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "protected/config/main.php",
+					"settings":
+					{
+						"buffer_size": 5308,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4562,
+								4562
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2376.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "protected/views/paper/_form.php",
+					"settings":
+					{
+						"buffer_size": 8223,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6057,
+								6057
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1968.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "css/foundation.css",
+					"settings":
+					{
+						"buffer_size": 183044,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								910,
+								983
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 265.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "protected/views/layouts/main.php",
+					"settings":
+					{
+						"buffer_size": 3637,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2902,
+								2908
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 432.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "protected/views/site/login.php",
+					"settings":
+					{
+						"buffer_size": 1371,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								300,
+								300
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 162.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "protected/controllers/PaperController.php",
+					"settings":
+					{
+						"buffer_size": 20847,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10503,
+								10515
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5363.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 35.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.clang":
+	{
+		"height": 124.0
+	},
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"contpaper",
+				"protected/controllers/PaperController.php"
+			],
+			[
+				"viewpainde",
+				"protected/views/patent/index.php"
+			],
+			[
+				"viewpatent_v",
+				"protected/views/patent/_view.php"
+			],
+			[
+				"login",
+				"protected/views/site/login.php"
+			],
+			[
+				"foundma",
+				"themes/foundation4/views/layouts/main.php"
+			],
+			[
+				"c",
+				"css/custom.css"
+			],
+			[
+				"layoutma",
+				"protected/views/layouts/main.php"
+			],
+			[
+				"foundcss",
+				"css/foundation.css"
+			],
+			[
+				"main",
+				"protected/config/main.php"
+			],
+			[
+				"paper_f",
+				"protected/views/paper/_form.php"
+			],
+			[
+				"patent_form",
+				"protected/views/patent/_form.php"
+			],
+			[
+				"patentcrea",
+				"protected/views/patent/create.php"
+			],
+			[
+				"fo",
+				"css/foundation.css"
+			],
+			[
+				"site/",
+				"themes/foundation4/views/site/index.php"
+			],
+			[
+				"sitein",
+				"protected/views/site/index.php"
+			],
+			[
+				"foundco",
+				"themes/foundation4/views/layouts/column2.php"
+			],
+			[
+				"papercreate",
+				"protected/views/paper/create.php"
+			],
+			[
+				"papercrea",
+				"protected/views/paper/create.php"
+			],
+			[
+				"paperfo",
+				"protected/views/paper/_form.php"
+			],
+			[
+				"giifound",
+				"protected/extensions/giix-core/giixCrud/templates/foundation4/create.php"
+			],
+			[
+				"peopleind",
+				"protected/views/people/index.php"
+			],
+			[
+				"modelpeople",
+				"protected/models/People.php"
+			],
+			[
+				"configma",
+				"protected/config/main.php"
+			],
+			[
+				"site",
+				"protected/controllers/SiteController.php"
+			],
+			[
+				"layoutm",
+				"protected/views/layouts/main.php"
+			],
+			[
+				"foundmain",
+				"themes/foundation4/views/layouts/main.php"
+			],
+			[
+				"patentc",
+				"protected/controllers/PatentController.php"
+			],
+			[
+				"patent_v",
+				"protected/views/patent/_view.php"
+			],
+			[
+				"paperco",
+				"protected/controllers/PaperController.php"
+			],
+			[
+				"paper",
+				"protected/models/Paper.php"
+			],
+			[
+				"paper_view",
+				"protected/views/paper/_view.php"
+			],
+			[
+				"paperinde",
+				"protected/views/paper/index.php"
+			],
+			[
+				"foundcol2",
+				"themes/foundation4/views/layouts/column2.php"
+			],
+			[
+				"paperind",
+				"protected/views/paper/index.php"
+			],
+			[
+				"patentin",
+				"protected/views/patent/index.php"
+			],
+			[
+				"foundindex",
+				"themes/foundation4/views/site/index.php"
+			],
+			[
+				"",
+				"protected/config/main.php"
+			],
+			[
+				"foundation4/views/sit",
+				"themes/foundation4/views/site/index.php"
+			],
+			[
+				"config/m",
+				"protected/config/main.php"
+			],
+			[
+				"m",
+				"Makefile"
+			],
+			[
+				"ra",
+				"RadioMsg.h"
+			],
+			[
+				"de",
+				"dec2bin"
+			],
+			[
+				"r",
+				"RadioToLedsC.nc"
+			],
+			[
+				"d.c",
+				"dec2bin.c"
+			],
+			[
+				"rtl",
+				"RadioToLedsC.nc"
+			],
+			[
+				"app",
+				"build/telosb/app.c"
+			],
+			[
+				"subli",
+				"/C/Users/ZLY/AppData/Roaming/Sublime Text 2/Packages/SublimeREPL/SublimeREPL.sublime-settings"
+			],
+			[
+				"repl",
+				"/C/Users/ZLY/AppData/Roaming/Sublime Text 2/Packages/User/gcc.sublime-build"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/D/Dropbox/Documents/undergraduate/wsn_contest/projects/digit/digit.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 275.0,
+	"status_bar_visible": true
+}
