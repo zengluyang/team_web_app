@@ -160,3 +160,14 @@ CREATE TABLE `tbl_project_people_execute` (
   CONSTRAINT `tbl_project_people_execute_ibfk_2` FOREIGN KEY (`people_id`) REFERENCES `tbl_people` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_project_people_execute_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+CREATE TABLE `tbl_user` (
+  id int not null primary key auto_increment,
+  username varchar(30)  NOT NULL,
+  password varchar(255) NOT NULL,
+  email varchar(100),
+  is_admin bool,
+  is_paper bool,
+  is_project bool,
+  is_patent bool
+);
