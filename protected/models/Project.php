@@ -67,7 +67,8 @@ class Project extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'tblPeoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_liability(project_id, people_id)'),
+			'liability_people' => array(self::MANY_MANY, 'People', 'tbl_project_people_liability(project_id, people_id)','order'=>'seq'),
+            'execute_people' => array(self::MANY_MANY, 'People', 'tbl_project_people_execute(project_id, people_id)','order'=>'seq'),
 		);
 	}
 
@@ -78,28 +79,28 @@ class Project extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'number' => 'Number',
-			'fund_number' => 'Fund Number',
-			'is_intl' => 'Is Intl',
-			'is_national' => 'Is National',
-			'is_provincial' => 'Is Provincial',
-			'is_city' => 'Is City',
-			'is_school' => 'Is School',
-			'is_enterprise' => 'Is Enterprise',
-			'is_NSF' => 'Is Nsf',
-			'is_973' => 'Is 973',
-			'is_863' => 'Is 863',
-			'is_NKTRD' => 'Is Nktrd',
-			'is_DFME' => 'Is Dfme',
-			'is_major' => 'Is Major',
-			'start_date' => 'Start Date',
-			'deadline_date' => 'Deadline Date',
-			'conclude_date' => 'Conclude Date',
-			'app_date' => 'App Date',
-			'pass_date' => 'Pass Date',
-			'app_fund' => 'App Fund',
-			'pass_fund' => 'Pass Fund',
+			'name' => '项目名称',
+			'number' => '编号',
+			'fund_number' => '经费本编号',
+			'is_intl' => '国际',
+			'is_national' => '国家级',
+			'is_provincial' => '省部级',
+			'is_city' => '市级',
+			'is_school' => '校级',
+			'is_enterprise' => '横向',
+			'is_NSF' => '国家自然基金',
+			'is_973' => '973',
+			'is_863' => '863',
+			'is_NKTRD' => '科技支撑计划',
+			'is_DFME' => '教育部博士点专项基金',
+			'is_major' => '重大专项',
+			'start_date' => '开始时间',
+			'deadline_date' => '截至时间',
+			'conclude_date' => '结题时间',
+			'app_date' => '申报时间',
+			'pass_date' => '立项时间',
+			'app_fund' => '申报经费',
+			'pass_fund' => '立项经费',
 		);
 	}
 
