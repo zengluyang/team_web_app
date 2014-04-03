@@ -21,22 +21,14 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
 		'name',
 		'number',
 		'fund_number',
-		'is_intl',
-		'is_national',
-		'is_provincial',
-		'is_city',
-		'is_school',
-		'is_enterprise',
-		'is_NSF',
-		'is_973',
-		'is_863',
-		'is_NKTRD',
-		'is_DFME',
-		'is_major',
+		array(
+			'label'=>'级别',
+			'type'=>'raw',
+			'value'=>$model->getLevelString()
+		),
 		'start_date',
 		'deadline_date',
 		'conclude_date',
@@ -45,4 +37,5 @@ $this->menu=array(
 		'app_fund',
 		'pass_fund',
 	),
-)); ?>
+)); 
+?>

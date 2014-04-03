@@ -36,79 +36,80 @@
 		<?php echo $form->textField($model,'fund_number',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'fund_number'); ?>
 	</div>
-
 	<div class="row">
-		<?php echo $form->labelEx($model,'is_intl'); ?>
-		<?php echo $form->textField($model,'is_intl'); ?>
-		<?php echo $form->error($model,'is_intl'); ?>
-	</div>
+		<div class="medium-1 columns">
+			<?php echo $form->labelEx($model,'is_intl'); ?>
+			<?php echo $form->checkBox($model,'is_intl'); ?>
+			<?php echo $form->error($model,'is_intl'); ?>
+		</div>
 
+		<div class="medium-1 columns">
+			<?php echo $form->labelEx($model,'is_national'); ?>
+			<?php echo $form->checkBox($model,'is_national'); ?>
+			<?php echo $form->error($model,'is_national'); ?>
+		</div>
+
+		<div class="medium-1 columns">
+			<?php echo $form->labelEx($model,'is_provincial'); ?>
+			<?php echo $form->checkBox($model,'is_provincial'); ?>
+			<?php echo $form->error($model,'is_provincial'); ?>
+		</div>
+
+		<div class="medium-1 columns">
+			<?php echo $form->labelEx($model,'is_city'); ?>
+			<?php echo $form->checkBox($model,'is_city'); ?>
+			<?php echo $form->error($model,'is_city'); ?>
+		</div>
+
+		<div class="medium-1 columns">
+			<?php echo $form->labelEx($model,'is_school'); ?>
+			<?php echo $form->checkBox($model,'is_school'); ?>
+			<?php echo $form->error($model,'is_school'); ?>
+		</div>
+
+		<div class="medium-1 columns end">
+			<?php echo $form->labelEx($model,'is_enterprise'); ?>
+			<?php echo $form->checkBox($model,'is_enterprise'); ?>
+			<?php echo $form->error($model,'is_enterprise'); ?>
+		</div>
+	</div>
 	<div class="row">
-		<?php echo $form->labelEx($model,'is_national'); ?>
-		<?php echo $form->textField($model,'is_national'); ?>
-		<?php echo $form->error($model,'is_national'); ?>
-	</div>
+		<div class="medium-1 columns">
+			<?php echo $form->labelEx($model,'is_NSF'); ?>
+			<?php echo $form->checkBox($model,'is_NSF'); ?>
+			<?php echo $form->error($model,'is_NSF'); ?>
+		</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_provincial'); ?>
-		<?php echo $form->textField($model,'is_provincial'); ?>
-		<?php echo $form->error($model,'is_provincial'); ?>
-	</div>
+		<div class="medium-1 columns">
+			<?php echo $form->labelEx($model,'is_973'); ?>
+			<?php echo $form->checkBox($model,'is_973'); ?>
+			<?php echo $form->error($model,'is_973'); ?>
+		</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_city'); ?>
-		<?php echo $form->textField($model,'is_city'); ?>
-		<?php echo $form->error($model,'is_city'); ?>
-	</div>
+		<div class="medium-1 columns">
+			<?php echo $form->labelEx($model,'is_863'); ?>
+			<?php echo $form->checkBox($model,'is_863'); ?>
+			<?php echo $form->error($model,'is_863'); ?>
+		</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_school'); ?>
-		<?php echo $form->textField($model,'is_school'); ?>
-		<?php echo $form->error($model,'is_school'); ?>
-	</div>
+		<div class="medium-1 columns">
+			<?php echo $form->labelEx($model,'is_NKTRD'); ?>
+			<?php echo $form->checkBox($model,'is_NKTRD'); ?>
+			<?php echo $form->error($model,'is_NKTRD'); ?>
+		</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_enterprise'); ?>
-		<?php echo $form->textField($model,'is_enterprise'); ?>
-		<?php echo $form->error($model,'is_enterprise'); ?>
-	</div>
+		<div class="medium-1 columns">
+			<?php echo $form->labelEx($model,'is_DFME'); ?>
+			<?php echo $form->checkBox($model,'is_DFME'); ?>
+			<?php echo $form->error($model,'is_DFME'); ?>
+		</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_NSF'); ?>
-		<?php echo $form->textField($model,'is_NSF'); ?>
-		<?php echo $form->error($model,'is_NSF'); ?>
+		<div class="medium-1 columns end">
+			<?php echo $form->labelEx($model,'is_major'); ?>
+			<?php echo $form->checkBox($model,'is_major'); ?>
+			<?php echo $form->error($model,'is_major'); ?>
+		</div>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_973'); ?>
-		<?php echo $form->textField($model,'is_973'); ?>
-		<?php echo $form->error($model,'is_973'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_863'); ?>
-		<?php echo $form->textField($model,'is_863'); ?>
-		<?php echo $form->error($model,'is_863'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_NKTRD'); ?>
-		<?php echo $form->textField($model,'is_NKTRD'); ?>
-		<?php echo $form->error($model,'is_NKTRD'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_DFME'); ?>
-		<?php echo $form->textField($model,'is_DFME'); ?>
-		<?php echo $form->error($model,'is_DFME'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'is_major'); ?>
-		<?php echo $form->textField($model,'is_major'); ?>
-		<?php echo $form->error($model,'is_major'); ?>
-	</div>
-
 	<div class="row">
 		<?php echo $form->labelEx($model,'start_date'); ?>
 		<?php echo $form->textField($model,'start_date'); ?>

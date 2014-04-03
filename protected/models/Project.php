@@ -92,7 +92,7 @@ class Project extends CActiveRecord
 			'is_973' => '973',
 			'is_863' => '863',
 			'is_NKTRD' => '科技支撑计划',
-			'is_DFME' => '教育部博士点专项基金',
+			'is_DFME' => '教育部高校博士点基金',
 			'is_major' => '重大专项',
 			'start_date' => '开始时间',
 			'deadline_date' => '截至时间',
@@ -151,6 +151,58 @@ class Project extends CActiveRecord
 		));
 	}
 
+	public function beforeSave() {
+		if ($this->pass_date=='')
+            $this->pass_date=null;
+        if ($this->app_date=='')
+            $this->app_date=null;
+        if ($this->conclude_date=='')
+            $this->conclude_date=null;
+		return parent::beforeSave();
+	}
+	public function getLevelString($glue=', '){
+        $levels = array();
+        if($this->is_intl){
+            array_push($levels,self::attributeLabels()['is_intl']);
+        }
+        if($this->is_national){
+            array_push($levels,self::attributeLabels()['is_national']);
+        }
+        if($this->is_provincial){
+            array_push($levels,self::attributeLabels()['is_provincial']);
+        }
+        if($this->is_city){
+            array_push($levels,self::attributeLabels()['is_city']);
+        }
+        if($this->is_school){
+            array_push($levels,self::attributeLabels()['is_school']);
+        }
+        if($this->is_enterprise){
+            array_push($levels,self::attributeLabels()['is_enterprise']);
+        }
+        if($this->is_NSF){
+            array_push($levels,self::attributeLabels()['is_NSF']);
+        }
+        if($this->is_973){
+            array_push($levels,self::attributeLabels()['is_973']);
+        }
+        if($this->is_863){
+            array_push($levels,self::attributeLabels()['is_863']);
+        }
+        if($this->is_NKTRD){
+            array_push($levels,self::attributeLabels()['is_NKTRD']);
+        }
+        if($this->is_DFME){
+            array_push($levels,self::attributeLabels()['is_DFME']);
+        }
+        if($this->is_major){
+            array_push($levels,self::attributeLabels()['is_major']);
+        }
+
+
+        return implode($glue,$levels);
+
+    }
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

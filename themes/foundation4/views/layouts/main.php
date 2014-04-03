@@ -33,7 +33,7 @@
         array('label'=>'科研','url'=>array('#/research'),
             'items'=>array(
                 array('label'=>'研究方向', 'url'=>array('#/research/interest')),
-                array('label'=>'科研项目', 'url'=>array('#/research/project')),
+                array('label'=>'科研项目', 'url'=>array('/project')),
             ),
             'itemOptions'=>array('class'=>'has-dropdown'),
              'submenuOptions'=>array('class'=>'dropdown'),

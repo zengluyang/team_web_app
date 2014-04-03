@@ -1,5 +1,6 @@
 <?php
-
+Yii::import('application.vendor.*');
+require_once('password_compat/password_compat.php');
 class ProjectController extends Controller
 {
 	/**
@@ -14,8 +15,8 @@ class ProjectController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			//'accessControl', // perform access control for CRUD operations
+			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -24,6 +25,7 @@ class ProjectController extends Controller
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
 	 */
+
 	public function accessRules()
 	{
 		return array(
@@ -49,6 +51,19 @@ class ProjectController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
+
+	public function actionPwd() {
+		echo "actionPwd.<hr />";
+		$hash1 = password_hash("admin", PASSWORD_DEFAULT);
+		$hash2 = password_hash("123456a", PASSWORD_DEFAULT);
+		var_dump($hash1);
+		var_dump(Yii::app()->user->__states);
+		echo $hash1."<hr />";
+		echo $hash2."<hr />";
+		echo password_verify("123456a",$hash1);
+		echo password_verify("123456a",$hash2);
+	}
+
 	public function actionView($id)
 	{
 		$this->render('view',array(

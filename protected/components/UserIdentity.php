@@ -5,6 +5,11 @@
  * It contains the authentication method that checks if the provided
  * data can identity the user.
  */
+
+Yii::import('application.vendor.*');
+require_once('password_compat/password_compat.php');
+
+
 class UserIdentity extends CUserIdentity
 {
 	/**
@@ -15,8 +20,30 @@ class UserIdentity extends CUserIdentity
 	 * against some persistent user identity storage (e.g. database).
 	 * @return boolean whether authentication succeeds.
 	 */
+	private $_id;
 	public function authenticate()
 	{
+		
+		$record=User::model()->findByAttributes(array('username'=>$this->username));
+		if($record===null)
+            $this->errorCode=self::ERROR_USERNAME_INVALID;
+        else if(!password_verify($this->password,$record->password))
+            $this->errorCode=self::ERROR_PASSWORD_INVALID;
+        else
+        {
+            $this->_id=$record->id;
+            $this->setState('id',$record->id);
+            $this->setState('email',$record->email);
+            $this->setState('is_admin', $record->is_admin);
+            $this->setState('is_paper', $record->is_paper);
+            $this->setState('is_project', $record->is_project);
+            $this->setState('is_patent', $record->is_patent);
+            $this->errorCode=self::ERROR_NONE;
+        }
+        return !$this->errorCode;
+
+
+		/*
 		$users=array(
 			// username => password
 			'demo'=>'demo',
@@ -29,5 +56,12 @@ class UserIdentity extends CUserIdentity
 		else
 			$this->errorCode=self::ERROR_NONE;
 		return !$this->errorCode;
+		*/
+	}
+
+
+
+	public function getId() {
+		return $this->_id;
 	}
 }
