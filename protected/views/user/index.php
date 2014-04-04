@@ -18,3 +18,9 @@ $this->menu=array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 )); ?>
+
+<style type="text/css">
+	.view {
+		margin-bottom: 10px
+	}
+</style>

@@ -34,12 +34,12 @@ class PaperController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','download'),
-				'users'=>array('@'),
+				'actions'=>array('create','update','download', 'admin'),
+				'expression'=>'isset($user->is_paper) && $user->is_paper'
 			),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
                 'actions'=>array('testExcelExport','testExcelExportByTable','query','testSearchByPeople','reset','upload','admin','delete','import','testXls','TestCsv','TestPhpExcelCsv'),
-                'users'=>array('admin'),
+                'expression'=>'isset($user->is_admin) && $user->is_admin',
             ),
 			array('deny',  // deny all users
 				'users'=>array('*'),

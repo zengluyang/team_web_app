@@ -68,11 +68,15 @@
         ),
 	),
 )); 
-
+//var_dump(Yii::app()->user->is_admin);
 $this->widget('zii.widget.CMenu',array(
 	'htmlOptions' => array('class'=>'right'),
 	'items' => array(
-		array('label'=>'管理', 
+		array('label'=>'用户管理',
+			'visible'=> (isset(Yii::app()->user->is_admin) && Yii::app()->user->is_admin),
+			'url'=>array('/user'),
+		),
+		array('label'=>'菜单', 
 			'visible'=>(isset($this->menu) && !Yii::app()->user->isGuest),
 			'url'=>array('#'), 
 			'itemOptions'=>array('class'=>'has-dropdown not-click'), 

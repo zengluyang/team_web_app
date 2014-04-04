@@ -15,8 +15,8 @@ class ProjectController extends Controller
 	public function filters()
 	{
 		return array(
-			//'accessControl', // perform access control for CRUD operations
-			//'postOnly + delete', // we only allow deletion via POST request
+			'accessControl', // perform access control for CRUD operations
+			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -31,15 +31,15 @@ class ProjectController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
 				'users'=>array('@'),
 			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create','update','admin'),
+				'expression'=>'isset($user->is_project) && $user->is_project',
+			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'actions'=>array('admin','delete','create','update','import','export','pwd'),
+				'expression'=>'isset($user->is_admin) && $user->is_admin',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -57,7 +57,7 @@ class ProjectController extends Controller
 		$hash1 = password_hash("admin", PASSWORD_DEFAULT);
 		$hash2 = password_hash("123456a", PASSWORD_DEFAULT);
 		var_dump($hash1);
-		var_dump(Yii::app()->user->__states);
+		var_dump(Yii::app()->user->id);
 		echo $hash1."<hr />";
 		echo $hash2."<hr />";
 		echo password_verify("123456a",$hash1);

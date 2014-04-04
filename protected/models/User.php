@@ -1,5 +1,8 @@
 <?php
 
+Yii::import('application.vendor.*');
+require_once('password_compat/password_compat.php');
+
 /**
  * This is the model class for table "tbl_user".
  *
@@ -15,6 +18,11 @@
  */
 class User extends CActiveRecord
 {
+	
+
+	public $passwordRepeat;
+	public $passwordInitial;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -35,7 +43,8 @@ class User extends CActiveRecord
 			array('is_admin, is_paper, is_project, is_patent', 'numerical', 'integerOnly'=>true),
 			array('username', 'length', 'max'=>30),
 			array('password', 'length', 'max'=>255),
-			array('email', 'length', 'max'=>100),
+			array('email', 'email'),
+			array('passwordRepeat', 'compare','compareAttribute'=>'password', 'message'=>"两次密码不符合",'on'=>'create'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, username, password, email, is_admin, is_paper, is_project, is_patent', 'safe', 'on'=>'search'),
@@ -60,13 +69,13 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'username' => 'Username',
-			'password' => 'Password',
-			'email' => 'Email',
-			'is_admin' => 'Is Admin',
-			'is_paper' => 'Is Paper',
-			'is_project' => 'Is Project',
-			'is_patent' => 'Is Patent',
+			'username' => '用户名',
+			'password' => '密码',
+			'email' => '电子邮件',
+			'is_admin' => '超级管理员权限',
+			'is_paper' => '论文管理权限',
+			'is_project' => '项目管理权限',
+			'is_patent' => '专利管理权限',
 		);
 	}
 
@@ -100,6 +109,17 @@ class User extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	protected function beforeSave(){
+		if($this->getIsNewRecord()) {
+			$this->password = password_hash($this->password, PASSWORD_DEFAULT);
+		}
+		return parent::beforeSave();
+	}
+
+	protected function afterFind() {
+		$this->passwordInitial = $this->password;
+		return  parent::afterFind();
 	}
 
 	/**

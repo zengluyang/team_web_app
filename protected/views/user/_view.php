@@ -33,11 +33,9 @@
 	<?php echo CHtml::encode($data->is_project); ?>
 	<br />
 
-	<?php /*
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('is_patent')); ?>:</b>
 	<?php echo CHtml::encode($data->is_patent); ?>
 	<br />
-
-	*/ ?>
 
 </div>

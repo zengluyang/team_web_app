@@ -4,8 +4,40 @@
 		"selected_items":
 		[
 			[
+				"bo",
+				"BOOL"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"has",
+				"hash1"
+			],
+			[
 				"arr",
-				"array"
+				"array	$… = array (…)"
+			],
+			[
+				"is_N",
+				"is_NKTRD"
+			],
+			[
+				"is_n",
+				"is_NSF"
+			],
+			[
+				"is_na",
+				"is_national"
+			],
+			[
+				"is_in",
+				"is_intl"
+			],
+			[
+				"attri",
+				"attributeLabels"
 			],
 			[
 				"ma",
@@ -88,66 +120,34 @@
 	"buffers":
 	[
 		{
-			"file": "protected/views/patent/index.php",
-			"settings":
-			{
-				"buffer_size": 1164,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "css/custom.css",
-			"settings":
-			{
-				"buffer_size": 342,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "themes/foundation4/views/layouts/main.php",
-			"settings":
-			{
-				"buffer_size": 7135,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "protected/views/patent/_view.php",
-			"settings":
-			{
-				"buffer_size": 1122,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "protected/config/main.php",
 			"settings":
 			{
-				"buffer_size": 5308,
+				"buffer_size": 5299,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "protected/views/paper/_form.php",
+			"file": "protected/components/UserIdentity.php",
 			"settings":
 			{
-				"buffer_size": 8223,
+				"buffer_size": 1889,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "css/foundation.css",
+			"file": "protected/controllers/ProjectController.php",
 			"settings":
 			{
-				"buffer_size": 183044,
+				"buffer_size": 4679,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "protected/views/layouts/main.php",
+			"file": "protected/models/LoginForm.php",
 			"settings":
 			{
-				"buffer_size": 3637,
+				"buffer_size": 1779,
 				"line_ending": "Unix"
 			}
 		},
@@ -160,10 +160,10 @@
 			}
 		},
 		{
-			"file": "protected/controllers/PaperController.php",
+			"file": "protected/controllers/UserController.php",
 			"settings":
 			{
-				"buffer_size": 20847,
+				"buffer_size": 4410,
 				"line_ending": "Unix"
 			}
 		}
@@ -272,31 +272,42 @@
 	},
 	"file_history":
 	[
-		"/D/Dropbox/dev_htdocs/team/protected/controllers/PatentController.php",
+		"/D/Dropbox/dev_htdocs/team/protected/vendor/password_compat/password_compat.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/project/_form.php",
+		"/D/Dropbox/dev_htdocs/team/protected/controllers/ProjectController.php",
+		"/D/Dropbox/dev_htdocs/team/protected/models/User.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/project/view.php",
 		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/layouts/main.php",
+		"/D/Dropbox/dev_htdocs/team/protected/config/main.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/paper/_form.php",
+		"/D/Dropbox/dev_htdocs/team/protected/models/Paper.php",
+		"/D/Dropbox/dev_htdocs/team/protected/models/Project.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/paper/view.php",
+		"/D/Dropbox/dev_htdocs/team/protected/controllers/PaperController.php",
+		"/D/Dropbox/dev_htdocs/team/protected/data/schema.mysql.sql",
+		"/D/Dropbox/dev_htdocs/team/protected/views/site/login.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/patent/index.php",
+		"/D/Dropbox/dev_htdocs/team/css/custom.css",
+		"/D/Dropbox/dev_htdocs/team/protected/views/patent/_view.php",
+		"/D/Dropbox/dev_htdocs/team/css/foundation.css",
+		"/D/Dropbox/dev_htdocs/team/protected/views/layouts/main.php",
+		"/D/Dropbox/dev_htdocs/team/protected/controllers/PatentController.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/patent/_form.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/paper/create.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/_form.php",
 		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/layouts/column2.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/site/index.php",
 		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/site/index.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/patent/create.php",
-		"/D/Dropbox/dev_htdocs/team/css/foundation.css",
 		"/D/Dropbox/dev_htdocs/team/protected/extensions/giix-core/giixCrud/templates/foundation4/_form.php",
 		"/D/Dropbox/dev_htdocs/team/protected/extensions/giix-core/giixCrud/templates/foundation4/index.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/people/index.php",
 		"/D/Dropbox/dev_htdocs/team/protected/models/People.php",
-		"/D/Dropbox/dev_htdocs/team/protected/config/main.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/layouts/main.php",
 		"/D/Dropbox/dev_htdocs/team/protected/controllers/SiteController.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/people/_form.php",
 		"/D/Dropbox/dev_htdocs/team/protected/extensions/giix-core/giixCrud/templates/foundation4/create.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/patent/_view.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/paper/index.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/paper/_view.php",
 		"/D/Dropbox/dev_htdocs/team/index.php",
-		"/D/Dropbox/dev_htdocs/team/protected/models/Paper.php",
-		"/D/Dropbox/dev_htdocs/team/protected/controllers/PaperController.php",
 		"/D/Dropbox/Documents/undergraduate/wsn_contest/projects/Makefile",
 		"/D/Dropbox/Documents/undergraduate/wsn_contest/projects/digit_stupid_broadcast/RadioMsg.h",
 		"/D/Dropbox/Documents/undergraduate/wsn_contest/projects/digit_stupid_broadcast/dec2bin.c",
@@ -395,6 +406,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			")",
+			"attributeLabels",
+			"is",
+			"is_enterprise",
+			"is_provincial",
+			"is_national",
+			"is_intl",
+			"index_date",
+			"textField",
+			"row",
 			"self::",
 			"not-click",
 			"right",
@@ -468,57 +489,54 @@
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "protected/views/patent/index.php",
+					"file": "protected/config/main.php",
 					"settings":
 					{
-						"buffer_size": 1164,
+						"buffer_size": 5299,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								726,
-								726
+								4288,
+								4288
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 972.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "css/custom.css",
+					"file": "protected/components/UserIdentity.php",
 					"settings":
 					{
-						"buffer_size": 342,
+						"buffer_size": 1889,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								242,
-								242
+								313,
+								270
 							]
 						],
 						"settings":
 						{
-							"_anf_new": "",
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -529,168 +547,60 @@
 				},
 				{
 					"buffer": 2,
-					"file": "themes/foundation4/views/layouts/main.php",
+					"file": "protected/controllers/ProjectController.php",
 					"settings":
 					{
-						"buffer_size": 7135,
+						"buffer_size": 4679,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1472,
-								1472
+								1583,
+								1583
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "protected/views/patent/_view.php",
+					"file": "protected/models/LoginForm.php",
 					"settings":
 					{
-						"buffer_size": 1122,
+						"buffer_size": 1779,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								896,
-								896
+								1056,
+								1056
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 54.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "protected/config/main.php",
-					"settings":
-					{
-						"buffer_size": 5308,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4562,
-								4562
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2376.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "protected/views/paper/_form.php",
-					"settings":
-					{
-						"buffer_size": 8223,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6057,
-								6057
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1968.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "css/foundation.css",
-					"settings":
-					{
-						"buffer_size": 183044,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								910,
-								983
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 265.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "protected/views/layouts/main.php",
-					"settings":
-					{
-						"buffer_size": 3637,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2902,
-								2908
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 432.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
 					"file": "protected/views/site/login.php",
 					"settings":
 					{
@@ -701,8 +611,8 @@
 						"selection":
 						[
 							[
-								300,
-								300
+								1266,
+								1266
 							]
 						],
 						"settings":
@@ -711,35 +621,34 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 162.0,
+						"translation.y": 324.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "protected/controllers/PaperController.php",
+					"buffer": 5,
+					"file": "protected/controllers/UserController.php",
 					"settings":
 					{
-						"buffer_size": 20847,
+						"buffer_size": 4410,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10503,
-								10515
+								1180,
+								1180
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5363.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -797,6 +706,78 @@
 		"selected_items":
 		[
 			[
+				"vendorpassw",
+				"protected/vendor/password_compat/password_compat.php"
+			],
+			[
+				"user",
+				"protected/controllers/UserController.php"
+			],
+			[
+				"login",
+				"protected/views/site/login.php"
+			],
+			[
+				"contproje",
+				"protected/controllers/ProjectController.php"
+			],
+			[
+				"config",
+				"protected/config/main.php"
+			],
+			[
+				"viewlogin",
+				"protected/views/site/login.php"
+			],
+			[
+				"useri",
+				"protected/components/UserIdentity.php"
+			],
+			[
+				"mysql",
+				"protected/data/schema.mysql.sql"
+			],
+			[
+				"controlpaper",
+				"protected/controllers/PaperController.php"
+			],
+			[
+				"main",
+				"themes/foundation4/views/layouts/main.php"
+			],
+			[
+				"viewpaperview",
+				"protected/views/paper/view.php"
+			],
+			[
+				"viewproje",
+				"protected/views/project/view.php"
+			],
+			[
+				"projec",
+				"protected/models/Project.php"
+			],
+			[
+				"paper",
+				"protected/models/Paper.php"
+			],
+			[
+				"project",
+				"protected/models/Project.php"
+			],
+			[
+				"projecon",
+				"protected/controllers/ProjectController.php"
+			],
+			[
+				"viewpaper",
+				"protected/views/paper/_form.php"
+			],
+			[
+				"viewproject",
+				"protected/views/project/_form.php"
+			],
+			[
 				"contpaper",
 				"protected/controllers/PaperController.php"
 			],
@@ -807,10 +788,6 @@
 			[
 				"viewpatent_v",
 				"protected/views/patent/_view.php"
-			],
-			[
-				"login",
-				"protected/views/site/login.php"
 			],
 			[
 				"foundma",
@@ -827,10 +804,6 @@
 			[
 				"foundcss",
 				"css/foundation.css"
-			],
-			[
-				"main",
-				"protected/config/main.php"
 			],
 			[
 				"paper_f",
@@ -911,10 +884,6 @@
 			[
 				"paperco",
 				"protected/controllers/PaperController.php"
-			],
-			[
-				"paper",
-				"protected/models/Paper.php"
 			],
 			[
 				"paper_view",
@@ -998,7 +967,7 @@
 		[
 			[
 				"",
-				"/D/Dropbox/Documents/undergraduate/wsn_contest/projects/digit/digit.sublime-project"
+				"/D/Dropbox/Documents/undergraduate/wsn_contest/projects/digit_stupid_broadcast/digit_stupid_broadcast.sublime-project"
 			]
 		],
 		"width": 380.0

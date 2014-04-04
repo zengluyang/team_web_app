@@ -15,7 +15,7 @@ class UserController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -30,7 +30,7 @@ class UserController extends Controller
 
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('index','view','create','update','delete','admin'),
-				'expression'=>'$user->is_admin'
+				'expression'=>'isset($user->is_admin) && $user->is_admin'
 			),
 
 			array('deny',  // deny all users
@@ -38,6 +38,21 @@ class UserController extends Controller
 			),
 		);
 	}
+	/*
+	关于expression rules的使用：
+
+	http://stackoverflow.com/a/9510215/3126855
+		array('allow', 
+            'actions'=>array('update'),
+            'expression'=>"Yii::app()->controller->isPostOwner()",
+        )
+	http://www.cnblogs.com/mrcoke/articles/2360601.html
+        array('allow',//允许普通管理员执行
+            'actions'=>array('update'),
+            'expression'=>array($this,'isNormalAdmin'),    //表示调用$this(即AdminController)中的isNormalAdmin方法。
+        ),      
+
+	*/
 
 	/**
 	 * Displays a particular model.
@@ -56,7 +71,7 @@ class UserController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new User;
+		$model=new User('create');
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);

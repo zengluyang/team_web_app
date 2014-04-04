@@ -32,7 +32,6 @@ class UserIdentity extends CUserIdentity
         else
         {
             $this->_id=$record->id;
-            $this->setState('id',$record->id);
             $this->setState('email',$record->email);
             $this->setState('is_admin', $record->is_admin);
             $this->setState('is_paper', $record->is_paper);
