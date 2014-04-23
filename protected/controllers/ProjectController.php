@@ -39,7 +39,7 @@ class ProjectController extends Controller
 				'expression'=>'isset($user->is_project) && $user->is_project',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('upload','admin','delete','create','update','import','export','pwd'),
+				'actions'=>array('upload','admin','delete','create','update','import','export','pwd','reset'),
 				'expression'=>'isset($user->is_admin) && $user->is_admin',
 			),
 			array('deny',  // deny all users
@@ -72,6 +72,12 @@ class ProjectController extends Controller
 		));
 	}
 
+	private function setModelPeoples($model) {
+		if(isset($_POST['Project']['execute_peoples']))
+			$model->executePeoples=$_POST['Project']['execute_peoples'];
+		if(isset($_POST['Project']['liability_peoples']))
+			$model->liabilityPeoples=$_POST['Project']['liability_peoples'];
+	}
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -87,7 +93,7 @@ class ProjectController extends Controller
 		{
 			$model->attributes=$_POST['Project'];
 			//$model->executePeoples=explode(',',$_POST['Project']['execute_peoples']);
-			$model->executePeoples=$_POST['Project']['execute_peoples'];
+			self::setModelPeoples($model);
 			//var_dump($_POST['Project']['execute_peoples']);
 			//var_dump($model->execute_peoples);
 			//var_dump($_POST['Project']);
@@ -119,7 +125,7 @@ class ProjectController extends Controller
 		if(isset($_POST['Project']))
 		{
 			$model->attributes=$_POST['Project'];
-			$model->executePeoples=$_POST['Project']['execute_peoples'];
+			self::setModelPeoples($model);
 			$model->scenario='update';
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -224,7 +230,7 @@ class ProjectController extends Controller
     }
 
     public function actionReset() {
-        Paper::model()->deleteAll();
+        Project::model()->deleteAll();
     }
 
 
@@ -268,7 +274,7 @@ class ProjectController extends Controller
         foreach($projects as $k => $p) {
             //var_dump($k);
             //var_dump($p);
-            if($k<1) continue;
+            if($k<2) continue;
             $project = new Project;
             $project->name=$p[0];
             $project->number=$p[1];
@@ -289,16 +295,14 @@ class ProjectController extends Controller
             $project->deadline_date=($p[17]);
             $project->conclude_date=empty($p[18]) ? $project->deadline_date : $p[18];
             $project->pass_fund=$p[19];
-            if($project->save()) {
+            //if($project->save()) {
                 $peoplesId=array();
                 for($i=0;$i<20;$i=$i+1){
                     $peopleName=$p[20+$i];
                     $peopleName=mysql_real_escape_string($peopleName);
                     $sql='select id from tbl_people where name="'.$peopleName.'";';
-                    //
 
-
-                    $testPeoples = People::model()->find('name="'.$peopleName.'"');
+                    //$testPeoples = People::model()->find('name="'.$peopleName.'"');
                     //var_dump($testPeoples);
                     $command=$connection->createCommand($sql);
                     $row=$command->queryRow();
@@ -314,15 +318,43 @@ class ProjectController extends Controller
                             //dump($people->id);
                         $peoplesId[] = $people->id;
                     }
-                }
-                if(!self::populatePeople($project,$peoplesId))
-                    return false;
 
-            } else {
-                var_dump( $project->getErrors());
+                }
+                //if(!self::populatePeople($project,$peoplesId))
+                //    return false;
+                $project->executePeoples = $peoplesId;
+                $peoplesId=array();
+                for($i=0;$i<20;$i=$i+1){
+                    $peopleName=$p[40+$i];
+                    $peopleName=mysql_real_escape_string($peopleName);
+                    $sql='select id from tbl_people where name="'.$peopleName.'";';
+
+                    //$testPeoples = People::model()->find('name="'.$peopleName.'"');
+                    //var_dump($testPeoples);
+                    $command=$connection->createCommand($sql);
+                    $row=$command->queryRow();
+                    if($row) {
+                        //dump($row);
+                        $peoplesId[]=$row['id'];
+
+                    }else {
+                        //dump($row);
+                        $people = new People;
+                        $people->name = $peopleName;
+                        if($people->save())
+                            //dump($people->id);
+                        $peoplesId[] = $people->id;
+                    }
+
+                }
+                $project->liabilityPeoples = $peoplesId;
+                $project->save();
+
+            //} else {
+            //    var_dump( $project->getErrors());
                 //var_dump($project->info);
-                return false;
-            }
+            //    return false;
+            //}
         }
         return true;
     }

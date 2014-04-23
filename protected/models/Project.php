@@ -233,6 +233,10 @@ class Project extends CActiveRecord
     	return self::getPeoples(self::EXECUTE,$glue,$attr);
     }
 
+    public function getLiabilityPeoples($glue=', ',$attr='name') {
+    	return self::getPeoples(self::LIABILITY,$glue,$attr);
+    }
+
     public function getExecutePeoplesJsArray($attr='id') {
     	$executePeoples = array();
     	foreach ($this->execute_peoples as $executePeople) {
@@ -241,8 +245,13 @@ class Project extends CActiveRecord
     	return implode(', ', $executePeoples);
     }
 
-    public function getLiabilityPeoples($glue=', ') {
-    	return self::getPeoples(self::LIABILITY,$glue,$attr);
+
+    public function getLiabilityPeoplesJsArray($attr='id') {
+    	$executePeoples = array();
+    	foreach ($this->liability_peoples as $executePeople) {
+    		array_push($executePeoples,'"'.$executePeople->$attr.'"');
+    	}
+    	return implode(', ', $executePeoples);
     }
 
 	/**
@@ -266,7 +275,7 @@ class Project extends CActiveRecord
         if ($this->conclude_date=='')
             $this->conclude_date=null;
         if($this->scenario=='update') {
-			if(self::deleteProject(self::EXECUTE) && self::deleteProject(self::LIABILITY)){
+			if(self::deleteProjectPeople(self::EXECUTE) && self::deleteProjectPeople(self::LIABILITY)){
 				return parent::beforeSave();
 			} else {
 				return false;
@@ -350,7 +359,7 @@ class Project extends CActiveRecord
     }
 
     protected function afterDelete() {
-    	if(self::deleteProject(self::EXECUTE) && self::deleteProject(self::LIABILITY)){
+    	if(self::deleteProjectPeople(self::EXECUTE) && self::deleteProjectPeople(self::LIABILITY)){
 			return parent::afterDelete();
 		} else {
 			return false;
