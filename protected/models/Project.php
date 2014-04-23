@@ -33,6 +33,16 @@
  */
 class Project extends CActiveRecord
 {
+	
+
+	const EXECUTE=0;
+    const LIABILITY=1;
+
+
+	public $executePeoples=array();
+    public $liabilityPeoples=array(); //must be different from the relation name!
+
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -49,6 +59,7 @@ class Project extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('name','required'),
 			array('is_intl, is_national, is_provincial, is_city, is_school, is_enterprise, is_NSF, is_973, is_863, is_NKTRD, is_DFME, is_major', 'numerical', 'integerOnly'=>true),
 			array('name, number, fund_number', 'length', 'max'=>255),
 			array('app_fund, pass_fund', 'length', 'max'=>15),
@@ -67,8 +78,8 @@ class Project extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'liability_people' => array(self::MANY_MANY, 'People', 'tbl_project_people_liability(project_id, people_id)','order'=>'seq'),
-            'execute_people' => array(self::MANY_MANY, 'People', 'tbl_project_people_execute(project_id, people_id)','order'=>'seq'),
+			'liability_peoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_liability(project_id, people_id)','order'=>'seq'),
+            'execute_peoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_execute(project_id, people_id)','order'=>'seq'),
 		);
 	}
 
@@ -101,6 +112,8 @@ class Project extends CActiveRecord
 			'pass_date' => '立项时间',
 			'app_fund' => '申报经费',
 			'pass_fund' => '立项经费',
+			'execute_peoples' => '实际执行人员',
+			'liability_peoples' => '项目书人员',
 		);
 	}
 
@@ -151,15 +164,7 @@ class Project extends CActiveRecord
 		));
 	}
 
-	public function beforeSave() {
-		if ($this->pass_date=='')
-            $this->pass_date=null;
-        if ($this->app_date=='')
-            $this->app_date=null;
-        if ($this->conclude_date=='')
-            $this->conclude_date=null;
-		return parent::beforeSave();
-	}
+	
 	public function getLevelString($glue=', '){
         $levels = array();
         if($this->is_intl){
@@ -203,6 +208,43 @@ class Project extends CActiveRecord
         return implode($glue,$levels);
 
     }
+
+
+    public function getPeoples($type,$glue=', ',$attr='name') {
+    	$peoplesArr = array();
+    	switch ($type) {
+    		case self::EXECUTE:
+    			$peopleRecords=$this->execute_peoples;
+    			break;
+    		case self::LIABILITY:
+    			$peopleRecords=$this->liability_peoples;
+    			break;
+    		default:
+    			$peopleRecords=$this->execute_peoples;
+    			break;
+    	}
+    	foreach ($peopleRecords as $people) {
+    		array_push($peoplesArr,$people->$attr);
+    	}
+    	return implode($glue,$peoplesArr);
+    }
+
+    public function getExecutePeoples($glue=', ',$attr='name') {
+    	return self::getPeoples(self::EXECUTE,$glue,$attr);
+    }
+
+    public function getExecutePeoplesJsArray($attr='id') {
+    	$executePeoples = array();
+    	foreach ($this->execute_peoples as $executePeople) {
+    		array_push($executePeoples,'"'.$executePeople->$attr.'"');
+    	}
+    	return implode(', ', $executePeoples);
+    }
+
+    public function getLiabilityPeoples($glue=', ') {
+    	return self::getPeoples(self::LIABILITY,$glue,$attr);
+    }
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -213,4 +255,105 @@ class Project extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	
+	protected function beforeSave()
+	{
+		if ($this->pass_date=='')
+            $this->pass_date=null;
+        if ($this->app_date=='')
+            $this->app_date=null;
+        if ($this->conclude_date=='')
+            $this->conclude_date=null;
+        if($this->scenario=='update') {
+			if(self::deleteProject(self::EXECUTE) && self::deleteProject(self::LIABILITY)){
+				return parent::beforeSave();
+			} else {
+				return false;
+			}
+		}
+		return parent::beforeSave();
+	}
+
+	protected function afterSave() {
+		
+	        if(self::populateProjectPeople(self::EXECUTE) && self::populateProjectPeople(self::LIABILITY)) {
+
+	        }  
+	        else {
+	            return false;
+	        }
+	    
+	    return parent::afterSave();
+    }
+
+    private function deleteProjectPeople($type) {
+     	$criteria = new CDbCriteria;
+        $criteria->condition = 'project_id=:project_id';
+        $criteria->params = array(':project_id'=>$this->id);
+        
+
+         switch ($type) {
+            case self::EXECUTE:
+                ProjectPeopleExecute::model()->deleteAll($criteria);
+                break;
+            
+            case self::LIABILITY:
+                ProjectPeopleLiability::model()->deleteAll($criteria);
+                break;
+            default:
+                return ProjectPeopleExecute::model()->deleteAll($criteria);
+                break;
+        }
+        return true;
+    }
+    private function populateProjectPeople($type)
+    {
+        switch ($type) {
+            case self::EXECUTE:
+                $peoples=$this->executePeoples;
+                break;
+            
+            case self::LIABILITY:
+                $peoples=$this->liabilityPeoples;
+                break;
+            default:
+                $peoples=$this->executePeoples;
+                break;
+        }
+        for($i=0;$i<count($peoples);$i++) {
+            if($peoples[$i]!=null && $peoples[$i]!=0) {
+                switch ($type) {
+                    case self::EXECUTE:
+                        $projectPeople = new ProjectPeopleExecute;
+                        break;
+                    case self::LIABILITY:
+                        $projectPeople = new ProjectPeopleLiability;
+                        break;
+                    default:
+                        $projectPeople = new ProjectPeopleExecute;
+                        break;
+                }
+                
+                $projectPeople->seq = $i+1;
+                $projectPeople->project_id=$this->id;
+                $projectPeople->people_id=$peoples[$i];
+                //echo $projectPeople->project_id." ".$projectPeople->people_id."<br>";
+                if($projectPeople->save()) {
+                    yii::trace("peoples[i]:".$peoples[$i]." saved","Project.populateProjectPeople()");
+                } else {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    protected function afterDelete() {
+    	if(self::deleteProject(self::EXECUTE) && self::deleteProject(self::LIABILITY)){
+			return parent::afterDelete();
+		} else {
+			return false;
+		}
+    }
 }

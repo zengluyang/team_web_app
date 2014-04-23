@@ -36,6 +36,14 @@ $this->menu=array(
 		'pass_date',
 		'app_fund',
 		'pass_fund',
+		array(
+			'label'=>'实际执行人员',
+			'type'=>'raw',
+			'value'=>$model->getExecutePeoples(),		
+		),
+
 	),
 )); 
+
+	//var_dump($model->execute_peoples);
 ?>

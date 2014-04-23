@@ -18,7 +18,6 @@ class UserController extends Controller
 			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
-
 	/**
 	 * Specifies the access control rules.
 	 * This method is used by the 'accessControl' filter.
@@ -28,7 +27,7 @@ class UserController extends Controller
 	{
 		return array(
 
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+			array('allow', 
 				'actions'=>array('index','view','create','update','delete','admin'),
 				'expression'=>'isset($user->is_admin) && $user->is_admin'
 			),

@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/foundation.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/custom.css" />
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/modernizr.js"></script>
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery.js"></script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -156,8 +157,7 @@ $this->widget('zii.widget.CMenu',array(
 	</div>
 
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/zepto.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/zepto.js"></script>
-	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/vendor/jquery.js"></script>
+	
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/foundation.min.js"></script>
 	<!--
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/foundation/foundation.alerts.js"></script>

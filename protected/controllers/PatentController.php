@@ -40,7 +40,7 @@ class PatentController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('upload','admin','delete','import','testXls','TestCsv','TestPhpExcelCsv'),
-				'users'=>array('admin'),
+				'expression'=>'isset($user->is_admin) && $user->is_admin',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),

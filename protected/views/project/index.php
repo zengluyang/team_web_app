@@ -9,8 +9,17 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Create Project', 'url'=>array('create')),
 	array('label'=>'Manage Project', 'url'=>array('admin')),
+	array('label'=>'Import Project', 'url'=>array('upload')),
 );
 ?>
+
+<style>
+    li.project {
+        margin-bottom: 10px;
+    }
+</style>
+
+
 
 <h1>Projects</h1>
 
@@ -18,3 +27,4 @@ $this->menu=array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
 )); ?>
+

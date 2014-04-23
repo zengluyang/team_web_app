@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"initial",
+				"passwordInitial"
+			],
+			[
+				"pass",
+				"passwordInitial"
+			],
+			[
+				"pa",
+				"parent"
+			],
+			[
 				"bo",
 				"BOOL"
 			],
@@ -120,18 +132,29 @@
 	"buffers":
 	[
 		{
-			"file": "protected/config/main.php",
+			"file": "themes/foundation4/views/layouts/main.php",
 			"settings":
 			{
-				"buffer_size": 5299,
+				"buffer_size": 7302,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "protected/components/UserIdentity.php",
+			"file": "protected/controllers/PaperController.php",
 			"settings":
 			{
-				"buffer_size": 1889,
+				"buffer_size": 20927,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<?php\nYii::import('application.vendor.*');\nrequire_once('PHPExcel/PHPExcel.php');\n\nclass PatentController extends Controller\n{\n	/**\n	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning\n	 * using two-column layout. See 'protected/views/layouts/column2.php'.\n	 */\n\n    public $layout='//layouts/column2';\n\n	/**\n	 * @return array action filters\n	 */\n	public function filters()\n	{\n		return array(\n			'accessControl', // perform access control for CRUD operations\n			'postOnly + delete', // we only allow deletion via POST request\n		);\n	}\n\n	/**\n	 * Specifies the access control rules.\n	 * This method is used by the 'accessControl' filter.\n	 * @return array access control rules\n	 */\n	public function accessRules()\n	{\n		return array(\n			array('allow',  // allow all users to perform 'index' and 'view' actions\n				'actions'=>array('index','view'),\n				'users'=>array('*'),\n			),\n			array('allow', // allow authenticated user to perform 'create' and 'update' actions\n				'actions'=>array('create','update', 'admin'),\n				'expression'=>'isset($user->is_patent) && $user->is_patent',\n			),\n			array('allow', // allow admin user to perform 'admin' and 'delete' actions\n				'actions'=>array('upload','admin','delete','import','testXls','TestCsv','TestPhpExcelCsv'),\n				'expression'=>'isset($user->is_admin) && $user->is_admin',\n			),\n			array('deny',  // deny all users\n				'users'=>array('*'),\n			),\n		);\n	}\n\n    public function actionUpload() {\n\n        if(isset($_FILES['spreedSheet']) && !empty($_FILES['spreedSheet'])) {\n            $path = $_FILES['spreedSheet']['tmp_name'];\n            echo $_FILES['spreedSheet']['name'].\"<hr />\";\n            echo $_FILES['spreedSheet']['type'].\"<hr />\";\n            echo $_FILES['spreedSheet']['tmp_name'].\"<hr />\";\n            if(self::saveXlsToDb($path)){\n                $this->redirect(array('index'));\n            }\n        }\n        $this->render('upload');\n    }\n\n\n\n	/**\n	 * Displays a particular model.\n	 * @param integer $id the ID of the model to be displayed\n	 */\n	public function actionView($id)\n	{\n		$model = $this->loadModel($id);\n        $this->render('view',array(\n			'model'=>$model,\n		));\n	}\n\n	/**\n	 * Creates a new model.\n	 * If creation is successful, the browser will be redirected to the 'view' page.\n	 */\n	public function actionCreate()\n	{\n		$model=new Patent;\n\n		// Uncomment the following line if AJAX validation is needed\n		// $this->performAjaxValidation($model);\n\n		if(isset($_POST['Patent']))\n		{\n			$model->attributes=$_POST['Patent'];\n            if($model->save()) {\n                yii::trace(\"model->id:\".$model->id,\"PatentController.actionCreate()\");\n                $peoples = $_POST['Patent']['peoples'];\n                self::populatePeople($model, $peoples);\n				$this->redirect(array('view','id'=>$model->id));\n            }\n		}\n\n		$this->render('create',array(\n			'model'=>$model,\n		));\n	}\n\n    /**\n     * @param $patent\n     * @param array $peoples, the peoples in tht patent_people to populate.\n     * @return boolean, indicates if succeeds.\n     */\n    private function populatePeople($patent, $peoples)\n    {\n        for($i=0;$i<count($peoples);$i++) {\n            if($peoples[$i]!=null &&$peoples[$i]!=0) {\n                $patentPeople = new PatentPeople;\n                $patentPeople->seq = $i+1;\n                $patentPeople->patent_id=$patent->id;\n                $patentPeople->people_id=$peoples[$i];\n                //echo $patentPeople->patent_id.\" \".$patentPeople->people_id.\"<br>\";\n                if($patentPeople->save()) {\n                    yii::trace(\"peoples[i]:\".$peoples[$i].\" saved\",\"PatentController.populatePeople()\");\n                } else {\n                    yii::trace(\"error in\",\"PatentController.populatePeople()\");\n                    return false;\n                }\n            }\n        }\n        return true;\n    }\n	/**\n	 * Updates a particular model.\n	 * If update is successful, the browser will be redirected to the 'view' page.\n	 * @param integer $id the ID of the model to be updated\n	 */\n	public function actionUpdate($id)\n	{\n		$model=$this->loadModel($id);\n\n		// Uncomment the following line if AJAX validation is needed\n		// $this->performAjaxValidation($model);\n\n		if(isset($_POST['Patent']))\n		{\n			$model->attributes=$_POST['Patent'];\n			if($model->save()) {\n                $criteria=new CDbCriteria;\n                $criteria->condition='patent_id=:patent_id';\n                $criteria->params=array(':patent_id'=>$model->id);\n                PatentPeople::model()->deleteAll($criteria);\n                $peoples = $_POST['Patent']['peoples'];\n                self::populatePeople($model, $peoples);\n                $this->redirect(array('view','id'=>$model->id));\n            }\n		}\n\n		$this->render('update',array(\n			'model'=>$model,\n		));\n	}\n\n	/**\n	 * Deletes a particular model.\n	 * If deletion is successful, the browser will be redirected to the 'admin' page.\n	 * @param integer $id the ID of the model to be deleted\n	 */\n	public function actionDelete($id)\n	{\n		$this->loadModel($id)->delete();\n\n		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser\n		if(!isset($_GET['ajax']))\n			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));\n	}\n\n	/**\n	 * Lists all models.\n	 */\n	public function actionIndex()\n	{\n        $dataProvider = new CActiveDataProvider(\n            'Patent',\n            array('sort'=> array(\n                'defaultOrder'=>array(\n                    'app_date'=>true\n                ),\n            )\n        ));\n		$this->render('index',array(\n			'dataProvider'=>$dataProvider,\n		));\n	}\n\n	/**\n	 * Manages all models.\n	 */\n	public function actionAdmin()\n	{\n		$model=new Patent('search');\n        $people=new People('search');\n		$model->unsetAttributes();  // clear any default values\n        $people->unsetAttributes();\n		if(isset($_GET['Patent']))\n			$model->attributes=$_GET['Patent'];\n        if(isset($_GET['People']))\n           $people->attributes=$_GET['People'];\n        $model->searchPeople = $people;\n		$this->render('admin',array(\n			'model'=>$model,\n		));\n	}\n\n    public function actionImport()\n    {\n        $patentXlsPath = Yii::app()->getBasePath().'/vendor/PHPExcel/patent.xls';\n        $patents = self::xlsToArray($patentXlsPath);\n        if(self::saveXlsArrayToDb($patents));\n            $this->redirect(array('index'));\n    }\n\n    protected function saveXlsToDb($patentXlsPath) {\n        $patents = self::xlsToArray($patentXlsPath);\n        return self::saveXlsArrayToDb($patents);\n    }\n\n    public function xlsToArray($path)\n    {\n        Yii::trace(\"start of loading\",\"actionTestXls()\");\n        $reader = PHPExcel_IOFactory::createReader('Excel5');\n        $reader->setReadDataOnly(true);\n        $objPHPExcel = $reader->load($path);\n        Yii::trace(\"end of loading\",\"actionTestXls()\");\n        Yii::trace(\"start of reading\",\"actionTestXls()\");\n            $dataArray = $objPHPExcel->getActiveSheet()->toArray(null,true,true);\n        Yii::trace(\"end of reading\",\"actionTestXls()\");\n        array_shift($dataArray);\n        return $dataArray;\n    }\n\n    public function saveXlsArrayToDb($patents)\n    {\n        $connection=Yii::app()->db;\n        foreach($patents as $p) {\n            //var_dump($p) ;\n            $patent = new Patent;\n            $patent->name=$p[0];\n            $patent->app_date=trim($p[1]);\n            $patent->app_number=$p[2];\n            $patent->auth_number=$p[3];\n            $patent->auth_date=trim($p[4]);\n            $patent->is_intl=self::convertYesNoToInt($p[5]);\n            $patent->is_domestic=self::convertYesNoToInt($p[6]);\n            $patent->abstract=$p[12];\n            if($patent->save()) {\n                $peoplesId=array();\n                for($i=0;$i<5;$i++){\n                    $peopleName=$p[7+$i];\n                    $peopleName=mysql_real_escape_string($peopleName);\n                    $sql='select id from tbl_people where name=\"'.$peopleName.'\";';\n                    $command=$connection->createCommand($sql);\n                    $row=$command->queryRow();\n                    if($row) {\n                        //var_dump($row);\n                        $peoplesId[]=$row['id'];\n\n                    }else {\n                        //var_dump($row);\n                        $people = new People;\n                        $people->name = $peopleName;\n                        if($people->save())\n                            //var_dump($people->id);\n                            $peoplesId[] = $people->id;\n                    }\n                }\n                if(!self::populatePeople($patent,$peoplesId)) {\n                    yii::trace(\"error in\",\"PatentController.populatePeople()\");\n                    return false;\n\n                }\n            } else {\n                //var_dump( $patent->getErrors());\n                yii::trace(\"error in\",\"PatentController.saveXlsArrayToDb()\");\n                return false;\n            }\n        }\n        return true;\n    }\n\n    private function convertYesNoToInt($yesno) {\n        if($yesno=='是') {\n            return 1;\n        }else if($yesno=='否'){\n            return 0;\n        }\n        return 0;\n    }\n\n    public function actionTestPhpExcelCsv(){\n        Yii::trace(\"start of reading\",\"actionTestPhpExcelCsv()\");\n        $patentCsvPath = Yii::app()->getBasePath().'/vendor/PHPExcel/patent.csv';\n        $reader = PHPExcel_IOFactory::createReader('CSV');\n        $reader->setReadDataOnly(true)->setInputEncoding('GBK');\n        $objPHPExcel = $reader->load($patentCsvPath);\n        $dataArray=$objPHPExcel->getActiveSheet()->toArray();\n        var_dump($dataArray);\n\n        Yii::trace(\"end of reading\",\"actionTestPhpExcelCsv()\");\n    }\n\n    /**\n	 * Returns the data model based on the primary key given in the GET variable.\n	 * If the data model is not found, an HTTP exception will be raised.\n	 * @param integer $id the ID of the model to be loaded\n	 * @return Patent the loaded model\n	 * @throws CHttpException\n	 */\n	public function loadModel($id)\n	{\n		$model=Patent::model()/*->with('peoples')*/->findByPk($id);\n        if($model===null)\n            throw new CHttpException(404,'The requested page does not exist.');\n//        $criteria=new CDbCriteria;\n//        $criteria->condition='patent_id=:patent_id';\n//        $criteria->select = 'people_id';\n//        $criteria->params=array(':patent_id'=>$id);\n//        $patentPeople = PatentPeople::model()->findAll($criteria);\n//		$peoples = array();\n//        foreach($patentPeople as $pp) {\n//            $peoples[] = $pp->people_id;\n//            Yii::trace(\"people_id\".$pp->people_id,\"PatentController::loadModel($id)\");\n//        }\n//        $model->peoples=$peoples;\n		return $model;\n	}\n\n	/**\n	 * Performs the AJAX validation.\n	 * @param Patent $model the model to be validated\n	 */\n	protected function performAjaxValidation($model)\n	{\n		if(isset($_POST['ajax']) && $_POST['ajax']==='patent-form')\n		{\n			echo CActiveForm::validate($model);\n			Yii::app()->end();\n		}\n	}\n}\n",
+			"file": "protected/controllers/PatentController.php",
+			"file_size": 11005,
+			"file_write_time": 130410585396016629,
+			"settings":
+			{
+				"buffer_size": 11035,
 				"line_ending": "Unix"
 			}
 		},
@@ -139,31 +162,26 @@
 			"file": "protected/controllers/ProjectController.php",
 			"settings":
 			{
-				"buffer_size": 4679,
+				"buffer_size": 4795,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "protected/models/LoginForm.php",
+			"file": "protected/views/project/_form.php",
 			"settings":
 			{
-				"buffer_size": 1779,
+				"buffer_size": 5280,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "protected/views/site/login.php",
-			"settings":
-			{
-				"buffer_size": 1371,
-				"line_ending": "Unix"
-			}
-		},
-		{
+			"contents": "<?php\n\nclass UserController extends Controller\n{\n	/**\n	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning\n	 * using two-column layout. See 'protected/views/layouts/column2.php'.\n	 */\n	public $layout='//layouts/column2';\n\n	/**\n	 * @return array action filters\n	 */\n	public function filters()\n	{\n		return array(\n			'accessControl', // perform access control for CRUD operations\n			//'postOnly + delete', // we only allow deletion via POST request\n		);\n	}\n\n	 * Specifies the access control rules.\n	 * This method is used by the 'accessControl' filter.\n	 * @return array access control rules\n	 */\n	public function accessRules()\n	{\n		return array(\n\n			array('allow', \n				'actions'=>array('index','view','create','update','delete','admin'),\n				'expression'=>'isset($user->is_admin) && $user->is_admin'\n			),\n\n			array('deny',  // deny all users\n				'users'=>array('*'),\n			),\n		);\n	}\n	/*\n	关于expression rules的使用：\n\n	http://stackoverflow.com/a/9510215/3126855\n		array('allow', \n            'actions'=>array('update'),\n            'expression'=>\"Yii::app()->controller->isPostOwner()\",\n        )\n	http://www.cnblogs.com/mrcoke/articles/2360601.html\n        array('allow',//允许普通管理员执行\n            'actions'=>array('update'),\n            'expression'=>array($this,'isNormalAdmin'),    //表示调用$this(即AdminController)中的isNormalAdmin方法。\n        ),      \n\n	*/\n\n	/**\n	 * Displays a particular model.\n	 * @param integer $id the ID of the model to be displayed\n	 */\n	public function actionView($id)\n	{\n		$this->render('view',array(\n			'model'=>$this->loadModel($id),\n		));\n	}\n\n	/**\n	 * Creates a new model.\n	 * If creation is successful, the browser will be redirected to the 'view' page.\n	 */\n	public function actionCreate()\n	{\n		$model=new User('create');\n\n		// Uncomment the following line if AJAX validation is needed\n		// $this->performAjaxValidation($model);\n\n		if(isset($_POST['User']))\n		{\n			$model->attributes=$_POST['User'];\n			if($model->save())\n				$this->redirect(array('view','id'=>$model->id));\n		}\n\n		$this->render('create',array(\n			'model'=>$model,\n		));\n	}\n\n	/**\n	 * Updates a particular model.\n	 * If update is successful, the browser will be redirected to the 'view' page.\n	 * @param integer $id the ID of the model to be updated\n	 */\n	public function actionUpdate($id)\n	{\n		$model=$this->loadModel($id);\n\n		// Uncomment the following line if AJAX validation is needed\n		// $this->performAjaxValidation($model);\n\n		if(isset($_POST['User']))\n		{\n			$model->attributes=$_POST['User'];\n			if($model->save())\n				$this->redirect(array('view','id'=>$model->id));\n		}\n\n		$this->render('update',array(\n			'model'=>$model,\n		));\n	}\n\n	/**\n	 * Deletes a particular model.\n	 * If deletion is successful, the browser will be redirected to the 'admin' page.\n	 * @param integer $id the ID of the model to be deleted\n	 */\n	public function actionDelete($id)\n	{\n		$this->loadModel($id)->delete();\n\n		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser\n		if(!isset($_GET['ajax']))\n			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));\n	}\n\n	/**\n	 * Lists all models.\n	 */\n	public function actionIndex()\n	{\n		$dataProvider=new CActiveDataProvider('User');\n		$this->render('index',array(\n			'dataProvider'=>$dataProvider,\n		));\n	}\n\n	/**\n	 * Manages all models.\n	 */\n	public function actionAdmin()\n	{\n		$model=new User('search');\n		$model->unsetAttributes();  // clear any default values\n		if(isset($_GET['User']))\n			$model->attributes=$_GET['User'];\n\n		$this->render('admin',array(\n			'model'=>$model,\n		));\n	}\n\n	/**\n	 * Returns the data model based on the primary key given in the GET variable.\n	 * If the data model is not found, an HTTP exception will be raised.\n	 * @param integer $id the ID of the model to be loaded\n	 * @return User the loaded model\n	 * @throws CHttpException\n	 */\n	public function loadModel($id)\n	{\n		$model=User::model()->findByPk($id);\n		if($model===null)\n			throw new CHttpException(404,'The requested page does not exist.');\n		return $model;\n	}\n\n	/**\n	 * Performs the AJAX validation.\n	 * @param User $model the model to be validated\n	 */\n	protected function performAjaxValidation($model)\n	{\n		if(isset($_POST['ajax']) && $_POST['ajax']==='user-form')\n		{\n			echo CActiveForm::validate($model);\n			Yii::app()->end();\n		}\n	}\n}\n",
 			"file": "protected/controllers/UserController.php",
+			"file_size": 4411,
+			"file_write_time": 130411907865343966,
 			"settings":
 			{
-				"buffer_size": 4410,
+				"buffer_size": 4356,
 				"line_ending": "Unix"
 			}
 		}
@@ -171,9 +189,13 @@
 	"build_system": "Make telosb",
 	"command_palette":
 	{
-		"height": 132.0,
+		"height": 72.0,
 		"selected_items":
 		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
 			[
 				"synt html",
 				"Set Syntax: HTML"
@@ -227,10 +249,6 @@
 				"Set Syntax: Markdown"
 			],
 			[
-				"instal",
-				"Package Control: Install Package"
-			],
-			[
 				"install ",
 				"Package Control: Install Package"
 			],
@@ -255,7 +273,7 @@
 				"About"
 			]
 		],
-		"width": 512.0
+		"width": 400.0
 	},
 	"console":
 	{
@@ -272,20 +290,32 @@
 	},
 	"file_history":
 	[
+		"/D/Documents/Visual Studio 2012/Projects/ConsoleApplication2/Debug/trace.out.75-130-96-12.static.oxfr.ma.charter.com",
+		"/D/cygwin/home/ZLY/result.txt",
+		"/D/cygwin/home/ZLY/readoutfile.cpp",
+		"/D/cygwin/home/ZLY/trace.out.75-130-96-12.static.oxfr.ma.charter.com",
+		"/D/cygwin/home/ZLY/readoutfile.obj",
+		"/d/Desktop/liushengdeng.v",
+		"/D/Dropbox/dev_htdocs/team/protected/models/Project.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/user/index.php",
+		"/D/Dropbox/dev_htdocs/team/protected/config/main.php",
+		"/D/Dropbox/dev_htdocs/team/protected/models/LoginForm.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/site/login.php",
+		"/D/Dropbox/dev_htdocs/team/protected/components/UserIdentity.php",
+		"/D/Dropbox/dev_htdocs/team/protected/controllers/ProjectController.php",
+		"/D/Dropbox/dev_htdocs/team/protected/controllers/UserController.php",
+		"/D/Dropbox/dev_htdocs/team/protected/models/User.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/user/_form.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/paper/view.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/paper/_form.php",
+		"/D/Dropbox/dev_htdocs/team/protected/views/user/_view.php",
+		"/D/Dropbox/dev_htdocs/team/protected/models/Paper.php",
 		"/D/Dropbox/dev_htdocs/team/protected/vendor/password_compat/password_compat.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/project/_form.php",
-		"/D/Dropbox/dev_htdocs/team/protected/controllers/ProjectController.php",
-		"/D/Dropbox/dev_htdocs/team/protected/models/User.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/project/view.php",
 		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/layouts/main.php",
-		"/D/Dropbox/dev_htdocs/team/protected/config/main.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/_form.php",
-		"/D/Dropbox/dev_htdocs/team/protected/models/Paper.php",
-		"/D/Dropbox/dev_htdocs/team/protected/models/Project.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/view.php",
 		"/D/Dropbox/dev_htdocs/team/protected/controllers/PaperController.php",
 		"/D/Dropbox/dev_htdocs/team/protected/data/schema.mysql.sql",
-		"/D/Dropbox/dev_htdocs/team/protected/views/site/login.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/patent/index.php",
 		"/D/Dropbox/dev_htdocs/team/css/custom.css",
 		"/D/Dropbox/dev_htdocs/team/protected/views/patent/_view.php",
@@ -387,8 +417,7 @@
 		"/C/Users/ZLY/AppData/Local/Temp/zly_MobaXterm6.5/RemoteFiles/0/root@198.148.116.142/index.html",
 		"/C/Users/ZLY/AppData/Local/Temp/zly_MobaXterm6.5/RemoteFiles/1/root@198.148.116.142/index.html",
 		"/d/Desktop/Chrome 应用启动器.lnk",
-		"/d/Desktop/两步验证.pdf",
-		"/d/Desktop/photo.jpg"
+		"/d/Desktop/两步验证.pdf"
 	],
 	"find":
 	{
@@ -406,6 +435,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fe",
+			"d2",
+			"medium-1",
+			"row",
+			"textField",
+			"row",
 			")",
 			"attributeLabels",
 			"is",
@@ -494,18 +529,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "protected/config/main.php",
+					"file": "themes/foundation4/views/layouts/main.php",
 					"settings":
 					{
-						"buffer_size": 5299,
+						"buffer_size": 7302,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4288,
-								4288
+								167,
+								167
 							]
 						],
 						"settings":
@@ -513,31 +548,32 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 972.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "protected/components/UserIdentity.php",
+					"file": "protected/controllers/PaperController.php",
 					"settings":
 					{
-						"buffer_size": 1889,
+						"buffer_size": 20927,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								313,
-								270
+								1520,
+								1462
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -547,24 +583,25 @@
 				},
 				{
 					"buffer": 2,
-					"file": "protected/controllers/ProjectController.php",
+					"file": "protected/controllers/PatentController.php",
 					"settings":
 					{
-						"buffer_size": 4679,
+						"buffer_size": 11035,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1583,
-								1583
+								1356,
+								1356
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -574,18 +611,18 @@
 				},
 				{
 					"buffer": 3,
-					"file": "protected/models/LoginForm.php",
+					"file": "protected/controllers/ProjectController.php",
 					"settings":
 					{
-						"buffer_size": 1779,
+						"buffer_size": 4795,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1056,
-								1056
+								674,
+								674
 							]
 						],
 						"settings":
@@ -594,25 +631,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 270.0,
+						"translation.y": 162.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "protected/views/site/login.php",
+					"file": "protected/views/project/_form.php",
 					"settings":
 					{
-						"buffer_size": 1371,
+						"buffer_size": 5280,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1266,
-								1266
+								1032,
+								1032
 							]
 						],
 						"settings":
@@ -621,7 +658,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 324.0,
+						"translation.y": 2754.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -631,15 +668,15 @@
 					"file": "protected/controllers/UserController.php",
 					"settings":
 					{
-						"buffer_size": 4410,
+						"buffer_size": 4356,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1180,
-								1180
+								492,
+								492
 							]
 						],
 						"settings":
@@ -648,7 +685,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 270.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -706,12 +743,68 @@
 		"selected_items":
 		[
 			[
-				"vendorpassw",
-				"protected/vendor/password_compat/password_compat.php"
+				"viewproject_for",
+				"protected/views/project/_form.php"
+			],
+			[
+				"contpro",
+				"protected/controllers/ProjectController.php"
+			],
+			[
+				"proje",
+				"protected/models/Project.php"
+			],
+			[
+				"patenc",
+				"protected/controllers/PatentController.php"
+			],
+			[
+				"papercon",
+				"protected/controllers/PaperController.php"
+			],
+			[
+				"usercon",
+				"protected/controllers/UserController.php"
+			],
+			[
+				"foundmain",
+				"themes/foundation4/views/layouts/main.php"
+			],
+			[
+				"userinde",
+				"protected/views/user/index.php"
+			],
+			[
+				"user_v",
+				"protected/views/user/_view.php"
+			],
+			[
+				"paperform",
+				"protected/views/paper/_form.php"
+			],
+			[
+				"paperview",
+				"protected/views/paper/view.php"
+			],
+			[
+				"userf",
+				"protected/views/user/_form.php"
+			],
+			[
+				"paper",
+				"protected/models/Paper.php"
 			],
 			[
 				"user",
-				"protected/controllers/UserController.php"
+				"protected/models/User.php"
+			],
+			[
+				"useri",
+				"protected/components/UserIdentity.php"
+			],
+			[
+				"vendorpassw",
+				"protected/vendor/password_compat/password_compat.php"
 			],
 			[
 				"login",
@@ -728,10 +821,6 @@
 			[
 				"viewlogin",
 				"protected/views/site/login.php"
-			],
-			[
-				"useri",
-				"protected/components/UserIdentity.php"
 			],
 			[
 				"mysql",
@@ -756,10 +845,6 @@
 			[
 				"projec",
 				"protected/models/Project.php"
-			],
-			[
-				"paper",
-				"protected/models/Paper.php"
 			],
 			[
 				"project",
@@ -868,10 +953,6 @@
 			[
 				"layoutm",
 				"protected/views/layouts/main.php"
-			],
-			[
-				"foundmain",
-				"themes/foundation4/views/layouts/main.php"
 			],
 			[
 				"patentc",

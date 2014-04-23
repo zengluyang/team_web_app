@@ -1,6 +1,7 @@
 <?php
 Yii::import('application.vendor.*');
 require_once('password_compat/password_compat.php');
+require_once('PHPExcel/PHPExcel.php');
 class ProjectController extends Controller
 {
 	/**
@@ -16,7 +17,7 @@ class ProjectController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -38,7 +39,7 @@ class ProjectController extends Controller
 				'expression'=>'isset($user->is_project) && $user->is_project',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','create','update','import','export','pwd'),
+				'actions'=>array('upload','admin','delete','create','update','import','export','pwd'),
 				'expression'=>'isset($user->is_admin) && $user->is_admin',
 			),
 			array('deny',  // deny all users
@@ -85,8 +86,17 @@ class ProjectController extends Controller
 		if(isset($_POST['Project']))
 		{
 			$model->attributes=$_POST['Project'];
-			if($model->save())
+			//$model->executePeoples=explode(',',$_POST['Project']['execute_peoples']);
+			$model->executePeoples=$_POST['Project']['execute_peoples'];
+			//var_dump($_POST['Project']['execute_peoples']);
+			//var_dump($model->execute_peoples);
+			//var_dump($_POST['Project']);
+			if($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
+				
+				//var_dump($model->attributes);
+			}
+
 		}
 
 		$this->render('create',array(
@@ -109,6 +119,8 @@ class ProjectController extends Controller
 		if(isset($_POST['Project']))
 		{
 			$model->attributes=$_POST['Project'];
+			$model->executePeoples=$_POST['Project']['execute_peoples'];
+			$model->scenario='update';
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -137,7 +149,15 @@ class ProjectController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Project');
+		$dataProvider=new CActiveDataProvider('Project',
+            array('sort'=>array(
+                'defaultOrder'=>array(
+                    'start_date' => true,
+                ),
+
+            ),
+            'pagination'=>false,
+        ));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -185,4 +205,128 @@ class ProjectController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+    public function actionUpload() {
+        set_time_limit(50);
+        if(isset($_FILES['spreedSheet']) && !empty($_FILES['spreedSheet'])) {
+            $path = $_FILES['spreedSheet']['tmp_name'];
+            echo $_FILES['spreedSheet']['name']."<hr />";
+            echo $_FILES['spreedSheet']['type']."<hr />";
+            echo $_FILES['spreedSheet']['tmp_name']."<hr />";
+            if(self::saveXlsToDb($path)){
+                echo 'function actionUpload() succeeded.<hr />';
+                $this->redirect(array('index'));
+            }
+        }
+
+
+        $this->render('upload');
+    }
+
+    public function actionReset() {
+        Paper::model()->deleteAll();
+    }
+
+
+
+
+    protected function saveXlsToDb($xlsPath) {
+        $projects = self::xlsToArray($xlsPath);
+        return self::saveXlsArrayToDb($projects);
+    }
+
+    public function xlsToArray($path)
+    {
+        Yii::trace("start of loading","actionTestXls()");
+        $reader = PHPExcel_IOFactory::createReader('Excel5');
+        $reader->setReadDataOnly(true);
+        $objPHPExcel = $reader->load($path);
+        Yii::trace("end of loading","actionTestXls()");
+        Yii::trace("start of reading","actionTestXls()");
+        $dataArray = $objPHPExcel->getActiveSheet()->toArray(null,true,true);
+        Yii::trace("end of reading","actionTestXls()");
+        array_shift($dataArray);
+        //var_dump($dataArray);
+        return $dataArray;
+    }
+
+    private function convertYesNoToInt($yesno) {
+        if($yesno=='是') {
+            return 1;
+        }else if($yesno=='否'){
+            return 0;
+        }
+        return 0;
+    }
+
+
+
+    public function saveXlsArrayToDb($projects)
+    {
+        $connection=Yii::app()->db;
+        //var_dump($projects);
+        foreach($projects as $k => $p) {
+            //var_dump($k);
+            //var_dump($p);
+            if($k<1) continue;
+            $project = new Project;
+            $project->name=$p[0];
+            $project->number=$p[1];
+            $project->fund_number=$p[2];
+            $project->is_intl=self::convertYesNoToInt($p[3]);
+            $project->is_national=self::convertYesNoToInt($p[4]);
+            $project->is_provincial=self::convertYesNoToInt($p[5]);
+            $project->is_city=self::convertYesNoToInt($p[6]);
+            $project->is_school=self::convertYesNoToInt($p[7]);
+            $project->is_enterprise=self::convertYesNoToInt($p[8]);
+            $project->is_NSF=self::convertYesNoToInt($p[9]);
+            $project->is_973=self::convertYesNoToInt($p[10]);
+            $project->is_863=self::convertYesNoToInt($p[11]);
+            $project->is_NKTRD=self::convertYesNoToInt($p[12]);
+            $project->is_DFME=self::convertYesNoToInt($p[13]);
+            $project->is_major=self::convertYesNoToInt($p[14]);
+            $project->start_date=($p[16]);
+            $project->deadline_date=($p[17]);
+            $project->conclude_date=empty($p[18]) ? $project->deadline_date : $p[18];
+            $project->pass_fund=$p[19];
+            if($project->save()) {
+                $peoplesId=array();
+                for($i=0;$i<20;$i=$i+1){
+                    $peopleName=$p[20+$i];
+                    $peopleName=mysql_real_escape_string($peopleName);
+                    $sql='select id from tbl_people where name="'.$peopleName.'";';
+                    //
+
+
+                    $testPeoples = People::model()->find('name="'.$peopleName.'"');
+                    //var_dump($testPeoples);
+                    $command=$connection->createCommand($sql);
+                    $row=$command->queryRow();
+                    if($row) {
+                        //dump($row);
+                        $peoplesId[]=$row['id'];
+
+                    }else {
+                        //dump($row);
+                        $people = new People;
+                        $people->name = $peopleName;
+                        if($people->save())
+                            //dump($people->id);
+                        $peoplesId[] = $people->id;
+                    }
+                }
+                if(!self::populatePeople($project,$peoplesId))
+                    return false;
+
+            } else {
+                var_dump( $project->getErrors());
+                //var_dump($project->info);
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+
 }
