@@ -41,7 +41,11 @@ $this->menu=array(
 			'type'=>'raw',
 			'value'=>$model->getExecutePeoples(),		
 		),
-
+		array(
+			'label'=>'责任书人员',
+			'type'=>'raw',
+			'value'=>$model->getLiabilityPeoples(),		
+		),
 	),
 )); 
 

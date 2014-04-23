@@ -211,10 +211,12 @@
 <script>
 	$(document).ready(function() { 
 		var selectionWithOrder = [<?php echo $model->getExecutePeoplesJsArray('id')?>];
-		var oldSelection = selectionWithOrder;
+		
 		
 		$("#execute_peoples_select").val(selectionWithOrder);
-		/*$("#execute_peoples").val(selectionWithOrder);
+		/*
+		var oldSelection = selectionWithOrder;
+		$("#execute_peoples").val(selectionWithOrder);
 		$("#execute_peoples_select").removeAttr('name');
 
 		console.log(oldSelection);
@@ -247,7 +249,7 @@
     		$('#execute_peoples').val(selectionWithOrder);
  		});
 */		$("#execute_peoples_select").select2({
-			placeholder: "Select a people",
+			placeholder: "选择人员",
 			width: 'resolve',
 			matcher: function(term,text) {
 				var pinyin = new Pinyin();
@@ -257,6 +259,21 @@
 		}); 
 
 
+	});
+
+	$(document).ready(function(){
+		var selectionWithOrder = [<?php echo $model->getLiabilityPeoplesJsArray('id')?>];
+	
+		$("#liability_peoples_select").val(selectionWithOrder);
+		$("#liability_peoples_select").select2({
+			placeholder: "选择人员",
+			width: 'resolve',
+			matcher: function(term,text) {
+				var pinyin = new Pinyin();
+				var mod=pinyin.getCamelChars(text.toUpperCase());
+				return mod.indexOf(term.toUpperCase())==0;
+			}
+		}); 
 	});
 </script>
 <?php
