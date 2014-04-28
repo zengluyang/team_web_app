@@ -38,7 +38,9 @@ class Project extends CActiveRecord
 	const EXECUTE=0;
     const LIABILITY=1;
 
-
+    /**
+     *@var array() of people id
+    */
 	public $executePeoples=array();
     public $liabilityPeoples=array(); //must be different from the relation name!
 
@@ -167,41 +169,42 @@ class Project extends CActiveRecord
 	
 	public function getLevelString($glue=', '){
         $levels = array();
+        $attrs = self::attributeLabels();
         if($this->is_intl){
-            array_push($levels,self::attributeLabels()['is_intl']);
+            array_push($levels,$attrs['is_intl']);
         }
         if($this->is_national){
-            array_push($levels,self::attributeLabels()['is_national']);
+            array_push($levels,$attrs['is_national']);
         }
         if($this->is_provincial){
-            array_push($levels,self::attributeLabels()['is_provincial']);
+            array_push($levels,$attrs['is_provincial']);
         }
         if($this->is_city){
-            array_push($levels,self::attributeLabels()['is_city']);
+            array_push($levels,$attrs['is_city']);
         }
         if($this->is_school){
-            array_push($levels,self::attributeLabels()['is_school']);
+            array_push($levels,$attrs['is_school']);
         }
         if($this->is_enterprise){
-            array_push($levels,self::attributeLabels()['is_enterprise']);
+            array_push($levels,$attrs['is_enterprise']);
         }
         if($this->is_NSF){
-            array_push($levels,self::attributeLabels()['is_NSF']);
+            array_push($levels,$attrs['is_NSF']);
         }
         if($this->is_973){
-            array_push($levels,self::attributeLabels()['is_973']);
+            array_push($levels,$attrs['is_973']);
         }
         if($this->is_863){
-            array_push($levels,self::attributeLabels()['is_863']);
+            array_push($levels,$attrs['is_863']);
         }
         if($this->is_NKTRD){
-            array_push($levels,self::attributeLabels()['is_NKTRD']);
+            array_push($levels,$attrs['is_NKTRD']);
         }
         if($this->is_DFME){
-            array_push($levels,self::attributeLabels()['is_DFME']);
+            array_push($levels,$attrs['is_DFME']);
         }
         if($this->is_major){
-            array_push($levels,self::attributeLabels()['is_major']);
+            array_push($levels,$attrs['is_major']);
         }
 
 

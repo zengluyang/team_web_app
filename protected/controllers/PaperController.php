@@ -471,7 +471,7 @@ class PaperController extends Controller
         header("Content-Type:application/vnd.ms-excel");
         header("Content-Type:application/octet-stream");
         header("Content-Type:application/download");;
-        $fileName = iconv('utf-8', "gb2312", $fileName);
+        //$fileName = iconv('utf-8', "gb2312", $fileName);
         header('Content-Disposition:attachment;filename="'.$fileName.'.xlsx"');
         header("Content-Transfer-Encoding:binary");
         $objWriter->save('php://output');

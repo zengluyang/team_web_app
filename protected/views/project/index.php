@@ -22,9 +22,17 @@ $this->menu=array(
 
 
 <h1>Projects</h1>
-
+<table>
+	<tr>
+		<th>项目级别类型</th>
+		<th>项目名称</th>
+		<th>时间段</th>
+	</tr>
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
+	'itemsTagName' => 'tbody',
+
 )); ?>
+</table>
 

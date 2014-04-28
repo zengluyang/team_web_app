@@ -36,6 +36,10 @@ class SiteController extends Controller
 	public function actionAbout() {
 		$this->render('about');
 	}
+
+	public function actionTeacher() {
+		$this->render('teacher');
+	}
 	/**
 	 * This is the action to handle external exceptions.
 	 */

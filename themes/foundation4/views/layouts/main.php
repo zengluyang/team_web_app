@@ -52,7 +52,7 @@
         array('label'=>'硕博培养','url'=>array('#/admission'),
             'items'=>array(
                 array('label'=>'招生要求', 'url'=>array('#/requirement')),
-                array('label'=>'导师介绍', 'url'=>array('#/tutor')),
+                array('label'=>'导师介绍', 'url'=>array('site/teacher')),
                 array('label'=>'素质拓展', 'url'=>array('#/extracurricular')),
             ),
             'itemOptions'=>array('class'=>'has-dropdown'),
@@ -139,7 +139,7 @@ $this->widget('zii.widget.CMenu',array(
 	          <div class="connect-links">
 	            <h3 class="">联系我们</h4>
 	            <p>成都市高新区（西区）西源大道2006号电子科技大学清水河校区科研楼B区 邮编：611731</p>
-	            <a href="#" class="small button">Stay Connected</a>
+	            <a href="#" class="small button radius">Stay Connected</a>
 	          </div>
 	      </div>
 

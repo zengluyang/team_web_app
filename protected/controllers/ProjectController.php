@@ -32,7 +32,7 @@ class ProjectController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('@'),
+				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update','admin'),
@@ -155,14 +155,26 @@ class ProjectController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$criteria = new CDbCriteria;
+		$criteria->addCondition('is_school!=1');
 		$dataProvider=new CActiveDataProvider('Project',
             array('sort'=>array(
                 'defaultOrder'=>array(
+                	'is_intl'=>true,
+                	'is_NSF'=>true,
+                	'is_973'=>true,
+                	'is_863'=>true,
+                	'is_is_NKTRD'=>true,
+                	'is_major'=>true,
+                	'is_provincial'=>true,
+                	'is_city'=>true,
+                	'is_enterprise'=>true,
                     'start_date' => true,
                 ),
 
             ),
             'pagination'=>false,
+            'criteria'=>$criteria
         ));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
