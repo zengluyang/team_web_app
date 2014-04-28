@@ -60,9 +60,30 @@ $peoples = People::model()->findAll();
                 $('#export').val('0');
             });
         })
-
+        $('select').select2({
+            width: 'resolve',
+            matcher: function(term,text) {
+                var pinyin = new Pinyin();
+                var mod=pinyin.getCamelChars(text.toUpperCase());
+                return mod.indexOf(term.toUpperCase())==0;
+            }
+        });
     </script>
 
 <?php $this->endWidget(); ?>
 
 </div><!-- search-form -->
+
+<?php
+    Yii::app()->getClientScript()->
+    registerCssFile(yii::app()->request->baseUrl.'/css/select2.css');
+
+    Yii::app()->getClientScript()
+    ->registerScriptFile(yii::app()->request->baseUrl.'/js/select2.js');
+
+    Yii::app()->getClientScript()
+    ->registerScriptFile(yii::app()->request->baseUrl.'/js/mootools-core-1.4.5.js');
+
+    Yii::app()->getClientScript()
+    ->registerScriptFile(yii::app()->request->baseUrl.'/js/pinyin.js');
+?>

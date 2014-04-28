@@ -438,7 +438,7 @@ class PaperController extends Controller
 
         $i=1;
         $activeSheet = $objPHPExcel->getActiveSheet();
-        $activeSheet->setTitle(substr($fileName,0,28));
+        $activeSheet->setTitle('papers');
         $activeSheet->SetCellValue('A'.$i,'序号');
         $activeSheet->SetCellValue('B'.$i,'论文信息');
         $activeSheet->SetCellValue('C'.$i,'作者');

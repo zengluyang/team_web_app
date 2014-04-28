@@ -3,13 +3,14 @@
 /* @var $model Paper */
 
 $this->breadcrumbs=array(
-	'Papers'=>array('index'),
-	'Manage',
+	'论文'=>array('index'),
+	'管理',
 );
 
 $this->menu=array(
-	array('label'=>'List Paper', 'url'=>array('index')),
-	array('label'=>'Create Paper', 'url'=>array('create')),
+	array('label'=>'列出论文', 'url'=>array('index')),
+	array('label'=>'创建论文', 'url'=>array('create')),
+	array('label'=>'导入论文', 'url'=>array('upload')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

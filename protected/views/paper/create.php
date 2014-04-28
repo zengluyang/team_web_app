@@ -3,13 +3,14 @@
 /* @var $model Paper */
 
 $this->breadcrumbs=array(
-	'Papers'=>array('index'),
-	'Create',
+	'论文'=>array('index'),
+	'创建',
 );
 
 $this->menu=array(
-	array('label'=>'List Paper', 'url'=>array('index')),
-	array('label'=>'Manage Paper', 'url'=>array('admin')),
+	array('label'=>'列出论文', 'url'=>array('index')),
+	array('label'=>'管理论文', 'url'=>array('admin')),
+	array('label'=>'导入论文', 'url'=>array('upload')),
 );
 ?>
 

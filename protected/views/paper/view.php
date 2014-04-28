@@ -8,11 +8,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Paper', 'url'=>array('index')),
-	array('label'=>'Create Paper', 'url'=>array('create')),
-	array('label'=>'Update Paper', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Paper', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Paper', 'url'=>array('admin')),
+	array('label'=>'列出论文', 'url'=>array('index')),
+	array('label'=>'创建论文', 'url'=>array('create')),
+	array('label'=>'修改论文', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'删除论文', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'管理论文', 'url'=>array('admin')),
+    array('label'=>'导入论文', 'url'=>array('upload')),
 );
 ?>
 

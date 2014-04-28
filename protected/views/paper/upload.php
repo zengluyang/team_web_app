@@ -12,7 +12,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-    array('label'=>'全部论文', 'url'=>array('index')),
+    array('label'=>'列出论文', 'url'=>array('index')),
     array('label'=>'增加论文', 'url'=>array('create')),
     array('label'=>'管理论文', 'url'=>array('admin')),
 );

@@ -25,9 +25,11 @@
         }
     </style>
 	<div class="row">
+        <div class="medium-12 columns end">
 		<?php echo $form->labelEx($model,'info'); ?>
 		<?php echo $form->textArea($model,'info',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'info'); ?>
+        </div>
 	</div>
     <style>
        div.author {
@@ -37,6 +39,7 @@
     </style>
 
     <div class="row" id="authors">
+        <div class="medium-12 columns end">
         <?php
         $peoples = People::model()->findAll();
         $authors = $model->peoples;
@@ -57,36 +60,46 @@
             echo '</div>';
         }
         ?>
+        </div>
     </div>
 
 	<div class="row">
+        <div class="medium-12 columns end">
 		<?php echo $form->labelEx($model,'status'); ?>
 		<?php echo $form->dropDownList(
             $model,'status',
             array($model::LABEL_PASSED,$model::LABEL_PUBLISHED,$model::LABEL_INDEXED),
             array()); ?>
 		<?php echo $form->error($model,'status'); ?>
+        </div>
 	</div>
 
 	<div class="row" id="pass_date">
+        <div class="medium-12 columns end">
 		<?php echo $form->labelEx($model,'pass_date'); ?>
 		<?php echo $form->textField($model,'pass_date',array('placeholder'=>'日期格式: yyyy-mm-dd')); ?>
 		<?php echo $form->error($model,'pass_date'); ?>
+        </div>
 	</div>
 
 	<div class="row" id="pub_date">
+        <div class="medium-12 columns end">
 		<?php echo $form->labelEx($model,'pub_date'); ?>
 		<?php echo $form->textField($model,'pub_date',array('placeholder'=>'日期格式: yyyy-mm-dd')); ?>
 		<?php echo $form->error($model,'pub_date'); ?>
+        </div>
 	</div>
 
 	<div class="row" id="index_date">
+         <div class="medium-12 columns end">
 		<?php echo $form->labelEx($model,'index_date'); ?>
 		<?php echo $form->textField($model,'index_date',array('placeholder'=>'日期格式 :yyyy-mm-dd')); ?>
 		<?php echo $form->error($model,'index_date'); ?>
+        </div>
 	</div>
 
 	<div class="row" id="index_number">
+        <div class="medium-12 columns end">
 		<?php echo $form->labelEx($model,'sci_number'); ?>
 		<?php echo $form->textField($model,'sci_number',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'sci_number'); ?>
@@ -96,6 +109,7 @@
 		<?php echo $form->labelEx($model,'istp_number'); ?>
 		<?php echo $form->textField($model,'istp_number',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'istp_number'); ?>
+        </div>
 	</div>
 
 	<div class="row">
@@ -142,12 +156,15 @@
 	</div>
 
     <div class="row">
+        <div class="medium-12 columns end">
         <?php echo $form->labelEx($model,'uploadedFile'); ?>
         <?php echo $form->fileField($model,'uploadedFile'); ?>
         <?php echo $form->error($model,'uploadedFile'); ?>
+        </div>
     </div>
 
     <div class="row">
+        <div class="medium-12 columns end">
         <?php
 
         //$maintainer = $model->maintainer;
@@ -157,11 +174,16 @@
         //var_dump(($listData));
         echo $form->dropDownList($model,'maintainer_id',$listData);
         ?>
+        </div>
     </div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+        <div class="medium-12 columns end">
+		<?php echo CHtml::submitButton(
+            $model->isNewRecord ? '创建' : '保存'
+        ); ?>
+        </div>
+    </div>
 
 <?php $this->endWidget(); ?>
 <script>
@@ -220,7 +242,29 @@
                 alert('请勿选择相同作者！');
             }
         });
+        $('select').select2({
+            width: 'resolve',
+            matcher: function(term,text) {
+                var pinyin = new Pinyin();
+                var mod=pinyin.getCamelChars(text.toUpperCase());
+                return mod.indexOf(term.toUpperCase())==0;
+            }
+        });
 
     });
 </script>
 </div><!-- form -->
+
+<?php
+    Yii::app()->getClientScript()->
+    registerCssFile(yii::app()->request->baseUrl.'/css/select2.css');
+
+    Yii::app()->getClientScript()
+    ->registerScriptFile(yii::app()->request->baseUrl.'/js/select2.js');
+
+    Yii::app()->getClientScript()
+    ->registerScriptFile(yii::app()->request->baseUrl.'/js/mootools-core-1.4.5.js');
+
+    Yii::app()->getClientScript()
+    ->registerScriptFile(yii::app()->request->baseUrl.'/js/pinyin.js');
+?>

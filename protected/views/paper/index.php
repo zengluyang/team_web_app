@@ -3,12 +3,13 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Papers',
+	'论文',
 );
 
 $this->menu=array(
-	array('label'=>'Create Paper', 'url'=>array('create')),
-	array('label'=>'Manage Paper', 'url'=>array('admin')),
+	array('label'=>'创建论文', 'url'=>array('create')),
+	array('label'=>'管理论文', 'url'=>array('admin')),
+	array('label'=>'导入论文', 'url'=>array('upload')),
 );
 ?>
 <style>
