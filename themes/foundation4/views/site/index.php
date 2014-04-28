@@ -8,15 +8,15 @@ $this->pageTitle=Yii::app()->name;
 pause_on_hover=false;
 slide_number=false;">
   <li>
-	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/https-network-associates-guide-to-communications-protocols.png" alt="slide 1" />
+	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/bluetooth_street_big.png" alt="slide 1" />
 	<div class="orbit-caption">
-	  Network Protocols.
+	  Wireless Ad Hoc Network.
 	</div>
   </li>
   <li>
-	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/bluetooth_street_big.png" alt="slide 2" />
+	<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/https-network-associates-guide-to-communications-protocols.png" alt="slide 2" />
 	<div class="orbit-caption">
-	  Wireless Ad Hoc Network.
+	  Network Protocols.
 	</div>
   </li>
   <li>
