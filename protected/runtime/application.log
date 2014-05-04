@@ -20210,3 +20210,49 @@ Stack trace:
 REQUEST_URI=/team/index.php?r=paper/create
 HTTP_REFERER=http://113.54.143.18/team/index.php?r=paper
 ---
+2014/04/29 06:20:30 [error] [exception.CHttpException.403] exception 'CHttpException' with message '您未被授权执行这个动作' in D:\Dropbox\dev_htdocs\team\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\Dropbox\dev_htdocs\team\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), '???????????????...')
+#1 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#8 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('paper/create')
+#9 D:\Dropbox\dev_htdocs\team\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\Dropbox\dev_htdocs\team\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/team/index.php?r=paper/create
+HTTP_REFERER=http://113.54.143.18/team/index.php?r=paper
+---
+2014/04/29 09:58:19 [warning] [application] Failed to set unsafe attribute "peoples" of "Paper".
+in D:\Dropbox\dev_htdocs\team\protected\controllers\PaperController.php (223)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/04/29 09:58:19 [warning] [application] Failed to set unsafe attribute "uploadedFile" of "Paper".
+in D:\Dropbox\dev_htdocs\team\protected\controllers\PaperController.php (223)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/04/29 09:58:48 [warning] [application] Failed to set unsafe attribute "peoples" of "Paper".
+in D:\Dropbox\dev_htdocs\team\protected\controllers\PaperController.php (249)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/04/29 09:58:48 [warning] [application] Failed to set unsafe attribute "uploadedFile" of "Paper".
+in D:\Dropbox\dev_htdocs\team\protected\controllers\PaperController.php (249)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/04/29 10:00:16 [error] [exception.CHttpException.403] exception 'CHttpException' with message '您未被授权执行这个动作' in D:\Dropbox\dev_htdocs\team\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 D:\Dropbox\dev_htdocs\team\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), '???????????????...')
+#1 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(282): CController->run('create')
+#8 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('paper/create')
+#9 D:\Dropbox\dev_htdocs\team\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 D:\Dropbox\dev_htdocs\team\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/team/index.php?r=paper/create
+HTTP_REFERER=http://113.54.143.18/team/index.php?r=paper
+---

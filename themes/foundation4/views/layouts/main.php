@@ -109,9 +109,11 @@ $this->widget('zii.widget.CMenu',array(
 			'separator'=>'',
 		)); ?>
 	<?php endif?>
-
-	<?php echo $content;?>
-
+	<div class="row">
+		<div class="small-12 columns" id="content">
+		<?php echo $content;?>
+		</div>
+	</div>
 	<div class="footer-top bg-fblue">
 	  <div class="row property">
 	    <div class="medium-4 columns">
@@ -124,7 +126,7 @@ $this->widget('zii.widget.CMenu',array(
 	    
 	     <div class="medium-4 columns">
 	          <div class="learn-links">
-	            <h3 class="">研究方向</h4>
+	            <h3 class="">研究方向</h3>
 	            <ul>
 	              <li><a href="#">网络体系结构与协议</a></li>
 	              <li><a href="#">无线自组织网络</a></li>
@@ -137,7 +139,7 @@ $this->widget('zii.widget.CMenu',array(
 
 	      <div class="medium-4 columns">
 	          <div class="connect-links">
-	            <h3 class="">联系我们</h4>
+	            <h3 class="">联系我们</h3>
 	            <p>成都市高新区（西区）西源大道2006号电子科技大学清水河校区科研楼B区 邮编：611731</p>
 	            <a href="#" class="small button radius">Stay Connected</a>
 	          </div>
