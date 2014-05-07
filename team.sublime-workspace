@@ -172,14 +172,6 @@
 	"buffers":
 	[
 		{
-			"file": "themes/foundation4/views/layouts/column2.php",
-			"settings":
-			{
-				"buffer_size": 463,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "themes/foundation4/views/layouts/main.php",
 			"settings":
 			{
@@ -218,14 +210,26 @@
 				"buffer_size": 1805,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "protected/components/UserIdentity.php",
+			"settings":
+			{
+				"buffer_size": 1842,
+				"line_ending": "Unix"
+			}
 		}
 	],
-	"build_system": "Make telosb",
+	"build_system": "",
 	"command_palette":
 	{
-		"height": 72.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				":w",
+				":w - Save"
+			],
 			[
 				"instal",
 				"Package Control: Install Package"
@@ -249,10 +253,6 @@
 			[
 				"syntax mak",
 				"Set Syntax: Makefile"
-			],
-			[
-				":w",
-				":w - Save"
 			],
 			[
 				"install",
@@ -307,7 +307,7 @@
 				"About"
 			]
 		],
-		"width": 400.0
+		"width": 536.0
 	},
 	"console":
 	{
@@ -324,9 +324,12 @@
 	},
 	"file_history":
 	[
+		"/d/Desktop/msm.py",
+		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/layouts/column2.php",
+		"/d/Desktop/test.xml",
+		"/D/Dropbox/dev_htdocs/team/yii/framework/web/auth/CWebUser.php",
 		"/D/Dropbox/dev_htdocs/team/protected/config/main.php",
 		"/D/Dropbox/dev_htdocs/team/protected/README",
-		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/layouts/column2.php",
 		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/site/index.php",
 		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/layouts/main.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/site/index.php",
@@ -448,10 +451,7 @@
 		"/D/Documents/通信六班/通知/index.html",
 		"/D/Dropbox/coding/workspace/cpp_primer/String.cpp",
 		"/D/Dropbox/coding/workspace/cpp_primer/String.hpp",
-		"/D/Dropbox/coding/workspace/cpp_primer/StringProject/_3_15.cpp",
-		"/d/Downloads/526268ff.data",
-		"/D/Dropbox/coding/workspace/cpp_primer/_3_2_3.cpp",
-		"/C/Users/ZLY/AppData/Roaming/Sublime Text 2/Packages/User/gcc.sublime-build"
+		"/D/Dropbox/coding/workspace/cpp_primer/StringProject/_3_15.cpp"
 	],
 	"find":
 	{
@@ -589,148 +589,11 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "themes/foundation4/views/layouts/column2.php",
-					"settings":
-					{
-						"buffer_size": 463,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								94,
-								94
-							]
-						],
-						"settings":
-						{
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 1,
 					"file": "themes/foundation4/views/layouts/main.php",
 					"settings":
 					{
@@ -741,8 +604,8 @@
 						"selection":
 						[
 							[
-								4207,
-								4207
+								2031,
+								2031
 							]
 						],
 						"settings":
@@ -854,13 +717,13 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1938.0,
+						"translation.y": 532.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "protected/controllers/SiteController.php",
 					"settings":
 					{
@@ -887,7 +750,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "yii/framework/messages/config.php",
 					"settings":
 					{
@@ -914,7 +777,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "protected/views/site/index.php",
 					"settings":
 					{
@@ -940,7 +803,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "themes/foundation4/views/site/index.php",
 					"settings":
 					{
@@ -1068,6 +931,32 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "protected/components/UserIdentity.php",
+					"settings":
+					{
+						"buffer_size": 1842,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								710,
+								726
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		}
@@ -1089,18 +978,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -1128,6 +1010,14 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"webuser",
+				"yii/framework/web/auth/CWebUser.php"
+			],
+			[
+				"user",
+				"protected/components/UserIdentity.php"
+			],
 			[
 				"foundviewsitei",
 				"themes/foundation4/views/site/index.php"
@@ -1387,10 +1277,6 @@
 			[
 				"userf",
 				"protected/views/user/_form.php"
-			],
-			[
-				"user",
-				"protected/models/User.php"
 			],
 			[
 				"useri",

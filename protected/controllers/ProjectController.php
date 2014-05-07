@@ -226,10 +226,14 @@ class ProjectController extends Controller
 			if($_GET['Project']['is_major']=='0') {
 				$model->is_major="";
 			}
-			if(isset($_GET['People']['id'])){
-				$people=People::model()->findByPk($_GET['People']['id']);
+			if(!empty($_GET['People']['execute_id'])){
+				$people=People::model()->findByPk($_GET['People']['execute_id']);
 				$model->searchExecutePeople=$people->id;
 
+			}
+			if(!empty($_GET['People']['liability_id'])){
+				$people=People::model()->findByPk($_GET['People']['liability_id']);
+				$model->searchExecutePeople=$people->id;
 			}
 			//var_dump($model);
 		}

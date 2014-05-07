@@ -127,16 +127,32 @@
 		</div>
 	</div>
 	<div class="row">
+    	<div class="medium-4 columns">
+        <?php
+        $peoples = People::model()->findAll();
+
+        echo $form->label(People::model(),'参与人员（实际执行）');
+        $listData = CHtml::listData($peoples,'id','name');
+        $listData = array(null=>'选择参与人员')+$listData;
+        echo $form->dropDownList(
+        	People::model(),
+        	'id',$listData,
+        	array('id'=>'execute_people','name'=>'People[execute_id]')
+        );
+        ?>
+    	</div>
     	<div class="medium-4 columns end">
         <?php
 
-        //$maintainer = $model->maintainer;
-        $peoples = People::model()->findAll();
-        echo $form->label(People::model(),'参与人员');
+        echo $form->label(People::model(),'参与人员（责任书）');
         $listData = CHtml::listData($peoples,'id','name');
         $listData = array(null=>'选择参与人员')+$listData;
-        //var_dump(($listData));
-        echo $form->dropDownList(People::model(),'id',$listData,array('id'=>'people'));
+        echo $form->dropDownList(
+        	People::model(),
+        	'id',
+        	$listData,
+        	array('id'=>'liability_people','name'=>'People[liability_id]')
+        );
         ?>
     	</div>
     </div>
@@ -152,10 +168,17 @@
 </div><!-- search-form -->
 <script type="text/javascript">
 $(document).ready(function(){
-		var selectionWithOrder = [<?php echo $model->getLiabilityPeoplesJsArray('id')?>];
 	
-		$("#people").val(selectionWithOrder);
-		$("#people").select2({
+		$("#execute_people").select2({
+			placeholder: "选择人员",
+			width: 'resolve',
+			matcher: function(term,text) {
+				var pinyin = new Pinyin();
+				var mod=pinyin.getCamelChars(text.toUpperCase());
+				return mod.indexOf(term.toUpperCase())==0;
+			}
+		}); 
+		$("#liability_people").select2({
 			placeholder: "选择人员",
 			width: 'resolve',
 			matcher: function(term,text) {

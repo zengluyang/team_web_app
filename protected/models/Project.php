@@ -178,6 +178,7 @@ class Project extends CActiveRecord
 		$criteria->with=array('execute_peoples');
 		$criteria->together=true;
 		$criteria->compare('execute_peoples.id',$this->searchExecutePeople,true);
+		$criteria->compare('liability_peoples.id',$this->searchLiabilityPeople,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('number',$this->number,true);
 		$criteria->compare('fund_number',$this->fund_number,true);
