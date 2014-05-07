@@ -235,8 +235,9 @@ class ProjectController extends Controller
 				$people=People::model()->findByPk($_GET['People']['liability_id']);
 				$model->searchExecutePeople=$people->id;
 			}
-			//var_dump($model);
+			
 		}
+		//var_dump($model->execute_peoples);
 		$this->render('admin',array(
 			'model'=>$model,
 		));

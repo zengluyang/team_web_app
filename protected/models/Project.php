@@ -119,8 +119,8 @@ class Project extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'liability_peoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_liability(project_id, people_id)','order'=>'seq'),
-            'execute_peoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_execute(project_id, people_id)','order'=>'seq'),
+			'liability_peoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_liability(project_id, people_id)','order'=>''),
+            'execute_peoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_execute(project_id, people_id)','order'=>''),
 		);
 	}
 
@@ -175,8 +175,12 @@ class Project extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		$criteria->with=array('execute_peoples');
+		$criteria->with=array(
+			'execute_peoples',
+			'liability_peoples'
+		);
 		$criteria->together=true;
+		$criteria->group = 't.id';
 		$criteria->compare('execute_peoples.id',$this->searchExecutePeople,true);
 		$criteria->compare('liability_peoples.id',$this->searchLiabilityPeople,true);
 		$criteria->compare('name',$this->name,true);
