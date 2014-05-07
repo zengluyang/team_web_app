@@ -188,9 +188,51 @@ class ProjectController extends Controller
 	{
 		$model=new Project('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Project']))
+		if(isset($_GET['Project'])) {
 			$model->attributes=$_GET['Project'];
+			if($_GET['Project']['is_intl']=='0') {
+				$model->is_intl="";
+			}
+			if($_GET['Project']['is_national']=='0') {
+				$model->is_national="";
+			}
+			if($_GET['Project']['is_provincial']=='0') {
+				$model->is_provincial="";
+			}
+			if($_GET['Project']['is_school']=='0') {
+				$model->is_school="";
+			}
+			if($_GET['Project']['is_city']=='0') {
+				$model->is_city="";
+			}
+			if($_GET['Project']['is_enterprise']=='0') {
+				$model->is_enterprise="";
+			}
+			if($_GET['Project']['is_NSF']=='0') {
+				$model->is_NSF="";
+			}
+			if($_GET['Project']['is_973']=='0') {
+				$model->is_973="";
+			}
+			if($_GET['Project']['is_863']=='0') {
+				$model->is_863="";
+			}
+			if($_GET['Project']['is_NKTRD']=='0') {
+				$model->is_NKTRD="";
+			}
+			if($_GET['Project']['is_DFME']=='0') {
+				$model->is_DFME="";
+			}
+			if($_GET['Project']['is_major']=='0') {
+				$model->is_major="";
+			}
+			if(isset($_GET['People']['id'])){
+				$people=People::model()->findByPk($_GET['People']['id']);
+				$model->searchExecutePeople=$people->id;
 
+			}
+			//var_dump($model);
+		}
 		$this->render('admin',array(
 			'model'=>$model,
 		));

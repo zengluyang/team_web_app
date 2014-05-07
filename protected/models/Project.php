@@ -38,6 +38,8 @@ class Project extends CActiveRecord
 	const EXECUTE=0;
     const LIABILITY=1;
 
+
+
     /**
      *@var array() of people id
     */
@@ -45,12 +47,23 @@ class Project extends CActiveRecord
     public $liabilityPeoples=array(); //must be different from the relation name!
 
 
+    public $searchExecutePeople=null;
+    public $searchLiabilityPeople=null;
+
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
 		return 'tbl_project';
+	}
+
+	public function getLevelList(){
+		return array();
+	}
+
+	public function getTypeString(){
+		return array();
 	}
 
 	/**
@@ -68,7 +81,33 @@ class Project extends CActiveRecord
 			array('start_date, deadline_date, conclude_date, app_date, pass_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, number, fund_number, is_intl, is_national, is_provincial, is_city, is_school, is_enterprise, is_NSF, is_973, is_863, is_NKTRD, is_DFME, is_major, start_date, deadline_date, conclude_date, app_date, pass_date, app_fund, pass_fund', 'safe', 'on'=>'search'),
+			array(
+				'id, 
+				name, 
+				number, 
+				fund_number, 
+				is_intl, 
+				is_national, 
+				is_provincial, 
+				is_city, 
+				is_school, 
+				is_enterprise, 
+				is_NSF, 
+				is_973, 
+				is_863, 
+				is_NKTRD, 
+				is_DFME, 
+				is_major, 
+				start_date, 
+				deadline_date, 
+				conclude_date, 
+				app_date, 
+				pass_date, 
+				app_fund, 
+				pass_fund,
+				', 
+				'safe', 
+				'on'=>'search'),
 		);
 	}
 
@@ -136,8 +175,9 @@ class Project extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-
-		$criteria->compare('id',$this->id);
+		$criteria->with=array('execute_peoples');
+		$criteria->together=true;
+		$criteria->compare('execute_peoples.id',$this->searchExecutePeople,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('number',$this->number,true);
 		$criteria->compare('fund_number',$this->fund_number,true);

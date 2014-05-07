@@ -45,12 +45,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+		//'id',
 		'name',
 		'number',
 		'fund_number',
-		'is_intl',
-		'is_national',
+		//'is_intl',
+		//'is_national',
 		/*
 		'is_provincial',
 		'is_city',
@@ -62,6 +62,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'is_NKTRD',
 		'is_DFME',
 		'is_major',
+		*/
 		'start_date',
 		'deadline_date',
 		'conclude_date',
@@ -69,7 +70,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'pass_date',
 		'app_fund',
 		'pass_fund',
-		*/
+		
 		array(
 			'class'=>'CButtonColumn',
 		),
