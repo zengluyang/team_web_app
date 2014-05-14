@@ -119,9 +119,44 @@ class Project extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'liability_peoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_liability(project_id, people_id)','order'=>'liability_peoples_liability_.seq','alias'=>'liability_'),
-            'execute_peoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_execute(project_id, people_id)','order'=>'execute_peoples_execute_.seq','alias'=>'execute_'),
+			'liability_peoples' => array(
+				self::MANY_MANY, 
+				'People', 
+				'tbl_project_people_liability(project_id, people_id)',
+				'order'=>'liability_peoples_liability_.seq',
+				'alias'=>'liability_'
+			),
+            'execute_peoples' => array(
+            	self::MANY_MANY, 
+            	'People', 
+            	'tbl_project_people_execute(project_id, people_id)',
+            	'order'=>'execute_peoples_execute_.seq',
+            	'alias'=>'execute_'
+            ),
 		);
+		/*
+			must add an alias to disambiguate col names in the order clause,
+			can't disambiguate without alias:
+			<WRONG_CODE>
+				...
+				'execute_peoples' => array(
+	            	self::MANY_MANY, 
+	            	'People', 
+	            	'tbl_project_people_execute(project_id, people_id)',
+	            	'order'=>'execute_peoples.seq',
+	            ),
+	            ...
+            <WRONG_CODE/>
+
+            seems a bug in the Yii framework, alias seemd to be concated with 
+            relationName in the SQL JOIN(instead of replacing it):
+            eg:
+            	if not specifying alias, the above WRONG code would render SQL like:
+            		 LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_peoples` 
+            		 ON (`t`.`id`=`execute_peoples_execute_peoples`.`project_id`)
+            	which makes it not possible to disambiguate col names in order clause
+
+		*/
 	}
 
 	/**
