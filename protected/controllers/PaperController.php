@@ -221,6 +221,7 @@ class PaperController extends Controller
 
 		if (isset($_POST['Paper'])) {
 			$model->attributes=$_POST['Paper'];
+            self::setModelProjects($model);
 			if ($model->save()) {
                 $peoples = $_POST['Paper']['peoples'];
                 self::populatePeople($model, $peoples);
@@ -247,6 +248,8 @@ class PaperController extends Controller
 
 		if (isset($_POST['Paper'])) {
 			$model->attributes=$_POST['Paper'];
+            self::setModelProjects($model);
+            $model->scenario='update';
 			if ($model->save()) {
                 $criteria = new CDbCriteria;
                 $criteria->condition = 'paper_id=:paper_id';
@@ -551,7 +554,12 @@ class PaperController extends Controller
 
     }
 
-
+    private function setModelProjects($model) {
+        if(isset($_POST['Paper']['fund_projects']))
+            $model->fundProjects=$_POST['Paper']['fund_projects'];
+        if(isset($_POST['Paper']['fund_projects']))
+            $model->reimProjects=$_POST['Paper']['reim_projects'];
+    }
 
 
     /**

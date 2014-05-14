@@ -49,10 +49,19 @@ class Paper extends CActiveRecord
     const LEVEL_FIRST_GRADE = '一级';
     const LEVEL_HIGH_LEVEL = '高水平';
 
+    const PROJECT_FUND=0;
+    const PROJECT_REIM=1;
 
 
     public $searchPeople;
     public $uploadedFile;
+
+
+    public $fundProjects=array();
+
+    public $reimProjects=array();
+
+
     /**
 	 * @return string the associated database table name
 	 */
@@ -162,8 +171,32 @@ class Paper extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'maintainer' => array(self::BELONGS_TO, 'People', 'maintainer_id'),
-			'peoples' => array(self::MANY_MANY, 'People', 'tbl_paper_people(paper_id, people_id)','order'=>'seq'),
+			'maintainer' => array(
+                self::BELONGS_TO, 
+                'People',
+                'maintainer_id'
+            ),
+			'peoples' => array(
+                self::MANY_MANY, 
+                'People', 
+                'tbl_paper_people(paper_id, people_id)',
+                'alias' => 'peoples_',
+                'order'=>'peoples_peoples_.seq',
+            ),
+            'fund_projects' => array(
+                self::MANY_MANY, 
+                'Project', 
+                'tbl_paper_project_fund(paper_id, project_id)',
+                'alias' => 'fund_',
+                'order'=>'fund_projects_fund_.seq',
+            ),
+            'reim_projects' => array(
+                self::MANY_MANY, 
+                'Project', 
+                'tbl_paper_project_reim(paper_id, project_id)',
+                'alias' => 'reim_',
+                'order'=>'reim_projects_reim_.seq',
+            ),
 		);
 	}
 
@@ -225,7 +258,7 @@ class Paper extends CActiveRecord
 		));
 	}
 
-    public function beforeSave() {
+    protected function beforeSave() {
         if($file=CUploadedFile::getInstance($this,'uploadedFile')) {
             $this->file_name = $file->name;
             $this->file_type = $file->type;
@@ -241,11 +274,22 @@ class Paper extends CActiveRecord
             $this->pub_date=null;
         if ($this->index_date=='')
             $this->index_date=null;
+        if($this->scenario=='update') {
+            if(
+                self::deletePaperProject(self::PROJECT_FUND) && 
+                self::deletePaperProject(self::PROJECT_REIM)
+            ){
+                ;
+            } else {
+                return false;
+            }
+
+        }
         return parent::beforeSave();
     }
 
 
-    public function afterSave() {
+    protected function afterSave() {
 //        for($i=0;$i<count($this->peoplesToSave);$i++) {
 //            if($this->peoplesToSave[$i]!=null && $this->peoplesToSave[$i]!=0) {
 //                $paperPeople = new PaperPeople;
@@ -260,10 +304,114 @@ class Paper extends CActiveRecord
 //                }
 //            }
 //        }
-        return parent::afterSave();
+        if(
+            self::populatePaperProject(self::PROJECT_FUND) && 
+            self::populatePaperProject(self::PROJECT_REIM)) {
+            ;
+        }  
+        else {
+            return false;
+        }
+            return parent::afterSave();
+    }
+
+    protected function afterDelete() {
+        if(
+            self::deletePaperProject(self::PROJECT_FUND) && 
+            self::deletePaperProject(self::PROJECT_REIM)){
+            return parent::afterDelete();
+        } else {
+            return false;
+        }
+    }
+
+    public function getFundProjects($glue=', ',$attr='name'){
+        return self::getProjects(self::PROJECT_FUND,$glue,$attr);   
+    }
+
+    public function getReimProjects($glue=', ',$attr='name'){
+        return self::getProjects(self::PROJECT_REIM,$glue,$attr);   
+    }
+
+    public function getProjects($type,$glue=', ',$attr='name'){
+        $projectsArr = array();
+        switch ($type) {
+            case self::PROJECT_FUND:
+                $projectRecords=$this->fund_projects;
+                break;
+            case self::PROJECT_REIM:
+                $projectRecords=$this->reim_projects;
+                break;
+            default:
+                $projectRecords=$this->fund_projects;
+                break;
+        }
+        foreach ($projectRecords as $project){
+            array_push($projectsArr,$project->$attr);
+        }
+        return implode($glue, $projectsArr);
     }
 
 
+    private function populatePaperProject($type) {
+        switch ($type) {
+            case self::PROJECT_FUND:
+                $projects=$this->fundProjects;
+                break;
+            case self::PROJECT_REIM:
+                $projects=$this->reimProjects;
+                break;
+            default:
+                $projects=$this->fundProjects;
+                break;
+        }
+        for($i=0;$i<count($projects);$i++) {
+            if($projects[$i]!=null && $projects[$i]!=0){
+                switch ($type) {
+                    case self::PROJECT_FUND:
+                        $paperProject = new PaperProjectFund;
+                        break;
+                    case self::PROJECT_REIM:
+                        $paperProject = new PaperProjectReim;
+                        break;
+                    default:
+                        $paperProject = new PaperProjectFund;
+                        break;
+                }
+                $paperProject->seq=$i+1;
+                $paperProject->paper_id=$this->id;
+                $paperProject->project_id=$projects[$i];
+                if($paperProject->save()) {
+                    yii::trace("projects[i]:".$projects[$i]." saved","Paper.populatePaperProject()");
+                } else {
+                    return false;
+                }
+
+            }
+        }
+        return true;
+    }
+
+    private function deletePaperProject($type) {
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'paper_id=:paper_id';
+        $criteria->params = array(':paper_id'=>$this->id);
+        
+
+         switch ($type) {
+            case self::PROJECT_FUND:
+                PaperProjectFund::model()->deleteAll($criteria);
+                break;
+            
+            case self::PROJECT_REIM:
+                PaperProjectReim::model()->deleteAll($criteria);
+                break;
+            default:
+                PaperProjectFund::model()->deleteAll($criteria);
+                break;
+        }
+        return true;
+    }
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

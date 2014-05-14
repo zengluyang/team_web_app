@@ -22,10 +22,54 @@ $this->menu=array(
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
+        'info',
+        array(
+            'label'=>'状态',
+            'type'=>'raw',
+            'value'=>$model->getStatusString(),
+        ),
+        array(
+            'label'=>'级别',
+            'type'=>'raw',
+            'value'=>$model->getLevelString(),
+        ),
+        'pass_date',
+        'pub_date',
+        'index_date',
+        'sci_number',
+        'ei_number',
+        'istp_number',
+        array(
+            'label'=>'论文文件',
+            'type'=>'raw',
+            'value'=>
+                isset($model->file_name)?
+                CHtml::link($model->file_name,array('download','id'=>$model->primaryKey)):
+                null,
+        ),
+
+        array(
+            'label'=>'维护人员',
+            'type'=>'raw',
+            'value'=>
+                isset($model->maintainer) ? 
+                $model->maintainer->name :
+                null,
+        ),
+        array(
+            'label'=>'支柱项目',
+            'type'=>'raw',
+            'value'=>$model->getFundProjects(),
+        ),
+        array(
+            'label'=>'报账项目',
+            'type'=>'raw',
+            'value'=>$model->getReimProjects(),
+        ),
 	),
-    'id' => 'dumb_widget',
 )); ?>
-<table class="detail-view" id="detail_view">
+<hr/>
+<!-- <table class="detail-view" id="detail_view">
     <?php
     $flag=false;
     foreach(array_keys($model->attributeLabels()) as $attr) {
@@ -64,4 +108,4 @@ $this->menu=array(
     }
 
     ?>
-</table>
+</table> -->

@@ -2,7 +2,9 @@
 	"folders":
 	[
 		{
-			"path": "/D/Dropbox/dev_htdocs/team"
+			"path": "/D/Dropbox/dev_htdocs/team",
+			"folder_exclude_patterns": ["yii",".idea","assets","runtime"],
+			"file_exclude_patterns": ["*.log","*.jpg","*.png"]
 		}
 	]
 }

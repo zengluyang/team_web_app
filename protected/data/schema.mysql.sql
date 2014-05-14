@@ -100,15 +100,7 @@ CREATE TABLE `tbl_paper_people` (
   CONSTRAINT `tbl_paper_people_ibfk_1` FOREIGN KEY (`paper_id`) REFERENCES `tbl_paper` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-CREATE TABLE `tbl_paper_project` (
-  paper_id int not null,
-  project_id int not null,
-  seq int null,
-  primary key (paper_id,project_id),
-  key tbl_paper_project_ibfk_2 (project_id),
-  CONSTRAINT `tbl_project_people_ibfk_2` FOREIGN KEY (`people_id`) REFERENCES `tbl_people` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `tbl_project_people_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 
 
 CREATE TABLE `tbl_project` (
@@ -171,3 +163,25 @@ CREATE TABLE `tbl_user` (
   is_project bool,
   is_patent bool
 );
+
+CREATE TABLE `tbl_paper_project_fund` (
+  /*支柱项目*/
+  paper_id int not null,
+  project_id int not null,
+  seq int null,
+  primary key (paper_id,project_id),
+  key tbl_paper_project_ibfk_2 (project_id),
+  CONSTRAINT `tbl_project_people_fund_ibfk_2` FOREIGN KEY (`paper_id`) REFERENCES `tbl_paper` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_project_people_fund_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `tbl_paper_project_reim` (
+  /*报账项目*/
+  paper_id int not null,
+  project_id int not null,
+  seq int null,
+  primary key (paper_id,project_id),
+  key tbl_paper_project_ibfk_2 (project_id),
+  CONSTRAINT `tbl_project_people_reim_ibfk_2` FOREIGN KEY (`paper_id`) REFERENCES `tbl_paper` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_project_people_reim_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

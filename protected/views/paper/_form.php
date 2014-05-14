@@ -162,6 +162,41 @@
         <?php echo $form->error($model,'uploadedFile'); ?>
         </div>
     </div>
+    <div class="row">
+        <div class="medium-12 columns end">
+        <?php
+        $projects = Project::model()->findAll();
+        echo $form->labelEx($model,'fund_projects');
+        echo CHtml::dropDownList(
+            'Paper[fund_projects]',
+            array(),
+            Chtml::listData($projects, 'id', 'name'),
+            array(
+                'id'=>'fund_projects_select',
+                'multiple'=>'multiple',
+            )
+        ); 
+
+        ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="medium-12 columns end">
+        <?php
+        echo $form->labelEx($model,'reim_projects');
+        echo CHtml::dropDownList(
+            'Paper[reim_projects]',
+            array(),
+            Chtml::listData($projects, 'id', 'name'),
+            array(
+                'id'=>'reim_projects_select',
+                'multiple'=>'multiple',
+            )
+        ); 
+
+        ?>
+        </div>
+    </div>
 
     <div class="row">
         <div class="medium-12 columns end">
@@ -186,7 +221,7 @@
     </div>
 
 <?php $this->endWidget(); ?>
-<script>
+<script type="text/javascript">
     $(document).ready(function() {
         $("textarea").keydown(function(e) {
             if (e.keyCode == 13) {
@@ -242,6 +277,8 @@
                 alert('请勿选择相同作者！');
             }
         });
+        $('#fund_projects_select').val([<?php echo $model->getFundProjects(',','id')?>]);
+        $('#reim_projects_select').val([<?php echo $model->getReimProjects(',','id')?>]);
         $('select').select2({
             width: 'resolve',
             matcher: function(term,text) {

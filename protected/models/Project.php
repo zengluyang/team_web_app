@@ -118,22 +118,6 @@ class Project extends CActiveRecord
 	{
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
-		return array(
-			'liability_peoples' => array(
-				self::MANY_MANY, 
-				'People', 
-				'tbl_project_people_liability(project_id, people_id)',
-				'order'=>'liability_peoples_liability_.seq',
-				'alias'=>'liability_'
-			),
-            'execute_peoples' => array(
-            	self::MANY_MANY, 
-            	'People', 
-            	'tbl_project_people_execute(project_id, people_id)',
-            	'order'=>'execute_peoples_execute_.seq',
-            	'alias'=>'execute_'
-            ),
-		);
 		/*
 			must add an alias to disambiguate col names in the order clause,
 			can't disambiguate without alias:
@@ -157,6 +141,23 @@ class Project extends CActiveRecord
             	which makes it not possible to disambiguate col names in order clause
 
 		*/
+		return array(
+			'liability_peoples' => array(
+				self::MANY_MANY, 
+				'People', 
+				'tbl_project_people_liability(project_id, people_id)',
+				'order'=>'liability_peoples_liability_.seq',
+				'alias'=>'liability_'
+			),
+            'execute_peoples' => array(
+            	self::MANY_MANY, 
+            	'People', 
+            	'tbl_project_people_execute(project_id, people_id)',
+            	'order'=>'execute_peoples_execute_.seq',
+            	'alias'=>'execute_'
+            ),
+		);
+
 	}
 
 	/**
