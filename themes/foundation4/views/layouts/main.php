@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<meta name="language" content="en" />
+	<meta name="lang" content="zh" />
 	<meta name="viewport" content="width=device-width" />
   
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/foundation.css" />
