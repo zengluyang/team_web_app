@@ -119,8 +119,8 @@ class Project extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'liability_peoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_liability(project_id, people_id)','order'=>''),
-            'execute_peoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_execute(project_id, people_id)','order'=>''),
+			'liability_peoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_liability(project_id, people_id)','order'=>'liability_peoples_liability_.seq','alias'=>'liability_'),
+            'execute_peoples' => array(self::MANY_MANY, 'People', 'tbl_project_people_execute(project_id, people_id)','order'=>'execute_peoples_execute_.seq','alias'=>'execute_'),
 		);
 	}
 
