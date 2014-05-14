@@ -227,6 +227,8 @@ class Paper extends CActiveRecord
             'uploadedFile' => '论文文件',
 			'is_high_level' => '高水平',
 			'maintainer_id' => '维护人员',
+            'reim_projects' => '报账项目',
+            'fund_projects' => '资助项目'
 		);
 	}
 
