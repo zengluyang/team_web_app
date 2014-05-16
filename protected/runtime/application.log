@@ -2735,3 +2735,15 @@ Stack trace:
 REQUEST_URI=/team/index.php?r=paper/admin
 in D:\Dropbox\dev_htdocs\team\protected\controllers\PaperController.php (337)
 in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/16 06:29:01 [warning] [application] Failed to set unsafe attribute "peoples" of "Paper".
+in D:\Dropbox\dev_htdocs\team\protected\controllers\PaperController.php (250)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/16 06:29:01 [warning] [application] Failed to set unsafe attribute "uploadedFile" of "Paper".
+in D:\Dropbox\dev_htdocs\team\protected\controllers\PaperController.php (250)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/16 06:29:01 [warning] [application] Failed to set unsafe attribute "fund_projects" of "Paper".
+in D:\Dropbox\dev_htdocs\team\protected\controllers\PaperController.php (250)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/16 06:29:01 [warning] [application] Failed to set unsafe attribute "reim_projects" of "Paper".
+in D:\Dropbox\dev_htdocs\team\protected\controllers\PaperController.php (250)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
