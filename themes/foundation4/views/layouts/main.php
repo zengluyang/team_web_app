@@ -16,11 +16,23 @@
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 <body>
+	<div class="clearfix" style="height:6em;background-color: #f3f3f3">
+		<div class="left" style="padding:1em 1em 1em 1em;">
+			<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" alt="uestc logo"/>
+		</div>
+		<div class="left" style="padding:1em 1em 0em 1em;text-align: center;">
+			<h1 style="font-family: 'Microsoft YaHei';"><em>网络技术团队</em></h1>
+		</div>
+		<div class="right" style="padding:2em 2em 0em 1em;">
+			<input  type="text" placeholder="搜索"/>
+		</div>
+		<div class="clearfix"/>
+	</div>
 	<div class="">
 	<nav class="top-bar" data-topbar>
 		<ul class="title-area">
 			<li class="name">
-				<h1><a href="index.php">网络技术团队</a></h1>
+				<h1><a href="index.php">首页</a></h1>
 			</li>
     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
 			<li class="toggle-topbar menu-icon"><a href="#"><span>导航</span></a></li>
@@ -103,6 +115,7 @@ $this->widget('zii.widget.CMenu',array(
 		</section>
 	</nav>
 	</div>
+
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
