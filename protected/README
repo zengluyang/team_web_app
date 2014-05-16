@@ -1,2 +1,4 @@
- #php -l static code analysis
+#php -l static code analysis
 find ./views/ ./controllers/ ./models/ -exec php -l {} \;
+#count code lines
+wc `find ./views/ ./controllers/ ./models/ | grep .php`
