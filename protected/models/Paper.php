@@ -48,6 +48,7 @@ class Paper extends CActiveRecord
     const LEVEL_CONFERENCE = '会议';
     const LEVEL_FIRST_GRADE = '一级';
     const LEVEL_HIGH_LEVEL = '高水平';
+    const LEVEL_OTHER_PUB = '其它刊物';
 
     const PROJECT_FUND=0;
     const PROJECT_REIM=1;

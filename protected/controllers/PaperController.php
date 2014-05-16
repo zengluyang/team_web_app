@@ -334,7 +334,7 @@ class PaperController extends Controller
         $isByProject = false;
         $fileName = array();
         $criteria = new CDbCriteria();
-        $criteria->with = array('peoples');
+        $criteria->with = array('peoples','fund_projects','reim_projects');
         $criteria->together = true;
         $criteria->group = 't.id';
         $params = array();
@@ -346,7 +346,7 @@ class PaperController extends Controller
             $people = People::model()->find('id=:id',array(':id'=>$_GET['People']['id']));
             $peopleName = isset($people) ? $people->name : "";
             array_push($fileName,$peopleName."发表");
-            $criteria->addCondition('peoples.id=:people_id');
+            $criteria->addCondition('peoples_.id=:people_id');
             $params[':people_id']=$_GET['People']['id'];
         };
         if(isset($_GET['Paper']['maintainer_id']) && $_GET['Paper']['maintainer_id']){
@@ -358,9 +358,19 @@ class PaperController extends Controller
             $criteria->addCondition('t.maintainer_id=:maintainer_id');
             $params[':maintainer_id']=$_GET['Paper']['maintainer_id'];
         }
-        if(isset($_GET['project_id']) && $_GET['project_id']){
+        if(isset($_GET['Project']['fund_id']) && $_GET['Project']['fund_id']){
             $isByProject = true;
-            //@TODO finish this when Project controller is done.
+            $project=Project::model()->find('id=:id',array(':id'=>$_GET['Project']['fund_id']));
+            array_push($fileName,'支柱项目为'.$project->name);
+            $criteria->addCondition('fund_.id=:fund_id');
+            $params[':fund_id']=$_GET['Project']['fund_id'];
+        }
+        if(isset($_GET['Project']['reim_id']) && $_GET['Project']['reim_id']){
+            $isByProject = true;
+            $project=Project::model()->find('id=:id',array(':id'=>$_GET['Project']['reim_id']));
+            array_push($fileName,'报账项目为'.$project->name);
+            $criteria->addCondition('reim_.id=:reim_id');
+            $params[':reim_id']=$_GET['Project']['reim_id'];
         }
         if(isset($_GET['start_date']) && $_GET['start_date']){
             $isByDate = true;
@@ -373,6 +383,41 @@ class PaperController extends Controller
             array_push($fileName,'在'.$_GET['end_date'].'之前');
             $criteria->addCondition('t.index_date < :end_date');
             $params[':end_date']=$_GET['end_date'];
+        }
+        if(isset($_GET['Paper']['is_first_grade']) && $_GET['Paper']['is_first_grade'] ){
+            array_push($fileName,'级别为'.Paper::LEVEL_FIRST_GRADE);
+            $criteria->addCondition('t.is_first_grade = :is_first_grade');
+            $params[':is_first_grade']=$_GET['Paper']['is_first_grade'];
+        }
+        if(isset($_GET['Paper']['is_core']) && $_GET['Paper']['is_core'] ){
+            array_push($fileName,'级别为'.Paper::LEVEL_CORE);
+            $criteria->addCondition('t.is_core = :is_core');
+            $params[':is_core']=$_GET['Paper']['is_core'];
+        }
+        if(isset($_GET['Paper']['other_pub']) && $_GET['Paper']['other_pub'] ){
+            array_push($fileName,'级别为'.Paper::LEVEL_OTHER_PUB);
+            $criteria->addCondition('t.other_pub = :other_pub');
+            $params[':other_pub']=$_GET['Paper']['other_pub'];
+        }
+        if(isset($_GET['Paper']['is_journal']) && $_GET['Paper']['is_journal'] ){
+            array_push($fileName,'级别为'.Paper::LEVEL_JOURNAL);
+            $criteria->addCondition('t.is_journal = :is_journal');
+            $params[':is_journal']=$_GET['Paper']['is_journal'];
+        }
+        if(isset($_GET['Paper']['is_conference']) && $_GET['Paper']['is_conference'] ){
+            array_push($fileName,'级别为'.Paper::LEVEL_CONFERENCE);
+            $criteria->addCondition('t.is_conference = :is_conference');
+            $params[':is_conference']=$_GET['Paper']['is_conference'];
+        }
+        if(isset($_GET['Paper']['is_intl']) && $_GET['Paper']['is_intl'] ){
+            array_push($fileName,'级别为'.Paper::LEVEL_INTL);
+            $criteria->addCondition('t.is_intl = :is_intl');
+            $params[':is_intl']=$_GET['Paper']['is_intl'];
+        }
+        if(isset($_GET['Paper']['is_domestic']) && $_GET['Paper']['is_domestic'] ){
+            array_push($fileName,'级别为'.Paper::LEVEL_DOMESTIC);
+            $criteria->addCondition('t.is_domestic = :is_domestic');
+            $params[':is_domestic']=$_GET['Paper']['is_domestic'];
         }
         //var_dump($params);
         $criteria->params = $params;
