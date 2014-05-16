@@ -396,8 +396,7 @@ class PaperController extends Controller
         }
         if(isset($_GET['Paper']['other_pub']) && $_GET['Paper']['other_pub'] ){
             array_push($fileName,'级别为'.Paper::LEVEL_OTHER_PUB);
-            $criteria->addCondition('t.other_pub = :other_pub');
-            $params[':other_pub']=$_GET['Paper']['other_pub'];
+            $criteria->addCondition('t.other_pub != 0');
         }
         if(isset($_GET['Paper']['is_journal']) && $_GET['Paper']['is_journal'] ){
             array_push($fileName,'级别为'.Paper::LEVEL_JOURNAL);
