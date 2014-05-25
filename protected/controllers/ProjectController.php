@@ -226,21 +226,31 @@ class ProjectController extends Controller
 			if($_GET['Project']['is_major']=='0') {
 				$model->is_major="";
 			}
+			$peopleNameArr=array();
 			if(!empty($_GET['People']['execute_id'])){
 				$people=People::model()->findByPk($_GET['People']['execute_id']);
 				$model->searchExecutePeople=$people->id;
+				$peopleNameArr[]=$people->name;
 
 			}
 			if(!empty($_GET['People']['liability_id'])){
 				$people=People::model()->findByPk($_GET['People']['liability_id']);
 				$model->searchExecutePeople=$people->id;
+				$peopleNameArr[]=$people->name;
 			}
 			
 		}
 		//var_dump($model->execute_peoples);
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+		if( isset($_GET['export']) && $_GET['export']) {
+			$dataProvider=$model->search();
+			$dataProvider->pagination=false;
+			self::exportProjectsToXlsByPeople($dataProvider->getData(),'参与者包括'.implode('， ',$peopleNameArr).'的项目');
+		} else {
+			$this->render('admin',array(
+				'model'=>$model,
+			));
+		}
+
 	}
 
 	/**
@@ -418,6 +428,60 @@ class ProjectController extends Controller
         return true;
     }
 
+    private function exportProjectsToXlsByPeople($papers,$fileName='export'){
 
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->getProperties()->setTitle("导出的科研项目");
+        $objPHPExcel->setActiveSheetIndex(0);
+
+        $i=1;
+        $activeSheet = $objPHPExcel->getActiveSheet();
+        $activeSheet->setTitle('papers');
+        $activeSheet->SetCellValue('A'.$i,'名称');
+        $activeSheet->SetCellValue('B'.$i,'编号');
+        $activeSheet->SetCellValue('C'.$i,'经费本编号');
+        $activeSheet->SetCellValue('D'.$i,'级别');
+        $activeSheet->SetCellValue('E'.$i,'开始时间');
+        $activeSheet->SetCellValue('F'.$i,'截至时间');
+        $activeSheet->SetCellValue('G'.$i,'结题时间');
+        $activeSheet->SetCellValue('H'.$i,'申报时间');
+        $activeSheet->SetCellValue('I'.$i,'通过时间');
+        $activeSheet->SetCellValue('J'.$i,'申报经费');
+        $activeSheet->SetCellValue('K'.$i,'立项经费');
+        $activeSheet->SetCellValue('L'.$i,'实际执行人员');
+        $activeSheet->SetCellValue('M'.$i,'责任书人员');
+        $i++;
+        foreach($papers as $p) {
+            $activeSheet->SetCellValue('A'.$i,$i-1);
+            $activeSheet->SetCellValue('B'.$i,$p->name);
+            $activeSheet->SetCellValue('C'.$i,$p->fund_number);
+            $activeSheet->SetCellValue('D'.$i,$p->getLevelString());
+            $activeSheet->SetCellValue('E'.$i,$p->start_date);
+            $activeSheet->SetCellValue('F'.$i,$p->deadline_date);
+            $activeSheet->SetCellValue('G'.$i,$p->conclude_date);
+            $activeSheet->SetCellValue('H'.$i,$p->app_date);
+            $activeSheet->SetCellValue('I'.$i,$p->pass_date);
+            $activeSheet->SetCellValue('J'.$i,$p->app_fund);
+            $activeSheet->SetCellValue('K'.$i,$p->pass_fund);
+            $activeSheet->SetCellValue('L'.$i,$p->getExecutePeoples('，'));
+            $activeSheet->SetCellValue('M'.$i,$p->getLiabilityPeoples('，'));
+            $i++;
+
+        }
+        //http://stackoverflow.com/questions/19155488/array-to-excel-2007-using-phpexcel
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        header("Pragma: public");
+        header("Expires: 0");
+        header("Cache-Control:must-revalidate, post-check=0, pre-check=0");
+        header("Content-Type:application/force-download");
+        header("Content-Type:application/vnd.ms-excel");
+        header("Content-Type:application/octet-stream");
+        header("Content-Type:application/download");;
+        //$fileName = iconv('utf-8', "gb2312", $fileName);
+        header('Content-Disposition:attachment;filename="'.$fileName.'.xlsx"');
+        header("Content-Transfer-Encoding:binary");
+        $objWriter->save('php://output');
+
+    }
 
 }

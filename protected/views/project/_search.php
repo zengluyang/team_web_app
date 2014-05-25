@@ -9,6 +9,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
+	'id'=>'search_form',
 )); ?>
 
 	<div class="row">
@@ -158,17 +159,28 @@
     </div>
 	<div class="row buttons">
 		<div class="medium-4 columns end">
-		<?php echo CHtml::submitButton('Search',array('class'=>'button small radius')); ?>
+		<?php 
+		echo CHtml::hiddenField('export','0');
+		echo CHtml::submitButton('筛选',array('id'=>'search_btn','class'=>'button small radius','style'=>'margin-top:1em;')); 
+		echo CHtml::Button('导出',array('id'=>'export_btn','class'=>'button small radius','style'=>'margin-left:1em;'));
+		?>
 		</div>
 	</div>
-
 
 <?php $this->endWidget(); ?>
 
 </div><!-- search-form -->
 <script type="text/javascript">
 $(document).ready(function(){
-	
+		$(document).ready(function(){
+            $('#export_btn').click(function(){
+                $('#export').val('1');
+                window.open("?"+$("#search_form").serialize(), "_blank");
+            });
+            $('#search_btn').click(function(){
+                $('#export').val('0');
+            });
+        });
 		$("#execute_people").select2({
 			placeholder: "选择人员",
 			width: 'resolve',

@@ -2747,3 +2747,308 @@ in D:\Dropbox\dev_htdocs\team\index.php (13)
 2014/05/16 06:29:01 [warning] [application] Failed to set unsafe attribute "reim_projects" of "Paper".
 in D:\Dropbox\dev_htdocs\team\protected\controllers\PaperController.php (250)
 in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/21 02:11:08 [warning] [application] Failed to set unsafe attribute "peoples" of "Paper".
+in D:\Dropbox\dev_htdocs\team\protected\controllers\PaperController.php (223)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/21 02:11:08 [warning] [application] Failed to set unsafe attribute "uploadedFile" of "Paper".
+in D:\Dropbox\dev_htdocs\team\protected\controllers\PaperController.php (223)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/25 08:29:44 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'execute_peoples.id' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM (SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`number` AS `t0_c2`, `t`.`fund_number` AS `t0_c3`, `t`.`is_intl` AS `t0_c4`, `t`.`is_national` AS `t0_c5`, `t`.`is_provincial` AS `t0_c6`, `t`.`is_city` AS `t0_c7`, `t`.`is_school` AS `t0_c8`, `t`.`is_enterprise` AS `t0_c9`, `t`.`is_NSF` AS `t0_c10`, `t`.`is_973` AS `t0_c11`, `t`.`is_863` AS `t0_c12`, `t`.`is_NKTRD` AS `t0_c13`, `t`.`is_DFME` AS `t0_c14`, `t`.`is_major` AS `t0_c15`, `t`.`start_date` AS `t0_c16`, `t`.`deadline_date` AS `t0_c17`, `t`.`conclude_date` AS `t0_c18`, `t`.`app_date` AS `t0_c19`, `t`.`pass_date` AS `t0_c20`, `t`.`app_fund` AS `t0_c21`, `t`.`pass_fund` AS `t0_c22`, `execute_`.`id` AS `t1_c0`, `execute_`.`name` AS `t1_c1`, `liability_`.`id` AS `t2_c0`, `liability_`.`name` AS `t2_c1` FROM `tbl_project` `t`  LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_` ON (`t`.`id`=`execute_peoples_execute_`.`project_id`) LEFT OUTER JOIN `tbl_people` `execute_` ON (`execute_`.`id`=`execute_peoples_execute_`.`people_id`)  LEFT OUTER JOIN `tbl_project_people_liability` `liability_peoples_liability_` ON (`t`.`id`=`liability_peoples_liability_`.`project_id`) LEFT OUTER JOIN `tbl_people` `liability_` ON (`liability_`.`id`=`liability_peoples_liability_`.`people_id`)  WHERE (execute_peoples.id LIKE :ycp0) GROUP BY t.id) sq.
+in D:\Dropbox\dev_htdocs\team\protected\views\project\admin.php (73)
+in D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php (249)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/25 08:29:44 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand 无法执行 SQL 语句: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'execute_peoples.id' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM (SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`number` AS `t0_c2`, `t`.`fund_number` AS `t0_c3`, `t`.`is_intl` AS `t0_c4`, `t`.`is_national` AS `t0_c5`, `t`.`is_provincial` AS `t0_c6`, `t`.`is_city` AS `t0_c7`, `t`.`is_school` AS `t0_c8`, `t`.`is_enterprise` AS `t0_c9`, `t`.`is_NSF` AS `t0_c10`, `t`.`is_973` AS `t0_c11`, `t`.`is_863` AS `t0_c12`, `t`.`is_NKTRD` AS `t0_c13`, `t`.`is_DFME` AS `t0_c14`, `t`.`is_major` AS `t0_c15`, `t`.`start_date` AS `t0_c16`, `t`.`deadline_date` AS `t0_c17`, `t`.`conclude_date` AS `t0_c18`, `t`.`app_date` AS `t0_c19`, `t`.`pass_date` AS `t0_c20`, `t`.`app_fund` AS `t0_c21`, `t`.`pass_fund` AS `t0_c22`, `execute_`.`id` AS `t1_c0`, `execute_`.`name` AS `t1_c1`, `liability_`.`id` AS `t2_c0`, `liability_`.`name` AS `t2_c1` FROM `tbl_project` `t`  LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_` ON (`t`.`id`=`execute_peoples_execute_`.`project_id`) LEFT OUTER JOIN `tbl_people` `execute_` ON (`execute_`.`id`=`execute_peoples_execute_`.`people_id`)  LEFT OUTER JOIN `tbl_project_people_liability` `liability_peoples_liability_` ON (`t`.`id`=`liability_peoples_liability_`.`project_id`) LEFT OUTER JOIN `tbl_people` `liability_` ON (`liability_`.`id`=`liability_peoples_liability_`.`people_id`)  WHERE (execute_peoples.id LIKE :ycp0) GROUP BY t.id) sq' in D:\Dropbox\dev_htdocs\team\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\Dropbox\dev_htdocs\team\yii\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveFinder.php(740): CDbCommand->queryScalar()
+#2 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 D:\Dropbox\dev_htdocs\team\yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 D:\Dropbox\dev_htdocs\team\yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 D:\Dropbox\dev_htdocs\team\yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 D:\Dropbox\dev_htdocs\team\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 D:\Dropbox\dev_htdocs\team\yii\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 D:\Dropbox\dev_htdocs\team\yii\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(147): CGridView->init()
+#11 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#12 D:\Dropbox\dev_htdocs\team\protected\views\project\admin.php(73): CBaseController->widget('zii.widgets.gri...', Array)
+#13 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(126): require('D:\Dropbox\dev_...')
+#14 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\Dropbox\dev_...', Array, true)
+#15 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(869): CBaseController->renderFile('D:\Dropbox\dev_...', Array, true)
+#16 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#17 D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php(249): CController->render('admin', Array)
+#18 D:\Dropbox\dev_htdocs\team\yii\framework\web\actions\CInlineAction.php(49): ProjectController->actionAdmin()
+#19 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#22 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(291): CFilterChain->run()
+#26 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#28 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('project/admin')
+#29 D:\Dropbox\dev_htdocs\team\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#30 D:\Dropbox\dev_htdocs\team\index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/team/index.php?People%5Bexecute_id%5D=48&People%5Bliability_id%5D=&Project%5Bname%5D=&Project%5Bnumber%5D=&Project%5Bfund_number%5D=&Project%5Bis_intl%5D=0&Project%5Bis_national%5D=0&Project%5Bis_provincial%5D=0&Project%5Bis_city%5D=0&Project%5Bis_school%5D=0&Project%5Bis_enterprise%5D=0&Project%5Bis_NSF%5D=0&Project%5Bis_973%5D=0&Project%5Bis_863%5D=0&Project%5Bis_NKTRD%5D=0&Project%5Bis_DFME%5D=0&Project%5Bis_major%5D=0&Project%5Bstart_date%5D=&Project%5Bdeadline_date%5D=&Project%5Bconclude_date%5D=&Project%5Bapp_date%5D=&Project%5Bpass_date%5D=&Project%5Bapp_fund%5D=&Project%5Bpass_fund%5D=&ajax=project-grid&r=project%2Fadmin
+HTTP_REFERER=http://127.0.0.1/team/index.php?r=project/admin
+---
+2014/05/25 08:30:38 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'execute_peoples.id' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM (SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`number` AS `t0_c2`, `t`.`fund_number` AS `t0_c3`, `t`.`is_intl` AS `t0_c4`, `t`.`is_national` AS `t0_c5`, `t`.`is_provincial` AS `t0_c6`, `t`.`is_city` AS `t0_c7`, `t`.`is_school` AS `t0_c8`, `t`.`is_enterprise` AS `t0_c9`, `t`.`is_NSF` AS `t0_c10`, `t`.`is_973` AS `t0_c11`, `t`.`is_863` AS `t0_c12`, `t`.`is_NKTRD` AS `t0_c13`, `t`.`is_DFME` AS `t0_c14`, `t`.`is_major` AS `t0_c15`, `t`.`start_date` AS `t0_c16`, `t`.`deadline_date` AS `t0_c17`, `t`.`conclude_date` AS `t0_c18`, `t`.`app_date` AS `t0_c19`, `t`.`pass_date` AS `t0_c20`, `t`.`app_fund` AS `t0_c21`, `t`.`pass_fund` AS `t0_c22`, `execute_`.`id` AS `t1_c0`, `execute_`.`name` AS `t1_c1`, `liability_`.`id` AS `t2_c0`, `liability_`.`name` AS `t2_c1` FROM `tbl_project` `t`  LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_` ON (`t`.`id`=`execute_peoples_execute_`.`project_id`) LEFT OUTER JOIN `tbl_people` `execute_` ON (`execute_`.`id`=`execute_peoples_execute_`.`people_id`)  LEFT OUTER JOIN `tbl_project_people_liability` `liability_peoples_liability_` ON (`t`.`id`=`liability_peoples_liability_`.`project_id`) LEFT OUTER JOIN `tbl_people` `liability_` ON (`liability_`.`id`=`liability_peoples_liability_`.`people_id`)  WHERE (execute_peoples.id LIKE :ycp0) GROUP BY t.id) sq.
+in D:\Dropbox\dev_htdocs\team\protected\views\project\admin.php (73)
+in D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php (249)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/25 08:30:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand 无法执行 SQL 语句: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'execute_peoples.id' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM (SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`number` AS `t0_c2`, `t`.`fund_number` AS `t0_c3`, `t`.`is_intl` AS `t0_c4`, `t`.`is_national` AS `t0_c5`, `t`.`is_provincial` AS `t0_c6`, `t`.`is_city` AS `t0_c7`, `t`.`is_school` AS `t0_c8`, `t`.`is_enterprise` AS `t0_c9`, `t`.`is_NSF` AS `t0_c10`, `t`.`is_973` AS `t0_c11`, `t`.`is_863` AS `t0_c12`, `t`.`is_NKTRD` AS `t0_c13`, `t`.`is_DFME` AS `t0_c14`, `t`.`is_major` AS `t0_c15`, `t`.`start_date` AS `t0_c16`, `t`.`deadline_date` AS `t0_c17`, `t`.`conclude_date` AS `t0_c18`, `t`.`app_date` AS `t0_c19`, `t`.`pass_date` AS `t0_c20`, `t`.`app_fund` AS `t0_c21`, `t`.`pass_fund` AS `t0_c22`, `execute_`.`id` AS `t1_c0`, `execute_`.`name` AS `t1_c1`, `liability_`.`id` AS `t2_c0`, `liability_`.`name` AS `t2_c1` FROM `tbl_project` `t`  LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_` ON (`t`.`id`=`execute_peoples_execute_`.`project_id`) LEFT OUTER JOIN `tbl_people` `execute_` ON (`execute_`.`id`=`execute_peoples_execute_`.`people_id`)  LEFT OUTER JOIN `tbl_project_people_liability` `liability_peoples_liability_` ON (`t`.`id`=`liability_peoples_liability_`.`project_id`) LEFT OUTER JOIN `tbl_people` `liability_` ON (`liability_`.`id`=`liability_peoples_liability_`.`people_id`)  WHERE (execute_peoples.id LIKE :ycp0) GROUP BY t.id) sq' in D:\Dropbox\dev_htdocs\team\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\Dropbox\dev_htdocs\team\yii\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveFinder.php(740): CDbCommand->queryScalar()
+#2 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 D:\Dropbox\dev_htdocs\team\yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 D:\Dropbox\dev_htdocs\team\yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 D:\Dropbox\dev_htdocs\team\yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 D:\Dropbox\dev_htdocs\team\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 D:\Dropbox\dev_htdocs\team\yii\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 D:\Dropbox\dev_htdocs\team\yii\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(147): CGridView->init()
+#11 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#12 D:\Dropbox\dev_htdocs\team\protected\views\project\admin.php(73): CBaseController->widget('zii.widgets.gri...', Array)
+#13 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(126): require('D:\Dropbox\dev_...')
+#14 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\Dropbox\dev_...', Array, true)
+#15 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(869): CBaseController->renderFile('D:\Dropbox\dev_...', Array, true)
+#16 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#17 D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php(249): CController->render('admin', Array)
+#18 D:\Dropbox\dev_htdocs\team\yii\framework\web\actions\CInlineAction.php(49): ProjectController->actionAdmin()
+#19 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#22 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(291): CFilterChain->run()
+#26 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#28 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('project/admin')
+#29 D:\Dropbox\dev_htdocs\team\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#30 D:\Dropbox\dev_htdocs\team\index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/team/index.php?People%5Bexecute_id%5D=48&People%5Bliability_id%5D=&Project%5Bname%5D=&Project%5Bnumber%5D=&Project%5Bfund_number%5D=&Project%5Bis_intl%5D=0&Project%5Bis_national%5D=0&Project%5Bis_provincial%5D=0&Project%5Bis_city%5D=0&Project%5Bis_school%5D=0&Project%5Bis_enterprise%5D=0&Project%5Bis_NSF%5D=0&Project%5Bis_973%5D=0&Project%5Bis_863%5D=0&Project%5Bis_NKTRD%5D=0&Project%5Bis_DFME%5D=0&Project%5Bis_major%5D=0&Project%5Bstart_date%5D=&Project%5Bdeadline_date%5D=&Project%5Bconclude_date%5D=&Project%5Bapp_date%5D=&Project%5Bpass_date%5D=&Project%5Bapp_fund%5D=&Project%5Bpass_fund%5D=&ajax=project-grid&r=project%2Fadmin
+HTTP_REFERER=http://127.0.0.1/team/index.php?r=project/admin
+---
+2014/05/25 08:30:55 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'execute_peoples.id' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM (SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`number` AS `t0_c2`, `t`.`fund_number` AS `t0_c3`, `t`.`is_intl` AS `t0_c4`, `t`.`is_national` AS `t0_c5`, `t`.`is_provincial` AS `t0_c6`, `t`.`is_city` AS `t0_c7`, `t`.`is_school` AS `t0_c8`, `t`.`is_enterprise` AS `t0_c9`, `t`.`is_NSF` AS `t0_c10`, `t`.`is_973` AS `t0_c11`, `t`.`is_863` AS `t0_c12`, `t`.`is_NKTRD` AS `t0_c13`, `t`.`is_DFME` AS `t0_c14`, `t`.`is_major` AS `t0_c15`, `t`.`start_date` AS `t0_c16`, `t`.`deadline_date` AS `t0_c17`, `t`.`conclude_date` AS `t0_c18`, `t`.`app_date` AS `t0_c19`, `t`.`pass_date` AS `t0_c20`, `t`.`app_fund` AS `t0_c21`, `t`.`pass_fund` AS `t0_c22`, `execute_`.`id` AS `t1_c0`, `execute_`.`name` AS `t1_c1`, `liability_`.`id` AS `t2_c0`, `liability_`.`name` AS `t2_c1` FROM `tbl_project` `t`  LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_` ON (`t`.`id`=`execute_peoples_execute_`.`project_id`) LEFT OUTER JOIN `tbl_people` `execute_` ON (`execute_`.`id`=`execute_peoples_execute_`.`people_id`)  LEFT OUTER JOIN `tbl_project_people_liability` `liability_peoples_liability_` ON (`t`.`id`=`liability_peoples_liability_`.`project_id`) LEFT OUTER JOIN `tbl_people` `liability_` ON (`liability_`.`id`=`liability_peoples_liability_`.`people_id`)  WHERE (execute_peoples.id LIKE :ycp0) GROUP BY t.id) sq.
+in D:\Dropbox\dev_htdocs\team\protected\views\project\admin.php (73)
+in D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php (249)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/25 08:30:55 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand 无法执行 SQL 语句: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'execute_peoples.id' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM (SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`number` AS `t0_c2`, `t`.`fund_number` AS `t0_c3`, `t`.`is_intl` AS `t0_c4`, `t`.`is_national` AS `t0_c5`, `t`.`is_provincial` AS `t0_c6`, `t`.`is_city` AS `t0_c7`, `t`.`is_school` AS `t0_c8`, `t`.`is_enterprise` AS `t0_c9`, `t`.`is_NSF` AS `t0_c10`, `t`.`is_973` AS `t0_c11`, `t`.`is_863` AS `t0_c12`, `t`.`is_NKTRD` AS `t0_c13`, `t`.`is_DFME` AS `t0_c14`, `t`.`is_major` AS `t0_c15`, `t`.`start_date` AS `t0_c16`, `t`.`deadline_date` AS `t0_c17`, `t`.`conclude_date` AS `t0_c18`, `t`.`app_date` AS `t0_c19`, `t`.`pass_date` AS `t0_c20`, `t`.`app_fund` AS `t0_c21`, `t`.`pass_fund` AS `t0_c22`, `execute_`.`id` AS `t1_c0`, `execute_`.`name` AS `t1_c1`, `liability_`.`id` AS `t2_c0`, `liability_`.`name` AS `t2_c1` FROM `tbl_project` `t`  LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_` ON (`t`.`id`=`execute_peoples_execute_`.`project_id`) LEFT OUTER JOIN `tbl_people` `execute_` ON (`execute_`.`id`=`execute_peoples_execute_`.`people_id`)  LEFT OUTER JOIN `tbl_project_people_liability` `liability_peoples_liability_` ON (`t`.`id`=`liability_peoples_liability_`.`project_id`) LEFT OUTER JOIN `tbl_people` `liability_` ON (`liability_`.`id`=`liability_peoples_liability_`.`people_id`)  WHERE (execute_peoples.id LIKE :ycp0) GROUP BY t.id) sq' in D:\Dropbox\dev_htdocs\team\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\Dropbox\dev_htdocs\team\yii\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveFinder.php(740): CDbCommand->queryScalar()
+#2 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 D:\Dropbox\dev_htdocs\team\yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 D:\Dropbox\dev_htdocs\team\yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 D:\Dropbox\dev_htdocs\team\yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 D:\Dropbox\dev_htdocs\team\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 D:\Dropbox\dev_htdocs\team\yii\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 D:\Dropbox\dev_htdocs\team\yii\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(147): CGridView->init()
+#11 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#12 D:\Dropbox\dev_htdocs\team\protected\views\project\admin.php(73): CBaseController->widget('zii.widgets.gri...', Array)
+#13 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(126): require('D:\Dropbox\dev_...')
+#14 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\Dropbox\dev_...', Array, true)
+#15 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(869): CBaseController->renderFile('D:\Dropbox\dev_...', Array, true)
+#16 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#17 D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php(249): CController->render('admin', Array)
+#18 D:\Dropbox\dev_htdocs\team\yii\framework\web\actions\CInlineAction.php(49): ProjectController->actionAdmin()
+#19 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#22 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(291): CFilterChain->run()
+#26 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#28 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('project/admin')
+#29 D:\Dropbox\dev_htdocs\team\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#30 D:\Dropbox\dev_htdocs\team\index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/team/index.php?r=project%2Fadmin&Project%5Bname%5D=&Project%5Bnumber%5D=&Project%5Bfund_number%5D=&Project%5Bis_intl%5D=0&Project%5Bis_national%5D=0&Project%5Bis_provincial%5D=0&Project%5Bis_city%5D=0&Project%5Bis_school%5D=0&Project%5Bis_enterprise%5D=0&Project%5Bis_NSF%5D=0&Project%5Bis_973%5D=0&Project%5Bis_863%5D=0&Project%5Bis_NKTRD%5D=0&Project%5Bis_DFME%5D=0&Project%5Bis_major%5D=0&Project%5Bstart_date%5D=&Project%5Bdeadline_date%5D=&Project%5Bconclude_date%5D=&Project%5Bapp_date%5D=&Project%5Bpass_date%5D=&Project%5Bapp_fund%5D=&Project%5Bpass_fund%5D=&People%5Bexecute_id%5D=48&People%5Bliability_id%5D=
+HTTP_REFERER=http://127.0.0.1/team/index.php?r=project/admin
+---
+2014/05/25 08:34:16 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'execute_peoples.id' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM (SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`number` AS `t0_c2`, `t`.`fund_number` AS `t0_c3`, `t`.`is_intl` AS `t0_c4`, `t`.`is_national` AS `t0_c5`, `t`.`is_provincial` AS `t0_c6`, `t`.`is_city` AS `t0_c7`, `t`.`is_school` AS `t0_c8`, `t`.`is_enterprise` AS `t0_c9`, `t`.`is_NSF` AS `t0_c10`, `t`.`is_973` AS `t0_c11`, `t`.`is_863` AS `t0_c12`, `t`.`is_NKTRD` AS `t0_c13`, `t`.`is_DFME` AS `t0_c14`, `t`.`is_major` AS `t0_c15`, `t`.`start_date` AS `t0_c16`, `t`.`deadline_date` AS `t0_c17`, `t`.`conclude_date` AS `t0_c18`, `t`.`app_date` AS `t0_c19`, `t`.`pass_date` AS `t0_c20`, `t`.`app_fund` AS `t0_c21`, `t`.`pass_fund` AS `t0_c22`, `execute_`.`id` AS `t1_c0`, `execute_`.`name` AS `t1_c1`, `liability_`.`id` AS `t2_c0`, `liability_`.`name` AS `t2_c1` FROM `tbl_project` `t`  LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_` ON (`t`.`id`=`execute_peoples_execute_`.`project_id`) LEFT OUTER JOIN `tbl_people` `execute_` ON (`execute_`.`id`=`execute_peoples_execute_`.`people_id`)  LEFT OUTER JOIN `tbl_project_people_liability` `liability_peoples_liability_` ON (`t`.`id`=`liability_peoples_liability_`.`project_id`) LEFT OUTER JOIN `tbl_people` `liability_` ON (`liability_`.`id`=`liability_peoples_liability_`.`people_id`)  WHERE (execute_peoples.id LIKE :ycp0) GROUP BY t.id) sq.
+in D:\Dropbox\dev_htdocs\team\protected\views\project\admin.php (73)
+in D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php (249)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/25 08:34:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand 无法执行 SQL 语句: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'execute_peoples.id' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM (SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`number` AS `t0_c2`, `t`.`fund_number` AS `t0_c3`, `t`.`is_intl` AS `t0_c4`, `t`.`is_national` AS `t0_c5`, `t`.`is_provincial` AS `t0_c6`, `t`.`is_city` AS `t0_c7`, `t`.`is_school` AS `t0_c8`, `t`.`is_enterprise` AS `t0_c9`, `t`.`is_NSF` AS `t0_c10`, `t`.`is_973` AS `t0_c11`, `t`.`is_863` AS `t0_c12`, `t`.`is_NKTRD` AS `t0_c13`, `t`.`is_DFME` AS `t0_c14`, `t`.`is_major` AS `t0_c15`, `t`.`start_date` AS `t0_c16`, `t`.`deadline_date` AS `t0_c17`, `t`.`conclude_date` AS `t0_c18`, `t`.`app_date` AS `t0_c19`, `t`.`pass_date` AS `t0_c20`, `t`.`app_fund` AS `t0_c21`, `t`.`pass_fund` AS `t0_c22`, `execute_`.`id` AS `t1_c0`, `execute_`.`name` AS `t1_c1`, `liability_`.`id` AS `t2_c0`, `liability_`.`name` AS `t2_c1` FROM `tbl_project` `t`  LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_` ON (`t`.`id`=`execute_peoples_execute_`.`project_id`) LEFT OUTER JOIN `tbl_people` `execute_` ON (`execute_`.`id`=`execute_peoples_execute_`.`people_id`)  LEFT OUTER JOIN `tbl_project_people_liability` `liability_peoples_liability_` ON (`t`.`id`=`liability_peoples_liability_`.`project_id`) LEFT OUTER JOIN `tbl_people` `liability_` ON (`liability_`.`id`=`liability_peoples_liability_`.`people_id`)  WHERE (execute_peoples.id LIKE :ycp0) GROUP BY t.id) sq' in D:\Dropbox\dev_htdocs\team\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\Dropbox\dev_htdocs\team\yii\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveFinder.php(740): CDbCommand->queryScalar()
+#2 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 D:\Dropbox\dev_htdocs\team\yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 D:\Dropbox\dev_htdocs\team\yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 D:\Dropbox\dev_htdocs\team\yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 D:\Dropbox\dev_htdocs\team\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 D:\Dropbox\dev_htdocs\team\yii\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 D:\Dropbox\dev_htdocs\team\yii\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(147): CGridView->init()
+#11 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#12 D:\Dropbox\dev_htdocs\team\protected\views\project\admin.php(73): CBaseController->widget('zii.widgets.gri...', Array)
+#13 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(126): require('D:\Dropbox\dev_...')
+#14 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\Dropbox\dev_...', Array, true)
+#15 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(869): CBaseController->renderFile('D:\Dropbox\dev_...', Array, true)
+#16 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#17 D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php(249): CController->render('admin', Array)
+#18 D:\Dropbox\dev_htdocs\team\yii\framework\web\actions\CInlineAction.php(49): ProjectController->actionAdmin()
+#19 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#22 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(291): CFilterChain->run()
+#26 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#28 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('project/admin')
+#29 D:\Dropbox\dev_htdocs\team\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#30 D:\Dropbox\dev_htdocs\team\index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/team/index.php?r=project%2Fadmin&Project%5Bname%5D=&Project%5Bnumber%5D=&Project%5Bfund_number%5D=&Project%5Bis_intl%5D=0&Project%5Bis_national%5D=0&Project%5Bis_provincial%5D=0&Project%5Bis_city%5D=0&Project%5Bis_school%5D=0&Project%5Bis_enterprise%5D=0&Project%5Bis_NSF%5D=0&Project%5Bis_973%5D=0&Project%5Bis_863%5D=0&Project%5Bis_NKTRD%5D=0&Project%5Bis_DFME%5D=0&Project%5Bis_major%5D=0&Project%5Bstart_date%5D=&Project%5Bdeadline_date%5D=&Project%5Bconclude_date%5D=&Project%5Bapp_date%5D=&Project%5Bpass_date%5D=&Project%5Bapp_fund%5D=&Project%5Bpass_fund%5D=&People%5Bexecute_id%5D=48&People%5Bliability_id%5D=
+HTTP_REFERER=http://127.0.0.1/team/index.php?r=project/admin
+---
+2014/05/25 08:34:30 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'execute_peoples.id' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM (SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`number` AS `t0_c2`, `t`.`fund_number` AS `t0_c3`, `t`.`is_intl` AS `t0_c4`, `t`.`is_national` AS `t0_c5`, `t`.`is_provincial` AS `t0_c6`, `t`.`is_city` AS `t0_c7`, `t`.`is_school` AS `t0_c8`, `t`.`is_enterprise` AS `t0_c9`, `t`.`is_NSF` AS `t0_c10`, `t`.`is_973` AS `t0_c11`, `t`.`is_863` AS `t0_c12`, `t`.`is_NKTRD` AS `t0_c13`, `t`.`is_DFME` AS `t0_c14`, `t`.`is_major` AS `t0_c15`, `t`.`start_date` AS `t0_c16`, `t`.`deadline_date` AS `t0_c17`, `t`.`conclude_date` AS `t0_c18`, `t`.`app_date` AS `t0_c19`, `t`.`pass_date` AS `t0_c20`, `t`.`app_fund` AS `t0_c21`, `t`.`pass_fund` AS `t0_c22`, `execute_`.`id` AS `t1_c0`, `execute_`.`name` AS `t1_c1`, `liability_`.`id` AS `t2_c0`, `liability_`.`name` AS `t2_c1` FROM `tbl_project` `t`  LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_` ON (`t`.`id`=`execute_peoples_execute_`.`project_id`) LEFT OUTER JOIN `tbl_people` `execute_` ON (`execute_`.`id`=`execute_peoples_execute_`.`people_id`)  LEFT OUTER JOIN `tbl_project_people_liability` `liability_peoples_liability_` ON (`t`.`id`=`liability_peoples_liability_`.`project_id`) LEFT OUTER JOIN `tbl_people` `liability_` ON (`liability_`.`id`=`liability_peoples_liability_`.`people_id`)  WHERE (execute_peoples.id LIKE :ycp0) GROUP BY t.id) sq.
+in D:\Dropbox\dev_htdocs\team\protected\views\project\admin.php (73)
+in D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php (249)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/25 08:34:30 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand 无法执行 SQL 语句: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'execute_peoples.id' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM (SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`number` AS `t0_c2`, `t`.`fund_number` AS `t0_c3`, `t`.`is_intl` AS `t0_c4`, `t`.`is_national` AS `t0_c5`, `t`.`is_provincial` AS `t0_c6`, `t`.`is_city` AS `t0_c7`, `t`.`is_school` AS `t0_c8`, `t`.`is_enterprise` AS `t0_c9`, `t`.`is_NSF` AS `t0_c10`, `t`.`is_973` AS `t0_c11`, `t`.`is_863` AS `t0_c12`, `t`.`is_NKTRD` AS `t0_c13`, `t`.`is_DFME` AS `t0_c14`, `t`.`is_major` AS `t0_c15`, `t`.`start_date` AS `t0_c16`, `t`.`deadline_date` AS `t0_c17`, `t`.`conclude_date` AS `t0_c18`, `t`.`app_date` AS `t0_c19`, `t`.`pass_date` AS `t0_c20`, `t`.`app_fund` AS `t0_c21`, `t`.`pass_fund` AS `t0_c22`, `execute_`.`id` AS `t1_c0`, `execute_`.`name` AS `t1_c1`, `liability_`.`id` AS `t2_c0`, `liability_`.`name` AS `t2_c1` FROM `tbl_project` `t`  LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_` ON (`t`.`id`=`execute_peoples_execute_`.`project_id`) LEFT OUTER JOIN `tbl_people` `execute_` ON (`execute_`.`id`=`execute_peoples_execute_`.`people_id`)  LEFT OUTER JOIN `tbl_project_people_liability` `liability_peoples_liability_` ON (`t`.`id`=`liability_peoples_liability_`.`project_id`) LEFT OUTER JOIN `tbl_people` `liability_` ON (`liability_`.`id`=`liability_peoples_liability_`.`people_id`)  WHERE (execute_peoples.id LIKE :ycp0) GROUP BY t.id) sq' in D:\Dropbox\dev_htdocs\team\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\Dropbox\dev_htdocs\team\yii\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveFinder.php(740): CDbCommand->queryScalar()
+#2 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 D:\Dropbox\dev_htdocs\team\yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 D:\Dropbox\dev_htdocs\team\yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 D:\Dropbox\dev_htdocs\team\yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 D:\Dropbox\dev_htdocs\team\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 D:\Dropbox\dev_htdocs\team\yii\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 D:\Dropbox\dev_htdocs\team\yii\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(147): CGridView->init()
+#11 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(172): CBaseController->createWidget('zii.widgets.gri...', Array)
+#12 D:\Dropbox\dev_htdocs\team\protected\views\project\admin.php(73): CBaseController->widget('zii.widgets.gri...', Array)
+#13 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(126): require('D:\Dropbox\dev_...')
+#14 D:\Dropbox\dev_htdocs\team\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('D:\Dropbox\dev_...', Array, true)
+#15 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(869): CBaseController->renderFile('D:\Dropbox\dev_...', Array, true)
+#16 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(782): CController->renderPartial('admin', Array, true)
+#17 D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php(249): CController->render('admin', Array)
+#18 D:\Dropbox\dev_htdocs\team\yii\framework\web\actions\CInlineAction.php(49): ProjectController->actionAdmin()
+#19 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#22 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(291): CFilterChain->run()
+#26 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#28 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('project/admin')
+#29 D:\Dropbox\dev_htdocs\team\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#30 D:\Dropbox\dev_htdocs\team\index.php(13): CApplication->run()
+#31 {main}
+REQUEST_URI=/team/index.php?People%5Bexecute_id%5D=48&People%5Bliability_id%5D=&Project%5Bname%5D=&Project%5Bnumber%5D=&Project%5Bfund_number%5D=&Project%5Bis_intl%5D=0&Project%5Bis_national%5D=0&Project%5Bis_provincial%5D=0&Project%5Bis_city%5D=0&Project%5Bis_school%5D=0&Project%5Bis_enterprise%5D=0&Project%5Bis_NSF%5D=0&Project%5Bis_973%5D=0&Project%5Bis_863%5D=0&Project%5Bis_NKTRD%5D=0&Project%5Bis_DFME%5D=0&Project%5Bis_major%5D=0&Project%5Bstart_date%5D=&Project%5Bdeadline_date%5D=&Project%5Bconclude_date%5D=&Project%5Bapp_date%5D=&Project%5Bpass_date%5D=&Project%5Bapp_fund%5D=&Project%5Bpass_fund%5D=&ajax=project-grid&export=0&r=project%2Fadmin
+HTTP_REFERER=http://127.0.0.1/team/index.php?r=project%2Fadmin
+---
+2014/05/25 08:34:32 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'execute_peoples.id' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM (SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`number` AS `t0_c2`, `t`.`fund_number` AS `t0_c3`, `t`.`is_intl` AS `t0_c4`, `t`.`is_national` AS `t0_c5`, `t`.`is_provincial` AS `t0_c6`, `t`.`is_city` AS `t0_c7`, `t`.`is_school` AS `t0_c8`, `t`.`is_enterprise` AS `t0_c9`, `t`.`is_NSF` AS `t0_c10`, `t`.`is_973` AS `t0_c11`, `t`.`is_863` AS `t0_c12`, `t`.`is_NKTRD` AS `t0_c13`, `t`.`is_DFME` AS `t0_c14`, `t`.`is_major` AS `t0_c15`, `t`.`start_date` AS `t0_c16`, `t`.`deadline_date` AS `t0_c17`, `t`.`conclude_date` AS `t0_c18`, `t`.`app_date` AS `t0_c19`, `t`.`pass_date` AS `t0_c20`, `t`.`app_fund` AS `t0_c21`, `t`.`pass_fund` AS `t0_c22`, `execute_`.`id` AS `t1_c0`, `execute_`.`name` AS `t1_c1`, `liability_`.`id` AS `t2_c0`, `liability_`.`name` AS `t2_c1` FROM `tbl_project` `t`  LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_` ON (`t`.`id`=`execute_peoples_execute_`.`project_id`) LEFT OUTER JOIN `tbl_people` `execute_` ON (`execute_`.`id`=`execute_peoples_execute_`.`people_id`)  LEFT OUTER JOIN `tbl_project_people_liability` `liability_peoples_liability_` ON (`t`.`id`=`liability_peoples_liability_`.`project_id`) LEFT OUTER JOIN `tbl_people` `liability_` ON (`liability_`.`id`=`liability_peoples_liability_`.`people_id`)  WHERE (execute_peoples.id LIKE :ycp0) GROUP BY t.id) sq.
+in D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php (245)
+in D:\Dropbox\dev_htdocs\team\index.php (13)
+2014/05/25 08:34:32 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand 无法执行 SQL 语句: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'execute_peoples.id' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM (SELECT `t`.`id` AS `t0_c0`, `t`.`name` AS `t0_c1`, `t`.`number` AS `t0_c2`, `t`.`fund_number` AS `t0_c3`, `t`.`is_intl` AS `t0_c4`, `t`.`is_national` AS `t0_c5`, `t`.`is_provincial` AS `t0_c6`, `t`.`is_city` AS `t0_c7`, `t`.`is_school` AS `t0_c8`, `t`.`is_enterprise` AS `t0_c9`, `t`.`is_NSF` AS `t0_c10`, `t`.`is_973` AS `t0_c11`, `t`.`is_863` AS `t0_c12`, `t`.`is_NKTRD` AS `t0_c13`, `t`.`is_DFME` AS `t0_c14`, `t`.`is_major` AS `t0_c15`, `t`.`start_date` AS `t0_c16`, `t`.`deadline_date` AS `t0_c17`, `t`.`conclude_date` AS `t0_c18`, `t`.`app_date` AS `t0_c19`, `t`.`pass_date` AS `t0_c20`, `t`.`app_fund` AS `t0_c21`, `t`.`pass_fund` AS `t0_c22`, `execute_`.`id` AS `t1_c0`, `execute_`.`name` AS `t1_c1`, `liability_`.`id` AS `t2_c0`, `liability_`.`name` AS `t2_c1` FROM `tbl_project` `t`  LEFT OUTER JOIN `tbl_project_people_execute` `execute_peoples_execute_` ON (`t`.`id`=`execute_peoples_execute_`.`project_id`) LEFT OUTER JOIN `tbl_people` `execute_` ON (`execute_`.`id`=`execute_peoples_execute_`.`people_id`)  LEFT OUTER JOIN `tbl_project_people_liability` `liability_peoples_liability_` ON (`t`.`id`=`liability_peoples_liability_`.`project_id`) LEFT OUTER JOIN `tbl_people` `liability_` ON (`liability_`.`id`=`liability_peoples_liability_`.`people_id`)  WHERE (execute_peoples.id LIKE :ycp0) GROUP BY t.id) sq' in D:\Dropbox\dev_htdocs\team\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 D:\Dropbox\dev_htdocs\team\yii\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveFinder.php(740): CDbCommand->queryScalar()
+#2 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 D:\Dropbox\dev_htdocs\team\yii\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 D:\Dropbox\dev_htdocs\team\yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 D:\Dropbox\dev_htdocs\team\yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 D:\Dropbox\dev_htdocs\team\yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 D:\Dropbox\dev_htdocs\team\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php(245): CDataProvider->getData()
+#9 D:\Dropbox\dev_htdocs\team\yii\framework\web\actions\CInlineAction.php(49): ProjectController->actionAdmin()
+#10 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#19 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('project/admin')
+#20 D:\Dropbox\dev_htdocs\team\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#21 D:\Dropbox\dev_htdocs\team\index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/team/index.php?r=project%2Fadmin&Project%5Bname%5D=&Project%5Bnumber%5D=&Project%5Bfund_number%5D=&Project%5Bis_intl%5D=0&Project%5Bis_national%5D=0&Project%5Bis_provincial%5D=0&Project%5Bis_city%5D=0&Project%5Bis_school%5D=0&Project%5Bis_enterprise%5D=0&Project%5Bis_NSF%5D=0&Project%5Bis_973%5D=0&Project%5Bis_863%5D=0&Project%5Bis_NKTRD%5D=0&Project%5Bis_DFME%5D=0&Project%5Bis_major%5D=0&Project%5Bstart_date%5D=&Project%5Bdeadline_date%5D=&Project%5Bconclude_date%5D=&Project%5Bapp_date%5D=&Project%5Bpass_date%5D=&Project%5Bapp_fund%5D=&Project%5Bpass_fund%5D=&People%5Bexecute_id%5D=48&People%5Bliability_id%5D=&export=1
+HTTP_REFERER=http://127.0.0.1/team/index.php?r=project%2Fadmin
+---
+2014/05/25 08:34:59 [error] [exception.CException] exception 'CException' with message 'ProjectController and its behaviors do not have a method or closure named "exportPapersToXlsByPeople".' in D:\Dropbox\dev_htdocs\team\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php(245): CComponent->__call('exportPapersToX...', Array)
+#1 D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php(245): ProjectController->exportPapersToXlsByPeople(Array, '???????????????...')
+#2 D:\Dropbox\dev_htdocs\team\yii\framework\web\actions\CInlineAction.php(49): ProjectController->actionAdmin()
+#3 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#12 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('project/admin')
+#13 D:\Dropbox\dev_htdocs\team\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\Dropbox\dev_htdocs\team\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/team/index.php?r=project%2Fadmin&Project%5Bname%5D=&Project%5Bnumber%5D=&Project%5Bfund_number%5D=&Project%5Bis_intl%5D=0&Project%5Bis_national%5D=0&Project%5Bis_provincial%5D=0&Project%5Bis_city%5D=0&Project%5Bis_school%5D=0&Project%5Bis_enterprise%5D=0&Project%5Bis_NSF%5D=0&Project%5Bis_973%5D=0&Project%5Bis_863%5D=0&Project%5Bis_NKTRD%5D=0&Project%5Bis_DFME%5D=0&Project%5Bis_major%5D=0&Project%5Bstart_date%5D=&Project%5Bdeadline_date%5D=&Project%5Bconclude_date%5D=&Project%5Bapp_date%5D=&Project%5Bpass_date%5D=&Project%5Bapp_fund%5D=&Project%5Bpass_fund%5D=&People%5Bexecute_id%5D=48&People%5Bliability_id%5D=&export=1
+HTTP_REFERER=http://127.0.0.1/team/index.php?r=project%2Fadmin
+---
+2014/05/25 08:35:31 [error] [exception.CException] exception 'CException' with message 'ProjectController and its behaviors do not have a method or closure named "exportProjectToXlsByPeople".' in D:\Dropbox\dev_htdocs\team\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php(245): CComponent->__call('exportProjectTo...', Array)
+#1 D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php(245): ProjectController->exportProjectToXlsByPeople(Array, '???????????????...')
+#2 D:\Dropbox\dev_htdocs\team\yii\framework\web\actions\CInlineAction.php(49): ProjectController->actionAdmin()
+#3 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#12 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('project/admin')
+#13 D:\Dropbox\dev_htdocs\team\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\Dropbox\dev_htdocs\team\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/team/index.php?r=project%2Fadmin&Project%5Bname%5D=&Project%5Bnumber%5D=&Project%5Bfund_number%5D=&Project%5Bis_intl%5D=0&Project%5Bis_national%5D=0&Project%5Bis_provincial%5D=0&Project%5Bis_city%5D=0&Project%5Bis_school%5D=0&Project%5Bis_enterprise%5D=0&Project%5Bis_NSF%5D=0&Project%5Bis_973%5D=0&Project%5Bis_863%5D=0&Project%5Bis_NKTRD%5D=0&Project%5Bis_DFME%5D=0&Project%5Bis_major%5D=0&Project%5Bstart_date%5D=&Project%5Bdeadline_date%5D=&Project%5Bconclude_date%5D=&Project%5Bapp_date%5D=&Project%5Bpass_date%5D=&Project%5Bapp_fund%5D=&Project%5Bpass_fund%5D=&People%5Bexecute_id%5D=48&People%5Bliability_id%5D=&export=1
+HTTP_REFERER=http://127.0.0.1/team/index.php?r=project%2Fadmin
+---
+2014/05/25 08:35:37 [error] [exception.CException] exception 'CException' with message 'ProjectController and its behaviors do not have a method or closure named "exportProjectToXlsByPeople".' in D:\Dropbox\dev_htdocs\team\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php(245): CComponent->__call('exportProjectTo...', Array)
+#1 D:\Dropbox\dev_htdocs\team\protected\controllers\ProjectController.php(245): ProjectController->exportProjectToXlsByPeople(Array, '???????????????...')
+#2 D:\Dropbox\dev_htdocs\team\yii\framework\web\actions\CInlineAction.php(49): ProjectController->actionAdmin()
+#3 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 D:\Dropbox\dev_htdocs\team\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 D:\Dropbox\dev_htdocs\team\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(282): CController->run('admin')
+#12 D:\Dropbox\dev_htdocs\team\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('project/admin')
+#13 D:\Dropbox\dev_htdocs\team\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 D:\Dropbox\dev_htdocs\team\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/team/index.php?r=project%2Fadmin&Project%5Bname%5D=&Project%5Bnumber%5D=&Project%5Bfund_number%5D=&Project%5Bis_intl%5D=0&Project%5Bis_national%5D=0&Project%5Bis_provincial%5D=0&Project%5Bis_city%5D=0&Project%5Bis_school%5D=0&Project%5Bis_enterprise%5D=0&Project%5Bis_NSF%5D=0&Project%5Bis_973%5D=0&Project%5Bis_863%5D=0&Project%5Bis_NKTRD%5D=0&Project%5Bis_DFME%5D=0&Project%5Bis_major%5D=0&Project%5Bstart_date%5D=&Project%5Bdeadline_date%5D=&Project%5Bconclude_date%5D=&Project%5Bapp_date%5D=&Project%5Bpass_date%5D=&Project%5Bapp_fund%5D=&Project%5Bpass_fund%5D=&People%5Bexecute_id%5D=48&People%5Bliability_id%5D=&export=1
+HTTP_REFERER=http://127.0.0.1/team/index.php?r=project%2Fadmin
+---

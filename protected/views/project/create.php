@@ -3,8 +3,8 @@
 /* @var $model Project */
 
 $this->breadcrumbs=array(
-	'Projects'=>array('index'),
-	'Create',
+	'科研项目'=>array('index'),
+	'增加',
 );
 
 $this->menu=array(
@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Project</h1>
+<h1>增加科研项目</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

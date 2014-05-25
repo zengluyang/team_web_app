@@ -3,7 +3,7 @@
 /* @var $model Project */
 
 $this->breadcrumbs=array(
-	'Projects'=>array('index'),
+	'科研项目'=>array('index'),
 	$model->name,
 );
 
@@ -16,7 +16,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Project #<?php echo $model->id; ?></h1>
+<h1>查看科研项目 #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

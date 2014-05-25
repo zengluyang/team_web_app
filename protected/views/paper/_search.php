@@ -117,7 +117,7 @@ $peoples = People::model()->findAll();
         ?>
         </div>
     </div>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function(){
             $('#export_btn').click(function(){
                 $('#export').val('1');

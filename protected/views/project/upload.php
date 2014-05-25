@@ -20,5 +20,5 @@ $this->menu=array(
 <h1>选择Excel文件</h1>
 <form method="POST" enctype="multipart/form-data">
 <input type="file" name="spreedSheet" value=""/>
-<input type="submit" value="Upload File"/>'
+<input type="submit" value="上传文件"/>'
 </form>

@@ -71,43 +71,13 @@ class Project extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
 			array('name','required'),
 			array('is_intl, is_national, is_provincial, is_city, is_school, is_enterprise, is_NSF, is_973, is_863, is_NKTRD, is_DFME, is_major', 'numerical', 'integerOnly'=>true),
 			array('name, number, fund_number', 'length', 'max'=>255),
 			array('app_fund, pass_fund', 'length', 'max'=>15),
 			array('start_date, deadline_date, conclude_date, app_date, pass_date', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array(
-				'id, 
-				name, 
-				number, 
-				fund_number, 
-				is_intl, 
-				is_national, 
-				is_provincial, 
-				is_city, 
-				is_school, 
-				is_enterprise, 
-				is_NSF, 
-				is_973, 
-				is_863, 
-				is_NKTRD, 
-				is_DFME, 
-				is_major, 
-				start_date, 
-				deadline_date, 
-				conclude_date, 
-				app_date, 
-				pass_date, 
-				app_fund, 
-				pass_fund,
-				', 
-				'safe', 
-				'on'=>'search'),
+			array('id, name, number, fund_number, is_intl, is_national, is_provincial, is_city, is_school, is_enterprise, is_NSF, is_973, is_863, is_NKTRD, is_DFME, is_major, start_date, deadline_date, conclude_date, app_date, pass_date, app_fund, pass_fund, ', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -208,7 +178,6 @@ class Project extends CActiveRecord
 	 */
 	public function search()
 	{
-		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
 		$criteria->with=array(
@@ -217,8 +186,8 @@ class Project extends CActiveRecord
 		);
 		$criteria->together=true;
 		$criteria->group = 't.id';
-		$criteria->compare('execute_peoples.id',$this->searchExecutePeople,true);
-		$criteria->compare('liability_peoples.id',$this->searchLiabilityPeople,true);
+		$criteria->compare('execute_.id',$this->searchExecutePeople,true);
+		$criteria->compare('liability_.id',$this->searchLiabilityPeople,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('number',$this->number,true);
 		$criteria->compare('fund_number',$this->fund_number,true);

@@ -67,6 +67,13 @@ insert into tbl_patent_people values(1,1);
 insert into tbl_patent_people values(1,2);
 insert into tbl_patent_people values(2,2);
 
+create TABLE xxx (
+  id int not null PRIMARY KEY auto_increment,
+  info varchar(255) default null
+);
+  
+
+
 CREATE TABLE tbl_paper (
   id int not null PRIMARY KEY auto_increment,
   info varchar(255)  not null,

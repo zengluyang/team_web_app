@@ -3,7 +3,7 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Projects',
+	'科研项目',
 );
 
 $this->menu=array(
@@ -21,7 +21,7 @@ $this->menu=array(
 
 
 
-<h1>Projects</h1>
+<h1>科研项目</h1>
 <table>
 	<tr>
 		<th>项目级别类型</th>

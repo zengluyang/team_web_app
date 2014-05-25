@@ -3,9 +3,9 @@
 /* @var $model Project */
 
 $this->breadcrumbs=array(
-	'Projects'=>array('index'),
+	'科研项目'=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
-	'Update',
+	'修改',
 );
 
 $this->menu=array(
@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Project <?php echo $model->id; ?></h1>
+<h1>修改项目 #<?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
