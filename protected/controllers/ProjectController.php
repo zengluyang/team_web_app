@@ -52,19 +52,6 @@ class ProjectController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-
-	public function actionPwd() {
-		echo "actionPwd.<hr />";
-		$hash1 = password_hash("admin", PASSWORD_DEFAULT);
-		$hash2 = password_hash("123456a", PASSWORD_DEFAULT);
-		var_dump($hash1);
-		var_dump(Yii::app()->user->id);
-		echo $hash1."<hr />";
-		echo $hash2."<hr />";
-		echo password_verify("123456a",$hash1);
-		echo password_verify("123456a",$hash2);
-	}
-
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -92,15 +79,9 @@ class ProjectController extends Controller
 		if(isset($_POST['Project']))
 		{
 			$model->attributes=$_POST['Project'];
-			//$model->executePeoples=explode(',',$_POST['Project']['execute_peoples']);
 			self::setModelPeoples($model);
-			//var_dump($_POST['Project']['execute_peoples']);
-			//var_dump($model->execute_peoples);
-			//var_dump($_POST['Project']);
 			if($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
-				
-				//var_dump($model->attributes);
 			}
 
 		}
@@ -240,7 +221,6 @@ class ProjectController extends Controller
 			}
 			
 		}
-		//var_dump($model->execute_peoples);
 		if( isset($_GET['export']) && $_GET['export']) {
 			$dataProvider=$model->search();
 			$dataProvider->pagination=false;
@@ -364,66 +344,47 @@ class ProjectController extends Controller
             $project->deadline_date=($p[17]);
             $project->conclude_date=empty($p[18]) ? $project->deadline_date : $p[18];
             $project->pass_fund=$p[19];
-            //if($project->save()) {
-                $peoplesId=array();
-                for($i=0;$i<20;$i=$i+1){
-                    $peopleName=$p[20+$i];
-                    $peopleName=mysql_real_escape_string($peopleName);
-                    $sql='select id from tbl_people where name="'.$peopleName.'";';
+            $peoplesId=array();
+            for($i=0;$i<20;$i=$i+1){
+                $peopleName=$p[20+$i];
+                $peopleName=mysql_real_escape_string($peopleName);
+                $sql='select id from tbl_people where name="'.$peopleName.'";';
+                $command=$connection->createCommand($sql);
+                $row=$command->queryRow();
+                if($row) {
+                    $peoplesId[]=$row['id'];
 
-                    //$testPeoples = People::model()->find('name="'.$peopleName.'"');
-                    //var_dump($testPeoples);
-                    $command=$connection->createCommand($sql);
-                    $row=$command->queryRow();
-                    if($row) {
-                        //dump($row);
-                        $peoplesId[]=$row['id'];
-
-                    }else {
-                        //dump($row);
-                        $people = new People;
-                        $people->name = $peopleName;
-                        if($people->save())
-                            //dump($people->id);
-                        $peoplesId[] = $people->id;
+                }else {
+                    $people = new People;
+                    $people->name = $peopleName;
+                    if(!$people->save()){
+                    	return false;
                     }
-
+                    $peoplesId[] = $people->id;
                 }
-                //if(!self::populatePeople($project,$peoplesId))
-                //    return false;
-                $project->executePeoples = $peoplesId;
-                $peoplesId=array();
-                for($i=0;$i<20;$i=$i+1){
-                    $peopleName=$p[40+$i];
-                    $peopleName=mysql_real_escape_string($peopleName);
-                    $sql='select id from tbl_people where name="'.$peopleName.'";';
 
-                    //$testPeoples = People::model()->find('name="'.$peopleName.'"');
-                    //var_dump($testPeoples);
-                    $command=$connection->createCommand($sql);
-                    $row=$command->queryRow();
-                    if($row) {
-                        //dump($row);
-                        $peoplesId[]=$row['id'];
+            }
+            $project->executePeoples = $peoplesId;
+            $peoplesId=array();
+            for($i=0;$i<20;$i=$i+1){
+                $peopleName=$p[40+$i];
+                $peopleName=mysql_real_escape_string($peopleName);
+                $sql='select id from tbl_people where name="'.$peopleName.'";';
+                $command=$connection->createCommand($sql);
+                $row=$command->queryRow();
+                if($row) {
+                    $peoplesId[]=$row['id'];
 
-                    }else {
-                        //dump($row);
-                        $people = new People;
-                        $people->name = $peopleName;
-                        if($people->save())
-                            //dump($people->id);
-                        $peoplesId[] = $people->id;
-                    }
-
+                } else {
+                    $people = new People;
+                    $people->name = $peopleName;
+                    if($people->save())
+                    $peoplesId[] = $people->id;
                 }
-                $project->liabilityPeoples = $peoplesId;
-                $project->save();
 
-            //} else {
-            //    var_dump( $project->getErrors());
-                //var_dump($project->info);
-            //    return false;
-            //}
+            }
+            $project->liabilityPeoples = $peoplesId;
+            $project->save();
         }
         return true;
     }
