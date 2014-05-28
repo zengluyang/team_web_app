@@ -3,15 +3,15 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - Login';
+$this->pageTitle=Yii::app()->name . ' - 登录';
 $this->breadcrumbs=array(
-	'Login',
+	'登录',
 );
 ?>
 
-<h1>Login</h1>
+<h1>登录</h1>
 
-<p>Please fill out the following form with your login credentials:</p>
+<p>请填写登录信息:</p>
 
 <div class="form columns">
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -22,7 +22,7 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">带<span class="required">*</span>的为必填项目。</p>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
@@ -34,9 +34,6 @@ $this->breadcrumbs=array(
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
-		<p class="hint">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
-		</p>
 	</div>
 
 	<div class="row rememberMe">
@@ -46,7 +43,7 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+		<?php echo CHtml::submitButton('登录',array('class'=>'button small radius')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

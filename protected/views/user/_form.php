@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">带<span class="required">*</span>的为必填项.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -66,7 +66,7 @@
 		</div>
 	</div>
 	<div class="buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? '创建' : '保存',array('class'=>'button small radius')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

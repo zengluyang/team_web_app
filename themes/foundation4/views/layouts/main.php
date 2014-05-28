@@ -82,6 +82,22 @@
 	),
 )); 
 //var_dump(Yii::app()->user->is_admin);
+$authStrArr=array();
+
+if(isset(Yii::app()->user->is_paper) && Yii::app()->user->is_paper) {
+	$authStrArr[]='论文管理员';
+}
+if(isset(Yii::app()->user->is_patent) && Yii::app()->user->is_patent) {
+	$authStrArr[]='专利管理员';
+}
+if(isset(Yii::app()->user->is_project) && Yii::app()->user->is_project) {
+	$authStrArr[]='科研项目管理员';
+}
+if(isset(Yii::app()->user->is_admin) && Yii::app()->user->is_admin) {
+	$authStrArr=array();
+	$authStrArr[]='超级管理员';
+}
+
 $this->widget('zii.widget.CMenu',array(
 	'htmlOptions' => array('class'=>'right'),
 	'items' => array(
@@ -101,7 +117,7 @@ $this->widget('zii.widget.CMenu',array(
 			'visible'=>Yii::app()->user->isGuest,
 			'itemOptions'=>array('class'=>''), 
 		),
-		array('label'=>'登出 ('.Yii::app()->user->name.')', 
+		array('label'=>'登出 ('.Yii::app()->user->name.','.implode(',',$authStrArr).')', 
 			'url'=>array('/site/logout'), 
 			'visible'=>!Yii::app()->user->isGuest,
 			'itemOptions'=>array('class'=>''), 

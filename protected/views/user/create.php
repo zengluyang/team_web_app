@@ -3,8 +3,8 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	'Create',
+	'用户'=>array('index'),
+	'创建',
 );
 
 $this->menu=array(
@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create User</h1>
+<h1>创建用户</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

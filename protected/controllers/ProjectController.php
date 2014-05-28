@@ -437,8 +437,8 @@ class ProjectController extends Controller
         $i=1;
         $activeSheet = $objPHPExcel->getActiveSheet();
         $activeSheet->setTitle('papers');
-        $activeSheet->SetCellValue('A'.$i,'名称');
-        $activeSheet->SetCellValue('B'.$i,'编号');
+        $activeSheet->SetCellValue('A'.$i,'编号');
+        $activeSheet->SetCellValue('B'.$i,'名称');
         $activeSheet->SetCellValue('C'.$i,'经费本编号');
         $activeSheet->SetCellValue('D'.$i,'级别');
         $activeSheet->SetCellValue('E'.$i,'开始时间');
