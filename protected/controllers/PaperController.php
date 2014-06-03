@@ -601,7 +601,7 @@ class PaperController extends Controller
     private function setModelProjects($model) {
         if(isset($_POST['Paper']['fund_projects']))
             $model->fundProjects=$_POST['Paper']['fund_projects'];
-        if(isset($_POST['Paper']['fund_projects']))
+        if(isset($_POST['Paper']['reim_projects']))
             $model->reimProjects=$_POST['Paper']['reim_projects'];
     }
 
