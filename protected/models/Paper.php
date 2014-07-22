@@ -89,9 +89,9 @@ class Paper extends CActiveRecord
 			array('id, info, status, pass_date, pub_date, index_date, sci_number, ei_number, istp_number, is_first_grade, is_core, other_pub, is_journal, is_conference, is_intl, is_domestic, is_high_level, maintainer_id', 'safe', 'on'=>'search'),
 		);
 	}
-    public function getAuthors() {
+    public function getAuthors($glue='<br/>') {
         $out=CHtml::listData($this->peoples,'id','name');
-        return implode('<br/>', $out);
+        return implode($glue, $out);
     }
 
 
