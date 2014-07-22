@@ -10,10 +10,6 @@
 	echo CHtml::encode($data->getPeoples());
 	echo '. ';
 	echo CHtml::encode($data->info);
-	echo ', ';
-	echo CHtml::encode($data->press);
-	echo ', ';
-	echo CHtml::encode($data->pub_date);
 	echo '. ISBN: ';
 	echo CHtml::encode($data->isbn_number);
 	echo '. (';

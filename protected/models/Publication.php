@@ -178,7 +178,7 @@ class Publication extends CActiveRecord
 	    		return false;
 	    	}
 	    }
-	    return patent::beforeSave();
+	    return parent::beforeSave();
 	}
 
 	protected function afterSave() {
