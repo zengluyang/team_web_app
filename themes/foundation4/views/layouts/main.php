@@ -21,7 +21,7 @@
 			<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png" alt="uestc logo"/>
 		</div>
 		<div class="left" style="padding:1em 1em 0em 1em;text-align: center;">
-			<h1 style="font-family: 'Microsoft YaHei';"><em>网络技术团队</em></h1>
+			<h1 style="font-family: 'Microsoft YaHei';">网络技术团队</h1>
 		</div>
 		<div class="right" style="padding:2em 2em 0em 1em;">
 			<input  type="text" placeholder="搜索"/>
