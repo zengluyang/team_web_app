@@ -242,3 +242,27 @@ CREATE TABLE `tbl_software_project_reim` (
   CONSTRAINT `tbl_software_project_reim_ibfk_2` FOREIGN KEY (`software_id`) REFERENCES `tbl_software` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_software_project_reim_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE `tbl_award` (
+  id int not null primary key auto_increment,
+  project_name varchar(255),      #项目名称
+  award_name varchar(255),        #奖项名称
+  award_date date,                #获奖时间
+  org_from varchar(255),          #授予单位
+  is_intl bool,                   #国际
+  is_national bool,               #国家级
+  is_provincial bool,             #省部级
+  is_city bool,                   #市级
+  is_school bool                  #校级
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `tbl_award_people` (
+  award_id int not null,
+  people_id int not null,
+  seq int null,
+  primary key(award_id,people_id),
+  key tbl_award_people_ibfk(people_id),
+  CONSTRAINT `tbl_award_people_ibfk_2` FOREIGN KEY (`people_id`) REFERENCES `tbl_people` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_award_people_ibfk_1` FOREIGN KEY (`award_id`) REFERENCES `tbl_award` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

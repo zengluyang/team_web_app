@@ -163,7 +163,8 @@ class Publication extends CActiveRecord
     	$criteria = new CDbCriteria;
     	$criteria->condition = 'publication_id=:publication_id';
     	$criteria->params = array(':publication_id'=>$this->id);
-    	return PublicationPeople::model()->deleteAll($criteria);
+    	PublicationPeople::model()->deleteAll($criteria);
+    	return true;
     }
 
     protected function beforeSave(){
