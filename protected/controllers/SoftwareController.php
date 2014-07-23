@@ -1,6 +1,6 @@
 <?php
 
-class PublicationController extends Controller
+class SoftwareController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -56,27 +56,28 @@ class PublicationController extends Controller
 		));
 	}
 
-	private function setModelPeoples($model) {
-		if(isset($_POST['Publication']['peoples']))
-			$model->peoplesId=$_POST['Publication']['peoples'];
+	private function setModelRelation($model) {
+		if(isset($_POST['Software']['peoples']))
+			$model->peopleIds=$_POST['Software']['peoples'];
+		if(isset($_POST['Software']['reim_projects']))
+			$model->reimProjectIds=$_POST['Software']['reim_projects'];
+
 	}
-
-
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
-		$model=new Publication;
+		$model=new Software;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Publication']))
+		if(isset($_POST['Software']))
 		{
-			$model->attributes=$_POST['Publication'];
-			self::setModelPeoples($model);
+			$model->attributes=$_POST['Software'];
+			self::setModelRelation($model);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -98,10 +99,10 @@ class PublicationController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Publication']))
+		if(isset($_POST['Software']))
 		{
-			$model->attributes=$_POST['Publication'];
-			self::setModelPeoples($model);
+			$model->attributes=$_POST['Software'];
+			self::setModelRelation($model);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -130,7 +131,7 @@ class PublicationController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Publication');
+		$dataProvider=new CActiveDataProvider('Software');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -141,16 +142,10 @@ class PublicationController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Publication('search');
+		$model=new Software('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Publication']))
-			$model->attributes=$_GET['Publication'];
-			if($_GET['publication']['is_textbook']=='0'){
-				$model->is_textbook="";
-			}
-			if($_GET['publication']['is_pub']=='0'){
-				$model->is_pub="";
-			}
+		if(isset($_GET['Software']))
+			$model->attributes=$_GET['Software'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -161,12 +156,12 @@ class PublicationController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Publication the loaded model
+	 * @return Software the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Publication::model()->findByPk($id);
+		$model=Software::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -174,11 +169,11 @@ class PublicationController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Publication $model the model to be validated
+	 * @param Software $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='publication-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='software-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

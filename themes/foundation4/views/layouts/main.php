@@ -58,7 +58,8 @@
             'items'=>array(
                 array('label'=>'论文', 'url'=>array('/paper')),
                 array('label'=>'专利', 'url'=>array('/patent')),
-                array('label'=>'专著', 'url'=>array('#/publication')),
+                array('label'=>'专著', 'url'=>array('/publication')),
+                array('label'=>'软件著作权', 'url'=>array('/software')),
             ),
         ),
         array('label'=>'硕博培养','url'=>array('#/admission'),
