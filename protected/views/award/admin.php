@@ -51,14 +51,20 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'award_date',
 		'org_from',
 		'is_intl',
-		/*
 		'is_national',
 		'is_provincial',
 		'is_city',
 		'is_school',
-		*/
+		array(
+			'name'=>'peoples',
+			'type'=>'raw',
+			'value'=>'$data->getPeoples()',
+			'filter' => false,
+			'htmlOptions'=>array('width'=>'200em'),
+		),
 		array(
 			'class'=>'CButtonColumn',
 		),
+
 	),
 )); ?>

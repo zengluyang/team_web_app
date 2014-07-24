@@ -100,7 +100,7 @@ class Project extends CActiveRecord
 	            	'order'=>'execute_peoples.seq',
 	            ),
 	            ...
-            <WRONG_CODE/>
+            </WRONG_CODE>
 
             seems a bug in the Yii framework, alias seemd to be concated with 
             relationName in the SQL JOIN(instead of replacing it):
@@ -185,7 +185,7 @@ class Project extends CActiveRecord
 			'liability_peoples'
 		);
 		$criteria->together=true;
-		$criteria->group = 't.id';
+		$criteria->group = 't.id';//IMPORTANT!!
 		$criteria->compare('execute_.id',$this->searchExecutePeople,true);
 		$criteria->compare('liability_.id',$this->searchLiabilityPeople,true);
 		$criteria->compare('name',$this->name,true);

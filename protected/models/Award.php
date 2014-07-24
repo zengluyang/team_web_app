@@ -14,6 +14,7 @@
  * @property integer $is_provincial
  * @property integer $is_city
  * @property integer $is_school
+ * @property integer $type
  *
  * The followings are the available model relations:
  * @property People[] $tblPeoples
@@ -92,6 +93,7 @@ class Award extends CActiveRecord
 			'is_city' => '市级',
 			'is_school' => '校级',
 			'peoples' => '获奖人',
+			'level'=>'级别',
 		);
 	}
 
