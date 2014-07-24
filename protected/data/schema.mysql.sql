@@ -289,3 +289,39 @@ CREATE TABLE `tbl_award_teaching_people` (
   CONSTRAINT `tbl_award_teaching_people_ibfk_2` FOREIGN KEY (`people_id`) REFERENCES `tbl_people` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_award_teaching_people_ibfk_1` FOREIGN KEY (`award_teaching_id`) REFERENCES `tbl_award_teaching` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+CREATE TABLE `tbl_project_teaching` (
+  id int not null primary key auto_increment,
+
+  name varchar(255) comment       '项目名称',
+  number varchar(255)comment      '项目编号',
+  is_intl bool comment            '国际',
+  is_provincial bool comment      '省部级',
+  is_city bool comment            '市级',
+  is_school bool comment          '校级',
+  is_quality bool comment         '质量工程',
+  is_reform bool comment          '教学改革',
+  is_lab bool comment             '实验室建设',
+  is_new_lab bool comment         '新实验建设',
+  start_date date comment         '开始时间',
+  deadline_date date comment      '截至时间',
+  conclude_date date comment      '结题时间',
+  #app_date date comment           '申报时间',
+  #pass_date date comment          '立项时间',
+  #app_fund DECIMAL(15,2) comment  '申报经费',
+  #pass_fund DECIMAL(15,2) comment '立项经费',
+  fund DECIMAL(15,2) comment       '经费',
+  should_display bool comment      '对外显示',
+  maintainer_id int comment        '维护人'
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `tbl_project_teaching_people` (
+  project_teaching_id int not null,
+  people_id int not null,
+  seq int null,
+  primary key(project_teaching_id,people_id),
+  key tbl_project_teaching_people_ibfk(people_id),
+  CONSTRAINT `tbl_project_teaching_people_ibfk_2` FOREIGN KEY (`people_id`) REFERENCES `tbl_people` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_project_teaching_people_ibfk_1` FOREIGN KEY (`project_teaching_id`) REFERENCES `tbl_project_teaching` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

@@ -262,7 +262,7 @@ class Paper extends CActiveRecord
                 'attributes'=>array(
                     'level'=>array(
                         'asc'=>'is_high_level, is_intl, is_first_grade, is_core, is_journal, is_conference,  is_domestic',
-                        'desc'=>'is_high_level DESC, is_intl DESC, is_first_grade DESC, is_core DESC, is_journal DESC, is_conference DESC,  is_domestic DESC',
+                        'desc'=>'is_domestic, is_conference, is_journal, is_core, is_first_grade, is_intl, is_high_level',
                     ),
                     '*',
                 ),
