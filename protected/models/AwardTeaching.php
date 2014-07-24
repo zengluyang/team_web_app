@@ -56,7 +56,7 @@ class AwardTeaching extends CActiveRecord
 			array('award_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, project_name, award_name, award_date, org_from, is_intl, is_national, is_provincial, is_city, is_school, searchLevel', 'safe', 'on'=>'search'),
+			array('id, project_name, award_name, award_date, org_from, is_intl, is_national, is_provincial, is_city, is_school', 'safe', 'on'=>'search'),
 		);
 	}
 

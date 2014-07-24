@@ -323,6 +323,59 @@ class PaperController extends Controller
 		));
 	}
 
+
+    public function actionAdminTODO() {
+        $model = new Paper('search');
+        $model->unsetAttributes();  // clear any default values
+        if(isset($_GET['Paper'])) {
+            $model->attributes=$_GET['Paper'];
+            if($_GET['Paper']['is_first_grade']=='0') {
+                $model->is_first_grade="";
+            }
+            if($_GET['Paper']['is_core']=='0') {
+                $model->is_core="";
+            }
+            if($_GET['Paper']['is_journal']=='0') {
+                $model->is_journal="";
+            }
+            if($_GET['Paper']['is_conference']=='0') {
+                $model->is_conference="";
+            }
+            if($_GET['Paper']['is_domestic']=='0') {
+                $model->is_domestic="";
+            }
+            if($_GET['Paper']['is_high_level']=='0') {
+                $model->is_high_level="";
+            }
+            if($_GET['Paper']['is_intl']=='0') {
+                $model->is_intl="";
+            }
+
+            $peopleNameArr=array();
+            if(!empty($_GET['People']['execute_id'])){
+                $people=People::model()->findByPk($_GET['People']['execute_id']);
+                $model->searchExecutePeople=$people->id;
+                $peopleNameArr[]=$people->name;
+
+            }
+            if(!empty($_GET['People']['liability_id'])){
+                $people=People::model()->findByPk($_GET['People']['liability_id']);
+                $model->searchExecutePeople=$people->id;
+                $peopleNameArr[]=$people->name;
+            }
+            
+        }
+        if( isset($_GET['export']) && $_GET['export']) {
+            $dataProvider=$model->search();
+            $dataProvider->pagination=false;
+            self::exportProjectsToXlsByPeople($dataProvider->getData(),'参与者包括'.implode('， ',$peopleNameArr).'的项目');
+        } else {
+            $this->render('admin',array(
+                'model'=>$model,
+            ));
+        }
+
+    }
 	/**
 	 * Manages all models.
 	 */

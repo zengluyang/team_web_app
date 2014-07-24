@@ -47,9 +47,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
     'ajaxUpdate'=>true,
 	'filter'=>$model,
 	'columns'=>array(
-
-		'id',
 		'info',
+
+		array(
+			'name'=>'level',
+			'type'=>'raw',
+			'value'=>'$data->getLevelString()',
+			'filter' => false,
+			'htmlOptions'=>array('width'=>'80em'),
+		),
         /*
 		'status',
 		'pass_date',
@@ -72,6 +78,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
         */
 		array(
 			'class'=>'CButtonColumn',
+			'htmlOptions'=>array('width'=>'70em'),
 		),
 	),
 )); ?>

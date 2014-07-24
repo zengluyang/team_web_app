@@ -62,7 +62,6 @@ class Paper extends CActiveRecord
 
     public $reimProjects=array();
 
-
     /**
 	 * @return string the associated database table name
 	 */
@@ -229,7 +228,8 @@ class Paper extends CActiveRecord
 			'is_high_level' => '高水平',
 			'maintainer_id' => '维护人员',
             'reim_projects' => '报账项目',
-            'fund_projects' => '资助项目'
+            'fund_projects' => '资助项目',
+            'level'=>'级别',
 		);
 	}
 
@@ -258,6 +258,15 @@ class Paper extends CActiveRecord
 		$criteria->compare('maintainer_id',$this->maintainer_id);
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'sort'=>array(
+                'attributes'=>array(
+                    'level'=>array(
+                        'asc'=>'is_high_level, is_intl, is_first_grade, is_core, is_journal, is_conference,  is_domestic',
+                        'desc'=>'is_high_level DESC, is_intl DESC, is_first_grade DESC, is_core DESC, is_journal DESC, is_conference DESC,  is_domestic DESC',
+                    ),
+                    '*',
+                ),
+            ),
 		));
 	}
 
