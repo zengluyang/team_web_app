@@ -47,6 +47,7 @@
             'items'=>array(
                 array('label'=>'研究方向', 'url'=>array('#/research/interest')),
                 array('label'=>'科研项目', 'url'=>array('/project')),
+                array('label'=>'科研成果', 'url'=>array('/award')),
             ),
             'itemOptions'=>array('class'=>'has-dropdown'),
              'submenuOptions'=>array('class'=>'dropdown'),
@@ -75,7 +76,8 @@
             'items'=>array(
                 array('label'=>'教学课程', 'url'=>array('#/course')),
                 array('label'=>'实验建设', 'url'=>array('#/experiment')),
-                array('label'=>'教研成果', 'url'=>array('#/publication')),
+                array('label'=>'教学成果', 'url'=>array('/awardTeaching')),
+                array('label'=>'教改项目', 'url'=>array('/projectTeaching')),
             ),
             'itemOptions'=>array('class'=>'has-dropdown'),
             'submenuOptions'=>array('class'=>'dropdown'),
