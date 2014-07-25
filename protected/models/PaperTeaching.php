@@ -30,7 +30,33 @@
  * @property Project[] $tblProjects
  */
 class PaperTeaching extends CActiveRecord
-{
+{    
+	const STATUS_PASSED = 0;    //录用待发
+    const STATUS_PUBLISHED = 1; //已发表
+    const STATUS_INDEXED = 2;   //已检索
+
+    const LABEL_PASSED = '录用待发';
+    const LABEL_PUBLISHED = '已发表';
+    const LABEL_INDEXED = '已检索';
+
+    const LEVEL_DOMESTIC = '国内';
+    const LEVEL_INTL = '国际';
+    const LEVEL_CORE = '核心';
+    const LEVEL_JOURNAL = '期刊';
+    const LEVEL_CONFERENCE = '会议';
+    const LEVEL_FIRST_GRADE = '一级';
+    const LEVEL_HIGH_LEVEL = '高水平';
+    const LEVEL_OTHER_PUB = '其它刊物';
+
+    const PROJECT_FUND=0;
+    const PROJECT_REIM=1;
+    const PROJECT_ACHIEVEMENT=3;
+
+	public $peopleIds = array();
+
+	public $fundProjectIds = array();
+	public $reimProjectIds = array();
+	public $achievementIds = array();
 	/**
 	 * @return string the associated database table name
 	 */
@@ -65,9 +91,39 @@ class PaperTeaching extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'maintainer' => array(self::BELONGS_TO, 'People', 'maintainer_id'),
-			'tblPeoples' => array(self::MANY_MANY, 'People', 'tbl_paper_teaching_people(paper_teaching_id, people_id)'),
-			'tblProjects' => array(self::MANY_MANY, 'Project', 'tbl_paper_teaching_project_reim(paper_teaching_id, project_id)'),
+			'maintainer' => array(
+				self::BELONGS_TO, 
+				'People', 
+				'maintainer_id'
+			),
+			'peoples' => array(
+				self::MANY_MANY, 
+				'People', 
+				'tbl_paper_teaching_people(paper_teaching_id, people_id)',
+				'alias'=>'peoples_',
+				'order'=>'peoples_peoples_.seq',
+			),
+			'fund_projects' => array(
+				self::MANY_MANY, 
+				'Project', 
+				'tbl_paper_teaching_project_fund(paper_teaching_id, project_id)',
+				'alias'=>'fund_',
+				'order'=>'fund_projects_fund_.seq',
+			),
+			'reim_projects' => array(
+				self::MANY_MANY, 
+				'Project', 
+				'tbl_paper_teaching_project_reim(paper_teaching_id, project_id)',
+				'alias'=>'reim_',
+				'order'=>'reim_projects_fund_.seq',
+			),
+			'achievement_projects' => array(
+				self::MANY_MANY, 
+				'Project', 
+				'tbl_paper_teaching_project_achievement(paper_teaching_id, project_id)',
+				'alias'=>'achievement_',
+				'order'=>'achievement_projects_fund_.seq',
+			),
 		);
 	}
 
@@ -78,26 +134,110 @@ class PaperTeaching extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'info' => 'Info',
-			'status' => 'Status',
-			'pass_date' => 'Pass Date',
-			'pub_date' => 'Pub Date',
-			'index_date' => 'Index Date',
-			'sci_number' => 'Sci Number',
-			'ei_number' => 'Ei Number',
-			'istp_number' => 'Istp Number',
-			'is_first_grade' => 'Is First Grade',
-			'is_core' => 'Is Core',
-			'other_pub' => 'Other Pub',
-			'is_journal' => 'Is Journal',
-			'is_conference' => 'Is Conference',
-			'is_intl' => 'Is Intl',
-			'is_domestic' => 'Is Domestic',
-			'filename' => 'Filename',
-			'is_high_level' => 'Is High Level',
-			'maintainer_id' => 'Maintainer',
+			'info' => '论文信息',
+			'status' => '状态',
+			'pass_date' => '录用时间',
+			'pub_date' => '发表时间',
+			'index_date' => '发表和检索时间',
+			'sci_number' => 'SCI检索号',
+			'ei_number' => 'EI检索号',
+			'istp_number' => 'ISTP检索号',
+			'is_first_grade' => '一级',
+			'is_core' => '核心',
+			'other_pub' => '其他',
+			'is_journal' => '期刊',
+			'is_conference' => '会议',
+			'is_intl' => '国际',
+			'is_domestic' => '国内',
+			'filename' => '论文文件',
+			'is_high_level' => '高水平',
+			'maintainer' => '维护人员',
+            'reim_projects' => '报账项目',
+            'fund_projects' => '资助项目',
+            'achivement_projects' => '成果项目',
+            'level'=>'级别',
+            'peoples'=>'作者',
 		);
 	}
+
+	public function getPeoples($glue=', ',$attr='name') {
+		$peopleArr = array();
+		foreach ($this->peoples as $people) {
+			array_push($peopleArr,$people->$attr);
+		}
+		return implode($glue,$peopleArr);
+    }
+
+    public function getDateString() {
+        if(!empty($this->index_date)){
+            return $this->index_date;
+        } else if(!empty($this->pub_date)){
+            return $this->pub_date;
+        } else if(!empty($this->pass_date)){
+            return $this->pass_date;
+        } else {
+            return "";
+        }
+    }
+
+    public function getStatusString() {
+        if($this->status == self::STATUS_INDEXED) {
+            return self::LABEL_INDEXED;
+        } else if($this->status == self::STATUS_PUBLISHED) {
+            return self::LABEL_PUBLISHED;
+        } else if($this->status == self::STATUS_PASSED) {
+            return self::LABEL_PASSED;
+        } else {
+            return "";
+        }
+
+    }
+
+    public function getIndexString($glue=', '){
+        $indexes = array();
+        if(!empty($this->sci_number)){
+            array_push($indexes,'SCI: '.$this->sci_number);
+        }
+        if(!empty($this->ei_number)){
+            array_push($indexes,'EI: '.$this->ei_number);
+        }
+        if(!empty($this->istp_number)){
+            array_push($indexes,'ISTP: '.$this->istp_number);
+        }
+        return implode($glue, $indexes);
+    }
+
+
+
+    public function getLevelString($glue=', '){
+        $levels = array();
+        if($this->is_domestic){
+            array_push($levels,self::LEVEL_DOMESTIC);
+        }
+        if($this->is_intl){
+            array_push($levels,self::LEVEL_INTL);
+        }
+        if($this->is_core){
+            array_push($levels,self::LEVEL_CORE);
+        }
+        if($this->is_journal){
+            array_push($levels,self::LEVEL_JOURNAL);
+        }
+        if($this->is_conference){
+            array_push($levels,self::LEVEL_CONFERENCE);
+        }
+        if($this->is_first_grade){
+            array_push($levels,self::LEVEL_FIRST_GRADE);
+        }
+        if($this->is_high_level){
+            array_push($levels,self::LEVEL_HIGH_LEVEL);
+        }
+        if(!empty($this->other_pub)){
+            array_push($levels,$this->other_pub);
+        }
+        return implode($glue,$levels);
+    }
+
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -141,6 +281,87 @@ class PaperTeaching extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+
+    private function populatePaperTeachingProject($type) {
+        switch ($type) {
+            case self::PROJECT_FUND:
+                $projects=$this->fundProjectsIds;
+                break;
+            case self::PROJECT_REIM:
+                $projects=$this->reimProjectsIds;
+                break;
+            case self::PROJECT_ACHIEVEMENT:
+            	$projects=$this->achievementProjectsIds;
+            default:
+                $projects=$this->fundProjectsIds;
+                break;
+        }
+        for($i=0;$i<count($projects);$i++) {
+            if($projects[$i]!=null && $projects[$i]!=0){
+                switch ($type) {
+                    case self::PROJECT_FUND:
+                        $paperProject = new PaperTeachingProjectFund;
+                        break;
+                    case self::PROJECT_REIM:
+                        $paperProject = new PaperTeachingProjectReim;
+                        break;
+                    case self::PROJECT_ACHIEVEMENT:
+                    default:
+                        $paperProject = new PaperTeachingProjectFund;
+                        break;
+                }
+                $paperTeachingProject->seq=$i+1;
+                $paperTeachingProject->paper_teaching_id=$this->id;
+                $paperTeachingProject->project_id=$projects[$i];
+                if($paperTeachingProject->save()) {
+                    yii::trace("projects[i]:".$projects[$i]." saved","PaperTeaching.populatePaperTeachingProject()");
+                } else {
+                    return false;
+                }
+
+            }
+        }
+        return true;
+    }
+
+    private function populatePaperTeachingProjectAll() {
+    	return 
+    		populatePaperTeachingProject(PROJECT_FUND) &&
+    		populatePaperTeachingProject(PROJECT_REIM) &&
+    		populatePaperTeachingProject(PROJECT_ACHIEVEMENT);
+    }
+
+
+    private function deletePaperTeachingProject($type) {
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'paper_teaching_id=:paper_teaching_id';
+        $criteria->params = array(':paper_teaching_id'=>$this->id);
+        
+
+         switch ($type) {
+            case self::PROJECT_FUND:
+                PaperTeachingProjectFund::model()->deleteAll($criteria);
+                break;
+            
+            case self::PROJECT_REIM:
+                PaperTeachingProjectReim::model()->deleteAll($criteria);
+                break;
+            case self::PROJECT_ACHIEVEMENT:
+            	PaperTeachingProjectAchivement::model()->delteAll($criteria);
+            default:
+                PaperTeachingProjectFund::model()->deleteAll($criteria);
+                break;
+        }
+        return true;
+    }
+
+    private function deletePaperTeachingProjectAll() {
+    	deletePaperTeachingProject(self::PROJECT_FUND);
+    	deletePaperTeachingProject(self::PROJECT_REIM);
+    	deletePaperTeachingProject(self::PROJECT_ACHIEVEMENT);
+    	return true;
+    }
 
 	/**
 	 * Returns the static model of the specified AR class.
