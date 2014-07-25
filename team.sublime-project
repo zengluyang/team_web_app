@@ -2,8 +2,18 @@
 	"folders":
 	[
 		{
-			"path": "./",
-			"folder_exclude_patterns": ["yii",".idea","assets","runtime"],
+			"path": "./protected",
+			"folder_exclude_patterns": [
+				"components",
+				"tests",
+				"vendor",
+				"yii",
+				".idea",
+				"assets",
+				"runtime",
+				"extensions",
+				"modules"
+			],
 			"file_exclude_patterns": ["*.log","*.jpg","*.png"]
 		}
 	]
