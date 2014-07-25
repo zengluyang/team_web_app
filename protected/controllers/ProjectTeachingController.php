@@ -32,12 +32,12 @@ class ProjectTeachingController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'actions'=>array('create','update','admin'),
+				'expression'=>'isset($user->is_project_teaching) && $user->is_project_teaching',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'actions'=>array('upload','admin','delete','create','update','import','export','pwd','reset'),
+				'expression'=>'isset($user->is_admin) && $user->is_admin',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -56,6 +56,11 @@ class ProjectTeachingController extends Controller
 		));
 	}
 
+	private function setModelRelation($model) {
+		if(isset($_POST['ProjectTeaching']['peoples']))
+			$model->peopleIds=$_POST['ProjectTeaching']['peoples'];
+	}
+
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -70,6 +75,7 @@ class ProjectTeachingController extends Controller
 		if(isset($_POST['ProjectTeaching']))
 		{
 			$model->attributes=$_POST['ProjectTeaching'];
+			self::setModelRelation($model);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -94,6 +100,7 @@ class ProjectTeachingController extends Controller
 		if(isset($_POST['ProjectTeaching']))
 		{
 			$model->attributes=$_POST['ProjectTeaching'];
+			self::setModelRelation($model);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

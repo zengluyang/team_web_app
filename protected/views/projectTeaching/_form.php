@@ -104,14 +104,54 @@
 		<?php echo $form->error($model,'conclude_date'); ?>
 		</div>
 	</div>
+		<div class="row">
+		<div class="medium-12 columns">
+		<?php 
+			//var_dump(Chtml::listData(People::model()->findAll(), 'id', 'name'));
+			echo $form->labelEx($model,'peoples');
+			echo CHtml::dropDownList(
+				'ProjectTeaching[peoples]',
+				array(),
+	            Chtml::listData(People::model()->findAll(), 'id', 'name'),
+	            array(
+	            	'id'=>'peoples_select',
+	            	'multiple'=>'multiple',
+	            )
+	        ); 
+		?>
+
+		</div>
+
+	</div>
 
 	<div class="row">
+
 		<div class="medium-4 columns">
 		<?php echo $form->labelEx($model,'fund'); ?>
 		<?php echo $form->textField($model,'fund',array('size'=>15,'maxlength'=>15)); ?>
 		<?php echo $form->error($model,'fund'); ?>
 		</div>
 
+		<div class="medium-4 columns">
+        <?php
+        $peoples = People::model()->findAll();
+        echo $form->label($model,'负责人1');
+        $listData = CHtml::listData($peoples,'id','name');
+        $listData = array(null=>'选择负责人1')+$listData;
+        echo $form->dropDownList($model,'director_1',$listData);?>
+		</div>
+
+		<div class="medium-4 columns">
+        <?php
+        $peoples = People::model()->findAll();
+        echo $form->label($model,'负责人2');
+        $listData = CHtml::listData($peoples,'id','name');
+        $listData = array(null=>'选择负责人2')+$listData;
+        echo $form->dropDownList($model,'director_2',$listData);?>
+		</div>
+		
+	</div>
+	<div class="row">
 		<div class="medium-4 columns">
         <?php
 
@@ -134,12 +174,41 @@
 	</div>
 
 
+
+
 	<div class="row buttons">
 		<div class="medium-12 columns">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 		</div>
 	</div>
+<script>
+$(document).ready(function(){
+	var selectionWithOrder=[<?php echo $model->getPeoples(',','id')?>];
+	$('#peoples_select').val(selectionWithOrder);
+	$("#peoples_select").select2({
+			placeholder: "选择人员",
+			width: 'resolve',
+			matcher: function(term,text) {
+				var pinyin = new Pinyin();
+				var mod=pinyin.getCamelChars(text.toUpperCase());
+				return mod.indexOf(term.toUpperCase())==0;
+			}
+	}); 
+});
+</script>
+<?php
+	Yii::app()->getClientScript()->
+	registerCssFile(yii::app()->request->baseUrl.'/css/select2.css');
 
+	Yii::app()->getClientScript()
+	->registerScriptFile(yii::app()->request->baseUrl.'/js/select2.js');
+
+	Yii::app()->getClientScript()
+	->registerScriptFile(yii::app()->request->baseUrl.'/js/mootools-core-1.4.5.js');
+
+	Yii::app()->getClientScript()
+	->registerScriptFile(yii::app()->request->baseUrl.'/js/pinyin.js');
+?>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

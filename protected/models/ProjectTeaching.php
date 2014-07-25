@@ -20,6 +20,8 @@
  * @property string $conclude_date
  * @property string $fund
  * @property integer $should_display
+ * @property integer $director_1
+ * @property integer $director_2
  * @property integer $maintainer_id
  *
  * The followings are the available model relations:
@@ -48,7 +50,7 @@ class ProjectTeaching extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('is_intl, is_provincial, is_city, is_school, is_quality, is_reform, is_lab, is_new_lab, should_display, maintainer_id', 'numerical', 'integerOnly'=>true),
+			array('is_intl, is_provincial, is_city, is_school, is_quality, is_reform, is_lab, is_new_lab, should_display, maintainer_id, director_1, director_2','numerical', 'integerOnly'=>true),
 			array('name, number', 'length', 'max'=>255),
 			array('fund', 'length', 'max'=>15),
 			array('start_date, deadline_date, conclude_date', 'safe'),
@@ -78,6 +80,16 @@ class ProjectTeaching extends CActiveRecord
                 'People',
                 'maintainer_id'
             ),
+			'director1' => array(
+                self::BELONGS_TO, 
+                'People',
+                'director_1'
+            ),
+			'director2' => array(
+                self::BELONGS_TO, 
+                'People',
+                'director_2'
+            ),
 		);
 	}
 
@@ -106,6 +118,9 @@ class ProjectTeaching extends CActiveRecord
 			'maintainer' => '维护人',
 			'level'=>'级别',
 			'type'=>'类别',
+			'peoples'=>'人员',
+			'director1'=>'负责人1',
+			'director2'=>'负责人2',
 		);
 	}
 
@@ -147,6 +162,7 @@ class ProjectTeaching extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=>array(
                 'attributes'=>array(
                     'level'=>array(
                         'asc'=>'is_intl, is_provincial, is_city, is_school',
@@ -158,11 +174,12 @@ class ProjectTeaching extends CActiveRecord
                     ),
                     '*',
                 ),
+            ),
 		));
 	}
 
 	
-	public function getLevelString($glue=', '){
+	public function getTypeString($glue=', '){
         $levels = array();
         $attrs = self::attributeLabels();
 
@@ -181,7 +198,7 @@ class ProjectTeaching extends CActiveRecord
     }
 
 	
-	public function getTypeString($glue=', '){
+	public function getLevelString($glue=', '){
         $levels = array();
         $attrs = self::attributeLabels();
 
@@ -245,7 +262,7 @@ class ProjectTeaching extends CActiveRecord
     	$criteria = new CDbCriteria;
     	$criteria->condition = 'project_teaching_id=:project_teaching_id';
     	$criteria->params = array(':project_teaching_id'=>$this->id);
-    	AwardPeople::model()->deleteAll($criteria);
+    	ProjectTeachingPeople::model()->deleteAll($criteria);
     	return true;
     }
 

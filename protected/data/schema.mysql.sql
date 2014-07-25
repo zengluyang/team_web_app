@@ -312,6 +312,8 @@ CREATE TABLE `tbl_project_teaching` (
   #app_fund DECIMAL(15,2) comment  '申报经费',
   #pass_fund DECIMAL(15,2) comment '立项经费',
   fund DECIMAL(15,2) comment       '经费',
+  director_1 int comment           '负责人1',
+  director_2 int comment           '负责人2',
   should_display bool comment      '对外显示',
   maintainer_id int comment        '维护人'
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
