@@ -31,13 +31,13 @@ class CourseController extends Controller
 				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+			array('allow',
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'expression'=>'isset($user->is_course) && $user->is_course',
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+			array('allow', 
+				'actions'=>array('admin','delete','create','update'),
+				'expression'=>'isset($user->is_admin) && $user->is_admin',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -56,6 +56,11 @@ class CourseController extends Controller
 		));
 	}
 
+	private function setModelRelation($model) {
+		if(isset($_POST['Course']['peoples']))
+			$model->peopleIds=$_POST['Course']['peoples'];
+	}
+
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -70,6 +75,7 @@ class CourseController extends Controller
 		if(isset($_POST['Course']))
 		{
 			$model->attributes=$_POST['Course'];
+			self::setModelRelation($model);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -94,6 +100,7 @@ class CourseController extends Controller
 		if(isset($_POST['Course']))
 		{
 			$model->attributes=$_POST['Course'];
+			self::setModelRelation($model);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

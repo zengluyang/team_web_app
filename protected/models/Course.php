@@ -16,6 +16,9 @@
  */
 class Course extends CActiveRecord
 {
+
+	public $peopleIds = array();
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -48,7 +51,13 @@ class Course extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'tblPeoples' => array(self::MANY_MANY, 'People', 'tbl_course_people(course_id, people_id)'),
+			'peoples' => array(
+				self::MANY_MANY, 
+				'People', 
+				'tbl_course_people(course_id, people_id)',
+				'alias'=>'peoples_',
+				'order'=>'peoples_peoples_.seq',	
+			),
 		);
 	}
 
@@ -64,6 +73,7 @@ class Course extends CActiveRecord
 			'semester' => '开课学期',
 			'duration' => '学时',
 			'textbook' => '教材及参考资料',
+			'peoples' => '授课教师',
 		);
 	}
 
@@ -107,4 +117,62 @@ class Course extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function getPeoples($glue=', ',$attr='name') {
+		$peopleArr = array();
+		foreach ($this->peoples as $people) {
+			array_push($peopleArr,$people->$attr);
+		}
+		return implode($glue,$peopleArr);
+    }
+
+    private function populateCoursePeople(){
+    	$peoples=$this->peopleIds;
+    	for($i=0;$i<count($peoples);$i++){
+    		if($peoples[$i]!=null && $peoples[$i]!=0) {
+    			$coursePeople = new CoursePeople;
+    			$coursePeople->seq=$i+1;
+    			$coursePeople->course_id=$this->id;
+    			$coursePeople->people_id=$peoples[$i];
+    			yii::trace("peoples[i]:".$peoples[$i]." saving","Course.populateCoursePeople()");
+    			if($coursePeople->save()){
+    				yii::trace("peoples[i]:".$peoples[$i]." saved","Course.populateCoursePeople()");
+    			} else {
+    				return false;
+    			}
+    		}
+    	}
+    	return true;
+    }
+
+    private function deleteCoursePeople(){
+    	$criteria = new CDbCriteria;
+    	$criteria->condition = 'course_id=:course_id';
+    	$criteria->params = array(':course_id'=>$this->id);
+    	CoursePeople::model()->deleteAll($criteria);
+    	return true;
+    }
+
+    protected function beforeSave(){
+	    if($this->scenario=='update') {
+	    	if(self::deleteCoursePeople()) {
+	    		return parent::beforeSave();
+	    	} else {
+	    		return false;
+	    	}
+	    }
+	    return parent::beforeSave();
+	}
+
+	protected function afterSave() {
+		return self::populateCoursePeople() && parent::afterSave(); 
+	}
+
+	protected function afterDelete(){
+		return 
+			self::deleteCoursePeople() &&
+			parent::afterDelete();
+	}
+
+
 }

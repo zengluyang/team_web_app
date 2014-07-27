@@ -27,5 +27,10 @@ $this->menu=array(
 		'semester',
 		'duration',
 		'textbook',
+		array(
+			'label'=>'授课教师',
+			'type'=>'raw',
+			'value'=>$model->getPeoples(),
+		),
 	),
 )); ?>
