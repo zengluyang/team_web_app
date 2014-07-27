@@ -396,3 +396,23 @@ CREATE TABLE `tbl_paper_teaching_project_achievement` (
   CONSTRAINT `tbl_paper_teaching_project_achievement_ibfk_2` FOREIGN KEY (`paper_teaching_id`) REFERENCES `tbl_paper_teaching` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_paper_teaching_project_achievement_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE tbl_course (
+  id int not null PRIMARY KEY auto_increment,
+  name varchar(255) comment             '课程名称',
+  description text comment              '课程简介',
+  semester varchar(255) comment         '开课学期',
+  duration varchar(255) comment         '学时',
+  textbook text comment                 '教材及参考资料'
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `tbl_course_people` (
+  /*Author*/
+  course_id int not null,
+  people_id int not null,
+  seq int null,
+  primary key (course_id,people_id),
+  key tbl_course_people_ibfk_2 (people_id),
+  CONSTRAINT `tbl_course_people_ibfk_2` FOREIGN KEY (`people_id`) REFERENCES `tbl_people` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_course_people_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `tbl_course` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
