@@ -10,7 +10,7 @@
 </style>
 
 
-<div class="view"">
+<div class="view">
 
     <div>
     <?php echo CHtml::encode($data->is_intl?'国际发明专利:&nbsp':''); ?>
