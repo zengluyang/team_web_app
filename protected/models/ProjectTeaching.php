@@ -291,5 +291,10 @@ class ProjectTeaching extends CActiveRecord
 		return self::populateProjectTeachingPeople() && parent::afterSave(); 
 	}
 
+	protected function afterDelete(){
+		return 
+			self::deleteProjectTeachingPeople() &&
+			parent::afterDelete();
+	}
 
 }

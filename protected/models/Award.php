@@ -219,4 +219,10 @@ class Award extends CActiveRecord
 	protected function afterSave() {
 		return self::populateAwardPeople() && parent::afterSave(); 
 	}
+
+	protected function afterDelete(){
+		return 
+			self::deleteAwardPeople() &&
+			parent::afterDelete();
+	}
 }

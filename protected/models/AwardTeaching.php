@@ -237,4 +237,8 @@ class AwardTeaching extends CActiveRecord
 		return self::populateAwardTeachingPeople() && parent::afterSave(); 
 	}
 
+	protected function afterDelete() {
+		return self::deleteAwardTeachingPeople() && parent::afterDelete();
+	}
+
 }
