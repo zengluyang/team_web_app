@@ -78,7 +78,7 @@
                 array('label'=>'实验建设', 'url'=>array('#/experiment')),
                 array('label'=>'教学成果', 'url'=>array('/awardTeaching')),
                 array('label'=>'教改项目', 'url'=>array('/projectTeaching')),
-                array('label'=>'教学论文', 'url'=>array('/paperTeaching')),
+                array('label'=>'教改论文', 'url'=>array('/paperTeaching')),
             ),
             'itemOptions'=>array('class'=>'has-dropdown'),
             'submenuOptions'=>array('class'=>'dropdown'),
