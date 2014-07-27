@@ -51,6 +51,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'pass_date',
 		'pub_date',
 		'index_date',
+
+		array(
+			'name'=>'level',
+			'type'=>'raw',
+			'value'=>'$data->getLevelString()',
+			'filter' => false,
+			'htmlOptions'=>array('width'=>'80em'),
+		),
 		/*
 		'sci_number',
 		'ei_number',
@@ -68,6 +76,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		*/
 		array(
 			'class'=>'CButtonColumn',
+			'htmlOptions'=>array('width'=>'70em'),
 		),
 	),
 )); ?>

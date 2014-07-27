@@ -19,6 +19,18 @@ class PaperTeachingController extends Controller
 		);
 	}
 
+	private function setModelRelation($model) {
+		if(isset($_POST['PaperTeaching']['peoples']))
+			$model->peopleIds=$_POST['PaperTeaching']['peoples'];
+		if(isset($_POST['PaperTeaching']['fund_projects']))
+			$model->fundProjectIds=$_POST['PaperTeaching']['fund_projects'];
+		if(isset($_POST['PaperTeaching']['reim_projects']))
+			$model->reimProjectIds=$_POST['PaperTeaching']['reim_projects'];
+		if(isset($_POST['PaperTeaching']['achievement_projects']))
+			$model->achievementProjectIds=$_POST['PaperTeaching']['achievement_projects'];
+	}
+
+
 	/**
 	 * Specifies the access control rules.
 	 * This method is used by the 'accessControl' filter.
@@ -32,13 +44,13 @@ class PaperTeachingController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'actions'=>array('create','update','download', 'admin'),
+				'expression'=>'isset($user->is_paper_teaching) && $user->is_paper_teaching'
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
+            array('allow', // allow admin user to perform 'admin' and 'delete' actions
+                'actions'=>array('create','testExcelExport','testExcelExportByTable','query','testSearchByPeople','reset','upload','admin','delete','import','testXls','TestCsv','TestPhpExcelCsv'),
+                'expression'=>'isset($user->is_admin) && $user->is_admin',
+            ),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -70,6 +82,7 @@ class PaperTeachingController extends Controller
 		if(isset($_POST['PaperTeaching']))
 		{
 			$model->attributes=$_POST['PaperTeaching'];
+			self::setModelRelation($model);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -94,6 +107,7 @@ class PaperTeachingController extends Controller
 		if(isset($_POST['PaperTeaching']))
 		{
 			$model->attributes=$_POST['PaperTeaching'];
+			self::setModelRelation($model);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

@@ -50,13 +50,13 @@ class PaperTeaching extends CActiveRecord
 
     const PROJECT_FUND=0;
     const PROJECT_REIM=1;
-    const PROJECT_ACHIEVEMENT=3;
+    const PROJECT_ACHIEVEMENT=2;
 
 	public $peopleIds = array();
 
 	public $fundProjectIds = array();
 	public $reimProjectIds = array();
-	public $achievementIds = array();
+	public $achievementProjectIds = array();
 	/**
 	 * @return string the associated database table name
 	 */
@@ -115,14 +115,14 @@ class PaperTeaching extends CActiveRecord
 				'Project', 
 				'tbl_paper_teaching_project_reim(paper_teaching_id, project_id)',
 				'alias'=>'reim_',
-				'order'=>'reim_projects_fund_.seq',
+				'order'=>'reim_projects_reim_.seq',
 			),
 			'achievement_projects' => array(
 				self::MANY_MANY, 
 				'Project', 
 				'tbl_paper_teaching_project_achievement(paper_teaching_id, project_id)',
 				'alias'=>'achievement_',
-				'order'=>'achievement_projects_fund_.seq',
+				'order'=>'achievement_projects_achievement_.seq',
 			),
 		);
 	}
@@ -282,33 +282,96 @@ class PaperTeaching extends CActiveRecord
 		));
 	}
 
+    public function getProjects($type,$glue=', ',$attr='name'){
+        $projectsArr = array();
+        switch ($type) {
+            case self::PROJECT_FUND:
+                $projectRecords=$this->fund_projects;
+                break;
+            case self::PROJECT_REIM:
+                $projectRecords=$this->reim_projects;
+                break;
+            case self::PROJECT_ACHIEVEMENT:
+                $projectRecords=$this->achievement_projects;
+                break;
+            default:
+                $projectRecords=$this->fund_projects;
+                break;
+        }
+        foreach ($projectRecords as $project){
+            array_push($projectsArr,$project->$attr);
+        }
+        return implode($glue, $projectsArr);
+    }
+
+    public function getFundProjects($glue=', ',$attr='name'){
+        return self::getProjects(self::PROJECT_FUND,$glue,$attr);   
+    }
+
+    public function getReimProjects($glue=', ',$attr='name'){
+        return self::getProjects(self::PROJECT_REIM,$glue,$attr);   
+    }
+
+    public function getAchievementProjects($glue=', ',$attr='name'){
+        return self::getProjects(self::PROJECT_ACHIEVEMENT,$glue,$attr);   
+    }
+
+
+    private function populatePaperTeachingPeople() {
+        $peoples=$this->peopleIds;
+        for($i=0;$i<count($peoples);$i++) {
+            if($peoples[$i]!=null && $peoples[$i]!=0){
+                $paperTeachingPeople = new PaperTeachingPeople;
+                $paperTeachingPeople->seq=$i+1;
+                $paperTeachingPeople->paper_teaching_id=$this->id;
+                $paperTeachingPeople->people_id=$peoples[$i];
+                if($paperTeachingPeople->save()) {
+                    yii::trace("peoples[i]:".$peoples[$i]." saved","PaperTeachingTeaching.populatePaperPeoples()");
+                } else {
+                    return false;
+                }
+
+            }
+        }
+        return true;
+    }
+
+    private function deletePaperTeachingPeople() {
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'paper_teaching_id=:paper_teaching_id';
+        $criteria->params = array(':paper_teaching_id'=>$this->id);
+        PaperTeachingPeople::model()->deleteAll($criteria);
+        return true;
+    }
 
     private function populatePaperTeachingProject($type) {
         switch ($type) {
             case self::PROJECT_FUND:
-                $projects=$this->fundProjectsIds;
+                $projects=$this->fundProjectIds;
                 break;
             case self::PROJECT_REIM:
-                $projects=$this->reimProjectsIds;
+                $projects=$this->reimProjectIds;
                 break;
             case self::PROJECT_ACHIEVEMENT:
-            	$projects=$this->achievementProjectsIds;
+            	$projects=$this->achievementProjectIds;
             default:
-                $projects=$this->fundProjectsIds;
+                $projects=$this->fundProjectIds;
                 break;
         }
         for($i=0;$i<count($projects);$i++) {
             if($projects[$i]!=null && $projects[$i]!=0){
                 switch ($type) {
                     case self::PROJECT_FUND:
-                        $paperProject = new PaperTeachingProjectFund;
+                        $paperTeachingProject = new PaperTeachingProjectFund;
                         break;
                     case self::PROJECT_REIM:
-                        $paperProject = new PaperTeachingProjectReim;
+                        $paperTeachingProject = new PaperTeachingProjectReim;
                         break;
                     case self::PROJECT_ACHIEVEMENT:
+                        $paperTeachingProject = new PaperTeachingProjectAchievement;
+                        break;
                     default:
-                        $paperProject = new PaperTeachingProjectFund;
+                        $paperTeachingProject = new PaperTeachingProjectFund;
                         break;
                 }
                 $paperTeachingProject->seq=$i+1;
@@ -327,9 +390,9 @@ class PaperTeaching extends CActiveRecord
 
     private function populatePaperTeachingProjectAll() {
     	return 
-    		populatePaperTeachingProject(PROJECT_FUND) &&
-    		populatePaperTeachingProject(PROJECT_REIM) &&
-    		populatePaperTeachingProject(PROJECT_ACHIEVEMENT);
+    		self::populatePaperTeachingProject(self::PROJECT_FUND) &&
+    		self::populatePaperTeachingProject(self::PROJECT_REIM) &&
+    		self::populatePaperTeachingProject(self::PROJECT_ACHIEVEMENT);
     }
 
 
@@ -348,7 +411,7 @@ class PaperTeaching extends CActiveRecord
                 PaperTeachingProjectReim::model()->deleteAll($criteria);
                 break;
             case self::PROJECT_ACHIEVEMENT:
-            	PaperTeachingProjectAchivement::model()->delteAll($criteria);
+            	PaperTeachingProjectAchievement::model()->deleteAll($criteria);
             default:
                 PaperTeachingProjectFund::model()->deleteAll($criteria);
                 break;
@@ -357,9 +420,9 @@ class PaperTeaching extends CActiveRecord
     }
 
     private function deletePaperTeachingProjectAll() {
-    	deletePaperTeachingProject(self::PROJECT_FUND);
-    	deletePaperTeachingProject(self::PROJECT_REIM);
-    	deletePaperTeachingProject(self::PROJECT_ACHIEVEMENT);
+    	self::deletePaperTeachingProject(self::PROJECT_FUND);
+    	self::deletePaperTeachingProject(self::PROJECT_REIM);
+    	self::deletePaperTeachingProject(self::PROJECT_ACHIEVEMENT);
     	return true;
     }
 
@@ -373,4 +436,39 @@ class PaperTeaching extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    protected function beforeSave(){
+        if($this->pass_date=='') {
+            $this->pass_date=null;
+        }
+        if($this->pub_date=='') {
+            $this->pub_date=null;
+        }
+        if($this->index_date=='') {
+            $this->index_date=null;
+        }
+        if($this->scenario=='update') {
+            if(self::deletePaperTeachingProjectAll() && self::deletePaperTeachingPeople()) {
+                return parent::beforeSave();
+            } else {
+                return false;
+            }
+        }
+        return parent::beforeSave();
+    }
+
+    protected function afterSave() {
+        return 
+            self::populatePaperTeachingProjectAll() && 
+            self::populatePaperTeachingPeople() &&
+            parent::afterSave(); 
+    }
+
+    protected function afterDelete() {
+        return 
+        self::deletePaperTeachingProjectAll() && 
+        self::deletePaperTeachingPeople() &&
+        parent::afterDelete();
+    }
+
 }

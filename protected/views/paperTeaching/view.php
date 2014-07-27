@@ -23,22 +23,49 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'info',
-		'status',
+        array(
+            'label'=>'作者',
+            'type'=>'raw',
+            'value'=>$model->getPeoples(),
+        ),
+        array(
+            'label'=>'状态',
+            'type'=>'raw',
+            'value'=>$model->getStatusString(),
+        ),
+        array(
+            'label'=>'级别',
+            'type'=>'raw',
+            'value'=>$model->getLevelString(),
+        ),
 		'pass_date',
 		'pub_date',
 		'index_date',
 		'sci_number',
 		'ei_number',
 		'istp_number',
-		'is_first_grade',
-		'is_core',
-		'other_pub',
-		'is_journal',
-		'is_conference',
-		'is_intl',
-		'is_domestic',
-		'filename',
-		'is_high_level',
-		'maintainer_id',
+        array(
+            'label'=>'支柱项目',
+            'type'=>'raw',
+            'value'=>$model->getFundProjects(),
+        ),
+        array(
+            'label'=>'报账项目',
+            'type'=>'raw',
+            'value'=>$model->getReimProjects(),
+        ),
+        array(
+            'label'=>'成果项目',
+            'type'=>'raw',
+            'value'=>$model->getAchievementProjects(),
+        ),
+        array(
+            'label'=>'维护人员',
+            'type'=>'raw',
+            'value'=>
+                isset($model->maintainer) ? 
+                $model->maintainer->name :
+                null,
+        ),
 	),
 )); ?>

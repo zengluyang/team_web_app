@@ -40,7 +40,7 @@ class PaperController extends Controller
 				'expression'=>'isset($user->is_paper) && $user->is_paper'
 			),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('testExcelExport','testExcelExportByTable','query','testSearchByPeople','reset','upload','admin','delete','import','testXls','TestCsv','TestPhpExcelCsv'),
+                'actions'=>array('create','testExcelExport','testExcelExportByTable','query','testSearchByPeople','reset','upload','admin','delete','import','testXls','TestCsv','TestPhpExcelCsv'),
                 'expression'=>'isset($user->is_admin) && $user->is_admin',
             ),
 			array('deny',  // deny all users
