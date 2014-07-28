@@ -32,9 +32,16 @@ CREATE TABLE `tbl_patent_people` (
  CONSTRAINT `tbl_patent_people_ibfk_1` FOREIGN KEY (`patent_id`) REFERENCES `tbl_patent` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-insert into tbl_patent_people values(1,1);
-insert into tbl_patent_people values(1,2);
-insert into tbl_patent_people values(2,2);
+CREATE TABLE `tbl_patent_project_achievement` (
+  /*成果项目*/
+  patent_id int not null,
+  project_id int not null,
+  seq int null,
+  primary key (patent_id,project_id),
+  key tbl_patent_project_ibfk_2 (project_id),
+  CONSTRAINT `tbl_patent_project_achievement_ibfk_2` FOREIGN KEY (`patent_id`) REFERENCES `tbl_patent` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_patent_project_achievement_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 create TABLE xxx (
   id int not null PRIMARY KEY auto_increment,
