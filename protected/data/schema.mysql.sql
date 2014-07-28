@@ -256,7 +256,7 @@ CREATE TABLE `tbl_publication_project_achievement` (
   primary key (publication_id,project_id),
   key tbl_publication_project_achievement_ibfk_2 (project_id),
   CONSTRAINT `tbl_publication_project_achievement_ibfk_2` FOREIGN KEY (`publication_id`) REFERENCES `tbl_publication` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `tbl_paper_teaching_project_achievement_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `tbl_publication_project_achievement_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `tbl_software` (

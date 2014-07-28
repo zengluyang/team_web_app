@@ -91,18 +91,76 @@
 
 		</div>
 	</div>
+	 <div class="row">
+        <div class="medium-12 columns end">
+        <?php
+        $projects = Project::model()->findAll();
+        echo $form->labelEx($model,'fund_projects');
+        echo CHtml::dropDownList(
+            'Publication[fund_projects]',
+            array(),
+            Chtml::listData($projects, 'id', 'name'),
+            array(
+                'id'=>'fund_projects_select',
+                'multiple'=>'multiple',
+            )
+        ); 
+
+        ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="medium-12 columns end">
+        <?php
+        echo $form->labelEx($model,'reim_projects');
+        echo CHtml::dropDownList(
+            'Publication[reim_projects]',
+            array(),
+            Chtml::listData($projects, 'id', 'name'),
+            array(
+                'id'=>'reim_projects_select',
+                'multiple'=>'multiple',
+            )
+        ); 
+
+        ?>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="medium-12 columns end">
+        <?php
+        echo $form->labelEx($model,'achivement_projects');
+        echo CHtml::dropDownList(
+            'Publication[achivement_projects]',
+            array(),
+            Chtml::listData($projects, 'id', 'name'),
+            array(
+                'id'=>'achivement_projects_select',
+                'multiple'=>'multiple',
+            )
+        ); 
+
+        ?>
+        </div>
+    </div>
 
 	<div class="row buttons">
 		<div class="medium-12 columns">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 		</div>
 	</div>
+
 <script>
 $(document).ready(function(){
+	$('#fund_projects_select').val([<?php echo $model->getFundProjects(',','id')?>]);
+	$('#reim_projects_select').val([<?php echo $model->getReimProjects(',','id')?>]);
+    $('#reim_achivement_select').val([<?php echo $model->getAchievementProjects(',','id')?>]);
 	var selectionWithOrder=[<?php echo $model->getPeoplesJsArray('id')?>];
 	$('#peoples_select').val(selectionWithOrder);
-	$("#peoples_select").select2({
-			placeholder: "选择编写人",
+	$("select").select2({
+			//placeholder: "选择编写人",
 			width: 'resolve',
 			matcher: function(term,text) {
 				var pinyin = new Pinyin();

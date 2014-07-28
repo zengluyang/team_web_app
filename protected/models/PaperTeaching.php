@@ -395,7 +395,6 @@ class PaperTeaching extends CActiveRecord
     		self::populatePaperTeachingProject(self::PROJECT_ACHIEVEMENT);
     }
 
-
     private function deletePaperTeachingProject($type) {
         $criteria = new CDbCriteria;
         $criteria->condition = 'paper_teaching_id=:paper_teaching_id';

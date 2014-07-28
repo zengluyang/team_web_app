@@ -59,6 +59,12 @@ class PublicationController extends Controller
 	private function setModelPeoples($model) {
 		if(isset($_POST['Publication']['peoples']))
 			$model->peoplesId=$_POST['Publication']['peoples'];
+		if(isset($_POST['Publication']['fund_projects']))
+			$model->fundProjectIds=$_POST['Publication']['fund_projects'];
+		if(isset($_POST['Publication']['reim_projects']))
+			$model->reimProjectIds=$_POST['Publication']['reim_projects'];
+		if(isset($_POST['Publication']['achievement_projects']))
+			$model->achievementProjectIds=$_POST['Publication']['achievement_projects'];
 	}
 
 
