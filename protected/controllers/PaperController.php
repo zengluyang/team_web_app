@@ -656,6 +656,8 @@ class PaperController extends Controller
             $model->fundProjects=$_POST['Paper']['fund_projects'];
         if(isset($_POST['Paper']['reim_projects']))
             $model->reimProjects=$_POST['Paper']['reim_projects'];
+        if(isset($_POST['Paper']['achievement_projects']))
+            $model->achievementProjects=$_POST['Paper']['achievement_projects'];
     }
 
 

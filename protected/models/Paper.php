@@ -52,6 +52,7 @@ class Paper extends CActiveRecord
 
     const PROJECT_FUND=0;
     const PROJECT_REIM=1;
+    const PROJECT_ACHIEVEMENT=2;
 
 
     public $searchPeople;
@@ -61,6 +62,8 @@ class Paper extends CActiveRecord
     public $fundProjects=array();
 
     public $reimProjects=array();
+
+    public $achievementProjects=array();
 
     /**
 	 * @return string the associated database table name
@@ -197,6 +200,13 @@ class Paper extends CActiveRecord
                 'alias' => 'reim_',
                 'order'=>'reim_projects_reim_.seq',
             ),
+            'achievement_projects' => array(
+                self::MANY_MANY, 
+                'Project', 
+                'tbl_paper_project_achievement(paper_id, project_id)',
+                'alias' => 'achievement_',
+                'order'=>'achievement_projects_achievement_.seq',
+            ),
 		);
 	}
 
@@ -229,6 +239,7 @@ class Paper extends CActiveRecord
 			'maintainer_id' => '维护人员',
             'reim_projects' => '报账项目',
             'fund_projects' => '资助项目',
+            'achievement_projects' => '成果项目',
             'level'=>'级别',
 		);
 	}
@@ -289,7 +300,8 @@ class Paper extends CActiveRecord
         if($this->scenario=='update') {
             if(
                 self::deletePaperProject(self::PROJECT_FUND) && 
-                self::deletePaperProject(self::PROJECT_REIM)
+                self::deletePaperProject(self::PROJECT_REIM) &&
+                self::deletePaperProject(self::PROJECT_ACHIEVEMENT)
             ){
                 ;
             } else {
@@ -318,7 +330,8 @@ class Paper extends CActiveRecord
 //        }
         if(
             self::populatePaperProject(self::PROJECT_FUND) && 
-            self::populatePaperProject(self::PROJECT_REIM)) {
+            self::populatePaperProject(self::PROJECT_REIM) &&
+            self::populatePaperProject(self::PROJECT_ACHIEVEMENT)) {
             ;
         }  
         else {
@@ -328,9 +341,10 @@ class Paper extends CActiveRecord
     }
 
     protected function afterDelete() {
-        if(
+        if (
             self::deletePaperProject(self::PROJECT_FUND) && 
-            self::deletePaperProject(self::PROJECT_REIM)){
+            self::deletePaperProject(self::PROJECT_REIM) &&
+            self::deletePaperProject(self::PROJECT_ACHIEVEMENT)) {
             return parent::afterDelete();
         } else {
             return false;
@@ -345,6 +359,10 @@ class Paper extends CActiveRecord
         return self::getProjects(self::PROJECT_REIM,$glue,$attr);   
     }
 
+    public function getAchievementProjects($glue=', ',$attr='name'){
+        return self::getProjects(self::PROJECT_ACHIEVEMENT,$glue,$attr);   
+    }
+
     public function getProjects($type,$glue=', ',$attr='name'){
         $projectsArr = array();
         switch ($type) {
@@ -353,6 +371,9 @@ class Paper extends CActiveRecord
                 break;
             case self::PROJECT_REIM:
                 $projectRecords=$this->reim_projects;
+                break;
+            case self::PROJECT_ACHIEVEMENT:
+                $projectRecords=$this->achievement_projects;
                 break;
             default:
                 $projectRecords=$this->fund_projects;
@@ -373,6 +394,9 @@ class Paper extends CActiveRecord
             case self::PROJECT_REIM:
                 $projects=$this->reimProjects;
                 break;
+            case self::PROJECT_ACHIEVEMENT:
+                $projects=$this->achievementProjects;
+                break;
             default:
                 $projects=$this->fundProjects;
                 break;
@@ -385,6 +409,9 @@ class Paper extends CActiveRecord
                         break;
                     case self::PROJECT_REIM:
                         $paperProject = new PaperProjectReim;
+                        break;
+                    case self::PROJECT_ACHIEVEMENT:
+                        $paperProject = new PaperProjectAchievement;
                         break;
                     default:
                         $paperProject = new PaperProjectFund;
@@ -417,6 +444,9 @@ class Paper extends CActiveRecord
             
             case self::PROJECT_REIM:
                 PaperProjectReim::model()->deleteAll($criteria);
+                break;
+            case self::PROJECT_ACHIEVEMENT:
+                PaperProjectAchievement::model()->deleteAll($criteria);
                 break;
             default:
                 PaperProjectFund::model()->deleteAll($criteria);

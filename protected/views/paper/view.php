@@ -71,6 +71,11 @@ $this->menu=array(
             'type'=>'raw',
             'value'=>$model->getReimProjects(),
         ),
+        array(
+            'label'=>'成果项目',
+            'type'=>'raw',
+            'value'=>$model->getAchievementProjects(),
+        ),
 	),
 )); ?>
 <hr/>

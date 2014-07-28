@@ -180,6 +180,7 @@
         ?>
         </div>
     </div>
+
     <div class="row">
         <div class="medium-12 columns end">
         <?php
@@ -190,6 +191,24 @@
             Chtml::listData($projects, 'id', 'name'),
             array(
                 'id'=>'reim_projects_select',
+                'multiple'=>'multiple',
+            )
+        ); 
+
+        ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="medium-12 columns end">
+        <?php
+        echo $form->labelEx($model,'achievement_projects');
+        echo CHtml::dropDownList(
+            'Paper[achievement_projects]',
+            array(),
+            Chtml::listData($projects, 'id', 'name'),
+            array(
+                'id'=>'achievement_projects_select',
                 'multiple'=>'multiple',
             )
         ); 
@@ -279,6 +298,7 @@
         });
         $('#fund_projects_select').val([<?php echo $model->getFundProjects(',','id')?>]);
         $('#reim_projects_select').val([<?php echo $model->getReimProjects(',','id')?>]);
+        $('#reim_projects_select').val([<?php echo $model->getAchievementProjects(',','id')?>]);
         $('select').select2({
             width: 'resolve',
             matcher: function(term,text) {

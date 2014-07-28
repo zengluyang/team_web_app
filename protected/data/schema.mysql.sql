@@ -194,7 +194,7 @@ CREATE TABLE `tbl_paper_project_reim` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `tbl_paper_project_achievement` (
-  /*教学成果*/
+  /*成果项目*/
   paper_id int not null,
   project_id int not null,
   seq int null,

@@ -74,7 +74,7 @@
         ),
         array('label'=>'教学','url'=>array('#/teaching'),
             'items'=>array(
-                array('label'=>'教学课程', 'url'=>array('#/course')),
+                array('label'=>'教学课程', 'url'=>array('/course')),
                 array('label'=>'实验建设', 'url'=>array('#/experiment')),
                 array('label'=>'教学成果', 'url'=>array('/awardTeaching')),
                 array('label'=>'教改项目', 'url'=>array('/projectTeaching')),

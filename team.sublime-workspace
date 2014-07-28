@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"deltePaperT",
+				"deletePaperTeachingPeople"
+			],
+			[
+				"projec",
+				"projectRecords"
+			],
+			[
+				"PRO",
+				"PROJECT_ACHIEVEMENT"
+			],
+			[
+				"data",
+				"dataProvider"
+			],
+			[
+				"dele",
+				"deleteAwardTeachingPeople"
+			],
+			[
+				"delete",
+				"deleteAwardPeople"
+			],
+			[
 				"direc",
 				"director_1"
 			],
@@ -14,10 +38,6 @@
 			[
 				"is_co",
 				"is_conference"
-			],
-			[
-				"delete",
-				"deleteSoftwarePeople"
 			],
 			[
 				"delte",
@@ -138,10 +158,6 @@
 			[
 				"proj",
 				"project"
-			],
-			[
-				"PRO",
-				"PROJECT_REIM"
 			],
 			[
 				"fi",
@@ -316,74 +332,18 @@
 	"buffers":
 	[
 		{
-			"file": "protected/models/ProjectTeaching.php",
+			"file": "protected/views/paper/_form.php",
 			"settings":
 			{
-				"buffer_size": 8801,
+				"buffer_size": 10727,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "protected/views/awardTeaching/create.php",
+			"file": "protected/models/Paper.php",
 			"settings":
 			{
-				"buffer_size": 403,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "protected/views/projectTeaching/_form.php",
-			"settings":
-			{
-				"buffer_size": 6527,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "protected/controllers/ProjectTeachingController.php",
-			"settings":
-			{
-				"buffer_size": 4724,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "protected/views/projectTeaching/_view.php",
-			"settings":
-			{
-				"buffer_size": 527,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "protected/views/projectTeaching/admin.php",
-			"settings":
-			{
-				"buffer_size": 2566,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "protected/views/projectTeaching/view.php",
-			"settings":
-			{
-				"buffer_size": 1454,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "protected/views/award/index.php",
-			"settings":
-			{
-				"buffer_size": 893,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "protected/views/award/_view.php",
-			"settings":
-			{
-				"buffer_size": 404,
+				"buffer_size": 14337,
 				"line_ending": "Unix"
 			}
 		}
@@ -492,36 +452,60 @@
 	},
 	"file_history":
 	[
+		"/home/zly/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
+		"/home/zly/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/zly/team_web_app/themes/foundation4/views/layouts/main.php",
+		"/home/zly/team_web_app/protected/data/schema.mysql.sql",
+		"/home/zly/team_web_app/protected/views/patent/_view.php",
+		"/home/zly/team_web_app/protected/views/patent/index.php",
+		"/home/zly/team_web_app/protected/views/award/admin.php",
+		"/home/zly/team_web_app/protected/views/award/view.php",
+		"/home/zly/team_web_app/protected/controllers/AwardController.php",
+		"/home/zly/team_web_app/protected/views/award/_form.php",
+		"/home/zly/team_web_app/protected/models/Award.php",
+		"/home/zly/team_web_app/protected/views/course/index.php",
+		"/home/zly/team_web_app/protected/views/course/_view.php",
+		"/home/zly/team_web_app/protected/views/course/admin.php",
+		"/home/zly/team_web_app/protected/views/course/view.php",
+		"/home/zly/team_web_app/protected/controllers/CourseController.php",
+		"/home/zly/team_web_app/protected/views/course/_form.php",
+		"/home/zly/team_web_app/protected/models/Course.php",
+		"/home/zly/team_web_app/protected/views/paperTeaching/_view.php",
+		"/home/zly/team_web_app/protected/models/AwardTeaching.php",
+		"/home/zly/team_web_app/protected/README",
+		"/home/zly/team_web_app/protected/views/paperTeaching/index.php",
+		"/home/zly/team_web_app/protected/controllers/PaperTeachingController.php",
+		"/home/zly/team_web_app/protected/views/paper/index.php",
+		"/home/zly/team_web_app/protected/views/paper/_view.php",
+		"/home/zly/team_web_app/protected/controllers/PaperController.php",
+		"/home/zly/team_web_app/protected/views/paper/view.php",
+		"/home/zly/team_web_app/protected/views/paper/admin.php",
+		"/home/zly/team_web_app/protected/models/PaperTeaching.php",
+		"/home/zly/team_web_app/protected/controllers/ProjectController.php",
+		"/home/zly/team_web_app/protected/views/paperTeaching/admin.php",
+		"/home/zly/team_web_app/protected/views/paperTeaching/view.php",
+		"/home/zly/team_web_app/protected/views/paperTeaching/_form.php",
+		"/home/zly/team_web_app/protected/models/Project.php",
+		"/home/zly/team_web_app/protected/models/Paper.php",
+		"/home/zly/team_web_app/protected/views/paper/_form.php",
+		"/home/zly/team_web_app/index.php",
+		"/home/zly/team_web_app/protected/models/Software.php",
+		"/home/zly/team_web_app/protected/models/Publication.php",
+		"/home/zly/team_web_app/protected/models/ProjectTeaching.php",
+		"/home/zly/team_web_app/protected/views/award/index.php",
+		"/home/zly/team_web_app/protected/views/award/_view.php",
+		"/home/zly/team_web_app/protected/views/awardTeaching/create.php",
+		"/home/zly/team_web_app/protected/views/projectTeaching/_form.php",
+		"/home/zly/team_web_app/protected/controllers/ProjectTeachingController.php",
+		"/home/zly/team_web_app/protected/views/projectTeaching/view.php",
+		"/home/zly/team_web_app/protected/views/projectTeaching/_view.php",
 		"/home/zly/team_web_app/protected/views/projectTeaching/admin.php",
 		"/home/zly/team_web_app/protected/views/awardTeaching/_form.php",
 		"/home/zly/team_web_app/protected/views/projectTeaching/index.php",
-		"/home/zly/team_web_app/protected/views/projectTeaching/_view.php",
-		"/home/zly/team_web_app/protected/data/schema.mysql.sql",
-		"/home/zly/team_web_app/protected/views/awardTeaching/create.php",
-		"/home/zly/team_web_app/protected/views/projectTeaching/_form.php",
 		"/home/zly/team_web_app/team.sublime-project",
-		"/home/zly/team_web_app/protected/controllers/ProjectController.php",
-		"/home/zly/team_web_app/protected/models/Project.php",
-		"/home/zly/team_web_app/protected/models/Paper.php",
 		"/home/zly/team_web_app/protected/views/awardTeaching/admin.php",
-		"/home/zly/team_web_app/protected/views/award/_form.php",
-		"/home/zly/team_web_app/protected/controllers/AwardController.php",
-		"/home/zly/team_web_app/protected/views/award/view.php",
-		"/home/zly/team_web_app/protected/controllers/ProjectTeachingController.php",
-		"/home/zly/team_web_app/protected/models/ProjectTeaching.php",
-		"/home/zly/team_web_app/protected/views/projectTeaching/view.php",
-		"/home/zly/team_web_app/protected/controllers/PaperController.php",
 		"/home/zly/team_web_app/protected/views/project/_form.php",
-		"/home/zly/team_web_app/protected/views/paper/_form.php",
-		"/home/zly/team_web_app/protected/models/Award.php",
-		"/home/zly/team_web_app/protected/models/Software.php",
-		"/home/zly/team_web_app/protected/models/Publication.php",
-		"/home/zly/team_web_app/protected/views/paper/admin.php",
-		"/home/zly/team_web_app/protected/models/AwardTeaching.php",
 		"/home/zly/team_web_app/protected/controllers/AwardTeachingController.php",
-		"/home/zly/team_web_app/protected/views/award/admin.php",
-		"/home/zly/team_web_app/protected/views/award/index.php",
-		"/home/zly/team_web_app/protected/views/award/_view.php",
 		"/home/zly/team_web_app/protected/views/awardTeaching/_view.php",
 		"/home/zly/team_web_app/protected/views/awardTeaching/view.php",
 		"/home/zly/team_web_app/protected/views/awardTeaching/index.php",
@@ -534,17 +518,14 @@
 		"/home/zly/team_web_app/protected/controllers/PublicationController.php",
 		"/home/zly/team_web_app/protected/views/publication/index.php",
 		"/home/zly/team_web_app/protected/views/publication/view.php",
-		"/home/zly/team_web_app/themes/foundation4/views/layouts/main.php",
 		"/home/zly/team_web_app/protected/views/software/_view.php",
 		"/home/zly/team_web_app/protected/models/SoftwareProjectReim.php",
 		"/home/zly/team_web_app/protected/views/software/_form.php",
 		"/home/zly/team_web_app/protected/views/software/index.php",
-		"/home/zly/team_web_app/protected/README",
 		"/home/zly/team_web_app/protected/views/publication/create.php",
 		"/home/zly/team_web_app/protected/views/project/_search.php",
 		"/home/zly/team_web_app/protected/views/project/view.php",
 		"/home/zly/team_web_app/themes/foundation4/views/site/index.php",
-		"/home/zly/team_web_app/protected/views/paper/index.php",
 		"/home/zly/team_web_app/.gitignore",
 		"/home/zly/team_web_app/protected/views/project/create.php",
 		"/home/zly/team_web_app/protected/config/main.php",
@@ -598,28 +579,7 @@
 		"/D/Dropbox/dev_htdocs/team/protected/views/paper/admin.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/paper/index.php",
 		"/D/Dropbox/dev_htdocs/team/protected/views/paper/update.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/upload.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/project/index.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/project/_view.php",
-		"/D/Dropbox/dev_htdocs/team/index.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/site/about.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/site/teacher.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/patent/index.php",
-		"/D/cygwin/home/ZLY/test_virtual_func.cpp",
-		"/D/Dropbox/dev_htdocs/team/js/pinyin.js",
-		"/D/Dropbox/dev_htdocs/team/protected/views/patent/_form.php",
-		"/D/Dropbox/dev_htdocs/team/protected/models/Patent.php",
-		"/D/Dropbox/dev_htdocs/team/js/prototype.js",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/_view.php",
-		"/D/Dropbox/dev_htdocs/team/protected/controllers/UserController.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/project/update.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/project/upload.php",
-		"/D/Dropbox/dev_htdocs/team/protected/controllers/PatentController.php",
-		"/D/Documents/Visual Studio 2012/Projects/ConsoleApplication2/Debug/trace.out.75-130-96-12.static.oxfr.ma.charter.com",
-		"/D/cygwin/home/ZLY/result.txt",
-		"/D/cygwin/home/ZLY/readoutfile.cpp",
-		"/D/cygwin/home/ZLY/trace.out.75-130-96-12.static.oxfr.ma.charter.com",
-		"/D/cygwin/home/ZLY/readoutfile.obj"
+		"/D/Dropbox/dev_htdocs/team/protected/views/paper/upload.php"
 	],
 	"find":
 	{
@@ -627,7 +587,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"*.php"
@@ -638,6 +598,39 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"reim",
+			"award_",
+			"award_id",
+			"Award",
+			"award",
+			"Award",
+			"paper_teaching",
+			"paper_teaching_id",
+			"paper_teaching",
+			"paper_teaching_id",
+			"paper_teaching",
+			"paper_teaching_id",
+			"paper_teaching",
+			"text",
+			"paper",
+			"people_id",
+			"paper",
+			"Paper",
+			"TeachingProject",
+			"projects",
+			"TeachingProject",
+			"fund",
+			"peoples",
+			"populatePaperTeachingProject",
+			"fund",
+			"fundProjectIds",
+			"reimProjectIds",
+			"achievementProjectIds",
+			"achievementIds",
+			"reim",
+			"Paper",
+			"pass_date",
+			"award_date",
 			"data",
 			"<br />",
 			"</b>",
@@ -732,43 +725,10 @@
 			"d2",
 			"medium-1",
 			"row",
-			"textField",
-			"row",
-			")",
-			"attributeLabels",
-			"is",
-			"is_enterprise",
-			"is_provincial",
-			"is_national",
-			"is_intl",
-			"index_date",
-			"textField",
-			"row",
-			"self::",
-			"not-click",
-			"right",
-			"left",
-			"h2",
-			"style",
-			".top-bar",
-			".topbar",
-			"40.063",
-			"left",
-			"right",
-			"not-click",
-			"small",
-			"large",
-			"2",
-			"large-1",
-			"large-4",
-			"right",
-			"examples",
-			"../assets",
-			"mord",
-			"theme"
+			"textField"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
@@ -785,250 +745,61 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "protected/models/ProjectTeaching.php",
+					"file": "protected/views/paper/_form.php",
 					"settings":
 					{
-						"buffer_size": 8801,
+						"buffer_size": 10727,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1883,
-								1883
+								7086,
+								7086
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 306.0,
+						"translation.y": 2958.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "protected/views/awardTeaching/create.php",
+					"file": "protected/models/Paper.php",
 					"settings":
 					{
-						"buffer_size": 403,
+						"buffer_size": 14337,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "protected/views/projectTeaching/_form.php",
-					"settings":
-					{
-						"buffer_size": 6527,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5209,
-								5209
+								6552,
+								6552
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2120.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "protected/controllers/ProjectTeachingController.php",
-					"settings":
-					{
-						"buffer_size": 4724,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 816.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "protected/views/projectTeaching/_view.php",
-					"settings":
-					{
-						"buffer_size": 527,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "protected/views/projectTeaching/admin.php",
-					"settings":
-					{
-						"buffer_size": 2566,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1513,
-								1513
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 969.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "protected/views/projectTeaching/view.php",
-					"settings":
-					{
-						"buffer_size": 1454,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1149,
-								1149
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 255.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 7,
-					"file": "protected/views/award/index.php",
-					"settings":
-					{
-						"buffer_size": 893,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								125,
-								125
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "protected/views/award/_view.php",
-					"settings":
-					{
-						"buffer_size": 404,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								153,
-								153
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3009.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1053,18 +824,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.721853238265,
 			1.0
 		],
 		"rows":
@@ -1093,6 +857,206 @@
 		"selected_items":
 		[
 			[
+				"paper.php",
+				"protected/models/Paper.php"
+			],
+			[
+				"paper_form",
+				"protected/views/paper/_form.php"
+			],
+			[
+				"foundmain",
+				"themes/foundation4/views/layouts/main.php"
+			],
+			[
+				"mysql",
+				"protected/data/schema.mysql.sql"
+			],
+			[
+				"viewcourind",
+				"protected/views/course/index.php"
+			],
+			[
+				"viewpatent_view",
+				"protected/views/patent/_view.php"
+			],
+			[
+				"viewpatentindex",
+				"protected/views/patent/index.php"
+			],
+			[
+				"viewpat_v",
+				"protected/views/paperTeaching/_view.php"
+			],
+			[
+				"viewcourse_view",
+				"protected/views/course/_view.php"
+			],
+			[
+				"viewawardadm",
+				"protected/views/award/admin.php"
+			],
+			[
+				"viewcoursadm",
+				"protected/views/course/admin.php"
+			],
+			[
+				"viewawa",
+				"protected/views/award/view.php"
+			],
+			[
+				"viewcourseview",
+				"protected/views/course/view.php"
+			],
+			[
+				"awardco",
+				"protected/controllers/AwardController.php"
+			],
+			[
+				"coursec",
+				"protected/controllers/CourseController.php"
+			],
+			[
+				"viewwardf",
+				"protected/views/award/_form.php"
+			],
+			[
+				"viewcourse",
+				"protected/views/course/_form.php"
+			],
+			[
+				"award",
+				"protected/models/Award.php"
+			],
+			[
+				"cour",
+				"protected/models/Course.php"
+			],
+			[
+				"read",
+				"protected/README"
+			],
+			[
+				"papercont",
+				"protected/controllers/PaperController.php"
+			],
+			[
+				"papertc",
+				"protected/controllers/PaperTeachingController.php"
+			],
+			[
+				"viewpaper_vew",
+				"protected/views/paper/_view.php"
+			],
+			[
+				"viewpaperview",
+				"protected/views/paper/view.php"
+			],
+			[
+				"viewpapert_view",
+				"protected/views/paperTeaching/_view.php"
+			],
+			[
+				"viewpaperind",
+				"protected/views/paper/index.php"
+			],
+			[
+				"viewpapertindex",
+				"protected/views/paperTeaching/index.php"
+			],
+			[
+				"papercp",
+				"protected/controllers/PaperController.php"
+			],
+			[
+				"viewpaperadm",
+				"protected/views/paper/admin.php"
+			],
+			[
+				"viewpapertadm",
+				"protected/views/paperTeaching/admin.php"
+			],
+			[
+				"viewpapertview",
+				"protected/views/paperTeaching/view.php"
+			],
+			[
+				"viewpaperte",
+				"protected/views/paperTeaching/_form.php"
+			],
+			[
+				"paperte",
+				"protected/models/PaperTeaching.php"
+			],
+			[
+				"paperco",
+				"protected/controllers/PaperController.php"
+			],
+			[
+				"awardc",
+				"protected/controllers/AwardController.php"
+			],
+			[
+				"paperteahi",
+				"protected/controllers/PaperTeachingController.php"
+			],
+			[
+				"prjct",
+				"protected/controllers/ProjectController.php"
+			],
+			[
+				"proe",
+				"protected/models/Project.php"
+			],
+			[
+				"paper",
+				"protected/models/Paper.php"
+			],
+			[
+				"index",
+				"index.php"
+			],
+			[
+				"viewpaper_",
+				"protected/views/paper/_form.php"
+			],
+			[
+				"viewpapt_f",
+				"protected/views/paperTeaching/_form.php"
+			],
+			[
+				"readm",
+				"protected/README"
+			],
+			[
+				"papertea",
+				"protected/models/PaperTeaching.php"
+			],
+			[
+				"public",
+				"protected/models/Publication.php"
+			],
+			[
+				"soft",
+				"protected/models/Software.php"
+			],
+			[
+				"awardt",
+				"protected/models/AwardTeaching.php"
+			],
+			[
+				"project.php",
+				"protected/models/Project.php"
+			],
+			[
+				"awar",
+				"protected/models/Award.php"
+			],
+			[
+				"mysql.",
+				"protected/data/schema.mysql.sql"
+			],
+			[
 				"projectteac",
 				"controllers/ProjectTeachingController.php"
 			],
@@ -1107,10 +1071,6 @@
 			[
 				"prtcreate",
 				"protected/views/awardTeaching/create.php"
-			],
-			[
-				"mysql",
-				"protected/data/schema.mysql.sql"
 			],
 			[
 				"viewprojecttadmin",
@@ -1149,10 +1109,6 @@
 				"protected/views/projectTeaching/view.php"
 			],
 			[
-				"awardc",
-				"protected/controllers/AwardController.php"
-			],
-			[
 				"viewawrd_form",
 				"protected/views/award/_form.php"
 			],
@@ -1167,10 +1123,6 @@
 			[
 				"viewprtadmin",
 				"protected/views/projectTeaching/admin.php"
-			],
-			[
-				"paper",
-				"protected/models/Paper.php"
 			],
 			[
 				"project",
@@ -1205,20 +1157,12 @@
 				"protected/controllers/ProjectController.php"
 			],
 			[
-				"soft",
-				"protected/models/Software.php"
-			],
-			[
 				"publ",
 				"protected/models/Publication.php"
 			],
 			[
 				"pr",
 				"protected/models/Project.php"
-			],
-			[
-				"papercont",
-				"protected/controllers/PaperController.php"
 			],
 			[
 				"viewawtadm",
@@ -1233,16 +1177,8 @@
 				"protected/models/AwardTeaching.php"
 			],
 			[
-				"awardt",
-				"protected/models/AwardTeaching.php"
-			],
-			[
 				"projectcon",
 				"protected/controllers/ProjectController.php"
-			],
-			[
-				"awar",
-				"protected/models/Award.php"
 			],
 			[
 				"awardta",
@@ -1337,10 +1273,6 @@
 				"protected/controllers/PublicationController.php"
 			],
 			[
-				"viewpaper_",
-				"protected/views/paper/_form.php"
-			],
-			[
 				"viewpub_",
 				"protected/views/publication/_form.php"
 			],
@@ -1383,10 +1315,6 @@
 			[
 				"softwc",
 				"protected/controllers/SoftwareController.php"
-			],
-			[
-				"read",
-				"protected/README"
 			],
 			[
 				"viewpaper_f",
@@ -1439,170 +1367,6 @@
 			[
 				"viewpub_fo",
 				"protected/views/publication/_form.php"
-			],
-			[
-				"proje",
-				"protected/models/Project.php"
-			],
-			[
-				"foundviewma",
-				"themes/foundation4/views/layouts/main.php"
-			],
-			[
-				"viewpapinde",
-				"protected/views/paper/index.php"
-			],
-			[
-				"viewpubindex",
-				"protected/views/publication/index.php"
-			],
-			[
-				"main",
-				"protected/config/main.php"
-			],
-			[
-				"viewprojview",
-				"protected/views/project/view.php"
-			],
-			[
-				"pubcon",
-				"protected/controllers/PublicationController.php"
-			],
-			[
-				"viewprojcr",
-				"protected/views/project/create.php"
-			],
-			[
-				"viewpubcreate",
-				"protected/views/publication/create.php"
-			],
-			[
-				"viewproject_f",
-				"protected/views/project/_form.php"
-			],
-			[
-				"viewpubl_f",
-				"protected/views/publication/_form.php"
-			],
-			[
-				"",
-				"protected/models/Publication.php"
-			],
-			[
-				"tes",
-				"protected/data/testdrive_3.sql"
-			],
-			[
-				"projectc",
-				"protected/controllers/ProjectController.php"
-			],
-			[
-				"thes",
-				"protected/extensions/bootstrap/tests/unit/TbHtmlTest.php"
-			],
-			[
-				".sql",
-				"protected/data/testdrive (2).sql"
-			],
-			[
-				"viewuserview",
-				"protected/views/user/view.php"
-			],
-			[
-				"viewusercreat",
-				"protected/views/user/create.php"
-			],
-			[
-				"viewuser_form",
-				"protected/views/user/_form.php"
-			],
-			[
-				"pa",
-				"protected/models/Paper.php"
-			],
-			[
-				"logi",
-				"protected/models/LoginForm.php"
-			],
-			[
-				"viewlogin",
-				"protected/views/site/login.php"
-			],
-			[
-				"foundmain",
-				"themes/foundation4/views/layouts/main.php"
-			],
-			[
-				"sql",
-				"protected/data/testdrive.sql"
-			],
-			[
-				"sitein",
-				"themes/foundation4/views/site/index.php"
-			],
-			[
-				"pe",
-				"protected/controllers/PeopleController.php"
-			],
-			[
-				"project_s",
-				"protected/views/project/_search.php"
-			],
-			[
-				"confi",
-				"protected/config/main.php"
-			],
-			[
-				"siteindex",
-				"themes/foundation4/views/site/index.php"
-			],
-			[
-				"paperview",
-				"protected/views/paper/view.php"
-			],
-			[
-				"view",
-				"protected/views/paper/_search.php"
-			],
-			[
-				"paper_f",
-				"protected/views/paper/_form.php"
-			],
-			[
-				"proje_f",
-				"protected/views/project/_form.php"
-			],
-			[
-				"viewcre",
-				"protected/views/paper/create.php"
-			],
-			[
-				"paperprojectfund",
-				"protected/models/PaperProjectFund.php"
-			],
-			[
-				"projectview",
-				"protected/views/project/view.php"
-			],
-			[
-				"config",
-				"protected/config/main.php"
-			],
-			[
-				"cdbs",
-				"yii/framework/db/schema/CDbSchema.php"
-			],
-			[
-				"ccommandbuil",
-				"yii/framework/db/schema/CDbCommandBuilder.php"
-			],
-			[
-				"cactivef",
-				"yii/framework/db/ar/CActiveFinder.php"
-			],
-			[
-				"cdbcriteria",
-				"yii/framework/db/schema/CDbCriteria.php"
 			]
 		],
 		"width": 0.0
@@ -1638,7 +1402,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 151.0,
 	"status_bar_visible": true
 }
