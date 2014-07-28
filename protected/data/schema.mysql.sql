@@ -226,6 +226,39 @@ CREATE TABLE `tbl_publication_people` (
   CONSTRAINT `tbl_publication_people_ibfk_1` FOREIGN KEY (`publication_id`) REFERENCES `tbl_publication` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+CREATE TABLE `tbl_publication_project_fund` (
+  /*支柱项目*/
+  publication_id int not null,
+  project_id int not null,
+  seq int null,
+  primary key (publication_id,project_id),
+  key tbl_publication_project_fund_ibfk (project_id),
+  CONSTRAINT `tbl_publication_project_fund_ibfk_2` FOREIGN KEY (`publication_id`) REFERENCES `tbl_publication` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_publication_project_fund_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `tbl_publication_project_reim` (
+  /*报账项目*/
+  publication_id int not null,
+  project_id int not null,
+  seq int null,
+  primary key (publication_id,project_id),
+  key tbl_publication_project_reim_ibfk_2 (project_id),
+  CONSTRAINT `tbl_publication_project_reim_ibfk_2` FOREIGN KEY (`publication_id`) REFERENCES `tbl_publication` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_publication_project_reim_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `tbl_publication_project_achievement` (
+  /*成果项目*/
+  publication_id int not null,
+  project_id int not null,
+  seq int null,
+  primary key (publication_id,project_id),
+  key tbl_publication_project_achievement_ibfk_2 (project_id),
+  CONSTRAINT `tbl_publication_project_achievement_ibfk_2` FOREIGN KEY (`publication_id`) REFERENCES `tbl_publication` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_paper_teaching_project_achievement_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 CREATE TABLE `tbl_software` (
   id int not null primary key auto_increment,
   name varchar(255),          #著作权名称
