@@ -22,37 +22,6 @@ CREATE TABLE tbl_patent
   abstract TEXT not null
 );
 
-insert into tbl_patent
-  (id,name,app_date,app_number,auth_number,auth_date,is_intl,is_domestic,abstract)
-  values
-  (
-    1,
-    '一种无线传感器网络的节能方法及休眠决策系统',
-    '2012.01.17',
-    '201210014288.9',
-    null,
-    null,
-    0,
-    1,
-    '本发明公开了一种无线传感器网络的节能方法及休眠决策系统。本发明的方法通过设计元胞自动机状态转换规则，根据网络拓扑情况不同，设置休眠门限值从而调节休眠强度，使得节点能够通过元胞自动机的状态转换规则，在休眠和工作状态间进行切换，当有过多邻居节点处于工作状态时，当前节点可以进入休眠状态，从而减少了能量消耗；本发明的休眠决策系统通过合理使用元胞自动机处理机制，在MAC层与IP层间设计CA层，在保证网络传输可靠性的基础上，减少了节点能量消耗，延长了网络生存期的功能。'
-  );
-
-
-insert into tbl_patent
-  (id,name,app_date,app_number,auth_number,auth_date,is_intl,is_domestic,abstract)
-  values
-  (
-    2,
-    '一种异构网络的多模切换方法',
-    '2011.12.22',
-    '201110434828.4',
-    null,
-    null,
-    0,
-    1,
-    '本发明公开了一种异构网络的多模切换方法，具体包括如下步骤：确定异构网络中每种通信模式下的实时业务和非实时业务以及确定异构网络中多种通信模式之间的优先级；设定每种通信模式下的实时业务和非实时业务各自的丢包率门限值；获取每种通信模式下的实时业务和非实时业务各自的丢包率；按照优先级从高到低的顺序，将得到的丢包率与其对应的门限值对比，找到当前最适合接入的网络进行切换。本发明的方法通过通信业务感知当前的通信性能，经过决策，能够选择最优的通信模式，可以使用户更有效的使用网络资源，并加强抗中断通信能力。'
-  );
-
 CREATE TABLE `tbl_patent_people` (
  `patent_id` int(11) NOT NULL,
  `people_id` int(11) NOT NULL,
