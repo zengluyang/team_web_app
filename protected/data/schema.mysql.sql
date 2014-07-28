@@ -193,6 +193,18 @@ CREATE TABLE `tbl_paper_project_reim` (
   CONSTRAINT `tbl_project_people_reim_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+CREATE TABLE `tbl_paper_project_achievement` (
+  /*教学成果*/
+  paper_id int not null,
+  project_id int not null,
+  seq int null,
+  primary key (paper_id,project_id),
+  key tbl_paper_project_ibfk_2 (project_id),
+  CONSTRAINT `tbl_project_people_achievement_ibfk_2` FOREIGN KEY (`paper_id`) REFERENCES `tbl_paper` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_project_people_achievement_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
 CREATE TABLE `tbl_publication` (
   id int not null primary key auto_increment,
   info varchar(255),        #著作信息
