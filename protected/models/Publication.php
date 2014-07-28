@@ -111,7 +111,7 @@ class Publication extends CActiveRecord
 			'peoples'=>'编写人',
             'reim_projects' => '报账项目',
             'fund_projects' => '资助项目',
-            'achivement_projects' => '成果项目',
+            'achievement_projects' => '成果项目',
 		);
 	}
 
@@ -202,6 +202,7 @@ class Publication extends CActiveRecord
                 break;
             case self::PROJECT_ACHIEVEMENT:
             	$projects=$this->achievementProjectIds;
+                break;
             default:
                 $projects=$this->fundProjectIds;
                 break;

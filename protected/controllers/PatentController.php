@@ -76,6 +76,12 @@ class PatentController extends Controller
 		));
 	}
 
+    private function setModelRelation($model) {
+        if(isset($_POST['Patent']['achievement_projects']))
+            $model->achievementProjectIds=$_POST['Patent']['achievement_projects'];
+    }
+
+
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -90,6 +96,7 @@ class PatentController extends Controller
 		if(isset($_POST['Patent']))
 		{
 			$model->attributes=$_POST['Patent'];
+            self::setModelRelation($model);
             if($model->save()) {
                 yii::trace("model->id:".$model->id,"PatentController.actionCreate()");
                 $peoples = $_POST['Patent']['peoples'];
@@ -142,6 +149,7 @@ class PatentController extends Controller
 		if(isset($_POST['Patent']))
 		{
 			$model->attributes=$_POST['Patent'];
+            self::setModelRelation($model);
 			if($model->save()) {
                 $criteria=new CDbCriteria;
                 $criteria->condition='patent_id=:patent_id';

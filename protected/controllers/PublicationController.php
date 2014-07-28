@@ -108,6 +108,8 @@ class PublicationController extends Controller
 		{
 			$model->attributes=$_POST['Publication'];
 			self::setModelPeoples($model);
+			// var_dump($model->achievementProjectIds);
+			// Yii::app()->end();
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -151,10 +153,10 @@ class PublicationController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Publication']))
 			$model->attributes=$_GET['Publication'];
-			if($_GET['publication']['is_textbook']=='0'){
+			if(isset($_GET['Publication']['is_textbook']) && $_GET['Publication']['is_textbook']=='0'){
 				$model->is_textbook="";
 			}
-			if($_GET['publication']['is_pub']=='0'){
+			if(isset($_GET['Publication']['is_pub']) && $_GET['Publication']['is_pub']=='0'){
 				$model->is_pub="";
 			}
 

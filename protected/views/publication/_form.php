@@ -131,13 +131,13 @@
     <div class="row">
         <div class="medium-12 columns end">
         <?php
-        echo $form->labelEx($model,'achivement_projects');
+        echo $form->labelEx($model,'achievement_projects');
         echo CHtml::dropDownList(
-            'Publication[achivement_projects]',
+            'Publication[achievement_projects]',
             array(),
             Chtml::listData($projects, 'id', 'name'),
             array(
-                'id'=>'achivement_projects_select',
+                'id'=>'achievement_projects_select',
                 'multiple'=>'multiple',
             )
         ); 
@@ -156,7 +156,7 @@
 $(document).ready(function(){
 	$('#fund_projects_select').val([<?php echo $model->getFundProjects(',','id')?>]);
 	$('#reim_projects_select').val([<?php echo $model->getReimProjects(',','id')?>]);
-    $('#reim_achivement_select').val([<?php echo $model->getAchievementProjects(',','id')?>]);
+    $('#achievement_projects_select').val([<?php echo $model->getAchievementProjects(',','id')?>]);
 	var selectionWithOrder=[<?php echo $model->getPeoplesJsArray('id')?>];
 	$('#peoples_select').val(selectionWithOrder);
 	$("select").select2({

@@ -20,10 +20,15 @@
  */
 class Patent extends CActiveRecord
 {
-	/**
-	 * @return string the associated database table name
-	 */
+
+
+    const PROJECT_FUND=0;
+    const PROJECT_REIM=1;
+    const PROJECT_ACHIEVEMENT=2;
+
     public $searchPeople;
+
+	public $achievementProjectIds = array();
 
 	public function tableName()
 	{
@@ -60,7 +65,20 @@ class Patent extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'peoples' => array(self::MANY_MANY, 'People', 'tbl_patent_people(patent_id, people_id)','order'=>'seq'),
+			'peoples' => array(
+				self::MANY_MANY, 
+				'People', 
+				'tbl_patent_people(patent_id, people_id)',
+				'alias'=>'peoples_',
+				'order'=>'peoples_peoples_.seq',
+			),
+			'achievement_projects' => array(
+				self::MANY_MANY, 
+				'Project', 
+				'tbl_patent_project_achievement(patent_id, project_id)',
+				'alias'=>'achievement_',
+				'order'=>'achievement_projects_achievement_.seq',
+			),
 		);
 	}
 
@@ -79,7 +97,8 @@ class Patent extends CActiveRecord
 			'is_intl' => '国际',
 			'is_domestic' => '国内',
 			'abstract' => '简介',
-            'peoples' => '发明人'
+            'peoples' => '发明人',
+            'achievement_projects' => '成果项目',
 		);
 	}
 
@@ -120,12 +139,7 @@ class Patent extends CActiveRecord
             ),
 		));
 	}
-    protected function beforeSave() {
-        Yii::trace($this->auth_date,"Patent::beforeSave()");
-        if($this->auth_date=='')
-            $this->auth_date=null;
-        return parent::beforeSave();
-    }
+
     /**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -136,4 +150,122 @@ class Patent extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function getAchievementProjects($glue=', ',$attr='name'){
+        return self::getProjects(self::PROJECT_ACHIEVEMENT,$glue,$attr);   
+    }
+
+    public function getProjects($type,$glue=', ',$attr='name'){
+        $projectsArr = array();
+        switch ($type) {
+
+            case self::PROJECT_ACHIEVEMENT:
+                $projectRecords=$this->achievement_projects;
+                break;
+            default:
+                $projectRecords=$this->achievement_projects;
+                break;
+        }
+        foreach ($projectRecords as $project){
+            array_push($projectsArr,$project->$attr);
+        }
+        return implode($glue, $projectsArr);
+    }
+
+    private function populatePatentProject($type) {
+        switch ($type) {
+            case self::PROJECT_ACHIEVEMENT:
+            	$projects=$this->achievementProjectIds;
+            default:
+                $projects=$this->achievementProjectIds;
+                break;
+        }
+        for($i=0;$i<count($projects);$i++) {
+            if($projects[$i]!=null && $projects[$i]!=0){
+                switch ($type) {
+                    case self::PROJECT_ACHIEVEMENT:
+                        $patentProject = new PatentProjectAchievement;
+                        break;
+                    default:
+                        $patentProject = new PatentProjectAchievement;
+                        break;
+                }
+                $patentProject->seq=$i+1;
+                $patentProject->patent_id=$this->id;
+                $patentProject->project_id=$projects[$i];
+                if($patentProject->save()) {
+                    yii::trace("projects[i]:".$projects[$i]." saved","Patent.populatePatentProject()");
+                } else {
+                    return false;
+                }
+
+            }
+        }
+        return true;
+    }
+
+    private function populatePatentProjectAll() {
+    	return 
+    		self::populatePatentProject(self::PROJECT_ACHIEVEMENT);
+    }
+
+    private function deletePatentProject($type) {
+        $criteria = new CDbCriteria;
+        $criteria->condition = 'patent_id=:patent_id';
+        $criteria->params = array(':patent_id'=>$this->id);
+        
+
+         switch ($type) {
+            case self::PROJECT_ACHIEVEMENT:
+            	PatentProjectAchievement::model()->deleteAll($criteria);
+            default:
+                PatentProjectAchievement::model()->deleteAll($criteria);
+                break;
+        }
+        return true;
+    }
+
+    private function deletePatentProjectAll() {
+    	self::deletePatentProject(self::PROJECT_ACHIEVEMENT);
+    	return true;
+    }
+
+
+	public function getPeoples($glue=', ',$attr='name') {
+		$peopleArr = array();
+		foreach ($this->peoples as $people) {
+			array_push($peopleArr,$people->$attr);
+		}
+		return implode($glue,$peopleArr);
+    }
+
+    protected function beforeSave(){
+    	if($this->app_date=='') {
+    		$this->app_date=null;
+    	}
+    	if($this->auth_date=='') {
+    		$this->auth_date=null;
+    	}
+	    if($this->scenario=='update') {
+	    	if(self::deletePatentProjectAll()) {
+	    		return parent::beforeSave();
+	    	} else {
+	    		return false;
+	    	}
+	    }
+	    return parent::beforeSave();
+	}
+
+	protected function afterSave() {
+		return 
+			self::populatePatentProjectAll() &&
+			parent::afterSave(); 
+	}
+
+    protected function afterDelete() {
+        return 
+        	self::deletePatentProjectAll() &&
+        	parent::afterDelete();
+    }
+
 }

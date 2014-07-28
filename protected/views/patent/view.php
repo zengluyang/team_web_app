@@ -22,28 +22,47 @@ $this->menu=array(
 <?php $this->Widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
+        'id',
+        'name',
+        'app_date',
+        'app_number',
+        'auth_number',
+        'auth_date',
+        'is_intl',
+        'is_domestic',
+        'abstract',
+        array(
+            'label'=>'发明人',
+            'type'=>'raw',
+            'value'=>$model->getPeoples(),
+        ),
+        array(
+            'label'=>'成果项目',
+            'type'=>'raw',
+            'value'=>$model->getAchievementProjects(),
+        ),
 	),
 ));?>
-<table class="detail-view" id="yw1">
+<!-- <table class="detail-view" id="yw1">
     <?php
-    $flag=false;
+    // $flag=false;
 
-    foreach(array_keys($model->attributeLabels()) as $attr) {
-        if($attr!='peoples') {
-            echo '<tr class="'.($flag?'even':'odd').'"><th>'.$model->getAttributeLabel($attr).'</th><td>'.$model->$attr.'</td></tr>';
-            $flag = !$flag;
-        } else if ($attr=='peoples'){
-            for($i=0;$i<count($model->peoples);$i++) {
-                echo '<tr class="'.
-                    ($flag?'even':'odd').'"><th>'.
-                    $model->getAttributeLabel('peoples').($i+1).
-                    '</th><td>'.
-                    $model->peoples[$i]->name.
-                    '</td></tr>';
-                $flag = !$flag;
-            }
+    // foreach(array_keys($model->attributeLabels()) as $attr) {
+    //     if($attr!='peoples') {
+    //         echo '<tr class="'.($flag?'even':'odd').'"><th>'.$model->getAttributeLabel($attr).'</th><td>'.$model->$attr.'</td></tr>';
+    //         $flag = !$flag;
+    //     } else if ($attr=='peoples'){
+    //         for($i=0;$i<count($model->peoples);$i++) {
+    //             echo '<tr class="'.
+    //                 ($flag?'even':'odd').'"><th>'.
+    //                 $model->getAttributeLabel('peoples').($i+1).
+    //                 '</th><td>'.
+    //                 $model->peoples[$i]->name.
+    //                 '</td></tr>';
+    //             $flag = !$flag;
+    //         }
 
-        }
-    }
+    //     }
+    // }
     ?>
-</table>
+</table> -->
