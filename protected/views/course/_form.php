@@ -3,6 +3,40 @@
 /* @var $model Course */
 /* @var $form CActiveForm */
 ?>
+<?php 
+$this->widget('ext.kindeditor.KindEditorWidget',array(
+    'id'=>'description_textarea',   //Textarea id
+    // Additional Parameters (Check http://www.kindsoft.net/docs/option.html)
+    'items' => array(
+        //'width'=>'700px',
+        //'height'=>'300px',
+        'themeType'=>'default',
+        'allowImageUpload'=>true,
+        'allowFileManager'=>true,
+        // 'items'=>array(
+        //     'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic',
+        //     'underline', 'removeformat', '|', 'justifyleft', 'justifycenter',
+        //     'justifyright', 'insertorderedlist','insertunorderedlist', '|',
+        //     'emoticons', 'image', 'link',),
+    ),
+));
+$this->widget('ext.kindeditor.KindEditorWidget',array(
+    'id'=>'textbook_textarea',   //Textarea id
+    // Additional Parameters (Check http://www.kindsoft.net/docs/option.html)
+    'items' => array(
+        //'width'=>'700px',
+        //'height'=>'300px',
+        'themeType'=>'default',
+        'allowImageUpload'=>true,
+        'allowFileManager'=>true,
+        // 'items'=>array(
+        //     'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic',
+        //     'underline', 'removeformat', '|', 'justifyleft', 'justifycenter',
+        //     'justifyright', 'insertorderedlist','insertunorderedlist', '|',
+        //     'emoticons', 'image', 'link',),
+    ),
+)); 
+?>
 
 <div class="form">
 
@@ -30,7 +64,7 @@
 	<div class="row">
 		<div class="medium-12 columns">
 		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'description',array('visibility'=>'hidden','id'=>'description_textarea')); ?>
 		<?php echo $form->error($model,'description'); ?>
 		</div>
 	</div>
@@ -53,7 +87,7 @@
 	<div class="row">
 		<div class="medium-12 columns">
 		<?php echo $form->labelEx($model,'textbook'); ?>
-		<?php echo $form->textArea($model,'textbook',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'textbook',array('visibility'=>'hidden','id'=>'textbook_textarea')); ?>
 		<?php echo $form->error($model,'textbook'); ?>
 		</div>
 	</div>

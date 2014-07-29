@@ -126,6 +126,23 @@ class Course extends CActiveRecord
 		return implode($glue,$peopleArr);
     }
 
+    public function getPurifiedDescription() {
+		$purifier = new CHtmlPurifier();
+		$purifier->options = array(
+    		'HTML.Allowed' => 'p,a[href],b,i,li,ol,ul,img[src],img[width],img[height]',
+		);
+		return $purifier->purify($this->description);
+    }
+
+    public function getPurifiedTextbook() {
+		$purifier = new CHtmlPurifier();
+		$purifier->options = array(
+    		'HTML.Allowed' => 'p,a[href],b,i,li,ol,ul,img[src],img[width],img[height]',
+		);
+		return $purifier->purify($this->textbook);
+    }
+
+
     private function populateCoursePeople(){
     	$peoples=$this->peopleIds;
     	for($i=0;$i<count($peoples);$i++){

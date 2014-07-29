@@ -2,7 +2,9 @@
 /* @var $this CourseController */
 /* @var $data Course */
 ?>
+<?php
 
+?>
 <div class="view">
 
 
@@ -22,11 +24,11 @@
 	<a class="more" href="#" style="">更多</a>
 	<div class="abstract" style="display: none;">
 	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
-	<?php echo CHtml::encode($data->description); ?>
+	<?php echo $data->getPurifiedDescription(); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('textbook')); ?>:</b>
-	<?php echo CHtml::encode($data->textbook); ?>
+	<?php echo $data->getPurifiedTextBook();?>
 	<br />
 
 	</div>
