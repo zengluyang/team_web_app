@@ -136,7 +136,18 @@ class PaperTeachingController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('PaperTeaching');
+		$criteria = new CDbCriteria;
+		$criteria->addCondition('is_high_level=1');
+		$dataProvider=new CActiveDataProvider(
+			'PaperTeaching',
+            array('sort'=>array(
+                'defaultOrder'=>array(
+                ),
+
+            ),
+            'pagination'=>false,
+            'criteria'=>$criteria,
+		));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
