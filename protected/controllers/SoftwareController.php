@@ -1,4 +1,6 @@
 <?php
+Yii::import('application.vendor.*');
+require_once('PHPExcel/PHPExcel.php');
 
 class SoftwareController extends Controller
 {
@@ -33,10 +35,10 @@ class SoftwareController extends Controller
 			),
 			array('allow', 
 				'actions'=>array('create','update','admin'),
-				'expression'=>'isset($user->is_publication) && $user->is_publication',
+				'expression'=>'isset($user->is_software) && $user->is_software',
 			),
 			array('allow', 
-				'actions'=>array('admin','delete','create','update'),
+				'actions'=>array('admin','delete','create','update','upload'),
 				'expression'=>'isset($user->is_admin) && $user->is_admin',
 			),
 			array('deny',  // deny all users
@@ -183,4 +185,94 @@ class SoftwareController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+    protected function saveXlsToDb($xlsPath) {
+        $softwares = self::xlsToArray($xlsPath);
+        return self::saveXlsArrayToDb($softwares);
+    }
+
+
+    public function xlsToArray($path)
+    {
+        Yii::trace("start of loading","actionTestXls()");
+        $objPHPExcel = PHPExcel_IOFactory::load($path);
+        Yii::trace("end of loading","actionTestXls()");
+        Yii::trace("start of reading","actionTestXls()");
+        $dataArray = $objPHPExcel->getActiveSheet()->toArray();
+        Yii::trace("end of reading","actionTestXls()");
+        array_shift($dataArray);
+        return $dataArray;
+    }
+
+    public function saveXlsArrayToDb($softwares)
+    {
+        $connection=Yii::app()->db;
+        foreach($softwares as $k => $s) {
+            $software = new Software;
+            if(empty($s[0])) {
+            	continue; //@TODO: more verbose validating.
+            }
+            $software->name=$s[0];
+            $software->reg_date=$s[1];
+            $software->reg_number=$s[2];
+            $software->department=$s[8];
+            for($i=3;$i<8;$i++){
+            	if(!empty($s[$i])) {
+            		$people=People::model()->findByAttributes(array('name'=>$s[$i]));
+            		array_push($software->peopleIds, $people->id);
+            	}
+            }
+            //@TODO: $software->jbf_number=$s[9];
+            //@TODO: $software->maintainer..;
+            $software->description=$s[11];
+
+            for($i=12;$i<22;$i=$i+2){
+            	if(!empty($s[$i])) {
+            		$project=Project::model()->findByAttributes(array('name'=>$s[$i],'number'=>$s[$i+1]));
+            		array_push($software->fundProjectIds, $project->id);
+            	}
+            }
+            for($i=22;$i<32;$i=$i+2){
+            	if(!empty($s[$i])) {
+            		$project=Project::model()->findByAttributes(array('name'=>$s[$i],'number'=>$s[$i+1]));
+            		array_push($software->reimProjectIds, $project->id);
+            	}
+            }
+            for($i=32;$i<42;$i=$i+2){
+            	if(!empty($s[$i])) {
+            		$project=Project::model()->findByAttributes(array('name'=>$s[$i],'number'=>$s[$i+1]));
+            		array_push($software->achievementProjectIds, $project->id);
+            	}
+            }
+            var_dump($software->peopleIds);
+            var_dump($software->fundProjectIds);
+            var_dump($software->reimProjectIds);
+            var_dump($software->achievementProjectIds);
+            //Yii::app()->end();
+            if($software->save()) {
+            	;
+            } else {
+                var_dump( $software->getErrors());
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public function actionUpload() {
+        set_time_limit(50);
+        if(isset($_FILES['spreedSheet']) && !empty($_FILES['spreedSheet'])) {
+            $path = $_FILES['spreedSheet']['tmp_name'];
+            echo $_FILES['spreedSheet']['name']."<hr />";
+            echo $_FILES['spreedSheet']['type']."<hr />";
+            echo $_FILES['spreedSheet']['tmp_name']."<hr />";
+            //var_dump(self::xlsToArray($path));
+            if(self::saveXlsToDb($path)){
+                echo 'function actionUpload() succeeded.<hr />';
+                $this->redirect(array('index'));
+            }
+        }
+
+        $this->render('upload');
+    }
 }
