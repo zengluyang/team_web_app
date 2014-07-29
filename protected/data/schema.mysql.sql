@@ -254,6 +254,16 @@ CREATE TABLE `tbl_software_people` (
   CONSTRAINT `tbl_software_people_ibfk_1` FOREIGN KEY (`software_id`) REFERENCES `tbl_software` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+CREATE TABLE `tbl_software_project_fund` (
+  software_id int not null,
+  project_id int not null,
+  seq int null,
+  primary key (software_id,project_id),
+  key tbl_software_project_ibfk (project_id),
+  CONSTRAINT `tbl_software_project_fund_ibfk_2` FOREIGN KEY (`software_id`) REFERENCES `tbl_software` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_software_project_fund_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 CREATE TABLE `tbl_software_project_reim` (
   software_id int not null,
   project_id int not null,
