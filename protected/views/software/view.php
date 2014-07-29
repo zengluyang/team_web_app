@@ -33,6 +33,11 @@ $this->menu=array(
 			'value'=>$model->getPeoples(),
 		),
         array(
+            'label'=>'支柱项目',
+            'type'=>'raw',
+            'value'=>$model->getFundProjects(),
+        ),
+        array(
             'label'=>'报账项目',
             'type'=>'raw',
             'value'=>$model->getReimProjects(),

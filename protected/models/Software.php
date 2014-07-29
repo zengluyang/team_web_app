@@ -20,8 +20,10 @@ class Software extends CActiveRecord
 	public $peopleIds = array();
 	public $searchPeoples = array();
 
+	public $fundProjectIds = array();
 	public $reimProjectIds = array();
 	public $achievementProjectIds = array();
+
 	public $searchReimProjects = array();
 
 	/**
@@ -63,6 +65,13 @@ class Software extends CActiveRecord
 				'alias'=>'peoples_',
 				'order'=>'peoples_peoples_.seq',
 			),
+			'fund_projects'=> array(
+				self::MANY_MANY,
+				'Project',
+				'tbl_software_project_fund(software_id,project_id)',
+				'alias'=>'fund_',
+				'order'=>'fund_projects_fund_.seq', 
+			),
 			'reim_projects'=> array(
 				self::MANY_MANY,
 				'Project',
@@ -93,6 +102,7 @@ class Software extends CActiveRecord
 			'department' => '权属单位',
 			'description' => '简介',
 			'peoples'=>'申请人',
+			'fund_projects'=>'支柱项目',
 			'reim_projects'=>'报账项目',
 			'achievement_projects'=>'成果项目',
 		);
@@ -147,6 +157,14 @@ class Software extends CActiveRecord
 		return implode($glue,$peopleArr);
     }
 
+    public function getFundProjects($glue=', ', $attr='name') {
+    	$projetsArr = array();
+    	foreach($this->fund_projects as $projet) {
+    		array_push($projetsArr, $projet->$attr);
+    	}
+    	return implode($glue, $projetsArr);
+    }
+
     public function getReimProjects($glue=', ', $attr='name') {
     	$projetsArr = array();
     	foreach($this->reim_projects as $projet) {
@@ -164,6 +182,21 @@ class Software extends CActiveRecord
     }
 
     private function populateSoftwareProject(){
+    	$projects=$this->fundProjectIds;
+    	for($i=0;$i<count($projects);$i++){
+    		if($projects[$i]!=null && $projects[$i]!=0){
+    			$softwareProjectFund = new SoftwareProjectFund;
+    			$softwareProjectFund->seq=$i+1;
+    			$softwareProjectFund->software_id=$this->id;
+    			$softwareProjectFund->project_id=$projects[$i];
+    			if($softwareProjectFund->save()){
+    				yii::trace("projects[i]:".$projects[$i]." saved","Software.populateSoftwareProjects()");
+    			} else {
+    				return false;
+    			}
+    		}
+    	}
+
     	$projects=$this->reimProjectIds;
     	for($i=0;$i<count($projects);$i++){
     		if($projects[$i]!=null && $projects[$i]!=0){
@@ -178,6 +211,7 @@ class Software extends CActiveRecord
     			}
     		}
     	}
+
     	$projects=$this->achievementProjectIds;
     	for($i=0;$i<count($projects);$i++){
     		if($projects[$i]!=null && $projects[$i]!=0){
@@ -196,6 +230,11 @@ class Software extends CActiveRecord
     }
 
     private function deleteSoftwareProject() {
+    	$criteria = new CDbCriteria;
+    	$criteria->condition = 'software_id=:software_id';
+    	$criteria->params = array(':software_id'=>$this->id);
+    	SoftwareProjectFund::model()->deleteAll($criteria);
+
     	$criteria = new CDbCriteria;
     	$criteria->condition = 'software_id=:software_id';
     	$criteria->params = array(':software_id'=>$this->id);

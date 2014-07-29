@@ -59,6 +59,8 @@ class SoftwareController extends Controller
 	private function setModelRelation($model) {
 		if(isset($_POST['Software']['peoples']))
 			$model->peopleIds=$_POST['Software']['peoples'];
+		if(isset($_POST['Software']['fund_projects']))
+			$model->fundProjectIds=$_POST['Software']['fund_projects'];
 		if(isset($_POST['Software']['reim_projects']))
 			$model->reimProjectIds=$_POST['Software']['reim_projects'];
 		if(isset($_POST['Software']['achievement_projects']))
