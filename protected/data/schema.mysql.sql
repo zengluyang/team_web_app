@@ -265,6 +265,18 @@ CREATE TABLE `tbl_software_project_reim` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
+CREATE TABLE `tbl_software_project_achievement` (
+  /*成果项目*/
+  software_id int not null,
+  project_id int not null,
+  seq int null,
+  primary key (software_id,project_id),
+  key tbl_software_project_ibfk_2 (project_id),
+  CONSTRAINT `tbl_software_project_achievement_ibfk_2` FOREIGN KEY (`software_id`) REFERENCES `tbl_software` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_software_project_achievement_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `tbl_project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
 CREATE TABLE `tbl_award` ( #keyan chengguo
   id int not null primary key auto_increment,
   project_name varchar(255),      #项目名称

@@ -61,6 +61,8 @@ class SoftwareController extends Controller
 			$model->peopleIds=$_POST['Software']['peoples'];
 		if(isset($_POST['Software']['reim_projects']))
 			$model->reimProjectIds=$_POST['Software']['reim_projects'];
+		if(isset($_POST['Software']['achievement_projects']))
+			$model->achievementProjectIds=$_POST['Software']['achievement_projects'];
 
 	}
 	/**

@@ -21,6 +21,7 @@ class Software extends CActiveRecord
 	public $searchPeoples = array();
 
 	public $reimProjectIds = array();
+	public $achievementProjectIds = array();
 	public $searchReimProjects = array();
 
 	/**
@@ -68,6 +69,13 @@ class Software extends CActiveRecord
 				'tbl_software_project_reim(software_id,project_id)',
 				'alias'=>'reim_',
 				'order'=>'reim_projects_reim_.seq', 
+			),
+			'achievement_projects'=> array(
+				self::MANY_MANY,
+				'Project',
+				'tbl_software_project_achievement(software_id,project_id)',
+				'alias'=>'achievement_',
+				'order'=>'achievement_projects_achievement_.seq', 
 			)
 		);
 	}
@@ -86,6 +94,7 @@ class Software extends CActiveRecord
 			'description' => '简介',
 			'peoples'=>'申请人',
 			'reim_projects'=>'报账项目',
+			'achievement_projects'=>'成果项目',
 		);
 	}
 
@@ -146,6 +155,14 @@ class Software extends CActiveRecord
     	return implode($glue, $projetsArr);
     }
 
+    public function getAchievementProjects($glue=', ', $attr='name') {
+    	$projetsArr = array();
+    	foreach($this->achievement_projects as $projet) {
+    		array_push($projetsArr, $projet->$attr);
+    	}
+    	return implode($glue, $projetsArr);
+    }
+
     private function populateSoftwareProject(){
     	$projects=$this->reimProjectIds;
     	for($i=0;$i<count($projects);$i++){
@@ -153,8 +170,22 @@ class Software extends CActiveRecord
     			$softwareProjectReim = new SoftwareProjectReim;
     			$softwareProjectReim->seq=$i+1;
     			$softwareProjectReim->software_id=$this->id;
-    			$softwareProjectReim->projetc_id=$projects[$i];
+    			$softwareProjectReim->project_id=$projects[$i];
     			if($softwareProjectReim->save()){
+    				yii::trace("projects[i]:".$projects[$i]." saved","Software.populateSoftwareProjects()");
+    			} else {
+    				return false;
+    			}
+    		}
+    	}
+    	$projects=$this->achievementProjectIds;
+    	for($i=0;$i<count($projects);$i++){
+    		if($projects[$i]!=null && $projects[$i]!=0){
+    			$softwareProjectAchivement = new SoftwareProjectAchievement;
+    			$softwareProjectAchivement->seq=$i+1;
+    			$softwareProjectAchivement->software_id=$this->id;
+    			$softwareProjectAchivement->project_id=$projects[$i];
+    			if($softwareProjectAchivement->save()){
     				yii::trace("projects[i]:".$projects[$i]." saved","Software.populateSoftwareProjects()");
     			} else {
     				return false;
@@ -169,6 +200,11 @@ class Software extends CActiveRecord
     	$criteria->condition = 'software_id=:software_id';
     	$criteria->params = array(':software_id'=>$this->id);
     	SoftwareProjectReim::model()->deleteAll($criteria);
+
+    	$criteria = new CDbCriteria;
+    	$criteria->condition = 'software_id=:software_id';
+    	$criteria->params = array(':software_id'=>$this->id);
+    	SoftwareProjectAchievement::model()->deleteAll($criteria);
     	return true;
     }
 

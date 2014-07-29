@@ -32,5 +32,15 @@ $this->menu=array(
 			'type'=>'raw',
 			'value'=>$model->getPeoples(),
 		),
+        array(
+            'label'=>'报账项目',
+            'type'=>'raw',
+            'value'=>$model->getReimProjects(),
+        ),
+        array(
+            'label'=>'成果项目',
+            'type'=>'raw',
+            'value'=>$model->getAchievementProjects(),
+        ),
 	),
 )); ?>

@@ -78,7 +78,7 @@
 		</div>
 	</div>
 
-		<div class="row">
+	<div class="row">
 		<div class="medium-12 columns">
 		<?php 
 			//var_dump(Chtml::listData(People::model()->findAll(), 'id', 'name'));
@@ -89,6 +89,25 @@
 	            Chtml::listData(Project::model()->findAll(), 'id', 'name'),
 	            array(
 	            	'id'=>'reim_projects_select',
+	            	'multiple'=>'multiple',
+	            )
+	        ); 
+		?>
+
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="medium-12 columns">
+		<?php 
+			//var_dump(Chtml::listData(People::model()->findAll(), 'id', 'name'));
+			echo $form->labelEx($model,'achievement_projects');
+			echo CHtml::dropDownList(
+				'Software[achievement_projects]',
+				array(),
+	            Chtml::listData(Project::model()->findAll(), 'id', 'name'),
+	            array(
+	            	'id'=>'achievement_projects_select',
 	            	'multiple'=>'multiple',
 	            )
 	        ); 
@@ -119,8 +138,18 @@ $(document).ready(function(){
 $(document).ready(function(){
 	var selectionWithOrder=[<?php echo $model->getReimProjects(',','id')?>];
 	$('#reim_projects_select').val(selectionWithOrder);
+	$('#achievement_projects_select').val([<?php echo $model->getAchievementProjects(',','id')?>]);
 	$("#reim_projects_select").select2({
 			placeholder: "选择报账项目",
+			width: 'resolve',
+			matcher: function(term,text) {
+				var pinyin = new Pinyin();
+				var mod=pinyin.getCamelChars(text.toUpperCase());
+				return mod.indexOf(term.toUpperCase())==0;
+			}
+	});
+	$("#achievement_projects_select").select2({
+			placeholder: "选择成果项目",
 			width: 'resolve',
 			matcher: function(term,text) {
 				var pinyin = new Pinyin();
