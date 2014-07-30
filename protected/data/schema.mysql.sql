@@ -50,28 +50,32 @@ create TABLE xxx (
   
 
 
-CREATE TABLE tbl_paper (
-  id int not null PRIMARY KEY auto_increment,
-  info varchar(255)  not null,
-  status tinyint,
-  pass_date date,
-  pub_date date,
-  index_date date,
-  sci_number varchar(255),
-  ei_number varchar(255),
-  istp_number varchar(255),
-  is_first_grade bool,
-  is_core bool,
-  other_pub varchar(255),
-  is_journal bool,
-  is_conference bool,
-  is_intl bool,
-  is_domestic bool,
-  filename varchar(255),
-  is_high_level bool,
-  maintainer_id int,
-  CONSTRAINT `tbl_paper_ibfk_1` FOREIGN KEY (`maintainer_id`) REFERENCES `tbl_people` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-);
+CREATE TABLE IF NOT EXISTS `tbl_paper` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `info` mediumtext COLLATE utf8_bin NOT NULL,
+  `status` tinyint(4) DEFAULT NULL,
+  `pass_date` date DEFAULT NULL,
+  `pub_date` date DEFAULT NULL,
+  `index_date` date DEFAULT NULL,
+  `sci_number` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `ei_number` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `istp_number` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `is_first_grade` tinyint(1) DEFAULT NULL,
+  `is_core` tinyint(1) DEFAULT NULL,
+  `other_pub` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `is_journal` tinyint(1) DEFAULT NULL,
+  `is_conference` tinyint(1) DEFAULT NULL,
+  `is_intl` tinyint(1) DEFAULT NULL,
+  `is_domestic` tinyint(1) DEFAULT NULL,
+  `file_name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `file_type` varchar(255) COLLATE utf8_bin NOT NULL,
+  `file_size` int(11) NOT NULL,
+  `file_content` mediumblob NOT NULL,
+  `is_high_level` tinyint(1) DEFAULT NULL,
+  `maintainer_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tbl_paper_ibfk_1` (`maintainer_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin ;
 
 CREATE TABLE `tbl_paper_people` (
   paper_id int not null,
