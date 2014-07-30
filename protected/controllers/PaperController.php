@@ -78,9 +78,9 @@ class PaperController extends Controller
     public function xlsToArray($path)
     {
         Yii::trace("start of loading","actionTestXls()");
-        $reader = PHPExcel_IOFactory::createReader('Excel5');
-        $reader->setReadDataOnly(true);
-        $objPHPExcel = $reader->load($path);
+        //$reader = PHPExcel_IOFactory::createReader('Excel5');
+        //$reader->setReadDataOnly(true);
+        $objPHPExcel = PHPExcel_IOFactory::load($path);
         Yii::trace("end of loading","actionTestXls()");
         Yii::trace("start of reading","actionTestXls()");
         $dataArray = $objPHPExcel->getActiveSheet()->toArray(null,true,true);
@@ -102,12 +102,10 @@ class PaperController extends Controller
     public function saveXlsArrayToDb($papers)
     {
         $connection=Yii::app()->db;
-        //var_dump($papers);
         foreach($papers as $k => $p) {
             //var_dump($k);
             //var_dump($p);
-            if($k<1) continue;
-            if(($paper=Paper::model()->findByAttributes(array('info',$p[0])))==null){ 
+            if(($paper=Paper::model()->findByAttributes(array('info'=>$p[0])))==null){ 
                 $paper = new Paper;
             }
             $paper->info=$p[0];
@@ -140,31 +138,22 @@ class PaperController extends Controller
             $paper->is_intl = self::convertYesNoToInt($p[25]);
             $paper->is_domestic = self::convertYesNoToInt($p[26]);
             $paper->file_name = $p[27];
-            $paper->is_high_level = self::convertYesNoToInt($p[38]);
+            $paper->is_high_level = self::convertYesNoToInt($p[58]);
             if($paper->save()) {
                 $peoplesId=array();
                 for($i=0;$i<5;$i=$i+2){
                     $peopleName=$p[1+$i];
-                    $peopleName=mysql_real_escape_string($peopleName);
-                    $sql='select id from tbl_people where name="'.$peopleName.'";';
-                    //
 
-
-                    $testPeoples = People::model()->find('name="'.$peopleName.'"');
-                    //var_dump($testPeoples);
-                    $command=$connection->createCommand($sql);
-                    $row=$command->queryRow();
-                    if($row) {
-                        //dump($row);
-                        $peoplesId[]=$row['id'];
+                    $people = People::model()->findByAttributes(array('name'=>$peopleName));
+                    if($people!=null) {
+                        $peoplesId[]=$people->id;
 
                     }else {
-                        //dump($row);
                         $people = new People;
                         $people->name = $peopleName;
-                        if($people->save())
-                            //dump($people->id);
-                        $peoplesId[] = $people->id;
+                        if($people->save()){
+                            $peoplesId[] = $people->id;
+                        }
                     }
                 }
                 if(!self::populatePeople($paper,$peoplesId))
