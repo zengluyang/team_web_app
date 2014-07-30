@@ -10,6 +10,7 @@ $this->menu=array(
 	array('label'=>'创建论文', 'url'=>array('create')),
 	array('label'=>'管理论文', 'url'=>array('admin')),
 	array('label'=>'导入论文', 'url'=>array('upload')),
+	array('label'=>'导出全部论文', 'url'=>array('exportAll')),
 );
 ?>
 <style>

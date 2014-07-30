@@ -11,6 +11,7 @@ $this->menu=array(
 	array('label'=>'列出论文', 'url'=>array('index')),
 	array('label'=>'创建论文', 'url'=>array('create')),
 	array('label'=>'导入论文', 'url'=>array('upload')),
+	array('label'=>'导出全部论文', 'url'=>array('exportAll')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

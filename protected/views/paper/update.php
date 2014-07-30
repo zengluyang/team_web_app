@@ -14,6 +14,7 @@ $this->menu=array(
 	array('label'=>'查看论文', 'url'=>array('view', 'id'=>$model->id)),
 	array('label'=>'管理论文', 'url'=>array('admin')),
 	array('label'=>'导入论文', 'url'=>array('upload')),
+	array('label'=>'导出全部论文', 'url'=>array('exportAll')),
 );
 ?>
 

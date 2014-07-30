@@ -40,7 +40,7 @@ class PaperController extends Controller
 				'expression'=>'isset($user->is_paper) && $user->is_paper'
 			),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions'=>array('create','testExcelExport','testExcelExportByTable','query','testSearchByPeople','reset','upload','admin','delete','import','testXls','TestCsv','TestPhpExcelCsv'),
+                'actions'=>array('create','testExcelExport','testExcelExportByTable','query','testSearchByPeople','reset','upload','admin','delete','import','testXls','TestCsv','TestPhpExcelCsv','exportAll'),
                 'expression'=>'isset($user->is_admin) && $user->is_admin',
             ),
 			array('deny',  // deny all users
@@ -97,6 +97,13 @@ class PaperController extends Controller
             return 0;
         }
         return 0;
+    }
+
+    private function converIntToYesNo($int) {
+        if($int==1)
+            return '是';
+        else
+            return '';
     }
 
     public function saveXlsArrayToDb($papers)
@@ -172,6 +179,10 @@ class PaperController extends Controller
     {
         for($i=0;$i<count($peoples);$i++) {
             if($peoples[$i]!=null && $peoples[$i]!=0) {
+                //@TODO : can be optimized.
+                if(($paperPeople=PaperPeople::model()->findByPk(array('paper_id'=>$paper->id,'people_id'=>$peoples[$i])))!=null){
+                    $paperPeople->delete();
+                } 
                 $paperPeople = new PaperPeople;
                 $paperPeople->seq = $i+1;
                 $paperPeople->paper_id=$paper->id;
@@ -519,7 +530,10 @@ class PaperController extends Controller
 	}
 
 
-
+    public function actionExportAll() {
+        $dataProvider = new CActiveDataProvider('Paper',array('pagination' => false));
+        self::exportPapersToXlsByDefault($dataProvider->getData(),'全部论文');
+    }
 
     private function exportPapersToXlsByPeople($papers,$fileName='export'){
 
@@ -569,6 +583,85 @@ class PaperController extends Controller
 
     }
 
+
+    private function exportPapersToXlsByDefault($papers,$fileName='export'){
+        $formatPath=dirname(__FILE__)."/../xls_format/paper_import_format.xlsx";
+        $objPHPExcel = PHPExcel_IOFactory::load($formatPath);
+        $objPHPExcel->getDefaultStyle()->getNumberFormat()->setFormatCode('PHPExcel_Style_NumberFormat::FORMAT_TEXT');
+        $objPHPExcel->getProperties()->setTitle("导出的论文");
+        $objPHPExcel->setActiveSheetIndex(0);
+        $row=2;
+        $activeSheet = $objPHPExcel->getActiveSheet();
+        $activeSheet->setTitle('papers');
+        foreach($papers as $p){
+            $col=0;
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->info);
+            foreach($p->peoples as $people) {
+                if($col>10){
+                    throw new CHttpException(503,'Exceeding peoples output formant limit!');
+                }
+                $activeSheet->setCellValueByColumnAndRow($col++,$row,$people->name);
+                $col++;//no output for english name.
+            }
+            $col=11;
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->status==Paper::STATUS_PASSED?'是':'');
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->status==Paper::STATUS_PUBLISHED?'是':'');
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->status==Paper::STATUS_INDEXED?'是':'');
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->pass_date);
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->pub_date);
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->index_date);
+            $activeSheet->setCellValueExplicitByColumnAndRow($col++,$row,$p->sci_number, PHPExcel_Cell_DataType::TYPE_STRING);
+            $activeSheet->setCellValueExplicitByColumnAndRow($col++,$row,$p->ei_number, PHPExcel_Cell_DataType::TYPE_STRING);
+            $activeSheet->setCellValueExplicitByColumnAndRow($col++,$row,$p->istp_number, PHPExcel_Cell_DataType::TYPE_STRING);
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,self::converIntToYesNo($p->is_first_grade));
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,self::converIntToYesNo($p->is_core));
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->other_pub);
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,self::converIntToYesNo($p->is_journal));
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,self::converIntToYesNo($p->is_conference));
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,self::converIntToYesNo($p->is_intl));
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,self::converIntToYesNo($p->is_domestic));
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->file_name);
+            foreach ($p->fund_projects as $pp) {
+                if($col>37) {
+                    throw new CHttpException(503,'Exceeding fund_projects output formant limit!');
+                }
+                $activeSheet->setCellValueByColumnAndRow($col++,$row,$pp->name);
+                $activeSheet->setCellValueExplicitByColumnAndRow($col++,$row,$pp->number, PHPExcel_Cell_DataType::TYPE_STRING);
+            }
+            $col=38;
+            foreach ($p->reim_projects as $pp) {
+                if($col>47) {
+                    throw new CHttpException(503,'Exceeding reim_projects output formant limit: '.$col);
+                }
+                $activeSheet->setCellValueByColumnAndRow($col++,$row,$pp->name);
+                $activeSheet->setCellValueExplicitByColumnAndRow($col++,$row,$pp->number, PHPExcel_Cell_DataType::TYPE_STRING);
+            }
+            $col=48;
+            foreach ($p->achievement_projects as $pp) {
+                if($col>57) {
+                    throw new CHttpException(503,'Exceeding achievement_projects output formant limit!');
+                }
+                $activeSheet->setCellValueByColumnAndRow($col++,$row,$pp->name);
+                $activeSheet->setCellValueExplicitByColumnAndRow($col++,$row,$pp->number, PHPExcel_Cell_DataType::TYPE_STRING);
+            }
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,self::converIntToYesNo($p->is_high_level));
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,isset($p->maintainer)?$p->maintainer->name:'');
+            $row++;
+
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        header("Pragma: public");
+        header("Expires: 0");
+        header("Cache-Control:must-revalidate, post-check=0, pre-check=0");
+        header("Content-Type:application/force-download");
+        header("Content-Type:application/vnd.ms-excel");
+        header("Content-Type:application/octet-stream");
+        header("Content-Type:application/download");;
+        //$fileName = iconv('utf-8', "gb2312", $fileName);
+        header('Content-Disposition:attachment;filename="'.$fileName.'.xlsx"');
+        header("Content-Transfer-Encoding:binary");
+        $objWriter->save('php://output');
+    }
     private function exportPapersToXlsByMaintainer($papers,$fileName='export'){
 
         $objPHPExcel = new PHPExcel();
