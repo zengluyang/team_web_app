@@ -208,9 +208,11 @@ class SoftwareController extends Controller
     {
         $connection=Yii::app()->db;
         foreach($softwares as $k => $s) {
-            $software = new Software;
             if(empty($s[0])) {
             	continue; //@TODO: more verbose validating.
+            }
+            if(($software = Software::model()->findByAttributes(array('name'=>$s[0])))==null) {//update or insert
+            	$software = new Software;
             }
             $software->name=$s[0];
             $software->reg_date=$s[1];
