@@ -324,7 +324,7 @@ class ProjectController extends Controller
             //var_dump($k);
             //var_dump($p);
             if($k<2) continue;
-            if(($project=Project::model->findByAttributes(array('name'=>$p[0],'number'=>$p[1])))==null) {
+            if(($project=Project::model()->findByAttributes(array('name'=>$p[0],'number'=>$p[1])))==null) {
             	$project = new Project;
             }
             $project->name=$p[0];
@@ -348,18 +348,18 @@ class ProjectController extends Controller
             $project->pass_fund=$p[19];
             $peoplesId=array();
             for($i=0;$i<20;$i=$i+1){
-                $peopleName=$p[20+$i];
-                $peopleName=mysql_real_escape_string($peopleName);
-                $sql='select id from tbl_people where name="'.$peopleName.'";';
-                $command=$connection->createCommand($sql);
-                $row=$command->queryRow();
-                if($row) {
-                    $peoplesId[]=$row['id'];
-
+				$peopleName=$p[20+$i];
+				if($peopleName=="") {
+					continue;
+				}
+				$people = People::model()->findByAttributes(array('name'=>$peopleName));
+                if($people!=null) {
+                    $peoplesId[]=$people->id;
                 }else {
                     $people = new People;
                     $people->name = $peopleName;
                     if(!$people->save()){
+                    	print_r($people->getErrors());
                     	return false;
                     }
                     $peoplesId[] = $people->id;
@@ -369,15 +369,12 @@ class ProjectController extends Controller
             $project->executePeoples = $peoplesId;
             $peoplesId=array();
             for($i=0;$i<20;$i=$i+1){
-                $peopleName=$p[40+$i];
-                $peopleName=mysql_real_escape_string($peopleName);
-                $sql='select id from tbl_people where name="'.$peopleName.'";';
-                $command=$connection->createCommand($sql);
-                $row=$command->queryRow();
-                if($row) {
-                    $peoplesId[]=$row['id'];
+				$peopleName=$p[20+$i];
+				$people = People::model()->findByAttributes(array('name'=>$peopleName));
+                if($people!=null) {
+                    $peoplesId[]=$people->id;
 
-                } else {
+                }else {
                     $people = new People;
                     $people->name = $peopleName;
                     if($people->save())
