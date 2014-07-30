@@ -327,6 +327,10 @@ class Project extends CActiveRecord
             $this->app_date=null;
         if ($this->conclude_date=='')
             $this->conclude_date=null;
+        if ($this->start_date=='')
+            $this->start_date=null;
+        if ($this->deadline_date=='')
+            $this->deadline_date=null;
         if($this->scenario=='update') {
 			if(self::deleteProjectPeople(self::EXECUTE) && self::deleteProjectPeople(self::LIABILITY)){
 				return parent::beforeSave();
