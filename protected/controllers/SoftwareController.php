@@ -38,7 +38,7 @@ class SoftwareController extends Controller
 				'expression'=>'isset($user->is_software) && $user->is_software',
 			),
 			array('allow', 
-				'actions'=>array('admin','delete','create','update','upload'),
+				'actions'=>array('admin','delete','create','update','upload','export'),
 				'expression'=>'isset($user->is_admin) && $user->is_admin',
 			),
 			array('deny',  // deny all users
@@ -219,7 +219,9 @@ class SoftwareController extends Controller
             for($i=3;$i<8;$i++){
             	if(!empty($s[$i])) {
             		$people=People::model()->findByAttributes(array('name'=>$s[$i]));
-            		array_push($software->peopleIds, $people->id);
+            		if($people!=null) {
+            			array_push($software->peopleIds, $people->id);
+            		}
             	}
             }
             //@TODO: $software->jbf_number=$s[9];
@@ -229,19 +231,25 @@ class SoftwareController extends Controller
             for($i=12;$i<22;$i=$i+2){
             	if(!empty($s[$i])) {
             		$project=Project::model()->findByAttributes(array('name'=>$s[$i],'number'=>$s[$i+1]));
-            		array_push($software->fundProjectIds, $project->id);
+            		if($project!=null) {
+            			array_push($software->fundProjectIds, $project->id);
+            		}
             	}
             }
             for($i=22;$i<32;$i=$i+2){
             	if(!empty($s[$i])) {
             		$project=Project::model()->findByAttributes(array('name'=>$s[$i],'number'=>$s[$i+1]));
-            		array_push($software->reimProjectIds, $project->id);
+            		if($project!=null){
+            			array_push($software->reimProjectIds, $project->id);
+            		}
             	}
             }
             for($i=32;$i<42;$i=$i+2){
             	if(!empty($s[$i])) {
             		$project=Project::model()->findByAttributes(array('name'=>$s[$i],'number'=>$s[$i+1]));
-            		array_push($software->achievementProjectIds, $project->id);
+            		if($project!=null){
+            			array_push($software->achievementProjectIds, $project->id);
+            		}
             	}
             }
             var_dump($software->peopleIds);
@@ -274,5 +282,77 @@ class SoftwareController extends Controller
         }
 
         $this->render('upload');
+    }
+
+    public function actionExport(){
+    	self::exportSoftwareToXls(Software::model()->findAll());
+    }
+
+    private function exportSoftwareToXls($softwares,$fileName='export') {
+    	$formatPath=dirname(__FILE__)."/../xls_format/software_import_format.xlsx";
+    	$objPHPExcel = PHPExcel_IOFactory::load($formatPath);
+    	$objPHPExcel->getDefaultStyle()->getNumberFormat()->setFormatCode('PHPExcel_Style_NumberFormat::FORMAT_TEXT');
+        $objPHPExcel->getProperties()->setTitle("导出的软件著作权");
+        $objPHPExcel->setActiveSheetIndex(0);
+        $row=2;
+        $activeSheet = $objPHPExcel->getActiveSheet();
+        $activeSheet->setTitle('softwares');
+        //A note from the manual: In PHPExcel column index is 0-based while row index is 1-based. That means 'A1' ~ (0,1) 
+        foreach($softwares as $p) {
+        	$col=0;
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->name);
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->reg_date);
+            $activeSheet->setCellValueExplicitByColumnAndRow($col++,$row,$p->reg_number, PHPExcel_Cell_DataType::TYPE_STRING);
+            foreach($p->peoples as $pp) {
+            	if($col>7) {
+            		throw new CHttpException(503,'Exceeding peoples output formant limit!');
+            	}
+            	$activeSheet->setCellValueByColumnAndRow($col++,$row,$pp->name);
+            }
+            $col=8;
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->department);
+            $col++;//@TODO: $activeSheet->setCellValueByColumnAndRow('J'.$row,$p->number);
+            $col++;//@TODO: $activeSheet->setCellValueByColumnAndRow('K'.$row,$p->maintainer->name);
+            $activeSheet->setCellValueByColumnAndRow($col++,$row,$p->description);
+
+            foreach ($p->fund_projects as $pp) {
+            	if($col>21) {
+            		throw new CHttpException(503,'Exceeding fund_projects output formant limit!');
+            	}
+            	$activeSheet->setCellValueByColumnAndRow($col++,$row,$pp->name);
+            	$activeSheet->setCellValueExplicitByColumnAndRow($col++,$row,$pp->number, PHPExcel_Cell_DataType::TYPE_STRING);
+            }
+            $col=22;
+            foreach ($p->reim_projects as $pp) {
+            	if($col>31) {
+            		throw new CHttpException(503,'Exceeding reim_projects output formant limit: '.$col);
+            	}
+            	$activeSheet->setCellValueByColumnAndRow($col++,$row,$pp->name);
+            	$activeSheet->setCellValueExplicitByColumnAndRow($col++,$row,$pp->number, PHPExcel_Cell_DataType::TYPE_STRING);
+            }
+            $col=32;
+            foreach ($p->achievement_projects as $pp) {
+            	if($col>41) {
+            		throw new CHttpException(503,'Exceeding achievement_projects output formant limit!');
+            	}
+            	$activeSheet->setCellValueByColumnAndRow($col++,$row,$pp->name);
+            	$activeSheet->setCellValueExplicitByColumnAndRow($col++,$row,$pp->number, PHPExcel_Cell_DataType::TYPE_STRING);
+            }
+            $row++;
+        }
+        //http://stackoverflow.com/questions/19155488/array-to-excel-2007-using-phpexcel
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        header("Pragma: public");
+        header("Expires: 0");
+        header("Cache-Control:must-revalidate, post-check=0, pre-check=0");
+        header("Content-Type:application/force-download");
+        header("Content-Type:application/vnd.ms-excel");
+        header("Content-Type:application/octet-stream");
+        header("Content-Type:application/download");;
+        //$fileName = iconv('utf-8', "gb2312", $fileName);
+        header('Content-Disposition:attachment;filename="'.$fileName.'.xlsx"');
+        header("Content-Transfer-Encoding:binary");
+        $objWriter->save('php://output');
+
     }
 }
