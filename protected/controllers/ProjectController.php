@@ -324,7 +324,9 @@ class ProjectController extends Controller
             //var_dump($k);
             //var_dump($p);
             if($k<2) continue;
-            $project = new Project;
+            if(($project=Project::model->findByAttributes(array('name'=>$p[0],'number'=>$p[1])))==null) {
+            	$project = new Project;
+            }
             $project->name=$p[0];
             $project->number=$p[1];
             $project->fund_number=$p[2];

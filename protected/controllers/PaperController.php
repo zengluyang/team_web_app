@@ -107,7 +107,9 @@ class PaperController extends Controller
             //var_dump($k);
             //var_dump($p);
             if($k<1) continue;
-            $paper = new paper;
+            if(($paper=Paper::model()->findByAttributes(array('info',$p[0])))==null){ 
+                $paper = new Paper;
+            }
             $paper->info=$p[0];
             if(isset($p[11]) && self::convertYesNoToInt($p[1])) {
                 $paper->status = Paper::STATUS_PASSED;
