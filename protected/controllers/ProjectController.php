@@ -292,9 +292,7 @@ class ProjectController extends Controller
     public function xlsToArray($path)
     {
         Yii::trace("start of loading","actionTestXls()");
-        $reader = PHPExcel_IOFactory::createReader('Excel5');
-        $reader->setReadDataOnly(true);
-        $objPHPExcel = $reader->load($path);
+        $objPHPExcel = PHPExcel_IOFactory::load($path);
         Yii::trace("end of loading","actionTestXls()");
         Yii::trace("start of reading","actionTestXls()");
         $dataArray = $objPHPExcel->getActiveSheet()->toArray(null,true,true);
@@ -322,7 +320,7 @@ class ProjectController extends Controller
         foreach($projects as $k => $p) {
             //var_dump($k);
             //var_dump($p);
-            if($k<2) continue;
+            if($k<1) continue;
             if(($project=Project::model()->findByAttributes(array('name'=>$p[0],'number'=>$p[1])))==null) {
             	$project = new Project;
             }
