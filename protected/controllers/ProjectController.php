@@ -218,8 +218,7 @@ class ProjectController extends Controller
 				$people=People::model()->findByPk($_GET['People']['liability_id']);
 				$model->searchExecutePeople=$people->id;
 				$peopleNameArr[]=$people->name;
-			}
-			
+			}			
 		}
 		if( isset($_GET['export']) && $_GET['export']) {
 			$dataProvider=$model->search();
@@ -411,6 +410,8 @@ class ProjectController extends Controller
         $activeSheet->SetCellValue('L'.$i,'实际执行人员');
         $activeSheet->SetCellValue('M'.$i,'责任书人员');
         $i++;
+        $j=1;
+        header("content-type:text/html; charset=utf-8");
         foreach($papers as $p) {
             $activeSheet->SetCellValue('A'.$i,$i-1);
             $activeSheet->SetCellValue('B'.$i,$p->name);
@@ -423,11 +424,17 @@ class ProjectController extends Controller
             $activeSheet->SetCellValue('I'.$i,$p->pass_date);
             $activeSheet->SetCellValue('J'.$i,$p->app_fund);
             $activeSheet->SetCellValue('K'.$i,$p->pass_fund);
-            $activeSheet->SetCellValue('L'.$i,$p->getExecutePeoples('，'));
-            $activeSheet->SetCellValue('M'.$i,$p->getLiabilityPeoples('，'));
+            $activeSheet->SetCellValue('L'.$i,Project::model()->findByPk($p->id)->getExecutePeoples(', '));
+            $activeSheet->SetCellValue('M'.$i,Project::model()->findByPk($p->id)->getLiabilityPeoples(', '));
             $i++;
+            // echo $j++.' '.$p->id.' '.$p->name.' ';
+            // print_r(Project::model()->findByPk($p->id)->getExecutePeoples());
+            // echo " ";
+            // print_r(Project::model()->findByPk($p->id)->getLiabilityPeoples());
+            // echo "<hr />";
 
         }
+        //Yii::app()->end();
         //http://stackoverflow.com/questions/19155488/array-to-excel-2007-using-phpexcel
         $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
         header("Pragma: public");

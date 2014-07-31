@@ -181,13 +181,22 @@ class Project extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 		$criteria->with=array(
-			'execute_peoples',
-			'liability_peoples'
+			'execute_peoples'=>array(
+				//'joinType'=>'INNER JOIN',
+			),
+			'liability_peoples'=>array(
+				//'joinType'=>'INNER JOIN',
+			),
 		);
 		$criteria->together=true;
+		//$criteria->distinct=true;
 		$criteria->group = 't.id';//IMPORTANT!!
-		$criteria->compare('execute_.id',$this->searchExecutePeople,true);
-		$criteria->compare('liability_.id',$this->searchLiabilityPeople,true);
+		if($this->searchExecutePeople!=null){
+			$criteria->addInCondition('execute_.id',array($this->searchExecutePeople),true);
+		}
+		if($this->searchLiabilityPeople!=null){
+			$criteria->addInCondition('liability_.id',array($this->searchLiabilityPeople),true);
+		}
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('number',$this->number,true);
 		$criteria->compare('fund_number',$this->fund_number,true);
@@ -210,7 +219,6 @@ class Project extends CActiveRecord
 		$criteria->compare('pass_date',$this->pass_date,true);
 		$criteria->compare('app_fund',$this->app_fund,true);
 		$criteria->compare('pass_fund',$this->pass_fund,true);
-
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
