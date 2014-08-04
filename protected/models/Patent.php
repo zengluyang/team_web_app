@@ -46,7 +46,7 @@ class Patent extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, app_date, app_number, is_intl, is_domestic, abstract', 'required'),
+			array('name', 'required'),
 			array('app_date, auth_date','date','format'=>array('yyyy-mm-dd','yyyy.mm.dd','yyyy-m-d','yyyy.m.d')),
             array('is_intl, is_domestic', 'numerical', 'integerOnly'=>true),
 			array('name, app_number, auth_number', 'length', 'max'=>255),

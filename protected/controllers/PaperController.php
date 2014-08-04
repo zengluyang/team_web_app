@@ -112,6 +112,7 @@ class PaperController extends Controller
         foreach($papers as $k => $p) {
             //var_dump($k);
             //var_dump($p);
+            if(empty($p[0])) continue;
             if(($paper=Paper::model()->findByAttributes(array('info'=>$p[0])))==null){ 
                 $paper = new Paper;
             }
@@ -139,7 +140,7 @@ class PaperController extends Controller
             $paper->istp_number = $p[19];
             $paper->is_first_grade = self::convertYesNoToInt($p[20]);
             $paper->is_core = self::convertYesNoToInt($p[21]);
-            $paper->other_pub = self::convertYesNoToInt($p[22]);
+            $paper->other_pub = !empty($p[22]) ? $p[22] : null;
             $paper->is_journal = self::convertYesNoToInt($p[23]);
             $paper->is_core = self::convertYesNoToInt($p[24]);
             $paper->is_intl = self::convertYesNoToInt($p[25]);

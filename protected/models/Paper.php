@@ -161,7 +161,7 @@ class Paper extends CActiveRecord
             array_push($levels,self::LEVEL_HIGH_LEVEL);
         }
         if(!empty($this->other_pub)){
-            array_push($levels,$this->other_pub);
+            array_push($levels,self::LEVEL_OTHER_PUB);
         }
         return implode($glue,$levels);
     }

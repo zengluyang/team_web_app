@@ -119,7 +119,9 @@ class PatentController extends Controller
     {
         for($i=0;$i<count($peoples);$i++) {
             if($peoples[$i]!=null &&$peoples[$i]!=0) {
-                $patentPeople = new PatentPeople;
+                if(($patentPeople=PatentPeople::model()->findByPk(array('patent_id'=>$patent->id,'people_id'=>$peoples[$i])))==null) {
+                    $patentPeople = new PatentPeople;
+                }
                 $patentPeople->seq = $i+1;
                 $patentPeople->patent_id=$patent->id;
                 $patentPeople->people_id=$peoples[$i];
@@ -233,9 +235,7 @@ class PatentController extends Controller
     public function xlsToArray($path)
     {
         Yii::trace("start of loading","actionTestXls()");
-        $reader = PHPExcel_IOFactory::createReader('Excel5');
-        $reader->setReadDataOnly(true);
-        $objPHPExcel = $reader->load($path);
+        $objPHPExcel = PHPExcel_IOFactory::load($path);
         Yii::trace("end of loading","actionTestXls()");
         Yii::trace("start of reading","actionTestXls()");
             $dataArray = $objPHPExcel->getActiveSheet()->toArray(null,true,true);
@@ -249,7 +249,10 @@ class PatentController extends Controller
         $connection=Yii::app()->db;
         foreach($patents as $p) {
             //var_dump($p) ;
-            $patent = new Patent;
+            if(empty($p[0])) continue;
+            if(($patent=Patent::model()->findByAttributes(array('name'=>$p[0],'app_number'=>$p[2])))==null) {
+                $patent = new Patent;
+            }
             $patent->name=$p[0];
             $patent->app_date=trim($p[1]);
             $patent->app_number=$p[2];
@@ -257,18 +260,15 @@ class PatentController extends Controller
             $patent->auth_date=trim($p[4]);
             $patent->is_intl=self::convertYesNoToInt($p[5]);
             $patent->is_domestic=self::convertYesNoToInt($p[6]);
-            $patent->abstract=$p[12];
+            $patent->abstract=$p[18];
             if($patent->save()) {
                 $peoplesId=array();
                 for($i=0;$i<5;$i++){
                     $peopleName=$p[7+$i];
-                    $peopleName=mysql_real_escape_string($peopleName);
-                    $sql='select id from tbl_people where name="'.$peopleName.'";';
-                    $command=$connection->createCommand($sql);
-                    $row=$command->queryRow();
-                    if($row) {
+                    $people=People::model()->findByAttributes(array('name'=>$peopleName));
+                    if($people!=null) {
                         //var_dump($row);
-                        $peoplesId[]=$row['id'];
+                        $peoplesId[]=$people->id;
 
                     }else {
                         //var_dump($row);
@@ -281,11 +281,19 @@ class PatentController extends Controller
                 }
                 if(!self::populatePeople($patent,$peoplesId)) {
                     yii::trace("error in","PatentController.populatePeople()");
+
                     return false;
 
                 }
             } else {
-                //var_dump( $patent->getErrors());
+                print_r( $patent->getErrors());
+                echo "<hr />";
+                print_r($p[0]);
+                echo "<hr />";
+                print_r($p[1]);
+                echo "<hr />";
+                print_r($p[3]);
+                echo "<hr />";
                 yii::trace("error in","PatentController.saveXlsArrayToDb()");
                 return false;
             }
