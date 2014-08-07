@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"find",
+				"findByAttributes"
+			],
+			[
+				"Paper",
+				"PaperPeople"
+			],
+			[
+				"conver",
+				"converIntToYesNo"
+			],
+			[
+				"inde",
+				"index_date"
+			],
+			[
+				"pub",
+				"pub_date"
+			],
+			[
+				"pu",
+				"purifier"
+			],
+			[
+				"achi",
+				"achivementProjectIds"
+			],
+			[
 				"deltePaperT",
 				"deletePaperTeachingPeople"
 			],
@@ -212,10 +240,6 @@
 				"foreach	foreach …"
 			],
 			[
-				"conver",
-				"convertYesNoToInt"
-			],
-			[
 				"initial",
 				"passwordInitial"
 			],
@@ -332,18 +356,66 @@
 	"buffers":
 	[
 		{
-			"file": "protected/views/paper/_form.php",
+			"file": "protected/models/Patent.php",
 			"settings":
 			{
-				"buffer_size": 10727,
+				"buffer_size": 8026,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "protected/models/Paper.php",
+			"file": "protected/controllers/ProjectController.php",
 			"settings":
 			{
-				"buffer_size": 14337,
+				"buffer_size": 14577,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Administrator/Desktop/iputils-s20121221/Makefile",
+			"settings":
+			{
+				"buffer_size": 6227,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Administrator/Desktop/iputils-s20121221/INSTALL",
+			"settings":
+			{
+				"buffer_size": 429,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Administrator/Desktop/iputils-s20121221/ping_common.h",
+			"settings":
+			{
+				"buffer_size": 7754,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Administrator/Desktop/iputils-s20121221/ping_common.c",
+			"settings":
+			{
+				"buffer_size": 24428,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Administrator/Desktop/iputils-s20121221/ping.c",
+			"settings":
+			{
+				"buffer_size": 34354,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/models/Project.php",
+			"settings":
+			{
+				"buffer_size": 13252,
 				"line_ending": "Unix"
 			}
 		}
@@ -452,6 +524,40 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Administrator/Desktop/iputils-s20121221/doc/tftpd.sgml",
+		"/C/Users/Administrator/Desktop/iputils-s20121221/iputils.spec",
+		"/C/Users/Administrator/Desktop/iputils-s20121221/tftpd.c",
+		"/C/Users/Administrator/Desktop/hello.c",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/PaperController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/PatentController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/models/Project.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/README",
+		"/D/xampp_2/htdocs/team_web_app/protected/config/main.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/project/view.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/models/Paper.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/config/console.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/ProjectController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/paper/admin.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/data/schema.mysql.sql",
+		"/D/xampp_2/htdocs/team_web_app/protected/models/PaperPeople.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/SoftwareController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/models/Software.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/paper/update.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/paper/index.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/paper/upload.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/paper/create.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/data/testdrive_4.sql",
+		"/D/xampp_2/htdocs/team_web_app/index.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/course/_view.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/course/_form.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/models/Course.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/extensions/kindeditor/KindEditorWidget.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/PaperTeachingController.php",
+		"/D/xampp_2/htdocs/team_web_app/attached/.gitignore",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/software/_form.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/software/view.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/patent/view.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/paper/_form.php",
 		"/home/zly/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
 		"/home/zly/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
 		"/home/zly/team_web_app/themes/foundation4/views/layouts/main.php",
@@ -545,41 +651,7 @@
 		"/D/Dropbox/dev_htdocs/team/protected/data/testdrive (2).sql",
 		"/D/Dropbox/dev_htdocs/team/protected/data/schema.mysql.sql",
 		"/D/Dropbox/dev_htdocs/team/protected/models/Project.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/project/_search.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/_search.php",
-		"/D/Dropbox/dev_htdocs/team/protected/controllers/PaperController.php",
-		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/site/index.php",
-		"/D/Dropbox/dev_htdocs/team/protected/README",
-		"/D/Dropbox/dev_htdocs/team/protected/data/testdrive.sql",
-		"/D/Dropbox/dev_htdocs/team/protected/controllers/PeopleController.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/project/_form.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/_form.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/view.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/project/view.php",
-		"/D/Dropbox/dev_htdocs/team/protected/models/PaperProjectFund.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/create.php",
-		"/D/Dropbox/dev_htdocs/team/team.sublime-project",
-		"/D/Dropbox/dev_htdocs/team/team.sublime-workspace",
-		"/D/Dropbox/dev_htdocs/team/yii/framework/db/schema/CDbCommandBuilder.php",
-		"/D/Dropbox/dev_htdocs/team/yii/framework/db/schema/CDbCriteria.php",
-		"/D/Dropbox/dev_htdocs/team/yii/framework/db/schema/CDbSchema.php",
-		"/D/Dropbox/dev_htdocs/team/yii/framework/db/ar/CActiveRecord.php",
-		"/D/Dropbox/dev_htdocs/team/yii/framework/db/ar/CActiveFinder.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/project/admin.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/project/create.php",
-		"/d/Desktop/Ad Hoc/aaa.py",
-		"/D/Dropbox/dev_htdocs/team/protected/controllers/SiteController.php",
-		"/D/Dropbox/dev_htdocs/team/yii/framework/messages/config.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/site/index.php",
-		"/D/Dropbox/dev_htdocs/team/protected/components/UserIdentity.php",
-		"/d/Desktop/msm.py",
-		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/layouts/column2.php",
-		"/d/Desktop/test.xml",
-		"/D/Dropbox/dev_htdocs/team/yii/framework/web/auth/CWebUser.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/admin.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/index.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/update.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/paper/upload.php"
+		"/D/Dropbox/dev_htdocs/team/protected/views/project/_search.php"
 	],
 	"find":
 	{
@@ -598,6 +670,22 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"outpack",
+			"sendmsg",
+			")->",
+			"tbl_paper",
+			"conclude_date",
+			"SetCellValue",
+			"$i",
+			"i",
+			"p",
+			"log",
+			"papers",
+			"data",
+			"reim",
+			"Reim",
+			"reim",
+			"patent",
 			"reim",
 			"award_",
 			"award_id",
@@ -709,26 +797,10 @@
 			"1",
 			"论文",
 			"paper",
-			"Paper",
-			"paper",
-			"Paper",
-			"paper",
-			"Paper",
-			"paper",
-			"Paper",
-			"paper",
-			"Paper",
-			"paper",
-			"Paper",
-			"paper",
-			"fe",
-			"d2",
-			"medium-1",
-			"row",
-			"textField"
+			"Paper"
 		],
 		"highlight": true,
-		"in_selection": true,
+		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
@@ -745,61 +817,216 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "protected/views/paper/_form.php",
+					"file": "protected/models/Patent.php",
 					"settings":
 					{
-						"buffer_size": 10727,
+						"buffer_size": 8026,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7086,
-								7086
+								2577,
+								2581
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2958.0,
+						"translation.y": 1404.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "protected/models/Paper.php",
+					"file": "protected/controllers/ProjectController.php",
 					"settings":
 					{
-						"buffer_size": 14337,
+						"buffer_size": 14577,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6552,
-								6552
+								9084,
+								9086
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 3009.0,
+						"translation.y": 5544.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/Administrator/Desktop/iputils-s20121221/Makefile",
+					"settings":
+					{
+						"buffer_size": 6227,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								261,
+								268
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1404.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/Administrator/Desktop/iputils-s20121221/INSTALL",
+					"settings":
+					{
+						"buffer_size": 429,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								125,
+								125
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/Administrator/Desktop/iputils-s20121221/ping_common.h",
+					"settings":
+					{
+						"buffer_size": 7754,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7045,
+								7055
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4682.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/Administrator/Desktop/iputils-s20121221/ping_common.c",
+					"settings":
+					{
+						"buffer_size": 24428,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8025,
+								8040
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7099.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/Administrator/Desktop/iputils-s20121221/ping.c",
+					"settings":
+					{
+						"buffer_size": 34354,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								19183,
+								19190
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 13003.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "protected/models/Project.php",
+					"settings":
+					{
+						"buffer_size": 13252,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10401,
+								10409
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 5634.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -857,8 +1084,168 @@
 		"selected_items":
 		[
 			[
+				"project",
+				"protected/models/Project.php"
+			],
+			[
+				"pper",
+				"protected/controllers/PaperController.php"
+			],
+			[
+				"pan",
+				"protected/models/Patent.php"
+			],
+			[
+				"patent",
+				"protected/controllers/PatentController.php"
+			],
+			[
+				"pape",
+				"protected/controllers/PaperController.php"
+			],
+			[
+				"read",
+				"protected/README"
+			],
+			[
+				"configmain",
+				"protected/config/main.php"
+			],
+			[
+				"config",
+				"protected/config/console.php"
+			],
+			[
+				"viewprojectview",
+				"protected/views/project/view.php"
+			],
+			[
+				"ppaer",
+				"protected/models/Paper.php"
+			],
+			[
+				"paperc",
+				"protected/controllers/PaperController.php"
+			],
+			[
+				"projectc",
+				"protected/controllers/ProjectController.php"
+			],
+			[
+				"viewpapercreate",
+				"protected/views/paper/create.php"
+			],
+			[
+				"viewpaperindex",
+				"protected/views/paper/index.php"
+			],
+			[
+				"viewpaperup",
+				"protected/views/paper/update.php"
+			],
+			[
+				"viewpaper",
+				"protected/views/paper/admin.php"
+			],
+			[
+				"mysql",
+				"protected/data/schema.mysql.sql"
+			],
+			[
+				"paperpe",
+				"protected/models/PaperPeople.php"
+			],
+			[
+				"paper",
+				"protected/models/Paper.php"
+			],
+			[
+				"softc",
+				"protected/controllers/SoftwareController.php"
+			],
+			[
+				"soft",
+				"protected/models/Software.php"
+			],
+			[
+				"test",
+				"protected/data/testdrive_4.sql"
+			],
+			[
+				"pro",
+				"protected/controllers/ProjectController.php"
+			],
+			[
+				"papercon",
+				"protected/controllers/PaperController.php"
+			],
+			[
 				"paper.php",
 				"protected/models/Paper.php"
+			],
+			[
+				"project.php",
+				"protected/models/Project.php"
+			],
+			[
+				"projec",
+				"protected/models/Project.php"
+			],
+			[
+				"proj",
+				"protected/models/Project.php"
+			],
+			[
+				"configman",
+				"protected/config/main.php"
+			],
+			[
+				"index",
+				"index.php"
+			],
+			[
+				"cou",
+				"protected/models/Course.php"
+			],
+			[
+				"viewcourse_view",
+				"protected/views/course/_view.php"
+			],
+			[
+				"viewcour",
+				"protected/views/course/_form.php"
+			],
+			[
+				"viewcourse_",
+				"protected/views/course/_view.php"
+			],
+			[
+				"att",
+				"attached/.gitignore"
+			],
+			[
+				"paperteachingcont",
+				"protected/controllers/PaperTeachingController.php"
+			],
+			[
+				"viewpatentview",
+				"protected/views/patent/view.php"
+			],
+			[
+				"viewsoftview",
+				"protected/views/software/view.php"
+			],
+			[
+				"viewsoft_f",
+				"protected/views/software/_form.php"
+			],
+			[
+				"so",
+				"protected/models/Software.php"
+			],
+			[
+				"testd",
+				"protected/data/testdrive_4.sql"
 			],
 			[
 				"paper_form",
@@ -867,10 +1254,6 @@
 			[
 				"foundmain",
 				"themes/foundation4/views/layouts/main.php"
-			],
-			[
-				"mysql",
-				"protected/data/schema.mysql.sql"
 			],
 			[
 				"viewcourind",
@@ -887,10 +1270,6 @@
 			[
 				"viewpat_v",
 				"protected/views/paperTeaching/_view.php"
-			],
-			[
-				"viewcourse_view",
-				"protected/views/course/_view.php"
 			],
 			[
 				"viewawardadm",
@@ -931,10 +1310,6 @@
 			[
 				"cour",
 				"protected/models/Course.php"
-			],
-			[
-				"read",
-				"protected/README"
 			],
 			[
 				"papercont",
@@ -1009,14 +1384,6 @@
 				"protected/models/Project.php"
 			],
 			[
-				"paper",
-				"protected/models/Paper.php"
-			],
-			[
-				"index",
-				"index.php"
-			],
-			[
 				"viewpaper_",
 				"protected/views/paper/_form.php"
 			],
@@ -1037,16 +1404,8 @@
 				"protected/models/Publication.php"
 			],
 			[
-				"soft",
-				"protected/models/Software.php"
-			],
-			[
 				"awardt",
 				"protected/models/AwardTeaching.php"
-			],
-			[
-				"project.php",
-				"protected/models/Project.php"
 			],
 			[
 				"awar",
@@ -1125,14 +1484,6 @@
 				"protected/views/projectTeaching/admin.php"
 			],
 			[
-				"project",
-				"protected/models/Project.php"
-			],
-			[
-				"papercon",
-				"protected/controllers/PaperController.php"
-			],
-			[
 				"viewpaper_form",
 				"protected/views/paper/_form.php"
 			],
@@ -1151,10 +1502,6 @@
 			[
 				"project.",
 				"protected/models/Project.php"
-			],
-			[
-				"projec",
-				"protected/controllers/ProjectController.php"
 			],
 			[
 				"publ",
@@ -1245,128 +1592,8 @@
 				"protected/views/awardTeaching/_form.php"
 			],
 			[
-				"paperc",
-				"protected/controllers/PaperController.php"
-			],
-			[
 				"pub",
 				"protected/models/Publication.php"
-			],
-			[
-				"viewsoftview",
-				"protected/views/software/view.php"
-			],
-			[
-				"viewpubview",
-				"protected/views/publication/_view.php"
-			],
-			[
-				"viewawview",
-				"protected/views/award/view.php"
-			],
-			[
-				"softc",
-				"protected/controllers/SoftwareController.php"
-			],
-			[
-				"pubc",
-				"protected/controllers/PublicationController.php"
-			],
-			[
-				"viewpub_",
-				"protected/views/publication/_form.php"
-			],
-			[
-				"datamy",
-				"protected/data/schema.mysql.sql"
-			],
-			[
-				"datamys",
-				"protected/data/schema.mysql.sql"
-			],
-			[
-				"foundviewmain",
-				"themes/foundation4/views/layouts/main.php"
-			],
-			[
-				"viewsoft_v",
-				"protected/views/software/_view.php"
-			],
-			[
-				"viewpubin",
-				"protected/views/publication/index.php"
-			],
-			[
-				"viewsoftind",
-				"protected/views/software/index.php"
-			],
-			[
-				"viewpubview.",
-				"protected/views/publication/view.php"
-			],
-			[
-				"viewsofrview",
-				"protected/views/software/view.php"
-			],
-			[
-				"viewsoft_f",
-				"protected/views/software/_form.php"
-			],
-			[
-				"softwc",
-				"protected/controllers/SoftwareController.php"
-			],
-			[
-				"viewpaper_f",
-				"protected/views/paper/_form.php"
-			],
-			[
-				"viewsoft_fo",
-				"protected/views/software/_form.php"
-			],
-			[
-				"viewpub_f",
-				"protected/views/publication/_form.php"
-			],
-			[
-				"viewpubcrea",
-				"protected/views/publication/create.php"
-			],
-			[
-				"modelsoft",
-				"protected/models/SoftwareProjectReim.php"
-			],
-			[
-				"datamysql",
-				"protected/data/schema.mysql.sql"
-			],
-			[
-				"publio",
-				"protected/models/Publication.php"
-			],
-			[
-				"pro",
-				"protected/models/Project.php"
-			],
-			[
-				"datamays",
-				"protected/data/schema.mysql.sql"
-			],
-			[
-				"foundviewinde",
-				"themes/foundation4/views/site/index.php"
-			],
-			[
-				"viewproject",
-				"protected/views/project/_search.php"
-			],
-			[
-				"viewproview",
-				"protected/views/project/view.php"
-			],
-			[
-				"viewpub_fo",
-				"protected/views/publication/_form.php"
 			]
 		],
 		"width": 0.0
