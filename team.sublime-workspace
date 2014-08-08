@@ -418,6 +418,14 @@
 				"buffer_size": 13252,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "protected/controllers/PublicationController.php",
+			"settings":
+			{
+				"buffer_size": 5167,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -817,7 +825,6 @@
 	"groups":
 	[
 		{
-			"selected": 6,
 			"sheets":
 			[
 				{
@@ -990,8 +997,8 @@
 						"selection":
 						[
 							[
-								19183,
-								19190
+								19390,
+								19390
 							]
 						],
 						"settings":
@@ -1027,6 +1034,33 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 5634.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "protected/controllers/PublicationController.php",
+					"settings":
+					{
+						"buffer_size": 5167,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13,
+								34
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1629,7 +1663,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
-	"side_bar_width": 151.0,
+	"side_bar_visible": true,
+	"side_bar_width": 351.0,
 	"status_bar_visible": true
 }
