@@ -1,5 +1,7 @@
 <?php
-
+Yii::import('application.vendor.*');
+require_once('password_compat/password_compat.php');
+require_once('PHPExcel/PHPExcel.php');
 class PublicationController extends Controller
 {
 	/**
@@ -36,7 +38,7 @@ class PublicationController extends Controller
 				'expression'=>'isset($user->is_publication) && $user->is_publication',
 			),
 			array('allow', 
-				'actions'=>array('admin','delete','create','update'),
+				'actions'=>array('admin','delete','create','update','upload'),
 				'expression'=>'isset($user->is_admin) && $user->is_admin',
 			),
 			array('deny',  // deny all users
@@ -192,4 +194,94 @@ class PublicationController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+    public function actionUpload() {
+        set_time_limit(50);
+        if(isset($_FILES['spreedSheet']) && !empty($_FILES['spreedSheet'])) {
+            $path = $_FILES['spreedSheet']['tmp_name'];
+            echo $_FILES['spreedSheet']['name']."<hr />";
+            echo $_FILES['spreedSheet']['type']."<hr />";
+            echo $_FILES['spreedSheet']['tmp_name']."<hr />";
+            if(self::saveXlsToDb($path)){
+                echo 'function actionUpload() succeeded.<hr />';
+                $this->redirect(array('index'));
+            }
+        }
+
+        $this->render('upload');
+    }protected function saveXlsToDb($xlsPath) {
+        $projects = self::xlsToArray($xlsPath);
+        return self::saveXlsArrayToDb($projects);
+    }
+
+    public function xlsToArray($path)
+    {
+        Yii::trace("start of loading","actionTestXls()");
+        $objPHPExcel = PHPExcel_IOFactory::load($path);
+        Yii::trace("end of loading","actionTestXls()");
+        Yii::trace("start of reading","actionTestXls()");
+        $dataArray = $objPHPExcel->getActiveSheet()->toArray(null,true,true);
+        Yii::trace("end of reading","actionTestXls()");
+        //array_shift($dataArray);
+        //var_dump($dataArray);
+        return $dataArray;
+    }
+
+    private function convertYesNoToInt($yesno) {
+        if($yesno=='是') {
+            return 1;
+        }else if($yesno=='否'){
+            return 0;
+        }
+        return 0;
+    }
+
+
+
+    public function saveXlsArrayToDb($projects)
+    {
+        $connection=Yii::app()->db;
+        // var_dump($projects);
+        // Yii::app()->end();
+        foreach($projects as $k => $p) {
+            //var_dump($k);
+            //var_dump($p);
+            if($k<1) continue;
+            if(empty($p[0])) continue;
+            if(($project=Publication::model()->findByAttributes(array('info'=>$p[0])))==null) {
+            	$project = new Publication;
+            }
+            $project->scenario='update';
+            $project->info=$p[0];
+            $project->press=$p[1];
+            $project->pub_date=$p[2];
+            $project->is_textbook=self::convertYesNoToInt($p[9]);
+            $project->is_pub=self::convertYesNoToInt($p[10]);
+            $project->isbn_number=$p[12];
+            $project->description=$p[13];
+            $peoplesId=array();
+            for($i=0;$i<6;$i=$i+1){
+				$peopleName=$p[3+$i];
+				if($peopleName=="") {
+					continue;
+				}
+				$people = People::model()->findByAttributes(array('name'=>$peopleName));
+                if($people!=null) {
+                    $peoplesId[]=$people->id;
+                }else {
+                    $people = new People;
+                    $people->name = $peopleName;
+                    if(!$people->save()){
+                    	print_r($people->getErrors());
+                    	return false;
+                    }
+                    $peoplesId[] = $people->id;
+                }
+
+            }
+            $project->peoplesId = $peoplesId;
+            $project->save();
+        }
+        return true;
+    }
 }
