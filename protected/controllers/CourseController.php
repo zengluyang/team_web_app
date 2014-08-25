@@ -207,7 +207,7 @@ class CourseController extends Controller
         Yii::trace("start of reading","actionTestXls()");
         $dataArray = $objPHPExcel->getActiveSheet()->toArray(null,true,true);
         Yii::trace("end of reading","actionTestXls()");
-        array_shift($dataArray);
+        //array_shift($dataArray);
         //var_dump($dataArray);
         return $dataArray;
     }
@@ -236,14 +236,15 @@ class CourseController extends Controller
             if(($project=Course::model()->findByAttributes(array('name'=>$p[0])))==null) {
             	$project = new Course;
             }
-            $project->name='update';
-            $project->description=$p[0];
-            $project->semester=$p[1];
-            $project->duration=$p[2];
-            $project->textbook=$p[3];
+            $project->scenario='update';
+            $project->name=$p[0];
+            $project->description=$p[1];
+            $project->semester=$p[2];
+            $project->duration=$p[3];
+            $project->textbook=$p[4];
             $peoplesId=array();
-            for($i=0;$i<6;$i=$i+1){
-				$peopleName=$p[9+$i];
+            for($i=0;$i<10;$i=$i+1){
+				$peopleName=$p[5+$i];
 				if($peopleName=="") {
 					continue;
 				}
