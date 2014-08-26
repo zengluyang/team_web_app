@@ -59,8 +59,8 @@ class ProjectTeachingController extends Controller
 	}
 
 	private function setModelRelation($model) {
-		if(isset($_POST['ProjectTeaching']['peoples']))
-			$model->peopleIds=$_POST['ProjectTeaching']['peoples'];
+		if(isset($_POST['ProjectTeaching']['peoples_value']))
+			$model->peopleIds=explode(',', $_POST['ProjectTeaching']['peoples_value']);
 	}
 
 	/**
@@ -101,6 +101,8 @@ class ProjectTeachingController extends Controller
 
 		if(isset($_POST['ProjectTeaching']))
 		{
+			// var_dump($_POST['ProjectTeaching']['peoples_value']);
+			// Yii::app()->end();
 			$model->attributes=$_POST['ProjectTeaching'];
 			self::setModelRelation($model);
 			if($model->save())

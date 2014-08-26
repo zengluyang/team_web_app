@@ -2,8 +2,14 @@
 	"folders":
 	[
 		{
-			"path": "./",
-			"folder_exclude_patterns": [
+			"file_exclude_patterns":
+			[
+				"*.log",
+				"*.jpg",
+				"*.png"
+			],
+			"folder_exclude_patterns":
+			[
 				"protected/components",
 				"protected/tests",
 				"protected/vendor",
@@ -14,7 +20,7 @@
 				"protected/extensions",
 				"protected/modules"
 			],
-			"file_exclude_patterns": ["*.log","*.jpg","*.png"]
+			"path": "/D/xampp_2/htdocs/team_web_app"
 		}
 	]
 }

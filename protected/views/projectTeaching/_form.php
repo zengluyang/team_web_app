@@ -128,7 +128,7 @@
 	            )
 	        ); 
 		?>
-
+		<input type="hidden" name="ProjectTeaching[peoples_value]"/>
 		</div>
 
 	</div>
@@ -187,12 +187,13 @@
 
 	<div class="row buttons">
 		<div class="medium-12 columns">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array('id'=>'submit_button')); ?>
 		</div>
 	</div>
 <script>
 $(document).ready(function(){
 	var selectionWithOrder=[<?php echo $model->getPeoples(',','id')?>];
+	console.log(selectionWithOrder);
 	$('#peoples_select').val(selectionWithOrder);
 	$("#peoples_select").select2({
 			placeholder: "选择人员",
@@ -202,7 +203,21 @@ $(document).ready(function(){
 				var mod=pinyin.getCamelChars(text.toUpperCase());
 				return mod.indexOf(term.toUpperCase())==0;
 			}
-	}); 
+	});
+	$('#submit_button').click(function(e){
+		//e.preventDefault();
+		var data = $('#peoples_select').select2('data');
+		//console.log(data);
+        // Push each item into an array
+        var finalResult = [];
+        for(var i=0;i<data.length;i++){
+        	finalResult.push(data[i].id);
+        }
+        
+        // Display the result with a comma
+        console.log(finalResult);
+        $("input[name='ProjectTeaching[peoples_value]']").val(finalResult);
+	});
 });
 </script>
 <?php

@@ -356,10 +356,18 @@
 	"buffers":
 	[
 		{
-			"file": "protected/models/Patent.php",
+			"file": "protected/controllers/ProjectTeachingController.php",
 			"settings":
 			{
-				"buffer_size": 8026,
+				"buffer_size": 9000,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "protected/models/ProjectTeaching.php",
+			"settings":
+			{
+				"buffer_size": 9021,
 				"line_ending": "Unix"
 			}
 		},
@@ -372,58 +380,18 @@
 			}
 		},
 		{
-			"file": "/C/Users/Administrator/Desktop/iputils-s20121221/Makefile",
+			"file": "protected/views/projectTeaching/view.php",
 			"settings":
 			{
-				"buffer_size": 6227,
+				"buffer_size": 1563,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/C/Users/Administrator/Desktop/iputils-s20121221/INSTALL",
+			"file": "protected/views/projectTeaching/admin.php",
 			"settings":
 			{
-				"buffer_size": 429,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Users/Administrator/Desktop/iputils-s20121221/ping_common.h",
-			"settings":
-			{
-				"buffer_size": 7754,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Users/Administrator/Desktop/iputils-s20121221/ping_common.c",
-			"settings":
-			{
-				"buffer_size": 24428,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Users/Administrator/Desktop/iputils-s20121221/ping.c",
-			"settings":
-			{
-				"buffer_size": 34354,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "protected/models/Project.php",
-			"settings":
-			{
-				"buffer_size": 13252,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "protected/controllers/PublicationController.php",
-			"settings":
-			{
-				"buffer_size": 5167,
+				"buffer_size": 2679,
 				"line_ending": "Unix"
 			}
 		}
@@ -532,23 +500,46 @@
 	},
 	"file_history":
 	[
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/ProjectController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/PublicationController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/AwardController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/models/Publication.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/SoftwareController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/ResearchController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/CourseController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/data/schema.mysql.sql",
+		"/D/xampp_2/htdocs/team_web_app/protected/README",
+		"/D/xampp_2/htdocs/team_web_app/protected/models/ProjectTeaching.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/ProjectTeachingController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/project/upload.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/models/Course.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/AwardTeachingController.php",
+		"/G/龙门山/10级-ZIGBEE/董晓俊/龙门山项目/龙门山项目/程序/Texas Instruments longmenshan/ZStack-1.4.3-1.2.1/Projects/zstack/Samples/1-network formaton/Source/p2p_test.h",
+		"/G/龙门山/10级-ZIGBEE/董晓俊/龙门山项目/龙门山项目/程序/Texas Instruments longmenshan/ZStack-1.4.3-1.2.1/Projects/zstack/Samples/1-network formaton/Source/OSAL_p2p_test.c",
+		"/G/龙门山/10级-ZIGBEE/董晓俊/龙门山项目/龙门山项目/程序/Texas Instruments longmenshan/ZStack-1.4.3-1.2.1/Projects/zstack/Samples/1-network formaton/Source/p2p_test.c",
+		"/G/龙门山/10级-ZIGBEE/董晓俊/龙门山项目/龙门山项目/程序/Texas Instruments longmenshan/ZStack-1.4.3-1.2.1/Projects/zstack/Samples/SampleApp/Source/OSAL_SampleApp.c",
+		"/G/龙门山/10级-ZIGBEE/董晓俊/龙门山项目/龙门山项目/程序/Texas Instruments longmenshan/ZStack-1.4.3-1.2.1/Projects/zstack/ZMain/TI2430DB/ZMain.c",
+		"/G/龙门山/10级-ZIGBEE/董晓俊/龙门山项目/龙门山项目/程序/Texas Instruments longmenshan/ZStack-1.4.3-1.2.1/Projects/zstack/ZMain/TI2430DB/OnBoard.c",
+		"/D/xampp_2/htdocs/team_web_app/protected/models/Award.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/PatentController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/models/Patent.php",
+		"/C/Users/Administrator/Desktop/iputils-s20121221/Makefile",
+		"/C/Users/Administrator/Desktop/iputils-s20121221/INSTALL",
+		"/C/Users/Administrator/Desktop/iputils-s20121221/ping_common.h",
+		"/C/Users/Administrator/Desktop/iputils-s20121221/ping_common.c",
+		"/C/Users/Administrator/Desktop/iputils-s20121221/ping.c",
+		"/D/xampp_2/htdocs/team_web_app/protected/models/Project.php",
 		"/C/Users/Administrator/Desktop/iputils-s20121221/doc/tftpd.sgml",
 		"/C/Users/Administrator/Desktop/iputils-s20121221/iputils.spec",
 		"/C/Users/Administrator/Desktop/iputils-s20121221/tftpd.c",
 		"/C/Users/Administrator/Desktop/hello.c",
 		"/D/xampp_2/htdocs/team_web_app/protected/controllers/PaperController.php",
-		"/D/xampp_2/htdocs/team_web_app/protected/controllers/PatentController.php",
-		"/D/xampp_2/htdocs/team_web_app/protected/models/Project.php",
-		"/D/xampp_2/htdocs/team_web_app/protected/README",
 		"/D/xampp_2/htdocs/team_web_app/protected/config/main.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/views/project/view.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/models/Paper.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/config/console.php",
-		"/D/xampp_2/htdocs/team_web_app/protected/controllers/ProjectController.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/views/paper/admin.php",
-		"/D/xampp_2/htdocs/team_web_app/protected/data/schema.mysql.sql",
 		"/D/xampp_2/htdocs/team_web_app/protected/models/PaperPeople.php",
-		"/D/xampp_2/htdocs/team_web_app/protected/controllers/SoftwareController.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/models/Software.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/views/paper/update.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/views/paper/index.php",
@@ -558,7 +549,6 @@
 		"/D/xampp_2/htdocs/team_web_app/index.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/views/course/_view.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/views/course/_form.php",
-		"/D/xampp_2/htdocs/team_web_app/protected/models/Course.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/extensions/kindeditor/KindEditorWidget.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/controllers/PaperTeachingController.php",
 		"/D/xampp_2/htdocs/team_web_app/attached/.gitignore",
@@ -637,29 +627,7 @@
 		"/home/zly/team_web_app/protected/views/software/_form.php",
 		"/home/zly/team_web_app/protected/views/software/index.php",
 		"/home/zly/team_web_app/protected/views/publication/create.php",
-		"/home/zly/team_web_app/protected/views/project/_search.php",
-		"/home/zly/team_web_app/protected/views/project/view.php",
-		"/home/zly/team_web_app/themes/foundation4/views/site/index.php",
-		"/home/zly/team_web_app/.gitignore",
-		"/home/zly/team_web_app/protected/views/project/create.php",
-		"/home/zly/team_web_app/protected/config/main.php",
-		"/home/zly/team_web_app/protected/data/testdrive_4.sql",
-		"/home/zly/team_web_app/protected/extensions/bootstrap/tests/unit/TbHtmlTest.php",
-		"/home/zly/team_web_app/README.md",
-		"/D/Dropbox/dev_htdocs/team/protected/data/testdrive_3.sql",
-		"/D/Dropbox/dev_htdocs/team/themes/foundation4/views/layouts/main.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/site/login.php",
-		"/D/Dropbox/dev_htdocs/team/protected/models/LoginForm.php",
-		"/D/Dropbox/dev_htdocs/team/protected/models/Paper.php",
-		"/D/Dropbox/dev_htdocs/team/protected/config/main.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/user/create.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/user/_form.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/user/view.php",
-		"/D/Dropbox/dev_htdocs/team/protected/controllers/ProjectController.php",
-		"/D/Dropbox/dev_htdocs/team/protected/data/testdrive (2).sql",
-		"/D/Dropbox/dev_htdocs/team/protected/data/schema.mysql.sql",
-		"/D/Dropbox/dev_htdocs/team/protected/models/Project.php",
-		"/D/Dropbox/dev_htdocs/team/protected/views/project/_search.php"
+		"/home/zly/team_web_app/protected/views/project/_search.php"
 	],
 	"find":
 	{
@@ -678,6 +646,10 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Project",
+			"self::convertYesNoToInt(",
+			"projects",
+			"protected function saveXlsToDb($xlsPath) {\n        $projects = self::xlsToArray($xlsPath);\n        return self::saveXlsArrayToDb($projects);\n    }\n\n    public function xlsToArray($path)\n    {\n        Yii::trace(\"start of loading\",\"actionTestXls()\");\n        $objPHPExcel = PHPExcel_IOFactory::load($path);\n        Yii::trace(\"end of loading\",\"actionTestXls()\");\n        Yii::trace(\"start of reading\",\"actionTestXls()\");\n        $dataArray = $objPHPExcel->getActiveSheet()->toArray(null,true,true);\n        Yii::trace(\"end of reading\",\"actionTestXls()\");\n        array_shift($dataArray);\n        //var_dump($dataArray);\n        return $dataArray;\n    }\n\n    private function convertYesNoToInt($yesno) {\n        if($yesno=='是') {\n            return 1;\n        }else if($yesno=='否'){\n            return 0;\n        }\n        return 0;\n    }\n\n\n\n    public function saveXlsArrayToDb($projects)\n    {\n        $connection=Yii::app()->db;\n        //var_dump($projects);\n        foreach($projects as $k => $p) {\n            //var_dump($k);\n            //var_dump($p);\n            if($k<1) continue;\n            if(($project=Project::model()->findByAttributes(array('name'=>$p[0],'number'=>$p[1])))==null) {\n            	$project = new Project;\n            }\n            $project->scenario='update';\n            $project->name=$p[0];\n            $project->number=$p[1];\n            $project->fund_number=$p[2];\n            $project->is_intl=self::convertYesNoToInt($p[3]);\n            $project->is_national=self::convertYesNoToInt($p[4]);\n            $project->is_provincial=self::convertYesNoToInt($p[5]);\n            $project->is_city=self::convertYesNoToInt($p[6]);\n            $project->is_school=self::convertYesNoToInt($p[7]);\n            $project->is_enterprise=self::convertYesNoToInt($p[8]);\n            $project->is_NSF=self::convertYesNoToInt($p[9]);\n            $project->is_973=self::convertYesNoToInt($p[10]);\n            $project->is_863=self::convertYesNoToInt($p[11]);\n            $project->is_NKTRD=self::convertYesNoToInt($p[12]);\n            $project->is_DFME=self::convertYesNoToInt($p[13]);\n            $project->is_major=self::convertYesNoToInt($p[14]);\n            $project->start_date=($p[16]);\n            $project->deadline_date=($p[17]);\n            $project->conclude_date=empty($p[18]) ? $project->deadline_date : $p[18];\n            $project->pass_fund=$p[19];\n            $peoplesId=array();\n            for($i=0;$i<20;$i=$i+1){\n				$peopleName=$p[20+$i];\n				if($peopleName==\"\") {\n					continue;\n				}\n				$people = People::model()->findByAttributes(array('name'=>$peopleName));\n                if($people!=null) {\n                    $peoplesId[]=$people->id;\n                }else {\n                    $people = new People;\n                    $people->name = $peopleName;\n                    if(!$people->save()){\n                    	print_r($people->getErrors());\n                    	return false;\n                    }\n                    $peoplesId[] = $people->id;\n                }\n\n            }\n            $project->executePeoples = $peoplesId;\n            $peoplesId=array();\n            for($i=0;$i<20;$i=$i+1){\n				$peopleName=$p[20+$i];\n				$people = People::model()->findByAttributes(array('name'=>$peopleName));\n                if($people!=null) {\n                    $peoplesId[]=$people->id;\n\n                }else {\n                    $people = new People;\n                    $people->name = $peopleName;\n                    if($people->save())\n                    $peoplesId[] = $people->id;\n                }\n\n            }\n            $project->liabilityPeoples = $peoplesId;\n            $project->save();\n        }\n        return true;\n    }",
 			"outpack",
 			"sendmsg",
 			")->",
@@ -801,11 +773,7 @@
 			"execute_peoples",
 			"liability_peoples",
 			"execute_peoples",
-			"old_selection",
-			"1",
-			"论文",
-			"paper",
-			"Paper"
+			"old_selection"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -825,22 +793,50 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "protected/models/Patent.php",
+					"file": "protected/controllers/ProjectTeachingController.php",
 					"settings":
 					{
-						"buffer_size": 8026,
+						"buffer_size": 9000,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2577,
-								2581
+								7292,
+								7292
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4104.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "protected/models/ProjectTeaching.php",
+					"settings":
+					{
+						"buffer_size": 9021,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6705,
+								6168
 							]
 						],
 						"settings":
@@ -848,13 +844,13 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1404.0,
+						"translation.y": 4158.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
 					"file": "protected/controllers/ProjectController.php",
 					"settings":
 					{
@@ -865,65 +861,13 @@
 						"selection":
 						[
 							[
-								9084,
-								9086
+								134,
+								6
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 5544.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/C/Users/Administrator/Desktop/iputils-s20121221/Makefile",
-					"settings":
-					{
-						"buffer_size": 6227,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								261,
-								268
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Makefile/Makefile.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1404.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/C/Users/Administrator/Desktop/iputils-s20121221/INSTALL",
-					"settings":
-					{
-						"buffer_size": 429,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								125,
-								125
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -932,126 +876,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "/C/Users/Administrator/Desktop/iputils-s20121221/ping_common.h",
+					"buffer": 3,
+					"file": "protected/views/projectTeaching/view.php",
 					"settings":
 					{
-						"buffer_size": 7754,
+						"buffer_size": 1563,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7045,
-								7055
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4682.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/C/Users/Administrator/Desktop/iputils-s20121221/ping_common.c",
-					"settings":
-					{
-						"buffer_size": 24428,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8025,
-								8040
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 7099.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/C/Users/Administrator/Desktop/iputils-s20121221/ping.c",
-					"settings":
-					{
-						"buffer_size": 34354,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								19390,
-								19390
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 13003.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "protected/models/Project.php",
-					"settings":
-					{
-						"buffer_size": 13252,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10401,
-								10409
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 5634.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "protected/controllers/PublicationController.php",
-					"settings":
-					{
-						"buffer_size": 5167,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13,
-								34
+								1269,
+								1269
 							]
 						],
 						"settings":
@@ -1059,8 +896,35 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": 59.0,
+						"translation.y": 648.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "protected/views/projectTeaching/admin.php",
+					"settings":
+					{
+						"buffer_size": 2679,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1917,
+								1917
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 122.0,
+						"translation.y": 1134.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1118,6 +982,50 @@
 		"selected_items":
 		[
 			[
+				"projecttadmi",
+				"protected/views/projectTeaching/admin.php"
+			],
+			[
+				"viewprojecttview",
+				"protected/views/projectTeaching/view.php"
+			],
+			[
+				"proc",
+				"protected/controllers/ProjectController.php"
+			],
+			[
+				"projectt",
+				"protected/models/ProjectTeaching.php"
+			],
+			[
+				"pub",
+				"team_web_app/protected/models/Publication.php"
+			],
+			[
+				"rae",
+				"team_web_app/protected/README"
+			],
+			[
+				"mysql",
+				"team_web_app/protected/data/schema.mysql.sql"
+			],
+			[
+				"viewprojectup",
+				"team_web_app/protected/views/project/upload.php"
+			],
+			[
+				"cou",
+				"team_web_app/protected/models/Course.php"
+			],
+			[
+				"award",
+				"protected/models/Award.php"
+			],
+			[
+				"patent",
+				"protected/controllers/PatentController.php"
+			],
+			[
 				"project",
 				"protected/models/Project.php"
 			],
@@ -1128,10 +1036,6 @@
 			[
 				"pan",
 				"protected/models/Patent.php"
-			],
-			[
-				"patent",
-				"protected/controllers/PatentController.php"
 			],
 			[
 				"pape",
@@ -1180,10 +1084,6 @@
 			[
 				"viewpaper",
 				"protected/views/paper/admin.php"
-			],
-			[
-				"mysql",
-				"protected/data/schema.mysql.sql"
 			],
 			[
 				"paperpe",
@@ -1236,10 +1136,6 @@
 			[
 				"index",
 				"index.php"
-			],
-			[
-				"cou",
-				"protected/models/Course.php"
 			],
 			[
 				"viewcourse_view",
@@ -1336,10 +1232,6 @@
 			[
 				"viewcourse",
 				"protected/views/course/_form.php"
-			],
-			[
-				"award",
-				"protected/models/Award.php"
 			],
 			[
 				"cour",
@@ -1474,10 +1366,6 @@
 				"protected/models/ProjectTeaching.php"
 			],
 			[
-				"projectt",
-				"protected/models/ProjectTeaching.php"
-			],
-			[
 				"award_view",
 				"protected/views/award/_view.php"
 			],
@@ -1604,30 +1492,6 @@
 			[
 				"viewprojectindex",
 				"protected/views/project/index.php"
-			],
-			[
-				"viewawardindex",
-				"protected/views/award/index.php"
-			],
-			[
-				"viewproject_view",
-				"protected/views/project/_view.php"
-			],
-			[
-				"viewwardt_",
-				"protected/views/awardTeaching/_view.php"
-			],
-			[
-				"viewaward_f",
-				"protected/views/award/_form.php"
-			],
-			[
-				"viewawardtea_f",
-				"protected/views/awardTeaching/_form.php"
-			],
-			[
-				"pub",
-				"protected/models/Publication.php"
 			]
 		],
 		"width": 0.0
@@ -1663,7 +1527,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 351.0,
+	"side_bar_visible": false,
+	"side_bar_width": 246.0,
 	"status_bar_visible": true
 }
