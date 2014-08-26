@@ -76,14 +76,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		array(
 			'name'=>'director1',
 			'type'=>'raw',
-			'value'=>'$data->director1->name',
+			'value'=>'isset($data->director1->name)?$data->director1->name:null',
 			'filter' => false,
 			'htmlOptions'=>array('width'=>'60em'),
 		),
 		array(
 			'name'=>'director2',
 			'type'=>'raw',
-			'value'=>'$data->director2->name',
+			'value'=>'isset($data->director2->name)?$data->director2->name:null',
 			'filter' => false,
 			'htmlOptions'=>array('width'=>'60em'),
 		),
@@ -91,7 +91,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		array(
 			'name'=>'maintainer',
 			'type'=>'raw',
-			'value'=>'$data->maintainer->name',
+			'value'=>'isset($data->maintainer->name)?isset($data->maintainer->name):null',
 			'filter' => false,
 			'htmlOptions'=>array('width'=>'60em'),
 		),

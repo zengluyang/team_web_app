@@ -46,18 +46,18 @@ $this->menu=array(
 		array(
 			'label'=>'负责人1',
 			'type'=>'raw',
-			'value'=>$model->director1->name,
+			'value'=>isset($model->director1->name)?$model->director1->name:null,
 		),
 		array(
 			'label'=>'负责人2',
 			'type'=>'raw',
-			'value'=>$model->director2->name,
+			'value'=>isset($model->director2->name)?$model->director1->name:null,
 		),
 		'should_display',
 		array(
 			'label'=>'维护人',
 			'type'=>'raw',
-			'value'=>$model->maintainer->name,
+			'value'=>isset($model->maintainer->name)?$model->maintainer->name:null,
 		),
 	),
 )); ?>

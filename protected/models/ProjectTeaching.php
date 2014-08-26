@@ -182,6 +182,10 @@ class ProjectTeaching extends CActiveRecord
 	public function getTypeString($glue=', '){
         $levels = array();
         $attrs = self::attributeLabels();
+        
+        if($this->is_quality){
+            array_push($levels,$attrs['is_quality']);
+        }
 
         if($this->is_reform){
             array_push($levels,$attrs['is_reform']);
