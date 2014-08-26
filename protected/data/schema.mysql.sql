@@ -342,7 +342,8 @@ CREATE TABLE `tbl_project_teaching` (
   id int not null primary key auto_increment,
 
   name varchar(255) comment       '项目名称',
-  number varchar(255)comment      '项目编号',
+  number varchar(255) comment     '项目编号',
+  fund_number varchar(255) comment '经本费编号',
   is_intl bool comment            '国际',
   is_provincial bool comment      '省部级',
   is_city bool comment            '市级',

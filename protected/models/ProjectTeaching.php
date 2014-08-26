@@ -102,6 +102,7 @@ class ProjectTeaching extends CActiveRecord
 			'id' => 'ID',
 			'name' => '项目名称',
 			'number' => '项目编号',
+			'fund_number' => '经本费编号',
 			'is_intl' => '国家级',
 			'is_provincial' => '省部级',
 			'is_city' => '市级',

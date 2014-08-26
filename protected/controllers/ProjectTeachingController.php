@@ -246,7 +246,7 @@ class ProjectTeachingController extends Controller
             $project->scenario='update';
             $project->name=$p[0];
             $project->number=$p[1];
-            //$project->fund_number=$p[2];
+            $project->fund_number=$p[2];
             $project->is_intl=self::convertYesNoToInt($p[3]);
             $project->is_provincial=self::convertYesNoToInt($p[4]);
             $project->is_city=self::convertYesNoToInt($p[5]);
