@@ -7,14 +7,14 @@
  */
 
 $this->breadcrumbs=array(
-    '项目'=>array('index'),
-    '导入项目',
+    '教改项目'=>array('index'),
+    '导入',
 );
 
 $this->menu=array(
-    array('label'=>'全部项目', 'url'=>array('index')),
-    array('label'=>'增加项目', 'url'=>array('create')),
-    array('label'=>'管理项目', 'url'=>array('admin')),
+    array('label'=>'列出', 'url'=>array('index')),
+    array('label'=>'增加', 'url'=>array('create')),
+    array('label'=>'管理', 'url'=>array('admin')),
 );
 ?>
 <h1>选择Excel文件</h1>

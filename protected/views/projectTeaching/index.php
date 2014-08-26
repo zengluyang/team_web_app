@@ -3,12 +3,13 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Project Teachings',
+	'教改项目',
 );
 
 $this->menu=array(
-	array('label'=>'Create ProjectTeaching', 'url'=>array('create')),
-	array('label'=>'Manage ProjectTeaching', 'url'=>array('admin')),
+	array('label'=>'增加', 'url'=>array('create')),
+	array('label'=>'管理', 'url'=>array('admin')),
+	array('label'=>'导入', 'url'=>array('upload')),
 );
 ?>
 <table>
@@ -21,7 +22,7 @@ $this->menu=array(
 		<th><?php echo CHtml::encode(ProjectTeaching::model()->getAttributeLabel('conclude_date')); ?></th>
 		<th><?php echo CHtml::encode(ProjectTeaching::model()->getAttributeLabel('peoples')); ?></th>
 	</tr>
-<h1>Project Teachings</h1>
+<h1>教改项目</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

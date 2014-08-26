@@ -3,13 +3,14 @@
 /* @var $model ProjectTeaching */
 
 $this->breadcrumbs=array(
-	'Project Teachings'=>array('index'),
-	'Manage',
+	'教改项目'=>array('index'),
+	'管理',
 );
 
 $this->menu=array(
-	array('label'=>'List ProjectTeaching', 'url'=>array('index')),
-	array('label'=>'Create ProjectTeaching', 'url'=>array('create')),
+	array('label'=>'列出', 'url'=>array('index')),
+	array('label'=>'增加', 'url'=>array('create')),
+	array('label'=>'导入', 'url'=>array('upload')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,8 +27,8 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Project Teachings</h1>
-
+<!-- <h1>Manage Project Teachings</h1>
+ -->
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
@@ -48,6 +49,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'id',
 		'name',
 		'number',
+		'fund_number',
 		array(
 			'name'=>'level',
 			'type'=>'raw',

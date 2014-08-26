@@ -35,6 +35,15 @@
 		</div>
 	</div>
 
+
+	<div class="row">
+		<div class="medium-12 columns">
+		<?php echo $form->labelEx($model,'fund_number'); ?>
+		<?php echo $form->textField($model,'fund_number',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'fund_number'); ?>
+		</div>
+	</div>
+
 	<div class="row">
 		<div class="medium-1 columns">
 		<?php echo $form->labelEx($model,'is_intl'); ?>

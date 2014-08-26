@@ -3,27 +3,29 @@
 /* @var $model ProjectTeaching */
 
 $this->breadcrumbs=array(
-	'Project Teachings'=>array('index'),
+	'教改项目'=>array('index'),
 	$model->name,
 );
 
 $this->menu=array(
-	array('label'=>'List ProjectTeaching', 'url'=>array('index')),
-	array('label'=>'Create ProjectTeaching', 'url'=>array('create')),
-	array('label'=>'Update ProjectTeaching', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete ProjectTeaching', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage ProjectTeaching', 'url'=>array('admin')),
+	array('label'=>'列出', 'url'=>array('index')),
+	array('label'=>'增加', 'url'=>array('create')),
+	array('label'=>'修改', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'删除', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'管理', 'url'=>array('admin')),
+	array('label'=>'导入', 'url'=>array('upload')),
 );
 ?>
 
-<h1>View ProjectTeaching #<?php echo $model->id; ?></h1>
-
+<!-- <h1>查看教改项目 #<?php echo $model->id; ?></h1>
+ -->
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
 		'name',
 		'number',
+		'fund_number',
 		array(
 			'label'=>'级别',
 			'type'=>'raw',
