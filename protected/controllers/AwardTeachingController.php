@@ -59,8 +59,8 @@ class AwardTeachingController extends Controller
 	}
 
 	private function setModelRelation($model) {
-		if(isset($_POST['AwardTeaching']['peoples']))
-			$model->peopleIds=$_POST['AwardTeaching']['peoples'];
+		if(isset($_POST['AwardTeaching']['peoples_value']))
+			$model->peopleIds=explode(',', $_POST['AwardTeaching']['peoples_value']);
 	}
 
 	/**
