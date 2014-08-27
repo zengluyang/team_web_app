@@ -290,6 +290,35 @@ class Project extends CActiveRecord
     	return implode($glue,$peoplesArr);
     }
 
+    public function getPeoplesJsForSelect2Init($type) {
+    	//[{id:"MA", text: "Massachusetts"},{id: "CA", text: "California"}]
+    	$nameValuePairArr = array();
+    	switch ($type) {
+    		case self::EXECUTE:
+    			$peopleRecords=$this->execute_peoples;
+    			break;
+    		case self::LIABILITY:
+    			$peopleRecords=$this->liability_peoples;
+    			break;
+    		default:
+    			$peopleRecords=$this->execute_peoples;
+    			break;
+    	}
+		foreach ($peopleRecords as $people) {
+			$nameValuePair = '{id:"'.$people->id.'", text: "'.$people->name.'"}';
+			array_push($nameValuePairArr,$nameValuePair);
+		}
+		return '['.implode(',', $nameValuePairArr).']';
+    }
+
+    public function getExecutePeoplesJsForSelect2Init(){
+    	return self::getPeoplesJsForSelect2Init(self::EXECUTE);
+    }
+
+    public function getLiabilityPeoplesJsForSelect2Init(){
+    	return self::getPeoplesJsForSelect2Init(self::LIABILITY);
+    }
+
     public function getExecutePeoples($glue=', ',$attr='name') {
     	return self::getPeoples(self::EXECUTE,$glue,$attr);
     }

@@ -60,10 +60,10 @@ class ProjectController extends Controller
 	}
 
 	private function setModelPeoples($model) {
-		if(isset($_POST['Project']['execute_peoples']))
-			$model->executePeoples=$_POST['Project']['execute_peoples'];
-		if(isset($_POST['Project']['liability_peoples']))
-			$model->liabilityPeoples=$_POST['Project']['liability_peoples'];
+		if(isset($_POST['Project']['execute_peoples_value']))
+			$model->executePeoples=explode(',',$_POST['Project']['execute_peoples_value']);
+		if(isset($_POST['Project']['liability_peoples_value']))
+			$model->liabilityPeoples=explode(',',$_POST['Project']['liability_peoples_value']);
 	}
 	/**
 	 * Creates a new model.
