@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"ex",
+				"explode"
+			],
+			[
 				"find",
 				"findByAttributes"
 			],
@@ -232,10 +236,6 @@
 				"registerCssFile"
 			],
 			[
-				"ex",
-				"execute_people"
-			],
-			[
 				"for",
 				"foreach	foreach …"
 			],
@@ -356,10 +356,10 @@
 	"buffers":
 	[
 		{
-			"file": "protected/controllers/ProjectTeachingController.php",
+			"file": "protected/views/projectTeaching/_form.php",
 			"settings":
 			{
-				"buffer_size": 9000,
+				"buffer_size": 7341,
 				"line_ending": "Unix"
 			}
 		},
@@ -367,31 +367,15 @@
 			"file": "protected/models/ProjectTeaching.php",
 			"settings":
 			{
-				"buffer_size": 9021,
+				"buffer_size": 9050,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "protected/controllers/ProjectController.php",
+			"file": "protected/controllers/ProjectTeachingController.php",
 			"settings":
 			{
-				"buffer_size": 14577,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "protected/views/projectTeaching/view.php",
-			"settings":
-			{
-				"buffer_size": 1563,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "protected/views/projectTeaching/admin.php",
-			"settings":
-			{
-				"buffer_size": 2679,
+				"buffer_size": 9109,
 				"line_ending": "Unix"
 			}
 		}
@@ -500,17 +484,24 @@
 	},
 	"file_history":
 	[
+		"/D/xampp_2/htdocs/team_web_app/protected/views/projectTeaching/upload.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/projectTeaching/update.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/projectTeaching/index.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/projectTeaching/create.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/projectTeaching/_form.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/projectTeaching/admin.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/views/projectTeaching/view.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/controllers/ProjectController.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/models/ProjectTeaching.php",
+		"/D/xampp_2/htdocs/team_web_app/protected/data/schema.mysql.sql",
+		"/D/xampp_2/htdocs/team_web_app/protected/controllers/ProjectTeachingController.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/controllers/PublicationController.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/controllers/AwardController.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/models/Publication.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/controllers/SoftwareController.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/controllers/ResearchController.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/controllers/CourseController.php",
-		"/D/xampp_2/htdocs/team_web_app/protected/data/schema.mysql.sql",
 		"/D/xampp_2/htdocs/team_web_app/protected/README",
-		"/D/xampp_2/htdocs/team_web_app/protected/models/ProjectTeaching.php",
-		"/D/xampp_2/htdocs/team_web_app/protected/controllers/ProjectTeachingController.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/views/project/upload.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/models/Course.php",
 		"/D/xampp_2/htdocs/team_web_app/protected/controllers/AwardTeachingController.php",
@@ -620,14 +611,7 @@
 		"/home/zly/team_web_app/protected/controllers/SoftwareController.php",
 		"/home/zly/team_web_app/protected/views/publication/_form.php",
 		"/home/zly/team_web_app/protected/controllers/PublicationController.php",
-		"/home/zly/team_web_app/protected/views/publication/index.php",
-		"/home/zly/team_web_app/protected/views/publication/view.php",
-		"/home/zly/team_web_app/protected/views/software/_view.php",
-		"/home/zly/team_web_app/protected/models/SoftwareProjectReim.php",
-		"/home/zly/team_web_app/protected/views/software/_form.php",
-		"/home/zly/team_web_app/protected/views/software/index.php",
-		"/home/zly/team_web_app/protected/views/publication/create.php",
-		"/home/zly/team_web_app/protected/views/project/_search.php"
+		"/home/zly/team_web_app/protected/views/publication/index.php"
 	],
 	"find":
 	{
@@ -646,6 +630,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"number",
 			"Project",
 			"self::convertYesNoToInt(",
 			"projects",
@@ -772,8 +757,7 @@
 			"populatePeople",
 			"execute_peoples",
 			"liability_peoples",
-			"execute_peoples",
-			"old_selection"
+			"execute_peoples"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -793,23 +777,23 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "protected/controllers/ProjectTeachingController.php",
+					"file": "protected/views/projectTeaching/_form.php",
 					"settings":
 					{
-						"buffer_size": 9000,
+						"buffer_size": 7341,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7292,
-								7292
+								6177,
+								6177
 							]
 						],
 						"settings":
@@ -818,7 +802,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4104.0,
+						"translation.y": 3294.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -828,15 +812,15 @@
 					"file": "protected/models/ProjectTeaching.php",
 					"settings":
 					{
-						"buffer_size": 9021,
+						"buffer_size": 9050,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6705,
-								6168
+								7176,
+								7176
 							]
 						],
 						"settings":
@@ -844,25 +828,25 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 4158.0,
+						"translation.y": 3217.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "protected/controllers/ProjectController.php",
+					"file": "protected/controllers/ProjectTeachingController.php",
 					"settings":
 					{
-						"buffer_size": 14577,
+						"buffer_size": 9109,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								134,
-								6
+								1863,
+								1863
 							]
 						],
 						"settings":
@@ -870,61 +854,7 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "protected/views/projectTeaching/view.php",
-					"settings":
-					{
-						"buffer_size": 1563,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1269,
-								1269
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 59.0,
-						"translation.y": 648.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "protected/views/projectTeaching/admin.php",
-					"settings":
-					{
-						"buffer_size": 2679,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1917,
-								1917
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 122.0,
-						"translation.y": 1134.0,
+						"translation.y": 707.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -982,6 +912,18 @@
 		"selected_items":
 		[
 			[
+				"projectt",
+				"protected/controllers/ProjectTeachingController.php"
+			],
+			[
+				"projec",
+				"protected/models/ProjectTeaching.php"
+			],
+			[
+				"mysql.",
+				"protected/data/schema.mysql.sql"
+			],
+			[
 				"projecttadmi",
 				"protected/views/projectTeaching/admin.php"
 			],
@@ -992,10 +934,6 @@
 			[
 				"proc",
 				"protected/controllers/ProjectController.php"
-			],
-			[
-				"projectt",
-				"protected/models/ProjectTeaching.php"
 			],
 			[
 				"pub",
@@ -1119,10 +1057,6 @@
 			],
 			[
 				"project.php",
-				"protected/models/Project.php"
-			],
-			[
-				"projec",
 				"protected/models/Project.php"
 			],
 			[
@@ -1338,10 +1272,6 @@
 				"protected/models/Award.php"
 			],
 			[
-				"mysql.",
-				"protected/data/schema.mysql.sql"
-			],
-			[
 				"projectteac",
 				"controllers/ProjectTeachingController.php"
 			],
@@ -1527,7 +1457,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
-	"side_bar_width": 246.0,
+	"side_bar_visible": true,
+	"side_bar_width": 358.0,
 	"status_bar_visible": true
 }

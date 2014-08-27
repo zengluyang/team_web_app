@@ -192,9 +192,8 @@
 	</div>
 <script>
 $(document).ready(function(){
-	var selectionWithOrder=[<?php echo $model->getPeoples(',','id')?>];
+	var selectionWithOrder = <?php echo $model->getPeoplesJsForSelect2Init()?>;
 	console.log(selectionWithOrder);
-	$('#peoples_select').val(selectionWithOrder);
 	$("#peoples_select").select2({
 			placeholder: "选择人员",
 			width: 'resolve',
@@ -204,6 +203,7 @@ $(document).ready(function(){
 				return mod.indexOf(term.toUpperCase())==0;
 			}
 	});
+	$("#peoples_select").select2("data", selectionWithOrder);
 	$('#submit_button').click(function(e){
 		//e.preventDefault();
 		var data = $('#peoples_select').select2('data');
@@ -214,7 +214,6 @@ $(document).ready(function(){
         	finalResult.push(data[i].id);
         }
         
-        // Display the result with a comma
         console.log(finalResult);
         $("input[name='ProjectTeaching[peoples_value]']").val(finalResult);
 	});
