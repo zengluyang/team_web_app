@@ -97,17 +97,17 @@
 		?>
 
 		</div>
+		<input type="hidden" name="Award[peoples_value]"/>
 	</div>
 	<div class="row buttons">
 		<div class="medium-12 columns">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array('id'=>'submit_button')); ?>
         </div>
 	</div>
 
 <script>
 $(document).ready(function(){
-	var selectionWithOrder=[<?php echo $model->getPeoples(',','id')?>];
-	$('#peoples_select').val(selectionWithOrder);
+	var selectionWithOrder=<?php echo $model->getPeoplesJsForSelect2Init()?>;
 	$("#peoples_select").select2({
 			placeholder: "选择获奖人",
 			width: 'resolve',
@@ -117,6 +117,20 @@ $(document).ready(function(){
 				return mod.indexOf(term.toUpperCase())==0;
 			}
 	}); 
+	$("#peoples_select").select2("data", selectionWithOrder);
+	$('#submit_button').click(function(e){
+		//e.preventDefault();
+		var data = $('#peoples_select').select2('data');
+		//console.log(data);
+        // Push each item into an array
+        var finalResult = [];
+        for(var i=0;i<data.length;i++){
+        	finalResult.push(data[i].id);
+        }
+        
+        console.log(finalResult);
+        $("input[name='Award[peoples_value]']").val(finalResult);
+	});
 });
 </script>
 <?php

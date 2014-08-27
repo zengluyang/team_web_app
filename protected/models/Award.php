@@ -175,6 +175,16 @@ class Award extends CActiveRecord
 		return implode($glue,$peopleArr);
     }
 
+
+    public function getPeoplesJsForSelect2Init() {
+    	//[{id:"MA", text: "Massachusetts"},{id: "CA", text: "California"}]
+    	$nameValuePairArr = array();
+		foreach ($this->peoples as $people) {
+			$nameValuePair = '{id:"'.$people->id.'", text: "'.$people->name.'"}';
+			array_push($nameValuePairArr,$nameValuePair);
+		}
+		return '['.implode(',', $nameValuePairArr).']';
+    }
     private function populateAwardPeople(){
     	$peoples=$this->peopleIds;
     	for($i=0;$i<count($peoples);$i++){
