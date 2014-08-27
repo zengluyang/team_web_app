@@ -59,8 +59,8 @@ class CourseController extends Controller
 	}
 
 	private function setModelRelation($model) {
-		if(isset($_POST['Course']['peoples']))
-			$model->peopleIds=$_POST['Course']['peoples'];
+		if(isset($_POST['Course']['peoples_value']))
+			$model->peopleIds=explode(',', $_POST['Course']['peoples_value']);
 	}
 
 	/**
