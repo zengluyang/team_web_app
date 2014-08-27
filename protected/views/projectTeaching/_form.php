@@ -147,7 +147,7 @@
         echo $form->label($model,'负责人1');
         $listData = CHtml::listData($peoples,'id','name');
         $listData = array(null=>'选择负责人1')+$listData;
-        echo $form->dropDownList($model,'director_1',$listData);?>
+        echo $form->dropDownList($model,'director_1',$listData,array('id'=>'director_1_select'));?>
 		</div>
 
 		<div class="medium-4 columns">
@@ -156,7 +156,7 @@
         echo $form->label($model,'负责人2');
         $listData = CHtml::listData($peoples,'id','name');
         $listData = array(null=>'选择负责人2')+$listData;
-        echo $form->dropDownList($model,'director_2',$listData);?>
+        echo $form->dropDownList($model,'director_2',$listData,array('id'=>'director_2_select'));?>
 		</div>
 		
 	</div>
@@ -170,7 +170,7 @@
         $listData = CHtml::listData($peoples,'id','name');
         $listData = array(null=>'选择维护人员')+$listData;
         //var_dump(($listData));
-        echo $form->dropDownList($model,'maintainer_id',$listData);
+        echo $form->dropDownList($model,'maintainer_id',$listData,array('id'=>'maintainer_id_select'));
         ?>
 		</div>
 
@@ -194,6 +194,14 @@
 $(document).ready(function(){
 	var selectionWithOrder = <?php echo $model->getPeoplesJsForSelect2Init()?>;
 	console.log(selectionWithOrder);
+	$('#director_1_select,#director_2_select,#maintainer_id_select').select2({
+		width: 'resolve',
+		matcher: function(term,text) {
+			var pinyin = new Pinyin();
+			var mod=pinyin.getCamelChars(text.toUpperCase());
+			return mod.indexOf(term.toUpperCase())==0;
+		}
+	});
 	$("#peoples_select").select2({
 			placeholder: "选择人员",
 			width: 'resolve',
