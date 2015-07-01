@@ -105,7 +105,7 @@ return array(
 			'connectionString' => 'mysql:host=127.0.0.1;dbname=testdrive',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '5727470255aA',
+			'password' => '123456',
 			'charset' => 'utf8',
 		),
 
