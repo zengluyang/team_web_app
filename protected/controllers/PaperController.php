@@ -309,7 +309,8 @@ class PaperController extends Controller
 	{
 	$user = Yii::app()->user;
 	if((isset($user->is_admin) && $user->is_admin) || (isset($user->is_paper) && $user->is_paper)) {
-		Yii::app()->runController('paper/admin');  
+		Yii::app()->runController('paper/admin');
+		return;  
 	}
         $criteria = new CDbCriteria;
         //$criteria->condition = "is_high_level=1";
