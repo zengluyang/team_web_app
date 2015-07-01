@@ -307,7 +307,7 @@ class PaperController extends Controller
 
 	public function actionIndex()
 	{
-	$user = Yii::app()->user;
+	$user = Yii:app()->user;
 	if((isset($user->is_admin) && $user->is_admin) || (isset($user->is_paper) && $user->is_paper)) {
 		Yii::app()->runController('paper/admin');  
 	}
